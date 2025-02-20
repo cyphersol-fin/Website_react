@@ -1,0 +1,65 @@
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+// import Home from "./pages/Home";
+import { Header } from "./components/layout/Header";
+import { Home } from "./pages/Home";
+import { Price } from "./pages/Price";
+import { Contact } from "./pages/Contact";
+import { Footer } from "./components/layout/Footer";
+import NotificationBanner from "./components/layout/NotificationBanner";
+import DownloadSection from "./components/DownloadSection";
+import { BlogPage } from "./pages/BlogPage";
+import { AboutPage } from "./pages/AboutPage";
+import { TeamPage } from "./pages/TeamPage";
+import { ResellerPage } from "./pages/ResellerPage";
+import { ComboPage } from "./pages/ComboPage";
+import { useEffect } from "react";
+import { ProductPage } from "./pages/ProductPage";
+import { ExcelToTallyPage } from "./pages/ExcelToTallyPage";
+// Legal
+import { Terms } from "./components/legal/Terms";
+import { PrivacyPolicy } from "./components/legal/PrivacyPolicy";
+import { Dmca } from "./components/legal/Dmca";
+import { RefundPolicy } from "./components/legal/RefundPolicy";
+import { Disclaimer } from "./components/legal/Disclaimer";
+
+function App() {
+  useEffect(() => {
+    document.documentElement.classList.add("dark");
+  }, []);
+  return (
+    <Router>
+      <div className="min-h-screen bg-black">
+        <div className="absolute inset-0 bg-gradient-to-b from-black via-gray-900 to-black" />
+        <div className="relative z-10">
+          <NotificationBanner />
+          <Header />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/price" element={<Price />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/download" element={<DownloadSection />} />
+            <Route path="/blog" element={<BlogPage />} />
+            <Route path="/about" element={<AboutPage />} />
+            <Route path="/team" element={<TeamPage />} />
+            <Route path="/reseller" element={<ResellerPage />} />
+            <Route
+              path="/bank-statement-analyzer-excel-to-tally"
+              element={<ComboPage />}
+            />
+            <Route path="/bank-statement-analyzer" element={<ProductPage />} />
+            <Route path="/excel-to-tally" element={<ExcelToTallyPage />} />
+            {/* Legal */}
+            <Route path="/terms" element={<Terms />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="/dmca" element={<Dmca />} />
+            <Route path="/refund-policy" element={<RefundPolicy />} />
+            <Route path="/disclaimer" element={<Disclaimer />} />
+          </Routes>
+          <Footer />
+        </div>
+      </div>
+    </Router>
+  );
+}
+
+export default App;

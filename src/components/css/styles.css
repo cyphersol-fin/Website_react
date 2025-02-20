@@ -1,0 +1,64 @@
+/* Slider container */
+.slider-container {
+    position: relative;
+    width: 100%;
+    height: auto;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.slider-container img {
+    width: 100%;
+    max-height: 700px;
+    /* height: 100% !important; */
+    object-fit: fit !important;
+    display: block;
+    margin: 0 auto;
+}
+
+/* .slider-container {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.slider-container img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: fit !important;
+    object-position: top;
+} */
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .slider-container img {
+        max-height: 300px;
+    }
+}
+
+
+.lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+    overflow: hidden;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+    width: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #888;
+    /* Gray scrollbar thumb */
+    border-radius: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #555;
+    /* Darker on hover */
+}
