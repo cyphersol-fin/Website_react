@@ -1,11 +1,44 @@
 import React from "react";
 import { cn } from "./lib/utils";
-import { GridPattern } from "./components/ui/grid-pattern";
 import { motion } from "framer-motion";
 import { Badge } from "./UI/Badge";
 import CTABanner from "./UI/CTABanner";
 import MouseMoveEffect from "./components/ui/mouse-move-effect";
-import CarouselSection from "./UI/carousel";
+import CarouselSection from "./UI/Carousel";
+
+const fadeIn = {
+  initial: { opacity: 0, y: 30 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true },
+  transition: { duration: 0.7 },
+};
+
+const staggerContainer = {
+  initial: { opacity: 0 },
+  whileInView: { opacity: 1 },
+  viewport: { once: true },
+  transition: { staggerChildren: 0.1, delayChildren: 0.3 },
+};
+
+const listItem = {
+  initial: { opacity: 0, x: -20 },
+  whileInView: { opacity: 1, x: 0 },
+  viewport: { once: true },
+  transition: { duration: 0.5 },
+};
+
+const textReveal = {
+  initial: { opacity: 0, y: 20 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true },
+  transition: { duration: 0.6 },
+};
+
+// Hover animation for list items
+const hoverScale = {
+  whileHover: { scale: 1.02, x: 5 },
+  transition: { type: "spring", stiffness: 400, damping: 10 },
+};
 
 interface StatProps {
   value: string;
@@ -13,185 +46,330 @@ interface StatProps {
 }
 function Stat({ value, label }: StatProps) {
   return (
-    <div className="text-center">
-      <div className="text-5xl lg:text-6xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 text-transparent bg-clip-text">
+    <motion.div
+      className="text-center"
+      initial={{ opacity: 0, scale: 0.8 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5 }}
+    >
+      <motion.div
+        className="text-5xl lg:text-6xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 text-transparent bg-clip-text"
+        initial={{ y: 20 }}
+        whileInView={{ y: 0 }}
+        transition={{ duration: 0.7, delay: 0.2 }}
+      >
         {value}
-      </div>
-      <div className="text-sm text-gray-400 mt-1">{label}</div>
-    </div>
+      </motion.div>
+      <motion.div
+        className="text-sm text-gray-400 mt-1"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.5, delay: 0.3 }}
+      >
+        {label}
+      </motion.div>
+    </motion.div>
   );
 }
 
 export const About = () => {
   return (
     <>
-      <div className="relative flex h-[500px] w-full flex-col items-center justify-center overflow-hidden ">
+      <div className="relative flex w-full flex-col items-center justify-center overflow-hidden ">
         <MouseMoveEffect />
-        {/* <GridPattern
-          squares={[
-            [4, 4],
-            [5, 1],
-            [8, 2],
-            [5, 3],
-            [5, 5],
-            [10, 10],
-            [12, 15],
-            [15, 10],
-            [10, 15],
-            [15, 10],
-            [10, 15],
-            [15, 10],
-          ]}
-          className={cn(
-            "[mask-image:radial-gradient(400px_circle_at_center,white,transparent)]",
-            "inset-x-0 inset-y-[-30%] h-[200%] skew-y-12"
-          )}
-        /> */}
-        <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4 max-auto max-w-6xl">
-          <div className="mb-8">
+        <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4 py-12 max-auto max-w-6xl">
+          <motion.div
+            className="mb-8"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
             <Badge>About Us</Badge>
-          </div>
-
-          <motion.h1
-            className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 md:mb-8 tracking-tight"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <span className="bg-clip-text text-transparent bg-gradient-to-b from-white to-white/80">
-              When support teams thrive,
-            </span>
-            <br />
-            <span
-              className={cn(
-                "bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-white/90 to-blue-400"
-              )}
+          </motion.div>
+          <div className="">
+            <motion.div
+              className="max-auto max-w-6xl text-center mb-12"
+              {...fadeIn}
             >
-              your business thrives - we're here to help make that happen
-            </span>
-          </motion.h1>
-          <motion.p
-            className="text-lg md:text-xl text-gray-400 max-w-3xl"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
-            Empower your support teams with the right tools. Effortlessly
-            create, refine, and optimize customer interactions.
-          </motion.p>
+              <motion.h1
+                className="text-2xl sm:text-4xl md:text-6xl font-bold mb-6 md:mb-8 tracking-tight text-center"
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8 }}
+              >
+                <br />
+                <motion.span
+                  className={cn(
+                    "bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-white/90 to-blue-400"
+                  )}
+                  initial={{ backgroundPosition: "0%" }}
+                  animate={{ backgroundPosition: "100%" }}
+                  transition={{
+                    duration: 3,
+                    repeat: Infinity,
+                    repeatType: "reverse",
+                  }}
+                >
+                  About CypherSOL
+                </motion.span>
+              </motion.h1>
+              <motion.p
+                className="text-gray-300 leading-relaxed text-xl text-left"
+                {...textReveal}
+              >
+                CypherSOL Fintech India Private Ltd. has developed a
+                state-of-the-art Bank Statement Analyzer, that can extract
+                structured insights and valuable information from financial
+                statements. Instead of spending hours analyzing a large number
+                of data transactions from multiple banks or statements, you can
+                use CypherSOL to do so efficiently and in minimal time.
+              </motion.p>
+            </motion.div>
+
+            <motion.div
+              className="mb-8 text-left text-lg"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, delay: 0.2 }}
+            >
+              <motion.h1
+                className="text-xl mb-4 md:mb-6 tracking-tight text-left"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.7 }}
+              >
+                <motion.span
+                  className="bg-clip-text text-transparent bg-gradient-to-b from-white to-white/80"
+                  initial={{ opacity: 0.5 }}
+                  whileInView={{ opacity: 1 }}
+                  transition={{ duration: 1 }}
+                >
+                  CypherSOL Solutions can be used to filter data-driven insights
+                  by:
+                </motion.span>
+              </motion.h1>
+              <motion.ol
+                variants={staggerContainer}
+                initial="initial"
+                whileInView="whileInView"
+                viewport={{ once: true }}
+              >
+                <motion.li className="mb-2" variants={listItem} {...hoverScale}>
+                  <span className="font-semibold text-cyan-300">
+                    {" "}
+                    Tax Professionals (chartered accountants, tax consultants){" "}
+                  </span>
+                  : For accounting, filing tax returns, reconciling bank
+                  transactions, identifying unexplained entries.
+                </motion.li>
+                <motion.li className="mb-2" variants={listItem} {...hoverScale}>
+                  <span className="font-semibold text-cyan-300">MSMEs</span> :
+                  To enhance financial management, automate bookkeeping, and
+                  gain real-time insights into cash flow and expenses.
+                </motion.li>
+                <motion.li className="mb-2" variants={listItem} {...hoverScale}>
+                  <span className="font-semibold text-cyan-300">
+                    Govt Agencies
+                  </span>{" "}
+                  : For financial compliance monitoring, fraud detection,
+                  taxation audits, Fund trial by analyzing banking transactions
+                  and identifying discrepancies in financial records.
+                </motion.li>
+                <motion.li className="mb-2" variants={listItem} {...hoverScale}>
+                  <span className="font-semibold text-cyan-300">
+                    Direct Selling Agents (DSAs)
+                  </span>{" "}
+                  : To evaluate clients' financial needs, analyze banking
+                  patterns, and identify the most suitable financiers based on
+                  income flow and repayment capacity.
+                </motion.li>
+                <motion.li className="mb-2" variants={listItem} {...hoverScale}>
+                  <span className="font-semibold text-cyan-300">
+                    Banks & NBFC's
+                  </span>
+                  : To automate loan eligibility assessments, detect credit
+                  risks, assess cash flow patterns, and streamline underwriting
+                  processes for faster and more accurate lending decisions.
+                </motion.li>
+                <motion.li className="mb-2" variants={listItem} {...hoverScale}>
+                  <span className="font-semibold text-cyan-300 text-lg">
+                    Forensic Accounting
+                  </span>{" "}
+                  : For fraud investigation, financial crime detection, and
+                  regulatory compliance checks by analyzing inconsistencies in
+                  financial transactions and identifying suspicious activities.
+                </motion.li>
+              </motion.ol>
+            </motion.div>
+
+            <motion.div
+              className="mx-auto mt-12 text-left"
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+            >
+              <motion.p
+                className="text-gray-300 mb-6 text-xl"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.3, duration: 0.7 }}
+              >
+                CypherSOL can be used by a wide set of market players, unlike
+                others that are designed primarily for banks and NBFCs. It
+                offers business partners Safe, Analytical, Fast, and Efficient
+                analysis so they may better serve their clients and their
+                requirements.
+              </motion.p>
+              <motion.p
+                className="text-gray-300 text-xl"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.5, duration: 0.7 }}
+              >
+                CypherSOL is a startup that was conceived by a team experts in
+                technology, banking risk management and a Chartered Accountant.
+                The board is being advised by a reputed BFSI analyst who spent
+                30 years covering the financial sector. The team has used its
+                practical experience to develop a sophisticated tool that can
+                simplify and save time for tax professionals, financiers, DSAs,
+                and businesses to filter information on transactions.
+              </motion.p>
+            </motion.div>
+          </div>
+          {/* 
+          <div className="">
+            <motion.div
+              className=" max-auto max-w-6xl text-center mb-12"
+              {...fadeIn}
+            >
+              <h1 className="text-2xl sm:text-4xl md:text-6xl font-bold mb-6 md:mb-8 tracking-tight text-center">
+                <br />
+                <span
+                  className={cn(
+                    "bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-white/90 to-blue-400"
+                  )}
+                >
+                  About CypherSOL
+                </span>
+              </h1>
+              <p className="text-gray-300 leading-relaxed text-xl text-left">
+                CypherSOL Fintech India Private Ltd. has developed a
+                state-of-the-art Bank Statement Analyzer, that can extract
+                structured insights and valuable information from financial
+                statements. Instead of spending hours analyzing a large number
+                of data transactions from multiple banks or statements, you can
+                use CypherSOL to do so efficiently and in minimal time.
+              </p>
+            </motion.div>
+
+            <motion.div className="mb-8 text-left text-lg">
+              <motion.h1
+                className="text-xl mb-4 md:mb-6 tracking-tight text-left"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.7 }}
+              >
+                <span className="bg-clip-text text-transparent bg-gradient-to-b from-white to-white/80">
+                  CypherSOL Solutions can be used to filter data-driven insights
+                  by:
+                </span>
+              </motion.h1>
+              <motion.ol>
+                <motion.li className="mb-2">
+                  <span className="font-semibold text-cyan-300">
+                    {" "}
+                    Tax Professionals (chartered accountants, tax consultants){" "}
+                  </span>
+                  : For accounting, filing tax returns, reconciling bank
+                  transactions, identifying unexplained entries.
+                </motion.li>
+                <motion.li className="mb-2">
+                  <span className="font-semibold text-cyan-300">MSMEs</span> :
+                  To enhance financial management, automate bookkeeping, and
+                  gain real-time insights into cash flow and expenses.
+                </motion.li>
+                <motion.li className="mb-2">
+                  <span className="font-semibold text-cyan-300">
+                    Govt Agencies
+                  </span>{" "}
+                  : For financial compliance monitoring, fraud detection,
+                  taxation audits, Fund trial by analyzing banking transactions
+                  and identifying discrepancies in financial records.
+                </motion.li>
+                <motion.li className="mb-2">
+                  <span className="font-semibold text-cyan-300">
+                    Direct Selling Agents (DSAs)
+                  </span>{" "}
+                  : To evaluate clients' financial needs, analyze banking
+                  patterns, and identify the most suitable financiers based on
+                  income flow and repayment capacity.
+                </motion.li>
+                <motion.li className="mb-2">
+                  <span className="font-semibold text-cyan-300">
+                    Banks & NBFC’s
+                  </span>
+                  : To automate loan eligibility assessments, detect credit
+                  risks, assess cash flow patterns, and streamline underwriting
+                  processes for faster and more accurate lending decisions.
+                </motion.li>
+                <motion.li className="mb-2">
+                  <span className="font-semibold text-cyan-300 text-lg">
+                    Forensic Accounting
+                  </span>{" "}
+                  : For fraud investigation, financial crime detection, and
+                  regulatory compliance checks by analyzing inconsistencies in
+                  financial transactions and identifying suspicious activities.
+                </motion.li>
+              </motion.ol>
+            </motion.div>
+
+            <motion.div
+              className="max-w-5xl mx-auto mt-12 text-left"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.8, duration: 0.8 }}
+            >
+              <p className="text-gray-300 mb-6 text-xl">
+                CypherSOL can be used by a wide set of market players, unlike
+                others that are designed primarily for banks and NBFCs. It
+                offers business partners Safe, Analytical, Fast, and Efficient
+                analysis so they may better serve their clients and their
+                requirements.
+              </p>
+              <p className="text-gray-300 text-xl">
+                CypherSOL is a startup that was conceived by a team experts in
+                technology, banking risk management and a Chartered Accountant.
+                The board is being advised by a reputed BFSI analyst who spent
+                30 years covering the financial sector. The team has used its
+                practical experience to develop a sophisticated tool that can
+                simplify and save time for tax professionals, financiers, DSAs,
+                and businesses to filter information on transactions.
+              </p>
+            </motion.div>
+          </div> */}
         </div>
       </div>
 
-      <div className="mx-auto max-w-2xl px-6 lg:max-w-7xl lg:px-8 mb-40">
-        <div className="mt-10 grid gap-4 sm:mt-16 lg:grid-cols-3 lg:grid-rows-2">
-          <div className="relative lg:row-span-2">
-            <div className="absolute inset-px rounded-lg bg-white lg:rounded-l-[2rem]"></div>
-            <div className="relative flex h-full flex-col overflow-hidden rounded-[calc(var(--radius-lg)+1px)] lg:rounded-l-[calc(2rem+1px)]">
-              <div className="px-8 pt-8 pb-3 sm:px-10 sm:pt-10 sm:pb-0">
-                <p className="mt-2 text-lg font-medium tracking-tight text-gray-950 max-lg:text-center">
-                  Mobile friendly
-                </p>
-                <p className="mt-2 max-w-lg text-sm/6 text-gray-600 max-lg:text-center">
-                  Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure
-                  qui lorem cupidatat commodo.
-                </p>
-              </div>
-              <div className="@container relative min-h-[30rem] w-full grow max-lg:mx-auto max-lg:max-w-sm">
-                <div className="absolute inset-x-10 top-10 bottom-0 overflow-hidden rounded-t-[12cqw] border-x-[3cqw] border-t-[3cqw] border-gray-700 bg-gray-900 shadow-2xl">
-                  <img
-                    className="size-full object-cover object-top"
-                    src="https://tailwindui.com/plus-assets/img/component-images/bento-03-mobile-friendly.png"
-                    alt=""
-                  />
-                </div>
-              </div>
-            </div>
-            <div className="pointer-events-none absolute inset-px rounded-lg ring-1 shadow-sm ring-black/5 lg:rounded-l-[2rem]"></div>
-          </div>
-          <div className="relative max-lg:row-start-1">
-            <div className="absolute inset-px rounded-lg bg-white max-lg:rounded-t-[2rem]"></div>
-            <div className="relative flex h-full flex-col overflow-hidden rounded-[calc(var(--radius-lg)+1px)] max-lg:rounded-t-[calc(2rem+1px)]">
-              <div className="px-8 pt-8 sm:px-10 sm:pt-10">
-                <p className="mt-2 text-lg font-medium tracking-tight text-gray-950 max-lg:text-center">
-                  Performance
-                </p>
-                <p className="mt-2 max-w-lg text-sm/6 text-gray-600 max-lg:text-center">
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit
-                  maiores impedit.
-                </p>
-              </div>
-              <div className="flex flex-1 items-center justify-center px-8 max-lg:pt-10 max-lg:pb-12 sm:px-10 lg:pb-2">
-                <img
-                  className="w-full max-lg:max-w-xs"
-                  src="https://tailwindui.com/plus-assets/img/component-images/bento-03-performance.png"
-                  alt=""
-                />
-              </div>
-            </div>
-            <div className="pointer-events-none absolute inset-px rounded-lg ring-1 shadow-sm ring-black/5 max-lg:rounded-t-[2rem]"></div>
-          </div>
-          <div className="relative max-lg:row-start-3 lg:col-start-2 lg:row-start-2">
-            <div className="absolute inset-px rounded-lg bg-white"></div>
-            <div className="relative flex h-full flex-col overflow-hidden rounded-[calc(var(--radius-lg)+1px)]">
-              <div className="px-8 pt-8 sm:px-10 sm:pt-10">
-                <p className="mt-2 text-lg font-medium tracking-tight text-gray-950 max-lg:text-center">
-                  Security
-                </p>
-                <p className="mt-2 max-w-lg text-sm/6 text-gray-600 max-lg:text-center">
-                  Morbi viverra dui mi arcu sed. Tellus semper adipiscing
-                  suspendisse semper morbi.
-                </p>
-              </div>
-              <div className="@container flex flex-1 items-center max-lg:py-6 lg:pb-2">
-                <img
-                  className="h-[min(152px,40cqw)] object-cover"
-                  src="https://tailwindui.com/plus-assets/img/component-images/bento-03-security.png"
-                  alt=""
-                />
-              </div>
-            </div>
-            <div className="pointer-events-none absolute inset-px rounded-lg ring-1 shadow-sm ring-black/5"></div>
-          </div>
-          <div className="relative lg:row-span-2">
-            <div className="absolute inset-px rounded-lg bg-white max-lg:rounded-b-[2rem] lg:rounded-r-[2rem]"></div>
-            <div className="relative flex h-full flex-col overflow-hidden rounded-[calc(var(--radius-lg)+1px)] max-lg:rounded-b-[calc(2rem+1px)] lg:rounded-r-[calc(2rem+1px)]">
-              <div className="px-8 pt-8 pb-3 sm:px-10 sm:pt-10 sm:pb-0">
-                <p className="mt-2 text-lg font-medium tracking-tight text-gray-950 max-lg:text-center">
-                  Powerful APIs
-                </p>
-                <p className="mt-2 max-w-lg text-sm/6 text-gray-600 max-lg:text-center">
-                  Sit quis amet rutrum tellus ullamcorper ultricies libero dolor
-                  eget sem sodales gravida.
-                </p>
-              </div>
-              <div className="relative min-h-[30rem] w-full grow">
-                <div className="absolute top-10 right-0 bottom-0 left-10 overflow-hidden rounded-tl-xl bg-gray-900 shadow-2xl">
-                  <div className="flex bg-gray-800/40 ring-1 ring-white/5">
-                    <div className="-mb-px flex text-sm/6 font-medium text-gray-400">
-                      <div className="border-r border-b border-r-white/10 border-b-white/20 bg-white/5 px-4 py-2 text-white">
-                        NotificationSetting.jsx
-                      </div>
-                      <div className="border-r border-gray-600/10 px-4 py-2">
-                        App.jsx
-                      </div>
-                    </div>
-                  </div>
-                  <div className="px-6 pt-6 pb-14">
-                    {/* Your code example */}
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="pointer-events-none absolute inset-px rounded-lg ring-1 shadow-sm ring-black/5 max-lg:rounded-b-[2rem] lg:rounded-r-[2rem]"></div>
-          </div>
-        </div>
-      </div>
-
-      <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8 py-12">
+      <motion.div
+        className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8 py-12"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+      >
         <motion.h1
           className="text-3xl md:text-5xl lg:text-6xl font-bold mb-6 md:mb-8 tracking-tight"
           initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
           <span
@@ -205,49 +383,112 @@ export const About = () => {
         <motion.p
           className="text-lg md:text-xl text-gray-400 mb-10"
           initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
           Discover the power of AI-driven solutions for smarter, faster, and
           more secure smart decision-making.
         </motion.p>
 
-        <div className="flex justify-center items-center">
+        <motion.div
+          className="flex justify-center items-center"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.3 }}
+        >
           <div className="flex flex-col sm:flex-row justify-center items-center gap-8 sm:gap-0">
             <Stat value="98%" label="Accuracy" />
-            <div className="h-8 w-px bg-gradient-to-b from-transparent via-gray-700 to-transparent mx-14" />
+            <motion.div
+              className="h-8 w-px bg-gradient-to-b from-transparent via-gray-700 to-transparent mx-14"
+              initial={{ scaleY: 0 }}
+              whileInView={{ scaleY: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+            />
             <Stat value="2M+" label="Statements" />
-            <div className="h-8 w-px bg-gradient-to-b from-transparent via-gray-700 to-transparent mx-14" />
+            <motion.div
+              className="h-8 w-px bg-gradient-to-b from-transparent via-gray-700 to-transparent mx-14"
+              initial={{ scaleY: 0 }}
+              whileInView={{ scaleY: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.6 }}
+            />
             <Stat value="24/7" label="Analysis" />
           </div>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
 
       {/* Carousel Vision/Mission*/}
-      <div className="w-full mx-auto text-center">
+      <motion.div
+        className="w-full mx-auto text-center"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+      >
         <CarouselSection />
-      </div>
+      </motion.div>
 
-      <div className="max-w-5xl mx-auto text-center px-4 sm:px-6 lg:px-8 py-12">
-        <h1 className="text-3xl md:text-5xl mb-3 tracking-tight">
+      <motion.div
+        className="max-w-5xl mx-auto text-center px-4 sm:px-6 lg:px-8 py-12"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+      >
+        <motion.h1
+          className="text-3xl md:text-5xl mb-3 tracking-tight"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+        >
           The team behind it
-        </h1>
-        <p className="text-lg md:text-xl text-gray-400 mb-10">
+        </motion.h1>
+        <motion.p
+          className="text-lg md:text-xl text-gray-400 mb-10"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7, delay: 0.2 }}
+        >
           A fully remote team on a mission to build <br /> the best
           communication platform for developers.
-        </p>
+        </motion.p>
 
-        <img
+        <motion.img
           src="https://media.licdn.com/dms/image/v2/D5622AQEzE-rrMQL4Yw/feedshare-shrink_2048_1536/feedshare-shrink_2048_1536/0/1714391001222?e=1743033600&v=beta&t=ci-drTeCeL1zKU7g75DZiO7ofxPrQWkWirJ4TOcUIgA"
-          alt=""
+          alt="testimonial"
           className="w-full h-auto -rotate-1 rounded-lg"
+          initial={{ opacity: 0, scale: 0.9, rotate: 0 }}
+          whileInView={{ opacity: 1, scale: 1, rotate: -1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.3 }}
+          whileHover={{
+            scale: 1.02,
+            rotate: 0,
+            transition: { duration: 0.3 },
+          }}
         />
-      </div>
+      </motion.div>
 
       {/* How our software works */}
-
-      <div className="max-w-5xl mx-auto text-center px-4 sm:px-6 lg:px-8 py-12">
-        <h1 className="text-3xl md:text-5xl font-bold mb-3 tracking-tight">
+      <motion.div
+        className="max-w-5xl mx-auto text-center px-4 sm:px-6 lg:px-8 py-12"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+      >
+        <motion.h1
+          className="text-3xl md:text-5xl font-bold mb-3 tracking-tight"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+        >
           <span
             className={cn(
               "bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-white/90 to-blue-400"
@@ -255,19 +496,47 @@ export const About = () => {
           >
             How CypherSOL's Software Functions
           </span>
-        </h1>
-        <p className="text-lg md:text-xl text-gray-400 mb-10">
+        </motion.h1>
+        <motion.p
+          className="text-lg md:text-xl text-gray-400 mb-10"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7, delay: 0.2 }}
+        >
           A fully remote team on a mission to build <br /> the best
           communication platform for developers.
-        </p>
-        <img
+        </motion.p>
+        <motion.img
           src="assets/images/software-function-1.png"
           alt="software function"
           className="w-full h-auto"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.3 }}
+          whileHover={{
+            scale: 1.02,
+            // boxShadow: "0 0 20px rgba(59, 130, 246, 0.4)",
+            transition: { duration: 0.3 },
+          }}
         />
-      </div>
+      </motion.div>
 
-      <motion.div custom={6} initial="hidden" animate="visible">
+      <motion.div
+        custom={6}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        variants={{
+          hidden: { opacity: 0, y: 50 },
+          visible: {
+            opacity: 1,
+            y: 0,
+            transition: { duration: 0.8 },
+          },
+        }}
+      >
         <CTABanner
           title="Why Choose"
           highlightedText="Excel to Tally Data Import Utility?"

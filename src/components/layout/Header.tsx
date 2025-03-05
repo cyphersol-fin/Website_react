@@ -75,22 +75,27 @@ export const Header = () => {
   };
 
   return (
-    <header className="bg-black">
+    <header className="bg-white">
       <nav
-        className="mx-auto flex max-w-8xl items-center justify-between p-6 lg:px-8"
+        className="mx-auto flex max-w-8xl items-center justify-between p-4 lg:px-8"
         aria-label="Global"
       >
         <div className="flex md:flex-1">
           <a href="/" className="-m-1.5 p-1.5 me-4">
-            <span className="text-2xl font-bold text-white">
+            <img
+              src="/assets/images/Cyphers.png"
+              alt="CupherSOL"
+              className="w-40"
+            />
+            {/* <span className="text-2xl font-bold text-white">
               Cypher<span className="text-cyan-400">SOL</span>
-            </span>
+            </span> */}
           </a>
         </div>
         <div className="flex md:hidden">
           <button
             type="button"
-            className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-300 transition-colors hover:text-white"
+            className="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-900 transition-colors"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
             <span className="sr-only">Open main menu</span>
@@ -106,7 +111,7 @@ export const Header = () => {
           >
             <motion.button
               type="button"
-              className="flex items-center gap-x-1 font-semibold text-gray-400 hover:text-white transition-colors duration-300"
+              className="flex items-center gap-x-1 font-bold text-gray-900 transition-colors duration-300"
               aria-expanded={productMenuOpen}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -196,12 +201,12 @@ export const Header = () => {
           >
             <motion.button
               type="button"
-              className="flex items-center gap-x-1 font-semibold text-gray-400 hover:text-white transition-colors duration-300"
+              className="flex items-center gap-x-1 font-bold text-gray-900 transition-colors duration-300"
               aria-expanded={isResourcesOpen}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              Resources
+              Company
               <motion.span
                 animate={{ rotate: isResourcesOpen ? 180 : 0 }}
                 transition={{ duration: 0.3 }}
@@ -296,7 +301,7 @@ export const Header = () => {
 
           <motion.a
             href="/reseller"
-            className="font-semibold text-gray-400 hover:text-white transition-colors duration-300"
+            className="font-bold text-gray-900 transition-colors duration-300"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
@@ -305,7 +310,7 @@ export const Header = () => {
 
           <motion.a
             href="/price"
-            className="font-semibold text-gray-400 hover:text-white transition-colors duration-300"
+            className="font-bold text-gray-900 transition-colors duration-300"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
@@ -329,7 +334,7 @@ export const Header = () => {
             whileTap="tap"
             className="hidden lg:block px-4 py-2 bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-semibold rounded-lg hover:opacity-90 transition-opacity duration-200"
           >
-            Start Free Trial
+            Register
           </motion.a>
         </div>
       </nav>
@@ -346,19 +351,21 @@ export const Header = () => {
             aria-modal="true"
           >
             <div
-              className="fixed inset-0 z-10 bg-black/30 backdrop-blur-sm"
+              className="fixed inset-0 z-10 bg-white backdrop-blur-sm"
               onClick={() => setMobileMenuOpen(false)}
             />
             <div className="relative z-20">
               <div className="flex items-center justify-between">
                 <a href="/" className="-m-1.5 p-1.5">
-                  <span className="text-2xl font-bold text-white">
-                    Cypher<span className="text-cyan-400">SOL</span>
-                  </span>
+                  <img
+                    src="/assets/images/Cyphers.png"
+                    alt="CupherSOL"
+                    className="w-40 mb-5"
+                  />
                 </a>
                 <button
                   type="button"
-                  className="-m-2.5 rounded-md p-2.5 text-gray-300 hover:text-white transition-colors duration-200"
+                  className="-m-2.5 rounded-md p-2.5 text-gray-900  transition-colors duration-200"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   <span className="sr-only">Close menu</span>
@@ -371,7 +378,7 @@ export const Header = () => {
                     <div className="-mx-3">
                       <button
                         type="button"
-                        className="flex w-full items-center justify-between rounded-lg py-2 pr-3.5 pl-3 text-base/7 font-semibold text-gray-300 hover:bg-gray-800 transition-colors duration-200"
+                        className="flex w-full items-center justify-between rounded-lg py-2 pr-3.5 pl-3 text-base/7 font-semibold text-gray-900 transition-colors duration-200"
                         aria-controls="disclosure-1"
                         aria-expanded={mobileProductMenuOpen}
                         onClick={() =>
@@ -399,19 +406,19 @@ export const Header = () => {
                           >
                             <a
                               href="/bank-statement-analyzer"
-                              className="block rounded-lg py-2 pr-3 pl-6 text-sm/7 font-semibold text-gray-300 hover:bg-gray-800 transition-colors duration-200"
+                              className="block rounded-lg py-2 pr-3 pl-6 text-sm/7 font-semibold text-gray-900 transition-colors duration-200"
                             >
                               Bank Statement Analyzer
                             </a>
                             <a
                               href="/excel-to-tally"
-                              className="block rounded-lg py-2 pr-3 pl-6 text-sm/7 font-semibold text-gray-300 hover:bg-gray-800 transition-colors duration-200"
+                              className="block rounded-lg py-2 pr-3 pl-6 text-sm/7 font-semibold text-gray-900 transition-colors duration-200"
                             >
                               Excel to Tally Data Import Utility
                             </a>
                             <a
                               href="/bank-statement-analyzer-excel-to-tally"
-                              className="block rounded-lg py-2 pr-3 pl-6 text-sm/7 font-semibold text-gray-300 hover:bg-gray-800 transition-colors duration-200"
+                              className="block rounded-lg py-2 pr-3 pl-6 text-sm/7 font-semibold text-gray-900 transition-colors duration-200"
                             >
                               BSA & Excel to Tally Data Import Utility Combo
                             </a>
@@ -422,14 +429,14 @@ export const Header = () => {
                     <div className="-mx-3">
                       <button
                         type="button"
-                        className="flex w-full items-center justify-between rounded-lg py-2 pr-3.5 pl-3 text-base/7 font-semibold text-gray-300 hover:bg-gray-800 transition-colors duration-200"
+                        className="flex w-full items-center justify-between rounded-lg py-2 pr-3.5 pl-3 text-base/7 font-semibold text-gray-900 transition-colors duration-200"
                         aria-controls="disclosure-2"
                         aria-expanded={mobileResourcesMenuOpen}
                         onClick={() =>
                           setMobileResourcesMenuOpen(!mobileResourcesMenuOpen)
                         }
                       >
-                        Resources
+                        Company
                         <motion.span
                           animate={{
                             rotate: mobileResourcesMenuOpen ? 180 : 0,
@@ -452,25 +459,25 @@ export const Header = () => {
                           >
                             <a
                               href="/about"
-                              className="block rounded-lg py-2 pr-3 pl-6 text-sm/7 font-semibold text-gray-300 hover:bg-gray-800 transition-colors duration-200"
+                              className="block rounded-lg py-2 pr-3 pl-6 text-sm/7 font-semibold text-gray-900 transition-colors duration-200"
                             >
                               About Us
                             </a>
                             <a
                               href="/team"
-                              className="block rounded-lg py-2 pr-3 pl-6 text-sm/7 font-semibold text-gray-300 hover:bg-gray-800 transition-colors duration-200"
+                              className="block rounded-lg py-2 pr-3 pl-6 text-sm/7 font-semibold text-gray-900 transition-colors duration-200"
                             >
                               Team
                             </a>
                             <a
                               href="/blog"
-                              className="block rounded-lg py-2 pr-3 pl-6 text-sm/7 font-semibold text-gray-300 hover:bg-gray-800 transition-colors duration-200"
+                              className="block rounded-lg py-2 pr-3 pl-6 text-sm/7 font-semibold text-gray-900 transition-colors duration-200"
                             >
                               Blog
                             </a>
                             <a
                               href="/contact"
-                              className="block rounded-lg py-2 pr-3 pl-6 text-sm/7 font-semibold text-gray-300 hover:bg-gray-800 transition-colors duration-200"
+                              className="block rounded-lg py-2 pr-3 pl-6 text-sm/7 font-semibold text-gray-900 transition-colors duration-200"
                             >
                               Contact Us
                             </a>
@@ -480,13 +487,13 @@ export const Header = () => {
                     </div>
                     <a
                       href="/reseller"
-                      className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-300 hover:bg-gray-800 transition-colors duration-200"
+                      className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 transition-colors duration-200"
                     >
                       Reseller
                     </a>
                     <a
                       href="/price"
-                      className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-300 hover:bg-gray-800 transition-colors duration-200"
+                      className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 transition-colors duration-200"
                     >
                       Price
                     </a>
@@ -499,7 +506,7 @@ export const Header = () => {
                     </a>
                     <a href="/trial">
                       <button className="w-full px-4 py-2 bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-semibold rounded-lg hover:opacity-90 transition-opacity duration-200">
-                        Start Free Trial
+                        Register
                       </button>
                     </a>
                   </div>

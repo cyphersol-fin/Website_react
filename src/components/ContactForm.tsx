@@ -8,14 +8,28 @@ import { FaEnvelope, FaMapMarkerAlt, FaPhoneAlt } from "react-icons/fa";
 import FAQSection from "./FAQSection";
 import CTABanner from "./UI/CTABanner";
 
+const faqsArray = [
+  {
+    question:
+      "How secure is the data storage and processing of sensitive financial information?",
+    answer:
+      "Our data storage and processing adhere to the highest security standards, employing encryption and robust protocols to safeguard sensitive financial information. Once the data is extracted it gets deleted from our system.",
+  },
+  {
+    question:
+      "Are there any privacy concerns associated with sharing my bank statements for analysis?",
+    answer:
+      "We prioritize your privacy and ensure that your bank statements are securely analyzed without compromising your personal data. We adhere to strict privacy policies to protect your information.",
+  },
+  {
+    question: "Can others see the data I am uploading?",
+    answer:
+      "No, your data remains confidential and is accessible only to authorized personnel involved in the analysis process. We maintain strict confidentiality protocols to ensure the privacy of your information.",
+  },
+];
+
 // ContactForm component with animation
 const ContactForm = () => {
-  const formAnimation = {
-    initial: { opacity: 0, y: 20 },
-    animate: { opacity: 1, y: 0 },
-    transition: { duration: 0.6, ease: "easeOut" },
-  };
-
   return (
     <>
       <div className="max-w-6xl mx-auto px-4">
@@ -26,7 +40,7 @@ const ContactForm = () => {
             position: "relative",
           }}
         >
-          <div className="flex flex-col sm:flex-row" style={{ gap: "117px" }}>
+          <div className="flex flex-col sm:flex-row gap-8 lg:gap-36">
             {/* Left Section - Contact Info */}
             <div className="w-full sm:w-1/2">
               <p className="text-gray-300 mb-8 text-xl">
@@ -208,7 +222,7 @@ export const ContactPage = () => {
         </div>
       </div>
       <div className="container mx-auto px-4 animate-fadeIn">
-        <FAQSection />
+        <FAQSection items={faqsArray} />
       </div>
       {/* Cta Banner */}
       <CTABanner

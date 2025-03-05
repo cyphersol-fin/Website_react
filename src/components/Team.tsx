@@ -5,7 +5,7 @@ import { cn } from "./lib/utils";
 import { GlowEffect } from "./UI/GlowEffect";
 import { TeamModal } from "./Modal";
 import { Badge } from "./UI/Badge";
-import { ArrowRightIcon, Linkedin, Twitter } from "lucide-react";
+import { ArrowRight, Linkedin, Twitter } from "lucide-react";
 
 export interface TeamMember {
   id: number;
@@ -89,7 +89,7 @@ export const Team = () => {
             <motion.div
               key={member.name}
               variants={itemVariants}
-              whileHover={{ scale: 1.02 }}
+              // whileHover={{ scale: 1.02 }}
               className="bg-gray-900/80 border border-gray-800 rounded-2xl p-4 transition-transform duration-300 hover:scale-[1.02]"
               onClick={() => setSelectedMember(member)}
               whileTap={{ scale: 0.98 }}
@@ -154,20 +154,24 @@ export const Team = () => {
                   >
                     {member.title}
                   </motion.p>
-                  <motion.p
+
+                  <motion.div
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.4 * (index + 1) }}
                     className="text-gray-300 text-[17px] leading-relaxed"
-                  >
-                    Artist is a term applied to a person who engages in an
-                    activity deemed to be an art.
-                    {/* {member.bio} */}
-                  </motion.p>
+                    dangerouslySetInnerHTML={{
+                      __html:
+                        member.bio.length > 125
+                          ? member.bio.slice(0, 125) + "..."
+                          : member.bio,
+                    }}
+                  ></motion.div>
+
                   <motion.a
                     href={`/profile/${encodeURIComponent(member.name)}`}
                     className="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors group mt-6"
-                    whileHover={{ scale: 1.05 }}
+                    // whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
                     onClick={(e) => {
                       e.preventDefault();
@@ -175,18 +179,8 @@ export const Team = () => {
                     }}
                   >
                     <span className="text-sm">Learn more</span>
-                    <motion.span
-                      initial={{ x: 0 }}
-                      animate={{ x: 5 }}
-                      transition={{
-                        type: "spring",
-                        stiffness: 300,
-                        damping: 10,
-                        repeat: Infinity,
-                        repeatType: "reverse",
-                      }}
-                    >
-                      <ArrowRightIcon className="w-4 h-4" />
+                    <motion.span>
+                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                     </motion.span>
                   </motion.a>
                 </div>

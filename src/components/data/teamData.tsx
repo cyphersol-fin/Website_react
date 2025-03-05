@@ -5,7 +5,7 @@ export const teamMembers = [
     title: "Founder & Chief Executive Officer",
     image: "assets/images/team-1.png",
     bio: `
-  <p><b>Imran Sable</b>, the founder and chief executive officer of CypherSOL Fintech Private Ltd., has
+  <p><b>Imran Sable</b>, the founder and chief executive officer of CypherSOL Fintech Private Ltd. has
         over 22 years of hands-on experience in sales and marketing within the financial sector,
         specifically dealing with loans and insurance products.</p>
 
@@ -90,7 +90,7 @@ export const teamMembers = [
     image: "assets/images/team-3.png",
     bio: `
     <p><b>Samidha Devkar</b>, the Chief Operating Officer and a key founder of CypherSOL Fintech Private
-          Ltd., has over 17 years of experience in sales and operations, with a strong focus on lending and
+          Ltd. has over 17 years of experience in sales and operations, with a strong focus on lending and
           insurance products. Throughout her career, she has held various roles, including team head, sales
           manager, and pan India vertical head, at esteemed organizations such as Standard Chartered Finance
           Ltd., Citibank, Bajaj Allianz Life Insurance, and Real Value Finloan Services.
@@ -120,7 +120,7 @@ export const teamMembers = [
     image: "assets/images/team-4.png",
     bio: `
     <p>
-      <b>Deepak Singhania</b>, a co-founder and Chief Financial Officer of CypherSOL Fintech Private Ltd.,
+      <b>Deepak Singhania</b>, a co-founder and Chief Financial Officer of CypherSOL Fintech Private Ltd.
       is a Chartered Accountant (rank holder) and Chartered Financial Analyst (United States).
     </p>
     <p>

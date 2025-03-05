@@ -3,10 +3,11 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Layers, Network, RefreshCw, TrendingUp } from "lucide-react";
+import { cn } from "../lib/utils";
 
 const FeatureBox = ({ title, description, para, icon, delay = 0 }) => (
   <motion.div
-    className="backdrop-blur-[50px] bg-gray-900/50 rounded-[32px] p-20 h-full"
+    className="backdrop-blur-[50px] bg-gray-900/50 rounded-[32px] px-10 py-12 h-full"
     style={{
       boxShadow: "inset 2px 4px 16px #f8f8f80f",
     }}
@@ -25,13 +26,20 @@ const FeatureBox = ({ title, description, para, icon, delay = 0 }) => (
 
 export default function ResellerAdvantages() {
   return (
-    <div className=" bg-black text-white p-8 md:p-16">
-      <div className="max-w-7xl mx-auto">
-        <h1 className="text-3xl md:text-5xl font-bold mb-4 md:mb-12 text-[#c3d0e5] text-center animate-slide-down">
-          Why Choose{" "}
-          <span className="bg-gradient-to-r from-cyan-400 to-blue-500 text-transparent bg-clip-text">
+    <div className=" bg-black text-white ">
+      <div className="max-w-7xl mx-auto px-4 py-12 md:py-20">
+        <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-8 md:mb-20 tracking-tight text-center">
+          <span className="bg-clip-text text-transparent bg-gradient-to-b from-white to-white/80">
+            Why Choose
+          </span>
+          <br />
+          <span
+            className={cn(
+              "bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-white/90 to-blue-400"
+            )}
+          >
             CypherSOL for Reselling?
-          </span>{" "}
+          </span>
         </h1>
 
         <div className="grid md:grid-cols-2 gap-8">

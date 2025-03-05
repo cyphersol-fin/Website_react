@@ -42,9 +42,9 @@ export const ResellerForm = () => {
                   A Message from Our CEO
                 </h2>
                 <p className="text-gray-400 italic">
-                  "At CypherSOL, our goal is to push the boundaries of AI
-                  technology to create solutions that simplify and enhance
-                  everyday tasks."
+                  "Join CypherSOL’s Reseller Program to expand your business
+                  with cutting-edge fintech solutions. Empower your network with
+                  tools that simplify financial analysis and drive growth."
                 </p>
 
                 <div className="flex items-center space-x-4 mt-6">

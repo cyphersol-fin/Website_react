@@ -27,8 +27,8 @@ const Section = ({ reversed = false }) => {
             <img
               src={
                 reversed
-                  ? "assets/images/Reseller-ideal.webp"
-                  : "assets/images/profitable-business.webp"
+                  ? "assets/images/network.webp"
+                  : "assets/images/transform-fintech-solution.jpeg"
               }
               alt="Section Image"
               className="w-full h-full object-cover rounded-xl"

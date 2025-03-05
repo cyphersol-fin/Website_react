@@ -10,58 +10,50 @@ const content = [
     title: "Safety and data security",
     description:
       "Bank statements are the private property of our clients, and the safety of client information is of utmost importance to us. Therefore, we ensure robust data security measures to protect sensitive financial information. Importantly, we do not save any personal information, account information, pdfs, or Excel files in our system. Our clients can just use this software to download the statement and save it on their system.",
-    image:
-      "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=1000",
+    image: "assets/images/data-security.jpeg",
   },
   {
     title: "Automated Data Extraction",
     description:
       "CypherSOL’s Bank Statement Analyzer will be able to automatically extract relevant data from bank statements. This includes transaction details, expenses, probable expenses (categorized under different headings), income (categorized under different headings), investments, investment income, end-of-day (EOD) balances, EMI payments, EMI bounces, cheque bounces, other financial information, and suspense accounts.",
-    image:
-      "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&q=80&w=1000",
+    image: "assets/images/automated-data-extraction.jpeg",
   },
   {
     title: "Standardized and Structured Reports",
     description:
       "CypherSOL provides key financial metrics and information in a clear, standardized, structured, and usable Excel format. This makes it easier for the tax consultant to file income tax returns and DSAs to ascertain their clients’ financial needs and, further, which financiers are more likely to provide these services/products.CypherSOL also enables downloading, merging, and analyzing two bank statements and removing any overlap in dates/transactions.",
-    image:
-      "https://images.unsplash.com/photo-1558655146-9f40138edfeb?auto=format&fit=crop&q=80&w=1000",
+    image: "assets/images/structured-reports.jpeg",
   },
   {
     title: "Ease to Use",
     description:
       "CypherSOL’s Bank Statement Analyzer is user-friendly, requiring minimal effort from our client to input data or generate reports. This ensures that it becomes an integral part of their workflow.",
-    image:
-      "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=1000",
+    image: "assets/images/ease-to-use.webp",
   },
   {
     title:
       "Enhanced Turnaround Time (TAT) and Reduced Manpower and Infrastructure Requirements",
     description:
       "Our software takes only a few seconds to analyze a statement, vs hours or days required under a manual process. Using our software will not only improve clients’ TAT but also reduce manpower and infrastructure costs. Embracing automation and efficient workflows leads to quicker task completion and overall operational efficiency.",
-    image:
-      "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=1000",
+    image: "assets/images/reduced-manpower.webp",
   },
   {
     title: "Reduce risk",
     description:
       "CypherSOL can help you reduce the risk of manual error, get consistent output, and enhance the overall accuracy of financial reports.",
-    image:
-      "https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?auto=format&fit=crop&q=80&w=1000",
+    image: "assets/images/reduce-risk.jpeg",
   },
   {
     title: "Checking Eligibility and Choosing the Right Bank",
     description:
       "For a DSA, it is essential to assess the eligibility criteria of clients for different banks. Ensuring alignment between their client’s financial eligibility and the bank's requirements increases the likelihood of securing the right financial services. In our experience, in most cases, eligibility is dependent on bank statements, which play a vital role in choosing the right bank for the customer.",
-    image:
-      "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&q=80&w=1000",
+    image: "assets/images/checking-eligibility.jpg",
   },
   {
     title: "Competitive Edge",
     description:
       "With the help of the Bank Statement Analyzer, our clients can have a competitive edge over their competitors by providing more efficient and faster services to their customers.",
-    image:
-      "https://images.unsplash.com/photo-1592478411213-6153e4ebc07d?auto=format&fit=crop&q=80&w=1000",
+    image: "assets/images/competetive-edge.webp",
   },
 ];
 
@@ -117,7 +109,7 @@ const Section = ({
             <motion.img
               src={image}
               alt={title}
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover object-center"
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.3 }}
             />

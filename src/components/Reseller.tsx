@@ -80,6 +80,62 @@ const cardData = [
   },
 ];
 
+const faqsArray = [
+  {
+    question: "What is the CypherSOL reseller program?",
+    answer:
+      "Our reseller program offers a lucrative earning opportunity by partnering with CypherSOL to provide innovative solutions like the Excel to Tally Data Import Utility and Bank Statement Analyzer to clients in the finance and accounting sectors. This program empowers resellers to support businesses in automating accounting processes and simplifying data management.",
+  },
+  {
+    question: "How can I earn through the CypherSOL reseller program?",
+    answer:
+      "Resellers earn commission on every sale made through their network. By promoting CypherSOL’s automation in accounting solutions, you can create a steady income stream, help businesses streamline processes, and make data upload into Tally effortless for clients.",
+  },
+  {
+    question: "Who is eligible to become a CypherSOL reseller?",
+    answer:
+      "Our reseller program is ideal for finance professionals, chartered accountants, IT consultants, and anyone interested in offering accounting automation tools. If you’re passionate about helping businesses achieve greater efficiency, the CypherSOL reseller program is for you.",
+  },
+  {
+    question: "What products can I offer as a CypherSOL reseller?",
+    answer:
+      "As a reseller, you can offer our Bank Statement Analyzer and Excel to Tally Data Import Utility. These tools allow clients to automate time-consuming tasks such as categorizing bank statements, reducing suspense entries, and uploading data directly into Tally, enhancing accounting automation.",
+  },
+  {
+    question:
+      "What is the Excel to Tally Data Import Utility, and how does it benefit businesses?",
+    answer:
+      "Our Excel to Tally Data Import Utility is an advanced tool that enables users to upload various financial data—such as payments, receipts, sales, and purchases—directly into Tally. This automation reduces manual entry time, minimizes errors, and makes accounting and data management seamless for users.",
+  },
+  {
+    question:
+      "How does the CypherSOL Bank Statement Analyzer support accounting automation?",
+    answer:
+      "The Bank Statement Analyzer simplifies bank statement analysis by automatically categorizing and summarizing data. It’s designed to enhance automation in accounting, enabling quicker decision-making and reducing the time spent on tedious data entry tasks.",
+  },
+  {
+    question: "Are there training resources available for resellers?",
+    answer:
+      "Yes, CypherSOL provides comprehensive training, including product demos, guides, and ongoing support to ensure you understand our products, including the Excel to Tally Data Import Utility and Bank Statement Analyzer, so you can successfully promote and support your clients.. For additional devices, please contact our support team for assistance.",
+  },
+  {
+    question:
+      "What are the benefits of automation in accounting for my clients?",
+    answer:
+      "By introducing automation in accounting through CypherSOL products, your clients can experience time savings, fewer errors, and streamlined operations. With tools like our Excel to Tally Data Import Utility, they can handle high volumes of financial data more efficiently.",
+  },
+  {
+    question: "How can I sign up for the CypherSOL reseller program?",
+    answer:
+      "Getting started is easy! Simply fill out our online form on our reseller page to apply. Our team will contact you with the next steps to begin offering valuable solutions like accounting automation tools to your network.",
+  },
+  {
+    question: "Who can I contact if I have more questions?",
+    answer:
+      "If you have additional questions or need further support, our customer care team is available to help from 10:00 AM to 6:30 PM. You can reach us at 81697 64722 / 98335 53348.",
+  },
+];
+
 const Earth = React.lazy(() => import("./earth"));
 
 export const Reseller = () => {
@@ -183,7 +239,7 @@ export const Reseller = () => {
         </div>
 
         <div>
-          <FAQSection />
+          <FAQSection items={faqsArray} />
         </div>
       </SmoothScroll>
     </>

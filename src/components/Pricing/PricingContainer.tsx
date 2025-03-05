@@ -17,6 +17,58 @@ import {
 } from "../components/ui/tooltip";
 import { cn } from "../lib/utils";
 import { TextAnimate } from "../components/ui/text-animate";
+import FAQSection from "../FAQSection";
+import ComparisonFeatures from "../ComparisionFeatures";
+
+const faqsArray = [
+  {
+    question: "What products does CypherSOL offer?",
+    answer: `
+    CypherSOL offers innovative financial solutions, including:
+    1) Bank Statement Analyzer - A tool for organizing and analyzing bank statements, ideal for chartered accountants and loan processing agencies.
+    2) Excel to Tally Data Import Utility - Enables efficient data migration from the Bank Statement Analyzer to Tally, streamlining bookkeeping and data organization.
+    3) Combo of Bank Statement Analyzer & Excel to Tally Data Import Utility - This bundled package combines the power of both tools at a special price for enhanced efficiency.
+    `,
+  },
+  {
+    question: "What is the price of CypherSOL’s Bank Statement Analyzer?",
+    answer:
+      "The price for CypherSOL’s Bank Statement Analyzer varies depending on the number of statements you need to analyze. Pricing ranges from ₹45 to ₹70 per statement, with discounts available for higher volumes. For a customized quote based on your specific needs, please contact our sales team.",
+  },
+  {
+    question: "How much does the Excel to Tally Data Import Utility cost ?",
+    answer:
+      "CypherSOL's Excel to Tally Data Import Utility costs ₹2,999 annually, a competitive price compared to market rates ranging from ₹4,000 to 10,000.",
+  },
+  {
+    question:
+      "Is there a discount for purchasing the Bank Statement Analyzer and Excel to Tally Data Import Utility together?",
+    answer:
+      "Yes, CypherSOL offers a special combo package for the Bank Statement Analyzer and Excel to Tally Data Import Utility, allowing users to benefit from both tools at a discounted price. For the latest combo pricing, please check our pricing page or contact customer support.",
+  },
+  {
+    question: "Can I customize my CypherSOL package based on my needs?",
+    answer:
+      "Absolutely! We offer customizable packages to suit individual client needs. Reach out to us, and we’ll help design a package based on the number of ITRs you file or your accounting customer base.",
+  },
+  {
+    question:
+      "Is CypherSOL's customer care available for support on pricing and packages?",
+    answer:
+      "Yes, CypherSOL's customer care team is available from 10:00 AM to 6:30 PM. Feel free to contact us at +9181697 64722/ +9198335 53348 for any questions related to pricing or packages.",
+  },
+  {
+    question:
+      "Can I use the Excel to Tally Data Import Utility on multiple devices?",
+    answer:
+      "The Excel to Tally Data Import Utility can be used on a single laptop or PC per subscription. For additional devices, please contact our support team for assistance.",
+  },
+  {
+    question: "Is there a free trial available for CypherSOL products?",
+    answer:
+      "We currently do not offer a free trial for our products. However, we encourage interested clients to schedule a demo session to explore CypherSOL's features and benefits.",
+  },
+];
 
 export default function PricingContainer() {
   const [isVisible, setIsVisible] = useState(false);
@@ -28,45 +80,45 @@ export default function PricingContainer() {
   const plans = [
     {
       duration: "1 Year",
-      originalPrice: "",
-      price: 20000,
+      originalPrice: "20,000",
+      price: 12000,
       freeInstallations: 0,
       discountAmount: 0,
       installationSavings: 0,
       totalSavings: 0,
       popular: false,
     },
-    {
-      duration: "3 Years",
-      originalPrice: 79700,
-      price: 50000,
-      freeInstallations: 3,
-      discountAmount: 66200,
-      installationSavings: 13500,
-      totalSavings: 29700,
-      popular: true,
-    },
-    {
-      duration: "5 Years",
-      originalPrice: 159600,
-      price: 75000,
-      freeInstallations: 5,
-      discountAmount: 122100,
-      installationSavings: 37500,
-      totalSavings: 84600,
-      popular: false,
-    },
-    {
-      duration: "10 Years",
-      originalPrice: 464100,
-      price: 100000,
-      freeInstallations: 10,
-      discountAmount: 314100,
-      installationSavings: 150000,
-      totalSavings: 364100,
-      popular: false,
-      lifetime: true,
-    },
+    // {
+    //   duration: "3 Years",
+    //   originalPrice: 79700,
+    //   price: 50000,
+    //   freeInstallations: 3,
+    //   discountAmount: 66200,
+    //   installationSavings: 13500,
+    //   totalSavings: 29700,
+    //   popular: true,
+    // },
+    // {
+    //   duration: "5 Years",
+    //   originalPrice: 159600,
+    //   price: 75000,
+    //   freeInstallations: 5,
+    //   discountAmount: 122100,
+    //   installationSavings: 37500,
+    //   totalSavings: 84600,
+    //   popular: false,
+    // },
+    // {
+    //   duration: "10 Years",
+    //   originalPrice: 464100,
+    //   price: 100000,
+    //   freeInstallations: 10,
+    //   discountAmount: 314100,
+    //   installationSavings: 150000,
+    //   totalSavings: 364100,
+    //   popular: false,
+    //   lifetime: true,
+    // },
   ];
 
   return (
@@ -91,7 +143,8 @@ export default function PricingContainer() {
           Special pricing for a limited time—lock in your savings today!
         </p>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 w-full lg:w-[95%] mx-auto">
+      {/* <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 w-full lg:w-[95%] mx-auto"> */}
+      <div className="justify-center item-center max-w-sm mx-auto ">
         {plans.map((plan, index) => (
           <Card
             key={plan.duration}
@@ -121,22 +174,21 @@ export default function PricingContainer() {
               <div className="text-center mt-4 space-y-2">
                 <div className="relative inline-block">
                   <h3 className="text-sm text-gray-400">
-                    Original Price:{" "}
-                    {plan.originalPrice && (
-                      <span className="text-[#FFC107] text-2xl font-semibold relative inline-block">
-                        {" "}
-                        ₹{plan.originalPrice.toLocaleString()}
-                        <div
-                          className="absolute w-full h-0.5 bg-white"
-                          style={{
-                            top: "70%",
-                            left: "0",
-                            transform: "rotate(-12deg)",
-                            transformOrigin: "left center",
-                          }}
-                        ></div>
-                      </span>
-                    )}
+                    Original Price: {/* {plan.originalPrice && ( */}
+                    <span className="text-[#FFC107] text-2xl font-semibold relative inline-block">
+                      {" "}
+                      ₹{plan.originalPrice.toLocaleString()}
+                      <div
+                        className="absolute w-full h-0.5 bg-white"
+                        style={{
+                          top: "70%",
+                          left: "0",
+                          transform: "rotate(-12deg)",
+                          transformOrigin: "left center",
+                        }}
+                      ></div>
+                    </span>
+                    {/* )} */}
                   </h3>
                 </div>
                 <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
@@ -245,6 +297,12 @@ export default function PricingContainer() {
             </CardFooter>
           </Card>
         ))}
+      </div>
+      <div>
+        <ComparisonFeatures />
+      </div>
+      <div className="mt-12">
+        <FAQSection items={faqsArray} />
       </div>
     </div>
   );
