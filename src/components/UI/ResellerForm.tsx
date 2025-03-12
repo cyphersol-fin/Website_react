@@ -24,7 +24,7 @@ export const ResellerForm = () => {
           <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
             {/* Left Content Section */}
             <div className="space-y-8 animate-fade-in">
-              <h1 className="text-4xl md:text-6xl font-bold text-white">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white">
                 Got Questions?
                 <span className="block mt-2 bg-gradient-to-r from-cyan-400 to-blue-500 text-transparent bg-clip-text">
                   Reach Out to Us Today!

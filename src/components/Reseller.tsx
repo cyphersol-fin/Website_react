@@ -7,9 +7,9 @@ import { ResellerForm } from "./UI/ResellerForm";
 import { Badge } from "./UI/Badge";
 import { LineShadowText } from "./components/ui/line-shadow-text";
 import { useTheme } from "next-themes";
-import Section from "./UI/ResellerSection";
 import FAQSection from "./FAQSection";
 import ResellerAdvantages from "./UI/ResellerAdvantages";
+import ResellerSection from "./UI/ResellerSection";
 
 const cardData = [
   {
@@ -144,7 +144,7 @@ export const Reseller = () => {
   return (
     <>
       <SmoothScroll>
-        <div className="container  mx-auto mt-12 text-center">
+        <div className="container mx-auto mt-12 text-center">
           <Badge>Reseller</Badge>
           <h1 className="text-balance text-5xl font-semibold leading-none tracking-tighter sm:text-6xl md:text-7xl lg:text-8xl text-white text-center mt-10 animate-slide-down">
             Our Reseller{" "}
@@ -195,14 +195,11 @@ export const Reseller = () => {
           <ResellerForm />
         </div>
 
-        <div>
-          <Section />
-          <Section reversed />
+        <div className="mt-10">
+          <ResellerSection />
         </div>
 
-        <div className=" mt-20">
-          <ResellerAdvantages />
-        </div>
+        <ResellerAdvantages />
 
         <div className="max-w-7xl mx-auto px-4">
           <div
