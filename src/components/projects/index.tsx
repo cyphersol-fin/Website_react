@@ -13,7 +13,7 @@ const data = [
     speed: 0.5,
   },
   {
-    title: "Gujrat",
+    title: "Gujarat",
     flipTitle: "Haryana",
     description:
       "Developed the Future of UFC Sports Ecosystem despite not being a sports fan.",
@@ -27,7 +27,7 @@ const data = [
     speed: 0.67,
   },
   {
-    title: "Banglore",
+    title: "Bangalore",
     flipTitle: "Rajasthan",
     description:
       "I was just one person on a massive team that created an entire Royal Caribbean eco-system.",

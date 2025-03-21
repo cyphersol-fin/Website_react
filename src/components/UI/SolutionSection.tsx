@@ -70,7 +70,7 @@ const Section = ({
 }) => {
   const [ref, inView] = useInView({
     threshold: 0.5,
-    triggerOnce: false,
+    triggerOnce: true,
   });
 
   return (

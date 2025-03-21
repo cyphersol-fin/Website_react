@@ -23,6 +23,7 @@ import {
   Banknote,
   ShieldCheck,
 } from "lucide-react";
+import ProductsSolar from "./ProductsSolar";
 
 const features = [
   {
@@ -210,7 +211,7 @@ export function Hero() {
             Excel to Tally Data Import Utility?
           </span>
         </h1> */}
-        <div className="container mx-auto px-4 py-4 ">
+        {/* <div className="container mx-auto px-4 py-4 ">
           <div className="grid lg:grid-cols-2 gap-4 items-center">
             <div className="space-y-6 pl-0 md:pl-6">
               {features.map((feature, index) => (
@@ -246,7 +247,9 @@ export function Hero() {
               <ExcelToTallyBeam />
             </motion.div>
           </div>
-        </div>
+        </div> */}
+        {/* 3d insert here */}
+        <ProductsSolar />
       </div>
 
       {/* <div className="container mx-auto px-4 py-12">
