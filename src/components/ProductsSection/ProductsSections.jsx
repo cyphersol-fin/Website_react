@@ -17,6 +17,8 @@ const ProductsSections = () => {
     const centerX = contRect.left + contRect.width / 2;
     const centerY = contRect.top + contRect.height / 2;
 
+    console.log({ centerX, centerY });
+
     // 3. Get references to each product label (by ID)
     const CA = document.getElementById("ca-software");
     const Tally = document.getElementById("tally-import");
@@ -25,8 +27,8 @@ const ProductsSections = () => {
     // A helper to get the angle of an element from the center
     const getAngleFromCenter = (el) => {
       const r = el.getBoundingClientRect();
-      const x = (r.left + r.width / 2) - centerX;
-      const y = (r.top + r.height / 2) - centerY;
+      const x = r.left + r.width / 2 - centerX;
+      const y = r.top + r.height / 2 - centerY;
       // Standard math: angle = atan2(y, x) in degrees, 0° = +X axis
       let angle = Math.atan2(y, x) * (180 / Math.PI);
       if (angle < 0) angle += 360;
@@ -56,10 +58,11 @@ const ProductsSections = () => {
           if (wedgeAngle < 0) wedgeAngle += 360;
 
           // +/- 30° threshold
-          const inRange = (productAngle) => {
+          const inRange = (productAngle, threshold) => {
             let diff = Math.abs(productAngle - wedgeAngle);
             if (diff > 180) diff = 360 - diff;
-            return diff < 30;
+            return diff < threshold;
+            // return diff < 30;
           };
 
           // Clear highlights
@@ -68,9 +71,9 @@ const ProductsSections = () => {
           Forensic.classList.remove("highlight");
 
           // Apply highlight if within range
-          if (inRange(angles.CA)) CA.classList.add("highlight");
-          if (inRange(angles.Tally)) Tally.classList.add("highlight");
-          if (inRange(angles.Forensic)) Forensic.classList.add("highlight");
+          if (inRange(angles.Forensic, 30)) CA.classList.add("highlight");
+          if (inRange(angles.CA, 60)) Tally.classList.add("highlight");
+          if (inRange(angles.Tally, 30)) Forensic.classList.add("highlight");
         }
       }
       rafId = requestAnimationFrame(animate);
