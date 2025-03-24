@@ -1,73 +1,19 @@
 import { Canvas } from "@react-three/fiber";
-import { BarChart3, Shield, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Dice as DiceComponent } from "./Dice/DiceComponent";
 import { GlowEffect } from "./UI/GlowEffect";
 import { Stats } from "./UI/Stats";
 import { Badge } from "./UI/Badge";
-import { FeatureCard } from "./UI/FeatureCard";
-import ReactBeforeSliderComponent from "react-before-after-slider-component";
 import "react-before-after-slider-component/dist/build.css";
 import "./css/styles.css";
 import FAQSection from "./FAQSection";
-import { HorizontalScroll } from "./HorizontalSrcoll";
-import { Link } from "react-router-dom";
-import { cn } from "./lib/utils";
-import { Testimonials } from "./UI/Testimonials";
-import { ExcelToTallyBeam } from "./UI/AnimatedBeam";
-import { motion } from "framer-motion";
-import {
-  Briefcase,
-  Building,
-  Factory,
-  Handshake,
-  Banknote,
-  ShieldCheck,
-} from "lucide-react";
 
-const features = [
-  {
-    icon: <Briefcase size={40} className="text-cyan-400" />,
-    title: "CA (Tax Professionals)",
-    description:
-      "Streamline tax filing with automated transaction uploads. Focus on advisory services instead of manual data entry.",
-    color: "bg-blue-500",
-  },
-  {
-    icon: <Building size={40} className="text-cyan-400" />,
-    title: "Govt. Agencies",
-    description:
-      "Efficiently manage financial data across multiple branches. Reduce manual entry with bulk upload features.",
-    color: "bg-blue-600",
-  },
-  {
-    icon: <Factory size={40} className="text-cyan-400" />,
-    title: "MSMEs",
-    description:
-      "Easily handle large transaction volumes without extra staffing. Simplify financial management with accuracy.",
-    color: "bg-blue-700",
-  },
-  {
-    icon: <Handshake size={40} className="text-cyan-400" />,
-    title: "DSAs",
-    description:
-      "Automate financial processes for smoother loan approvals. Reduce paperwork and processing time effortlessly.",
-    color: "bg-blue-700",
-  },
-  {
-    icon: <Banknote size={40} className="text-cyan-400" />,
-    title: "Lenders",
-    description:
-      "Get accurate financial data for faster loan evaluations. Ensure seamless transaction tracking and risk assessment.",
-    color: "bg-blue-700",
-  },
-  {
-    icon: <ShieldCheck size={40} className="text-cyan-400" />,
-    title: "Forensic Accounting",
-    description:
-      "Detect financial anomalies with automated transaction analysis. Enhance fraud detection and risk management.",
-    color: "bg-blue-700",
-  },
-];
+import { Link } from "react-router-dom";
+
+import { motion } from "framer-motion";
+
+import { TextAnimate } from "./components/ui/text-animate";
+import { challenges } from "./data/challenges";
 
 const faqsArray = [
   {
@@ -89,12 +35,6 @@ const faqsArray = [
   },
 ];
 export function Hero() {
-  const FIRST_IMAGE = {
-    imageUrl: "assets/images/BS.jpeg",
-  };
-  const SECOND_IMAGE = {
-    imageUrl: "assets/images/PD.jpeg",
-  };
   return (
     <div className="relative bg-black min-h-screen overflow-hidden">
       <GlowEffect />
@@ -195,106 +135,88 @@ export function Hero() {
         </div>
       </div>
 
-      {/* Who should use */}
-      <div className=" bg-black overflow-hidden relative text-white px-4 py-8 md:py-12">
-        {/* <h1 className="text-2xl sm:text-4xl md:text-6xl font-bold mb-8 md:mb-20 tracking-tight text-center">
-          <span className="bg-clip-text text-transparent bg-gradient-to-b from-white to-white/80">
-            Who Should Use
-          </span>
-          <br />
-          <span
-            className={cn(
-              "bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-white/90 to-blue-400"
-            )}
-          >
-            Excel to Tally Data Import Utility?
-          </span>
-        </h1> */}
-        <div className="container mx-auto px-4 py-4 ">
-          <div className="grid lg:grid-cols-2 gap-4 items-center">
-            <div className="space-y-6 pl-0 md:pl-6">
-              {features.map((feature, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 50 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-100px" }}
-                  transition={{
-                    duration: 0.5,
-                    delay: index * 0.2,
-                  }}
-                  className="flex items-start space-x-4"
-                >
-                  <div className="p-3 rounded-lg bg-gray-900/50">
-                    {feature.icon}
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-xl md:text-1xl font-semibold mb-1">
-                      {feature.title}
-                    </h3>
-                    <p className="text-gray-400">{feature.description}</p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
+      <section className="container mx-auto px-6 sm:px-10 md:px-16 lg:px-20 py-12">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
+          <div className="flex flex-col items-center justify-center mb-8 md:mb-16 animate-fade-in text-center">
+            <Badge>Product</Badge>
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mt-6 text-cyan-400">
+              <TextAnimate animation="blurInUp" by="character">
+                Problem faced by our Business Partners
+              </TextAnimate>
+            </h1>
             <motion.div
-              initial={{ opacity: 0, x: 50 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+            >
+              <p className="text-base sm:text-lg text-gray-300 max-w-4xl mx-auto mt-4">
+                Analyzing a bank statement for filing income tax returns is
+                still a manual process in India. Chartered accountants and tax
+                consultants normally take hours or days to analyze a single bank
+                statement. Similarly, DSAs and financiers need to assess their
+                clients' eligibility for loans based on their bank statements,
+                which can be time consuming. Our clients face the following
+                challenges:
+              </p>
+            </motion.div>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-28">
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.4, duration: 0.5 }}
               className="flex justify-center"
             >
-              <ExcelToTallyBeam />
+              <img
+                src="/assets/images/infographic-1.png"
+                alt="infographic"
+                className="w-full max-w-xl md:max-w-full"
+              />
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.4, duration: 0.5 }}
+              className="space-y-8"
+            >
+              {challenges.map((challenge, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.1, duration: 0.5 }}
+                  viewport={{ once: true }}
+                  className="flex items-start gap-4"
+                >
+                  <div
+                    className={`w-10 h-10 ${challenge.color} rounded flex items-center justify-center flex-shrink-0`}
+                  >
+                    <span className="text-white font-bold text-lg">
+                      {challenge.number}
+                    </span>
+                  </div>
+                  <div
+                    className={`border-l-4 ${challenge.borderColor} pl-5 pb-4`}
+                  >
+                    <h3 className="text-xl font-semibold mb-2 bg-gradient-to-r from-blue-500 to-cyan-400 text-transparent bg-clip-text">
+                      {challenge.title}
+                    </h3>
+                    <p className="text-gray-300 text-sm sm:text-base">
+                      {challenge.description}
+                    </p>
+                  </div>
+                </motion.div>
+              ))}
             </motion.div>
           </div>
-        </div>
-      </div>
-
-      {/* <div className="container mx-auto px-4 py-12">
-        <h1 className="text-4xl sm:text-4xl md:text-6xl font-bold mb-6 tracking-tight text-center">
-          <span className="bg-clip-text text-transparent bg-gradient-to-b from-white to-white/80">
-            Effortlessly Convert Your
-          </span>
-          <br />
-          <span
-            className={cn(
-              "bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-white/90 to-blue-400"
-            )}
-          >
-            PDFs into Excel & Summary Sheets
-          </span>
-        </h1>
-        <p className="text-lg lg:text-xl text-gray-400 text-center mb-6">
-          Easily extract and structure financial statements, invoices, and other
-          documents into Excel format.
-        </p>
-        <div className="slider-container px-4 md:px-20 py-4 mb-4 md:mb-8">
-          <ReactBeforeSliderComponent
-            firstImage={FIRST_IMAGE}
-            secondImage={SECOND_IMAGE}
-            delimiterColor="#111827"
-            className="cursor-pointer"
-          />
-        </div>
-      </div> */}
-
-      <div className="h-screen flex items-center justify-center bg-blue-900">
-        <h1 className="text-6xl md:text-8xl font-bold text-white">
-          Scroll Down
-        </h1>
-      </div>
-
-      <HorizontalScroll />
-
-      {/* Optional content after horizontal section */}
-      <div className="h-screen flex items-center justify-center bg-blue-900">
-        <h2 className="text-6xl md:text-8xl font-bold text-white">
-          Continue Exploring
-        </h2>
-      </div>
-
-      <div className="container mx-auto px-4 py-12 animate-fadeIn">
-        {/* <Testimonials /> */}
-      </div>
+        </motion.div>
+      </section>
 
       <div className="container mx-auto px-4 py-12 animate-fadeIn">
         <FAQSection items={faqsArray} />

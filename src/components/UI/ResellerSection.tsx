@@ -1,6 +1,6 @@
 import { Badge } from "./Badge";
 
-const ResellerSection = ({ reversed = false }) => {
+const ResellerSection = () => {
   const features = [
     {
       title: "Partner with CypherSOL to Transform Fintech Solutions",
@@ -8,6 +8,7 @@ const ResellerSection = ({ reversed = false }) => {
         "Are you looking to expand your business and tap into the rapidly growing fintech market? CypherSOL is inviting partners and entrepreneurs to join our Reseller Program – an exciting opportunity to represent cutting-edge financial technology products designed specifically for chartered accountants, MSME’s, DSAs, and financial advisors.",
         "With CypherSOL, you gain access to innovative solutions like the Bank Statement Analyzer and Tally Upload Utility that simplify financial reporting, streamline workflows, and enhance loan eligibility analysis for clients. As a reseller, you can bring these powerful tools to your network, offering unique value while building a profitable business.",
       ],
+      image: "assets/images/transform-fintech-solution.jpeg",
     },
     {
       title: "Who Should Join the CypherSOL Reseller Program?",
@@ -15,6 +16,7 @@ const ResellerSection = ({ reversed = false }) => {
         "The CypherSOL Reseller Program is ideal for:",
         "If you have a network of clients in finance, accounting, or loan processing, or MSME’s CypherSOL’s products can complement your offerings, enabling you to deliver real value while generating revenue.",
       ],
+      image: "assets/images/network.webp",
     },
   ];
 
@@ -52,11 +54,7 @@ const ResellerSection = ({ reversed = false }) => {
             </div>
             <div className="flex-1">
               <img
-                src={
-                  reversed
-                    ? "assets/images/network.webp"
-                    : "assets/images/transform-fintech-solution.jpeg"
-                }
+                src={feature.image}
                 alt={feature.title}
                 className="w-full h-auto rounded-lg"
               />
