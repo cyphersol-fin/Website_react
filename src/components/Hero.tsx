@@ -14,6 +14,7 @@ import { motion } from "framer-motion";
 
 import { TextAnimate } from "./components/ui/text-animate";
 import { challenges } from "./data/challenges";
+import ProductsSolar from "./ProductsSolar";
 
 const faqsArray = [
   {
@@ -134,6 +135,9 @@ export function Hero() {
           </div>
         </div>
       </div>
+
+      {/* 3d insert here */}
+      <ProductsSolar />
 
       <section className="container mx-auto px-6 sm:px-10 md:px-16 lg:px-20 py-12">
         <motion.div
