@@ -54,7 +54,7 @@ export function Vouchers() {
         <div className="relative h-screen w-screen flex-shrink-0 bg-black/50">
           <div className="h-full grid grid-cols-1 md:grid-cols-2 gap-8 items-center max-w-7xl mx-auto px-6">
             <div className="space-y-6">
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-white/90 to-blue-400">
+              <h2 className="pb-4 text-3xl md:text-4xl lg:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-white/90 to-blue-400">
                 Ledger Master
               </h2>
               <p className="text-lg text-gray-300 max-w-xl">
