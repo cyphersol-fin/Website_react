@@ -146,7 +146,7 @@ const faqsArray = [
     answer:
       "The utility is available for an affordable annual subscription of **₹2,999**, which includes support for 20 bank statements per year.",
   },
-  {
+  {  
     question: "Is Excel to Tally Data Import Utility secure?",
     answer:
       "Yes, the utility follows industry-standard security measures to protect sensitive financial data during upload and processing.",
