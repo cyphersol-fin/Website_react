@@ -22,6 +22,7 @@ import { Dmca } from "./components/legal/Dmca";
 import { RefundPolicy } from "./components/legal/RefundPolicy";
 import { Disclaimer } from "./components/legal/Disclaimer";
 import { BankAnalyzer } from "./components/BankAnalyzer";
+import { DsaPage } from "./pages/DsaPage";
 
 function App() {
   useEffect(() => {
@@ -49,6 +50,7 @@ function App() {
             />
             <Route path="/bank-statement-analyzer" element={<BankAnalyzer />} />
             <Route path="/excel-to-tally" element={<ExcelToTallyPage />} />
+            <Route path="/dsa" element={<DsaPage />} />
             {/* Legal */}
             <Route path="/terms" element={<Terms />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />

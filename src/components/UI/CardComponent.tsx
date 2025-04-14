@@ -12,7 +12,7 @@ export const CardComponent = ({ title, description, Icon }) => {
       {/* Hover glow effect */}
       <div className="absolute -inset-0.5 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-2xl opacity-0 group-hover:opacity-20 transition-all duration-500 blur-xl group-hover:duration-200 hover:animate-pulse" />
 
-      <div className="relative bg-gray-900/50 backdrop-blur-xl p-6 rounded-2xl border border-gray-800/50 hover:border-gray-700/50 transition-all duration-300 h-full">
+      <div className="relative w-full bg-gray-900/50 backdrop-blur-xl p-6 rounded-2xl border border-gray-800/50 hover:border-gray-700/50 transition-all duration-300 h-full ">
         <div className="flex flex-col items-center">
           {/* Icon Animation */}
           <motion.div
