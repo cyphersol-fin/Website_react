@@ -1,5 +1,5 @@
 "use client";
-
+const base = import.meta.env.BASE_URL; // Will be '/static/' in production (as per Vite config)
 import { motion } from "framer-motion";
 import { cn } from "./lib/utils";
 import { Badge } from "./UI/Badge";
@@ -67,7 +67,7 @@ const features = [
   {
     icon: (
       <img
-        src="assets/images/CA.webp"
+        src={`${base}assets/images/CA.webp`}
         alt="Chartered Accountant"
         className="w-20"
       />
@@ -83,7 +83,7 @@ const features = [
   {
     icon: (
       <img
-        src="assets/images/large-enterprise.webp"
+        src={`${base}assets/images/large-enterprise.webp`}
         alt="Large Enterprises"
         className="w-20"
       />
@@ -94,7 +94,7 @@ const features = [
     color: "bg-blue-600",
   },
   {
-    icon: <img src="/assets/images/SMEs.webp" alt="SMEs" className="w-20" />,
+    icon: <img src={`${base}assets/images/SMEs.webp`} alt="SMEs" className="w-20" />,
     title: "Small and Medium Businesses (SMEs)",
     description:
       "Manage large transaction volumes effortlessly. No need for dedicated accounting teams. Ensure accurate uploads without extra staffing.",
@@ -103,7 +103,7 @@ const features = [
   {
     icon: (
       <img
-        src="/assets/images/tax-consultants.webp"
+        src={`${base}assets/images/tax-consultants.webp`}
         alt="Tax Consultants"
         className="w-20"
       />

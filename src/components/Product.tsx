@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import { SolutionSection } from "./UI/SolutionSection";
 import FAQSection from "./FAQSection";
 import { challenges } from "./data/challenges";
-
+const base = import.meta.env.BASE_URL; // Will be '/static/' in production (as per Vite config)
 const faqsArray = [
   {
     question: "What is a bank statement analyzer?",
@@ -180,7 +180,7 @@ export const Product = () => {
                 className="flex justify-center"
               >
                 <img
-                  src="/assets/images/infographic-1.png"
+                  src={`${base}assets/images/infographic-1.png`}
                   alt="infographic"
                   className="w-full max-w-xl md:max-w-full"
                 />

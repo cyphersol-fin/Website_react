@@ -15,6 +15,7 @@ import { motion } from "framer-motion";
 import { TextAnimate } from "./components/ui/text-animate";
 import { challenges } from "./data/challenges";
 import ProductsSolar from "./ProductsSolar";
+const base = import.meta.env.BASE_URL; // Will be '/static/' in production (as per Vite config)
 
 const faqsArray = [
   {
@@ -177,7 +178,7 @@ export function Hero() {
               className="flex justify-center"
             >
               <img
-                src="/assets/images/infographic-1.png"
+                src={`${base}assets/images/infographic-1.png`}
                 alt="infographic"
                 className="w-full max-w-xl md:max-w-full"
               />

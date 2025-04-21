@@ -1,5 +1,5 @@
 import { Badge } from "./Badge";
-
+const base = import.meta.env.BASE_URL; // Will be '/static/' in production (as per Vite config)
 const ResellerSection = () => {
   const features = [
     {

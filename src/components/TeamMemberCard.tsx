@@ -1,4 +1,5 @@
 import { Facebook, Linkedin, Twitter } from "lucide-react";
+const base = import.meta.env.BASE_URL; // Will be '/static/' in production (as per Vite config)
 
 export interface TeamMember {
   id: number;

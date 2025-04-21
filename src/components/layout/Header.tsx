@@ -1,5 +1,7 @@
 import React, { useRef, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion"; // Added AnimatePresence for smooth exit animations
+import { motion, AnimatePresence } from "framer-motion"; // Added AnimatePresence for smooth exit 
+
+// animations
 import {
   Banknote,
   BookOpen,
@@ -12,7 +14,7 @@ import {
   Users,
   X,
 } from "lucide-react";
-
+const base = import.meta.env.BASE_URL; // Will be '/static/' in production (as per Vite config)
 export const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [productMenuOpen, setProductMenuOpen] = useState(false);
@@ -83,8 +85,8 @@ export const Header = () => {
         <div className="flex md:flex-1">
           <a href="/" className="-m-1.5 p-1.5 me-4">
             <img
-              src="/assets/images/Cyphers.png"
-              alt="CupherSOL"
+              src={`${base}assets/images/Cyphers.png`}
+              alt="CypherSOL"
               className="w-40"
             />
             {/* <span className="text-2xl font-bold text-white">
@@ -375,7 +377,7 @@ export const Header = () => {
               <div className="flex items-center justify-between">
                 <a href="/" className="-m-1.5 p-1.5">
                   <img
-                    src="/assets/images/Cyphers.png"
+                    src={`${base}assets/images/Cyphers.png}`}
                     alt="CupherSOL"
                     className="w-40 mb-5"
                   />

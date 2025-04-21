@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { GlowEffect } from "./GlowEffect";
 import { Send } from "lucide-react";
-
+const base = import.meta.env.BASE_URL; // Will be '/static/' in production (as per Vite config)
 export const ResellerForm = () => {
   const [formData, setFormData] = useState({
     fullName: "",
@@ -49,7 +49,7 @@ export const ResellerForm = () => {
 
                 <div className="flex items-center space-x-4 mt-6">
                   <img
-                    src="assets/images/team-1.png"
+                    src={`${base}assets/images/team-1.png`}
                     alt="CEO"
                     className="w-12 h-12 rounded-full object-cover"
                   />

@@ -10,7 +10,7 @@ import { useTheme } from "next-themes";
 import FAQSection from "./FAQSection";
 import ResellerAdvantages from "./UI/ResellerAdvantages";
 import ResellerSection from "./UI/ResellerSection";
-
+const base = import.meta.env.BASE_URL; // Will be '/static/' in production (as per Vite config)
 const cardData = [
   {
     id: 1,
@@ -159,7 +159,7 @@ export const Reseller = () => {
         <main className={styles.main}>
           <Suspense
             fallback={
-              <img src="/assets/images/placeholder.png" alt="Loading..." />
+              <img src={`${base}assets/images/placeholder.png`} alt="Loading..." />
             }
           >
             <Earth />

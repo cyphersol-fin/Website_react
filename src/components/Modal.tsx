@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { X, Linkedin, Twitter } from "lucide-react";
 import { TeamMember } from "./TeamMemberCard";
 import "./css/styles.css";
-
+const base = import.meta.env.BASE_URL; // Will be '/static/' in production (as per Vite config)
 interface Props {
   member: TeamMember | null;
   onClose: () => void;

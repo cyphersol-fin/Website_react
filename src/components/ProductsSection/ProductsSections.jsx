@@ -1,9 +1,10 @@
 import React, { useEffect, useRef } from "react";
 import "./style.css";
+const base = import.meta.env.BASE_URL; // Will be '/static/' in production (as per Vite config)
 
-const ring = "/assets/images/ring.svg";
-const lightWedge = "/assets/images/light-wedge.svg";
-const logo = "/assets/images/Cyphers.png";
+const ring = `${base}assets/images/ring.svg`;
+const lightWedge = `${base}assets/images/light-wedge.svg`;
+const logo = `${base}assets/images/Cyphers.png`;
 
 const ProductsSections = () => {
   // 1. Refs to measure & track elements
@@ -88,7 +89,7 @@ const ProductsSections = () => {
     <div ref={containerRef} className="">
       <div className="products-container flex flex-col items-center justify-center">
         <img
-          src="https://www.zohowebstatic.com/sites/zweb/images/crm/crm-360deg-small-circle.svg"
+          src={`${base}https://www.zohowebstatic.com/sites/zweb/images/crm/crm-360deg-small-circle.svg`}
           className="center-bg"
         />
         <img src={logo} alt="" className="products-logo" />

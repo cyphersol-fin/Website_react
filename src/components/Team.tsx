@@ -6,7 +6,7 @@ import { GlowEffect } from "./UI/GlowEffect";
 import { TeamModal } from "./Modal";
 import { Badge } from "./UI/Badge";
 import { ArrowRight, Linkedin, Twitter } from "lucide-react";
-
+const base = import.meta.env.BASE_URL; // Will be '/static/' in production (as per Vite config)
 export interface TeamMember {
   id: number;
   name: string;

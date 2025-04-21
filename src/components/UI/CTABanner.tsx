@@ -1,6 +1,7 @@
 import type React from "react";
 import { cn } from "../lib/utils";
 import { Badge } from "./Badge";
+const base = import.meta.env.BASE_URL; // Will be '/static/' in production (as per Vite config)
 interface CTABannerProps {
   title: string;
   highlightedText: string;

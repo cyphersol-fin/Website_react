@@ -1,10 +1,9 @@
 "use client";
-
 import { useRef, useEffect } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { GlowEffect } from "./GlowEffect";
-
+const base = import.meta.env.BASE_URL; // Will be '/static/' in production (as per Vite config)
 export function Vouchers() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const triggerRef = useRef<HTMLDivElement>(null);
@@ -69,7 +68,7 @@ export function Vouchers() {
             </div>
             <div className="aspect-[4/3] w-full max-w-2xl mx-auto">
               <img
-                src="assets/images/Ledger-Master.jpeg"
+                src={`${base}assets/images/Ledger-Master.jpeg`}
                 alt="Ledger interface screenshot"
                 className="w-full h-full object-contain "
               />
@@ -94,7 +93,7 @@ export function Vouchers() {
             </div>
             <div className="aspect-[4/3] w-full max-w-2xl mx-auto">
               <img
-                src="assets/images/payment-voucher.jpeg"
+                src={`${base}assets/images/payment-voucher.jpeg`}
                 alt="Ledger interface screenshot"
                 className="w-full h-full object-contain "
               />
@@ -120,7 +119,7 @@ export function Vouchers() {
             </div>
             <div className="aspect-[4/3] w-full max-w-2xl mx-auto">
               <img
-                src="assets/images/receipt-voucher.jpeg"
+                src={`${base}assets/images/receipt-voucher.jpeg`}
                 alt="Ledger interface screenshot"
                 className="w-full h-full object-contain "
               />
@@ -144,7 +143,7 @@ export function Vouchers() {
             </div>
             <div className="aspect-[4/3] w-full max-w-2xl mx-auto">
               <img
-                src="assets/images/purchase-voucher.jpeg"
+                src={`${base}assets/images/purchase-voucher.jpeg`}
                 alt="Ledger interface screenshot"
                 className="w-full h-full object-contain "
               />
@@ -168,7 +167,7 @@ export function Vouchers() {
             </div>
             <div className="aspect-[4/3] w-full max-w-2xl mx-auto">
               <img
-                src="assets/images/sales-voucher.webp"
+                src={`${base}assets/images/sales-voucher.webp`}
                 alt="Ledger interface screenshot"
                 className="w-full h-full object-contain "
               />

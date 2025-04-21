@@ -2,14 +2,14 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
 // https://vitejs.dev/config/
-export default defineConfig({
+export default defineConfig(({ mode }) => ({
+  base: mode === 'development' ? '/' : '/static/',
   plugins: [react()],
   optimizeDeps: {
     exclude: ['lucide-react'],
   },
   build: {
-    commonjsOptions: {
-      requireReturnsDefault: "auto",
-    },
+    outDir: '../dist',
+    assetsDir: 'assets/app'
   },
-});
+}));
