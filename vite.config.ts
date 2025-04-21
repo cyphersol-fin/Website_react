@@ -9,7 +9,7 @@ export default defineConfig(({ mode }) => ({
     exclude: ['lucide-react'],
   },
   build: {
-    outDir: '../dist',
+    outDir: 'dist',
     assetsDir: 'assets/app'
   },
 }));
