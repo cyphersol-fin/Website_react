@@ -551,12 +551,12 @@ const faqsArray = [
   },
 ];
 
-export const BankAnalyzer = () => {
+export const Forensic = () => {
   const fadeUpVariants = {
     hidden: { opacity: 0, y: 30 },
     visible: (i: number) => ({
       opacity: 1,
-      y: 0,
+      y: 0,    
       transition: {
         duration: 1,
         delay: 0.5 + i * 0.2,

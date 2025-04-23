@@ -23,6 +23,8 @@ import { RefundPolicy } from "./components/legal/RefundPolicy";
 import { Disclaimer } from "./components/legal/Disclaimer";
 import { BankAnalyzer } from "./components/BankAnalyzer";
 import { DsaPage } from "./pages/DsaPage";
+import { MsmePage } from "./pages/MsmePage";
+import { ForensicPage } from "./pages/ForensicPage";
 
 function App() {
   useEffect(() => {
@@ -57,6 +59,8 @@ function App() {
             <Route path="/dmca" element={<Dmca />} />
             <Route path="/refund-policy" element={<RefundPolicy />} />
             <Route path="/disclaimer" element={<Disclaimer />} />
+            <Route path="/msme" element={< MsmePage/>} />
+            <Route path="/forensic" element={< ForensicPage />} /> 
           </Routes>
           <Footer />
         </div>

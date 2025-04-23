@@ -146,7 +146,7 @@ export const Header = () => {
                           href="/bank-statement-analyzer"
                           className="block font-semibold text-gray-300 hover:text-cyan-400 transition-colors duration-200"
                         >
-                          Bank Statement Analyzer
+                         Chartered Accountant
                           <span className="absolute inset-0"></span>
                         </a>
                         <p className="mt-1 text-gray-400">
@@ -154,6 +154,58 @@ export const Header = () => {
                         </p>
                       </div>
                     </div>
+                    <div className="group relative flex items-center gap-x-6 rounded-lg p-4 hover:bg-gray-800 transition-colors duration-200">
+                      <div className="flex size-11 flex-none items-center justify-center rounded-lg bg-gray-800 group-hover:bg-gray-700 transition-colors duration-200">
+                        <Layers className="size-5 text-gray-300 group-hover:text-cyan-400 transition-colors duration-200" />
+                      </div>
+                      <div className="flex-auto">
+                        <a
+                          href="/dsa"
+                          className="block font-semibold text-gray-300 hover:text-cyan-400 transition-colors duration-200"
+                        >
+                          DSA(Direct Selling Agent)
+                          <span className="absolute inset-0"></span>
+                        </a>
+                        <p className="mt-1 text-gray-400">
+                          Your customers' data will be safe and secure
+                        </p>
+                      </div>
+                    </div>
+                    <div className="group relative flex items-center gap-x-6 rounded-lg p-4 hover:bg-gray-800 transition-colors duration-200">
+                      <div className="flex size-11 flex-none items-center justify-center rounded-lg bg-gray-800 group-hover:bg-gray-700 transition-colors duration-200">
+                        <Layers className="size-5 text-gray-300 group-hover:text-cyan-400 transition-colors duration-200" />
+                      </div>
+                      <div className="flex-auto">
+                        <a
+                          href="/msme"
+                          className="block font-semibold text-gray-300 hover:text-cyan-400 transition-colors duration-200"
+                        >
+                         MSME Accounting
+                          <span className="absolute inset-0"></span>
+                        </a>
+                        <p className="mt-1 text-gray-400">
+                          Your customers' data will be safe and secure
+                        </p>
+                      </div>
+                    </div>
+                    <div className="group relative flex items-center gap-x-6 rounded-lg p-4 hover:bg-gray-800 transition-colors duration-200">
+                      <div className="flex size-11 flex-none items-center justify-center rounded-lg bg-gray-800 group-hover:bg-gray-700 transition-colors duration-200">
+                        <Layers className="size-5 text-gray-300 group-hover:text-cyan-400 transition-colors duration-200" />
+                      </div>
+                      <div className="flex-auto">
+                        <a
+                          href="/forensic"
+                          className="block font-semibold text-gray-300 hover:text-cyan-400 transition-colors duration-200"
+                        >
+                         FORENSIC
+                          <span className="absolute inset-0"></span>
+                        </a>
+                        <p className="mt-1 text-gray-400">
+                          Your customers' data will be safe and secure
+                        </p>
+                      </div>
+                    </div>
+                    
                     <div className="group relative flex items-center gap-x-6 rounded-lg p-4 hover:bg-gray-800 transition-colors duration-200">
                       <div className="flex size-11 flex-none items-center justify-center rounded-lg bg-gray-800 group-hover:bg-gray-700 transition-colors duration-200">
                         <FileSpreadsheet className="size-5 text-gray-300 group-hover:text-cyan-400 transition-colors duration-200" />
@@ -188,23 +240,8 @@ export const Header = () => {
                         </p>
                       </div>
                     </div>
-                    <div className="group relative flex items-center gap-x-6 rounded-lg p-4 hover:bg-gray-800 transition-colors duration-200">
-                      <div className="flex size-11 flex-none items-center justify-center rounded-lg bg-gray-800 group-hover:bg-gray-700 transition-colors duration-200">
-                        <Layers className="size-5 text-gray-300 group-hover:text-cyan-400 transition-colors duration-200" />
-                      </div>
-                      <div className="flex-auto">
-                        <a
-                          href="/dsa"
-                          className="block font-semibold text-gray-300 hover:text-cyan-400 transition-colors duration-200"
-                        >
-                          DSA(Direct Selling Agent)
-                          <span className="absolute inset-0"></span>
-                        </a>
-                        <p className="mt-1 text-gray-400">
-                          Your customers' data will be safe and secure
-                        </p>
-                      </div>
-                    </div>
+                    
+                    
                   </div>
                 </motion.div>
               )}
