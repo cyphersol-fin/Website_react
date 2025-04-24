@@ -149,7 +149,8 @@ const ProductsSection = () => {
   };
 
   return (
-    <div className="relative w-full overflow-hidden flex flex-col bg-gradient-to-br from-[#050A14] to-[#121A2A]">
+    <div className="relative w-full overflow-hidden flex flex-col">
+      {/* bg-gradient-to-br from-[#050A14] to-[#121A2A] */}
       {/* Deep Space Background for entire component */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute w-full h-full bg-[radial-gradient(circle_at_center,rgba(34,211,238,0.1)_0%,transparent_70%)]" />
