@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 // import Home from "./pages/Home";
 import { Header } from "./components/layout/Header";
 import { Home } from "./pages/Home";
@@ -26,12 +26,22 @@ import { DsaPage } from "./pages/DsaPage";
 import { MsmePage } from "./pages/MsmePage";
 import { ForensicPage } from "./pages/ForensicPage";
 
+// Scroll to top on route change
+function ScrollToTop() {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+  return null;
+}
+
 function App() {
   useEffect(() => {
     document.documentElement.classList.add("dark");
   }, []);
   return (
     <Router>
+      <ScrollToTop />
       <div className="min-h-screen bg-black">
         <div className="absolute inset-0 bg-gradient-to-b from-black via-gray-900 to-black" />
         <div className="relative z-10">
@@ -59,8 +69,8 @@ function App() {
             <Route path="/dmca" element={<Dmca />} />
             <Route path="/refund-policy" element={<RefundPolicy />} />
             <Route path="/disclaimer" element={<Disclaimer />} />
-            <Route path="/msme" element={< MsmePage/>} />
-            <Route path="/forensic" element={< ForensicPage />} /> 
+            <Route path="/msme" element={< MsmePage />} />
+            <Route path="/forensic" element={< ForensicPage />} />
           </Routes>
           <Footer />
         </div>

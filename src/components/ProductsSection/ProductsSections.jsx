@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { Calculator, Building2, FileText, FileSpreadsheet, UserCheck, Handshake, BarChart3 } from "lucide-react";
+import { Calculator, Building2, FileText, FileSpreadsheet, UserCheck, Handshake, BarChart3, PersonStanding, PersonStandingIcon, UserCircle, UserCircleIcon, UserCircle2, PercentSquareIcon, User } from "lucide-react";
 
 const features = [
   {
@@ -59,13 +60,67 @@ const features = [
     icon: BarChart3,
     color: "from-green-400 to-emerald-500"
   },
+
+  {
+    id: "Suryakala",
+    name: "Suryakala Yadav",
+    description: "Software Developer",
+    points: [
+      "Full-Stack Development (Frontend & Backend)",
+      "RESTful API Design & Integration",
+      "Database Management & Query Optimization",
+      "DevOps & CI/CD Pipeline Automation",
+      "Containerization with Docker",
+      "Cloud Deployment & Monitoring (AWS, GCP)",
+      "Version Control & Code Reviews (Git)",
+      "Unit Testing & Debugging",
+      "Agile Workflow & Team Collaboration"
+    ],
+    icon: User,
+    color: "from-pink-400 to-fuchsia-500"
+  }
 ];
 
 const ProductsSection = () => {
   const [activeFeature, setActiveFeature] = useState(null);
   const [hoveredFeature, setHoveredFeature] = useState(null);
+  const [hoveredInfoBox, setHoveredInfoBox] = useState(null);
+  const navigate = useNavigate();
   const [orbitRotation, setOrbitRotation] = useState(0); // State to track orbit rotation
   const [isPaused, setIsPaused] = useState(false);
+
+  // Smooth rotation speed ramp-up
+  const [rotationSpeed, setRotationSpeed] = useState(0);
+  const MAX_ROTATION_SPEED = 0.002;
+  const RAMP_DURATION = 1000; // milliseconds
+
+  // Ramp-up effect on mount
+  useEffect(() => {
+    let start = null;
+    function ramp(timestamp) {
+      if (!start) start = timestamp;
+      const elapsed = timestamp - start;
+      const speed = Math.min(MAX_ROTATION_SPEED, (MAX_ROTATION_SPEED * elapsed) / RAMP_DURATION);
+      setRotationSpeed(speed);
+      if (elapsed < RAMP_DURATION) {
+        requestAnimationFrame(ramp);
+      }
+    }
+    requestAnimationFrame(ramp);
+  }, []);
+
+  // Animate orbit rotation with dynamic rotationSpeed
+  useEffect(() => {
+    let animationFrameId;
+    const animate = () => {
+      if (!isPaused) {
+        setOrbitRotation(prev => (prev + rotationSpeed) % (2 * Math.PI));
+      }
+      animationFrameId = requestAnimationFrame(animate);
+    };
+    animationFrameId = requestAnimationFrame(animate);
+    return () => cancelAnimationFrame(animationFrameId);
+  }, [isPaused, rotationSpeed]);
 
   // Configuration for two orbits with slightly smaller center
   const featureSize = 100; // Size of feature elements in pixels
@@ -76,20 +131,6 @@ const ProductsSection = () => {
   // Distribute features between two orbits
   const innerOrbitFeatures = features.slice(0, 3); // First 3 features on inner orbit
   const outerOrbitFeatures = features.slice(3); // Remaining features on outer orbit
-
-  // Animate orbit rotation - the orbits rotate while features stay fixed on their points
-  useEffect(() => {
-    let animationFrameId;
-    const animate = () => {
-      if (!isPaused) {
-        // Use a consistent rotation speed for smooth animation
-        setOrbitRotation(prev => (prev + 0.002) % (2 * Math.PI));
-      }
-      animationFrameId = requestAnimationFrame(animate);
-    };
-    animationFrameId = requestAnimationFrame(animate);
-    return () => cancelAnimationFrame(animationFrameId);
-  }, [isPaused]);
 
   // Calculate position for a feature on the inner orbit
   const getInnerOrbitPosition = (index, totalFeatures) => {
@@ -289,16 +330,42 @@ const ProductsSection = () => {
             >
               {/* Floating info/title box on hover */}
               <AnimatePresence>
-                {hoveredFeature === feature.id && (
+                {(hoveredFeature === feature.id || hoveredInfoBox === feature.id) && (
                   <motion.div
                     initial={{ opacity: 0, y: -24 }}
                     animate={{ opacity: 1, y: -48 }}
                     exit={{ opacity: 0, y: -24 }}
                     transition={{ duration: 0.28 }}
-                    className="absolute left-1/2 -translate-x-1/2 -top-6 px-3 py-2 bg-gray-900/90 text-white text-sm rounded-xl shadow-2xl border border-cyan-400/30 font-semibold pointer-events-none"
-                    style={{ zIndex: 100 }}
+                    className="absolute left-1/2 -translate-x-1/2 -top-6 px-4 py-3 bg-gray-900/95 text-white rounded-xl shadow-2xl border border-cyan-400/40 font-semibold max-w-[250px] w-max"
+                    style={{
+                      zIndex: 100,
+                      transform: `translate(-50%, -100%)`,
+                      maxWidth: "250px"
+                    }}
+                    onMouseEnter={() => setHoveredInfoBox(feature.id)}
+                    onMouseLeave={() => setHoveredInfoBox(null)}
                   >
-                    {feature.name}
+                    <div className="flex flex-col gap-2">
+                      <h3 className="text-sm font-bold text-cyan-400">{feature.name}</h3>
+                      <p className="text-xs text-gray-300 font-normal leading-tight">{feature.description || "Innovative solution designed to optimize your financial operations."}</p>
+                      <div className="flex justify-end mt-1">
+                        <button
+                          className="text-xs bg-cyan-600 hover:bg-cyan-500 text-white px-3 py-1 rounded-md transition-colors"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            // Navigate to feature page or open modal with more details
+
+                            // Set this to navigate to feature page
+                            navigate('/bank-statement-analyzer');
+
+                            // Set this to open modal
+                            // setActiveFeature(feature);
+                          }}
+                        >
+                          More Info
+                        </button>
+                      </div>
+                    </div>
                   </motion.div>
                 )}
               </AnimatePresence>
@@ -352,16 +419,42 @@ const ProductsSection = () => {
             >
               {/* Floating info/title box on hover */}
               <AnimatePresence>
-                {hoveredFeature === feature.id && (
+                {(hoveredFeature === feature.id || hoveredInfoBox === feature.id) && (
                   <motion.div
                     initial={{ opacity: 0, y: -24 }}
                     animate={{ opacity: 1, y: -48 }}
                     exit={{ opacity: 0, y: -24 }}
                     transition={{ duration: 0.28 }}
-                    className="absolute left-1/2 -translate-x-1/2 -top-6 px-3 py-2 bg-gray-900/90 text-white text-sm rounded-xl shadow-2xl border border-cyan-400/30 font-semibold pointer-events-none"
-                    style={{ zIndex: 100 }}
+                    className="absolute left-1/2 -translate-x-1/2 -top-6 px-4 py-3 bg-gray-900/95 text-white rounded-xl shadow-2xl border border-cyan-400/40 font-semibold max-w-[250px] w-max"
+                    style={{
+                      zIndex: 100,
+                      transform: `translate(-50%, -100%)`,
+                      maxWidth: "250px"
+                    }}
+                    onMouseEnter={() => setHoveredInfoBox(feature.id)}
+                    onMouseLeave={() => setHoveredInfoBox(null)}
                   >
-                    {feature.name}
+                    <div className="flex flex-col gap-2">
+                      <h3 className="text-sm font-bold text-cyan-400">{feature.name}</h3>
+                      <p className="text-xs text-gray-300 font-normal leading-tight">{feature.description || "Innovative solution designed to optimize your financial operations."}</p>
+                      <div className="flex justify-end mt-1">
+                        <button
+                          className="text-xs bg-cyan-600 hover:bg-cyan-500 text-white px-3 py-1 rounded-md transition-colors"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            // Navigate to feature page or open modal with more details
+
+                            // Set this to navigate to feature page
+                            navigate('/bank-statement-analyzer');
+
+                            // Set this to open modal
+                            // setActiveFeature(feature);
+                          }}
+                        >
+                          More Info
+                        </button>
+                      </div>
+                    </div>
                   </motion.div>
                 )}
               </AnimatePresence>
