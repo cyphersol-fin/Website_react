@@ -239,7 +239,7 @@ const ProductsSection = () => {
       </div>
 
       {/* Spacer between sections */}
-      <div className="relative h-2 z-10"></div>
+      {/* <div className="relative h-2 z-10"></div> */}
 
       {/* Orbit display area */}
       <div className="relative w-full min-h-[800px] flex-grow flex items-center justify-center z-10">
