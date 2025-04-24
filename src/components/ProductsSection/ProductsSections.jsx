@@ -66,13 +66,13 @@ const ProductsSection = () => {
   const [hoveredFeature, setHoveredFeature] = useState(null);
   const [orbitRotation, setOrbitRotation] = useState(0); // State to track orbit rotation
   const [isPaused, setIsPaused] = useState(false);
-  
-  // Configuration for two orbits - more compact with larger center
+
+  // Configuration for two orbits with slightly smaller center
   const featureSize = 100; // Size of feature elements in pixels
-  const innerOrbitRadius = 180; // Reduced inner orbit radius
-  const outerOrbitRadius = 320; // Reduced outer orbit radius
-  const centerSize = 220; // Increased center CypherSOL size
-  
+  const innerOrbitRadius = 180; // Inner orbit radius
+  const outerOrbitRadius = 320; // Outer orbit radius
+  const centerSize = 180; // Reduced center CypherSOL size (was 220)
+
   // Distribute features between two orbits
   const innerOrbitFeatures = features.slice(0, 3); // First 3 features on inner orbit
   const outerOrbitFeatures = features.slice(3); // Remaining features on outer orbit
@@ -82,7 +82,7 @@ const ProductsSection = () => {
     let animationFrameId;
     const animate = () => {
       if (!isPaused) {
-        // Rotate the orbits (not the features)
+        // Use a consistent rotation speed for smooth animation
         setOrbitRotation(prev => (prev + 0.002) % (2 * Math.PI));
       }
       animationFrameId = requestAnimationFrame(animate);
@@ -91,49 +91,66 @@ const ProductsSection = () => {
     return () => cancelAnimationFrame(animationFrameId);
   }, [isPaused]);
 
-  // Get position for a feature on the inner orbit
+  // Calculate position for a feature on the inner orbit
   const getInnerOrbitPosition = (index, totalFeatures) => {
-    // Fixed angle for this feature on the inner orbit
-    const fixedAngle = (index * (2 * Math.PI / totalFeatures)) + orbitRotation;
-    
+    // Calculate fixed angle for this feature on the inner orbit
+    const angle = (index * (2 * Math.PI / totalFeatures)) + orbitRotation;
+
+    // Calculate x and y coordinates on the orbit
+    const x = innerOrbitRadius * Math.cos(angle);
+    const y = innerOrbitRadius * Math.sin(angle);
+
     return {
-      left: `calc(50% + ${innerOrbitRadius * Math.cos(fixedAngle)}px - ${featureSize/2}px)`,
-      top: `calc(50% + ${innerOrbitRadius * Math.sin(fixedAngle)}px - ${featureSize/2}px)`
-    };
-  };
-  
-  // Get position for a feature on the outer orbit
-  const getOuterOrbitPosition = (index, totalFeatures) => {
-    // Fixed angle for this feature on the outer orbit
-    const fixedAngle = (index * (2 * Math.PI / totalFeatures)) + orbitRotation;
-    
-    return {
-      left: `calc(50% + ${outerOrbitRadius * Math.cos(fixedAngle)}px - ${featureSize/2}px)`,
-      top: `calc(50% + ${outerOrbitRadius * Math.sin(fixedAngle)}px - ${featureSize/2}px)`
+      left: `calc(50% + ${x}px - ${featureSize / 2}px)`,
+      top: `calc(50% + ${y}px - ${featureSize / 2}px)`
     };
   };
 
+  // Calculate position for a feature on the outer orbit
+  const getOuterOrbitPosition = (index, totalFeatures) => {
+    // Calculate fixed angle for this feature on the outer orbit
+    const angle = (index * (2 * Math.PI / totalFeatures)) + orbitRotation;
+
+    // Calculate x and y coordinates on the orbit
+    const x = outerOrbitRadius * Math.cos(angle);
+    const y = outerOrbitRadius * Math.sin(angle);
+
+    return {
+      left: `calc(50% + ${x}px - ${featureSize / 2}px)`,
+      top: `calc(50% + ${y}px - ${featureSize / 2}px)`
+    };
+  };
+
+  // Event handlers for feature interactions
   const handleFeatureMouseEnter = (featureId) => {
     setHoveredFeature(featureId);
-    setIsPaused(true);
+    setIsPaused(true); // Only pause when hovering over a feature
   };
+
   const handleFeatureMouseLeave = () => {
     setHoveredFeature(null);
-    setIsPaused(false);
+    // Only unpause if no feature is active
+    if (!activeFeature) {
+      setIsPaused(false);
+    }
   };
+
   const handleFeatureClick = (feature) => {
-    setIsPaused(true);
     setActiveFeature(feature);
+    setIsPaused(true);
   };
+
   const handleModalClose = () => {
     setActiveFeature(null);
-    if (!hoveredFeature) setIsPaused(false);
+    // Only unpause if no feature is being hovered
+    if (!hoveredFeature) {
+      setIsPaused(false);
+    }
   };
 
-
   return (
-    <div className="relative w-full min-h-[800px] bg-gradient-to-br from-[#050A14] to-[#121A2A] overflow-hidden py-12 flex items-center justify-center">
-      {/* Deep Space Background */}
+    <div className="relative w-full overflow-hidden flex flex-col bg-gradient-to-br from-[#050A14] to-[#121A2A]">
+      {/* Deep Space Background for entire component */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute w-full h-full bg-[radial-gradient(circle_at_center,rgba(34,211,238,0.1)_0%,transparent_70%)]" />
         <div className="absolute inset-0">
@@ -164,161 +181,206 @@ const ProductsSection = () => {
         </div>
       </div>
 
-      {/* Title Section - positioned above the orbits */}
-      <div className="absolute top-12 left-0 right-0 text-center z-40">
-        <h2 className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-white/90 to-blue-400 mb-4">
-          Our Solutions
-        </h2>
-        <p className="text-gray-400 max-w-2xl mx-auto px-4">
-          Explore our comprehensive suite of financial tools designed to streamline your business operations
-        </p>
+      {/* Spacer above title */}
+      <div className="relative h-8 z-10"></div>
+
+      {/* Title Section */}
+      <div className="relative w-full py-6">
+        <div className="relative z-10">
+          <h2 className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-white/90 to-blue-400 mb-4 text-center">
+            Our Solutions
+          </h2>
+          <p className="text-gray-400 max-w-2xl mx-auto px-4 text-lg text-center">
+            Explore our comprehensive suite of financial tools designed to streamline your business operations
+          </p>
+        </div>
       </div>
 
-      {/* Two Orbital Paths - inner and outer */}
-      {/* Inner Orbit */}
-      <motion.div
-        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 border-2 border-cyan-400/30"
-        style={{
-          width: `${innerOrbitRadius * 2}px`,
-          height: `${innerOrbitRadius * 2}px`,
-          borderRadius: '50%',
-          zIndex: 5,
-        }}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 0.4 }}
-        transition={{ duration: 1 }}
-      />
-      
-      {/* Outer Orbit */}
-      <motion.div
-        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 border-2 border-cyan-400/20"
-        style={{
-          width: `${outerOrbitRadius * 2}px`,
-          height: `${outerOrbitRadius * 2}px`,
-          borderRadius: '50%',
-          zIndex: 5,
-        }}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 0.3 }}
-        transition={{ duration: 1 }}
-      />
+      {/* Spacer between sections */}
+      <div className="relative h-2 z-10"></div>
 
-      {/* Central Sun (always perfectly centered) - larger and more prominent */}
-      <motion.div
-        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full bg-gradient-to-br from-yellow-400 via-orange-500 to-red-600 flex items-center justify-center text-white font-bold text-center shadow-xl z-20"
-        style={{
-          width: `${centerSize}px`,
-          height: `${centerSize}px`,
-          boxShadow: '0 0 100px 15px rgba(251,191,36,0.6)',
-        }}
-        initial={{ scale: 0 }}
-        animate={{
-          scale: activeFeature || hoveredFeature ? 0.92 : 1,
-          filter: activeFeature || hoveredFeature ? 'blur(8px)' : 'blur(0px)',
-          opacity: activeFeature || hoveredFeature ? 0.7 : 1,
-          rotate: 360
-        }}
-        transition={{
-          duration: 2,
-          rotate: {
-            duration: 40,
-            repeat: Infinity,
-            ease: 'linear'
-          }
-        }}
-      >
-        <div className="flex flex-col items-center gap-4 p-6 backdrop-blur-sm rounded-full">
-          <span className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-yellow-100">CypherSOL</span>
+      {/* Orbit display area */}
+      <div className="relative w-full min-h-[800px] flex-grow flex items-center justify-center z-10">
+        {/* Two Orbital Paths - inner and outer */}
+        {/* Inner Orbit */}
+        <motion.div
+          className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 border-2 border-cyan-400/30"
+          style={{
+            width: `${innerOrbitRadius * 2}px`,
+            height: `${innerOrbitRadius * 2}px`,
+            borderRadius: '50%',
+            zIndex: 5,
+          }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 0.4 }}
+          transition={{ duration: 1 }}
+        />
+
+        {/* Outer Orbit */}
+        <motion.div
+          className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 border-2 border-cyan-400/20"
+          style={{
+            width: `${outerOrbitRadius * 2}px`,
+            height: `${outerOrbitRadius * 2}px`,
+            borderRadius: '50%',
+            zIndex: 5,
+          }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 0.3 }}
+          transition={{ duration: 1 }}
+        />
+
+        {/* Central Sun (always perfectly centered) - smaller and more prominent */}
+        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-20 flex items-center justify-center pointer-events-none">
+          <motion.div
+            className="rounded-full bg-gradient-to-br from-yellow-400 via-orange-500 to-red-600 flex items-center justify-center text-white font-bold text-center shadow-xl"
+            style={{
+              width: `${centerSize}px`,
+              height: `${centerSize}px`,
+              boxShadow: '0 0 80px 10px rgba(251,191,36,0.5)',
+            }}
+            initial={{ scale: 0 }}
+            animate={{
+              scale: activeFeature || hoveredFeature ? 0.92 : 1,
+              filter: activeFeature || hoveredFeature ? 'blur(5px)' : 'blur(0px)',
+              opacity: activeFeature || hoveredFeature ? 0.8 : 1,
+            }}
+            transition={{
+              duration: 2,
+            }}
+          >
+            <div className="flex flex-col items-center justify-center w-full h-full">
+              <span className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-yellow-100">CypherSOL</span>
+            </div>
+          </motion.div>
         </div>
-      </motion.div>
 
-      {/* Inner Orbit Features */}
-      {innerOrbitFeatures.map((feature, i) => {
-        const pos = getInnerOrbitPosition(i, innerOrbitFeatures.length);
-        return (
-          <motion.div
-            key={feature.id}
-            onMouseEnter={() => handleFeatureMouseEnter(feature.id)}
-            onMouseLeave={handleFeatureMouseLeave}
-            onClick={() => handleFeatureClick(feature)}
-            className="absolute w-[100px] h-[100px] rounded-full backdrop-blur-md shadow-2xl flex flex-col items-center justify-center text-center cursor-pointer border-2 border-cyan-400/40 transition-all duration-300 gap-1 p-2 z-30"
-            style={{
-              ...pos,
-              background: `linear-gradient(135deg, ${feature.color})`,
-              boxShadow: hoveredFeature === feature.id ? '0 0 30px rgba(255, 255, 255, 0.7)' : '0 0 20px rgba(34,211,238,0.2)',
-            }}
-            animate={{
-              scale: hoveredFeature === feature.id ? 1.25 : 1,
-              filter: hoveredFeature && hoveredFeature !== feature.id ? 'blur(6px)' : 'blur(0px)',
-              opacity: hoveredFeature && hoveredFeature !== feature.id ? 0.4 : 1,
-              zIndex: hoveredFeature === feature.id ? 50 : 30,
-            }}
-            transition={{ type: "spring", stiffness: 300, damping: 22 }}
-          >
-            {/* Floating info/title box on hover */}
-            <AnimatePresence>
-              {hoveredFeature === feature.id && (
-                <motion.div
-                  initial={{ opacity: 0, y: -24 }}
-                  animate={{ opacity: 1, y: -48 }}
-                  exit={{ opacity: 0, y: -24 }}
-                  transition={{ duration: 0.28 }}
-                  className="absolute left-1/2 -translate-x-1/2 -top-6 px-3 py-2 bg-gray-900/90 text-white text-sm rounded-xl shadow-2xl border border-cyan-400/30 font-semibold pointer-events-none"
-                  style={{zIndex: 100}}
-                >
-                  {feature.name}
-                </motion.div>
-              )}
-            </AnimatePresence>
-            <feature.icon className="w-8 h-8 text-white/90 mb-1" />
-            <span className="text-xs text-white/90 font-semibold leading-tight mt-1">{feature.name}</span>
-          </motion.div>
-        );
-      })}
-      
-      {/* Outer Orbit Features */}
-      {outerOrbitFeatures.map((feature, i) => {
-        const pos = getOuterOrbitPosition(i, outerOrbitFeatures.length);
-        return (
-          <motion.div
-            key={feature.id}
-            onMouseEnter={() => handleFeatureMouseEnter(feature.id)}
-            onMouseLeave={handleFeatureMouseLeave}
-            onClick={() => handleFeatureClick(feature)}
-            className="absolute w-[100px] h-[100px] rounded-full backdrop-blur-md shadow-2xl flex flex-col items-center justify-center text-center cursor-pointer border-2 border-cyan-400/40 transition-all duration-300 gap-1 p-2 z-30"
-            style={{
-              ...pos,
-              background: `linear-gradient(135deg, ${feature.color})`,
-              boxShadow: hoveredFeature === feature.id ? '0 0 30px rgba(255, 255, 255, 0.7)' : '0 0 20px rgba(34,211,238,0.2)',
-            }}
-            animate={{
-              scale: hoveredFeature === feature.id ? 1.25 : 1,
-              filter: hoveredFeature && hoveredFeature !== feature.id ? 'blur(6px)' : 'blur(0px)',
-              opacity: hoveredFeature && hoveredFeature !== feature.id ? 0.4 : 1,
-              zIndex: hoveredFeature === feature.id ? 50 : 30,
-            }}
-            transition={{ type: "spring", stiffness: 300, damping: 22 }}
-          >
-            {/* Floating info/title box on hover */}
-            <AnimatePresence>
-              {hoveredFeature === feature.id && (
-                <motion.div
-                  initial={{ opacity: 0, y: -24 }}
-                  animate={{ opacity: 1, y: -48 }}
-                  exit={{ opacity: 0, y: -24 }}
-                  transition={{ duration: 0.28 }}
-                  className="absolute left-1/2 -translate-x-1/2 -top-6 px-3 py-2 bg-gray-900/90 text-white text-sm rounded-xl shadow-2xl border border-cyan-400/30 font-semibold pointer-events-none"
-                  style={{zIndex: 100}}
-                >
-                  {feature.name}
-                </motion.div>
-              )}
-            </AnimatePresence>
-            <feature.icon className="w-8 h-8 text-white/90 mb-1" />
-            <span className="text-xs text-white/90 font-semibold leading-tight mt-1">{feature.name}</span>
-          </motion.div>
-        );
-      })}
+        {/* Inner Orbit Features - Now with controlled animation */}
+        {innerOrbitFeatures.map((feature, i) => {
+          // Calculate angle for this feature based on its position in the orbit
+          const angle = (i * (2 * Math.PI / innerOrbitFeatures.length)) + orbitRotation;
+          // Calculate position directly from the angle
+          const x = innerOrbitRadius * Math.cos(angle);
+          const y = innerOrbitRadius * Math.sin(angle);
+
+          return (
+            <motion.div
+              key={feature.id}
+              onMouseEnter={() => handleFeatureMouseEnter(feature.id)}
+              onMouseLeave={handleFeatureMouseLeave}
+              onClick={() => handleFeatureClick(feature)}
+              className="absolute rounded-full backdrop-blur-md shadow-2xl flex flex-col items-center justify-center text-center cursor-pointer border-2 border-cyan-400/40 z-30"
+              style={{
+                width: `${featureSize}px`,
+                height: `${featureSize}px`,
+                left: `calc(50% + ${x}px - ${featureSize / 2}px)`,
+                top: `calc(50% + ${y}px - ${featureSize / 2}px)`,
+                background: `linear-gradient(135deg, ${feature.color})`,
+                boxShadow: hoveredFeature === feature.id ? '0 0 30px rgba(255, 255, 255, 0.7)' : '0 0 20px rgba(34,211,238,0.2)',
+              }}
+              animate={{
+                scale: hoveredFeature === feature.id ? 1.25 : 1,
+                filter: hoveredFeature && hoveredFeature !== feature.id ? 'blur(6px)' : 'blur(0px)',
+                opacity: hoveredFeature && hoveredFeature !== feature.id ? 0.4 : 1,
+                zIndex: hoveredFeature === feature.id ? 50 : 30,
+              }}
+              transition={{ type: "spring", stiffness: 300, damping: 22 }}
+            >
+              {/* Floating info/title box on hover */}
+              <AnimatePresence>
+                {hoveredFeature === feature.id && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -24 }}
+                    animate={{ opacity: 1, y: -48 }}
+                    exit={{ opacity: 0, y: -24 }}
+                    transition={{ duration: 0.28 }}
+                    className="absolute left-1/2 -translate-x-1/2 -top-6 px-3 py-2 bg-gray-900/90 text-white text-sm rounded-xl shadow-2xl border border-cyan-400/30 font-semibold pointer-events-none"
+                    style={{ zIndex: 100 }}
+                  >
+                    {feature.name}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+              <feature.icon className="w-8 h-8 text-white/90 mb-1" />
+              <span className="text-xs text-white/90 font-semibold leading-tight mt-1">{feature.name}</span>
+
+              {/* Line connecting to center */}
+              <div
+                className="absolute left-1/2 top-1/2 -z-10 bg-gradient-to-r from-cyan-500/40 to-transparent"
+                style={{
+                  width: `${innerOrbitRadius}px`,
+                  height: '1px',
+                  transformOrigin: 'left center',
+                  transform: `rotate(${angle + Math.PI}rad)`,
+                }}
+              />
+            </motion.div>
+          );
+        })}
+
+        {/* Outer Orbit Features - Now with controlled animation */}
+        {outerOrbitFeatures.map((feature, i) => {
+          // Calculate angle for this feature based on its position in the orbit
+          const angle = (i * (2 * Math.PI / outerOrbitFeatures.length)) + orbitRotation;
+          // Calculate position directly from the angle
+          const x = outerOrbitRadius * Math.cos(angle);
+          const y = outerOrbitRadius * Math.sin(angle);
+
+          return (
+            <motion.div
+              key={feature.id}
+              onMouseEnter={() => handleFeatureMouseEnter(feature.id)}
+              onMouseLeave={handleFeatureMouseLeave}
+              onClick={() => handleFeatureClick(feature)}
+              className="absolute rounded-full backdrop-blur-md shadow-2xl flex flex-col items-center justify-center text-center cursor-pointer border-2 border-cyan-400/40 z-30"
+              style={{
+                width: `${featureSize}px`,
+                height: `${featureSize}px`,
+                left: `calc(50% + ${x}px - ${featureSize / 2}px)`,
+                top: `calc(50% + ${y}px - ${featureSize / 2}px)`,
+                background: `linear-gradient(135deg, ${feature.color})`,
+                boxShadow: hoveredFeature === feature.id ? '0 0 30px rgba(255, 255, 255, 0.7)' : '0 0 20px rgba(34,211,238,0.2)',
+              }}
+              animate={{
+                scale: hoveredFeature === feature.id ? 1.25 : 1,
+                filter: hoveredFeature && hoveredFeature !== feature.id ? 'blur(6px)' : 'blur(0px)',
+                opacity: hoveredFeature && hoveredFeature !== feature.id ? 0.4 : 1,
+                zIndex: hoveredFeature === feature.id ? 50 : 30,
+              }}
+              transition={{ type: "spring", stiffness: 300, damping: 22 }}
+            >
+              {/* Floating info/title box on hover */}
+              <AnimatePresence>
+                {hoveredFeature === feature.id && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -24 }}
+                    animate={{ opacity: 1, y: -48 }}
+                    exit={{ opacity: 0, y: -24 }}
+                    transition={{ duration: 0.28 }}
+                    className="absolute left-1/2 -translate-x-1/2 -top-6 px-3 py-2 bg-gray-900/90 text-white text-sm rounded-xl shadow-2xl border border-cyan-400/30 font-semibold pointer-events-none"
+                    style={{ zIndex: 100 }}
+                  >
+                    {feature.name}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+              <feature.icon className="w-8 h-8 text-white/90 mb-1" />
+              <span className="text-xs text-white/90 font-semibold leading-tight mt-1">{feature.name}</span>
+
+              {/* Line connecting to center */}
+              <div
+                className="absolute left-1/2 top-1/2 -z-10 bg-gradient-to-r from-cyan-500/40 to-transparent"
+                style={{
+                  width: `${outerOrbitRadius}px`,
+                  height: '1px',
+                  transformOrigin: 'left center',
+                  transform: `rotate(${angle + Math.PI}rad)`,
+                }}
+              />
+            </motion.div>
+          );
+        })}
+      </div>
 
       {/* Feature Modal */}
       <AnimatePresence>

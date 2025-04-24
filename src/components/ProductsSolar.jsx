@@ -9,9 +9,9 @@ const ProductsSolar = () => {
   const [showPlanetSection, setShowPlanetSection] = useState(false);
 
   return (
-    <div>
+    <div className="w-full overflow-hidden">
       {/* <Provider> */}
-        {/* <SolarSystem />
+      {/* <SolarSystem />
 
         <button
           onClick={() => setShowPlanetSection(true)}
@@ -39,7 +39,7 @@ const ProductsSolar = () => {
           </div>
         )} */}
       {/* </Provider> */}
-      <ProductsSection/>
+      <ProductsSection />
     </div>
   );
 };
