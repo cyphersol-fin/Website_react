@@ -13,6 +13,38 @@ const features = [
     color: "from-orange-400 to-red-500"
   },
   {
+    id: "tally-utility2",
+    name: "Tally Utility2",
+    description: "Advanced tools for seamless Tally data management and integration.",
+    points: ["Data Import/Export", "Auto Reconciliation", "Batch Processing", "Custom Mapping"],
+    icon: Calculator,
+    color: "from-orange-400 to-red-500"
+  },
+  {
+    id: "tally-utility3",
+    name: "Tally Utility3",
+    description: "Advanced tools for seamless Tally data management and integration.",
+    points: ["Data Import/Export", "Auto Reconciliation", "Batch Processing", "Custom Mapping"],
+    icon: Calculator,
+    color: "from-orange-400 to-red-500"
+  },
+  {
+    id: "tally-utility4",
+    name: "Tally Utility4",
+    description: "Advanced tools for seamless Tally data management and integration.",
+    points: ["Data Import/Export", "Auto Reconciliation", "Batch Processing", "Custom Mapping"],
+    icon: Calculator,
+    color: "from-orange-400 to-red-500"
+  },
+  {
+    id: "tally-utility5",
+    name: "Tally Utility5",
+    description: "Advanced tools for seamless Tally data management and integration.",
+    points: ["Data Import/Export", "Auto Reconciliation", "Batch Processing", "Custom Mapping"],
+    icon: Calculator,
+    color: "from-orange-400 to-red-500"
+  },
+  {
     id: "bank-statement",
     name: "Bank Statement",
     description: "Intelligent bank statement analysis and processing system.",
