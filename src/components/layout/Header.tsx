@@ -1,3 +1,4 @@
+   
 import React, { useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion"; // Added AnimatePresence for smooth exit 
 
