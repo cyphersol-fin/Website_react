@@ -366,8 +366,10 @@ export const DsaComponent = () => {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             <TestimonialCard
-              quote="CypherSOL has completely transformed how I assess loan eligibility. What used to take hours now takes minutes, and the accuracy is remarkable."
-              author="Rajesh Kumar"
+              quote="CypherSOL’s Bank Statement Analyzer has been an invaluable tool for my work as a Corporate Loan Advisor (DSA). It streamlines the process of analyzing bank statements, categorizing transactions, and extracting critical insights in seconds, significantly enhancing efficiency.
+              The advanced features such as trend analysis, date-wise average bank balance computation, and detailed loan eligibility assessment—both bank-wise and product-wise—have been instrumental in presenting precise and actionable data to lenders. This not only saves time but also improves the accuracy and quality of my client submissions.
+              I highly recommend CypherSOL to DSAs looking to elevate their operations and deliver exceptional results"
+              author="Neeraj Nigudker"
               role="Senior DSA, Mumbai"
               rating={5}
               delay={0}

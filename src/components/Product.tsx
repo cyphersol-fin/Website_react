@@ -199,24 +199,39 @@ export const Product = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ delay: index * 0.1, duration: 0.5 }}
                     viewport={{ once: true }}
-                    className="flex items-start gap-4"
+                    className="flex items-start gap-4 group hover:scale-[1.02] transition-all duration-300 bg-gray-900/30 rounded-xl p-4 backdrop-blur-sm"
                   >
                     <div
-                      className={`w-10 h-10 ${challenge.color} rounded flex items-center justify-center flex-shrink-0`}
+                      className={`w-14 h-14 ${challenge.color} rounded-lg shadow-lg flex items-center justify-center flex-shrink-0 group-hover:shadow-xl transition-all duration-300`}
                     >
-                      <span className="text-white font-bold text-lg">
-                        {challenge.number}
-                      </span>
+                      <challenge.icon className="w-7 h-7 text-white" />
                     </div>
                     <div
-                      className={`border-l-4 ${challenge.borderColor} pl-5 pb-4`}
+                      className={`border-l-4 ${challenge.borderColor} pl-5 pb-2 w-full`}
                     >
                       <h3 className="text-xl font-semibold mb-2 bg-gradient-to-r from-blue-500 to-cyan-400 text-transparent bg-clip-text">
                         {challenge.title}
                       </h3>
-                      <p className="text-gray-300 text-sm sm:text-base">
+                      <p className="text-gray-300 text-sm sm:text-base mb-3">
                         {challenge.description}
                       </p>
+                      
+                      {challenge.highlights && (
+                        <div className="flex flex-wrap gap-2 mb-3">
+                          {challenge.highlights.map((highlight, i) => (
+                            <span key={i} className="text-xs bg-gray-800/70 text-cyan-300 px-2 py-1 rounded-full">
+                              {highlight}
+                            </span>
+                          ))}
+                        </div>
+                      )}
+                      
+                      {challenge.stats && (
+                        <div className="mt-2 bg-gray-900/70 rounded-md p-3 inline-block">
+                          <div className="text-2xl font-bold text-white">{challenge.stats.value}</div>
+                          <div className="text-xs text-gray-400">{challenge.stats.label}</div>
+                        </div>
+                      )}
                     </div>
                   </motion.div>
                 ))}
