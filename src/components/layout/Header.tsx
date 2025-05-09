@@ -1,5 +1,4 @@
-   
-import React, { useRef, useState } from "react";
+   import React, { useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion"; // Added AnimatePresence for smooth exit 
 
 // animations
@@ -14,6 +13,10 @@ import {
   Phone,
   Users,
   X,
+  UserCircle,
+  Building,
+  UserCheck,
+  Calculator
 } from "lucide-react";
 const base = import.meta.env.BASE_URL; // Will be '/static/' in production (as per Vite config)
 export const Header = () => {
@@ -22,12 +25,15 @@ export const Header = () => {
   const [isResourcesOpen, setIsResourcesOpen] = useState(false);
   const [mobileProductMenuOpen, setMobileProductMenuOpen] = useState(false);
   const [mobileResourcesMenuOpen, setMobileResourcesMenuOpen] = useState(false);
+  const [signInMenuOpen, setSignInMenuOpen] = useState(false);
 
   // Refs for tracking hover state
   const productTimeoutRef = useRef(null);
   const resourcesTimeoutRef = useRef(null);
+  const signInTimeoutRef = useRef(null);
   const productRef = useRef(null);
   const resourcesRef = useRef(null);
+  const signInRef = useRef(null);
 
   // Enhanced handlers for dropdown behavior with slight delay for better UX
   const handleMouseEnter = (dropdownType) => {
@@ -38,6 +44,10 @@ export const Header = () => {
       if (resourcesTimeoutRef.current)
         clearTimeout(resourcesTimeoutRef.current);
       setIsResourcesOpen(true);
+    } else if (dropdownType === "signIn") {
+      if (signInTimeoutRef.current)
+        clearTimeout(signInTimeoutRef.current);
+      setSignInMenuOpen(true);
     }
   };
 
@@ -52,6 +62,12 @@ export const Header = () => {
       resourcesTimeoutRef.current = setTimeout(() => {
         if (!resourcesRef.current?.matches(":hover")) {
           setIsResourcesOpen(false);
+        }
+      }, 300);
+    } else if (dropdownType === "signIn") {
+      signInTimeoutRef.current = setTimeout(() => {
+        if (!signInRef.current?.matches(":hover")) {
+          setSignInMenuOpen(false);
         }
       }, 300);
     }
@@ -375,15 +391,103 @@ export const Header = () => {
           </motion.a>
         </div>
         <div className="hidden md:flex md:flex-1 md:justify-end md:items-center md:space-x-4">
-          <motion.a
-            href="/login"
-            variants={buttonHoverVariants}
-            whileHover="hover"
-            whileTap="tap"
-            className="px-4 py-2 rounded-lg bg-gray-900 text-white border border-gray-800 hover:bg-gray-800 transition-colors duration-200"
+          <div
+            className="relative"
+            ref={signInRef}
+            onMouseEnter={() => handleMouseEnter("signIn")}
+            onMouseLeave={() => handleMouseLeave("signIn")}
           >
-            Sign In
-          </motion.a>
+            <motion.button
+              type="button"
+              className="flex items-center gap-x-1 px-4 py-2 rounded-lg bg-gray-900 text-white border border-gray-800 hover:bg-gray-800 transition-colors duration-200"
+              aria-expanded={signInMenuOpen}
+              variants={buttonHoverVariants}
+              whileHover="hover"
+              whileTap="tap"
+            >
+              Sign In
+              <motion.span
+                animate={{ rotate: signInMenuOpen ? 180 : 0 }}
+                transition={{ duration: 0.3 }}
+              >
+                <ChevronDown className="ml-1 h-4 w-4" />
+              </motion.span>
+            </motion.button>
+
+            <AnimatePresence>
+              {signInMenuOpen && (
+                <motion.div
+                  variants={dropdownVariants}
+                  initial="hidden"
+                  animate="visible"
+                  exit="exit"
+                  className="absolute top-full right-0 z-20 mt-2 w-56 overflow-hidden rounded-xl bg-gray-900/50 backdrop-blur-xl ring-1 shadow-lg ring-gray-800/50"
+                >
+                  <div className="p-2">
+                    <div className="group relative flex items-center gap-x-4 rounded-lg p-2 hover:bg-gradient-to-r hover:from-gray-800 hover:to-gray-700 transition-all duration-300">
+                      <div className="flex size-8 flex-none items-center justify-center rounded-lg bg-gray-800 group-hover:bg-gray-700 transition-colors duration-300 shadow-md">
+                        <UserCircle className="size-4 text-gray-300 group-hover:text-cyan-400 transition-colors duration-300" />
+                      </div>
+                      <div className="flex-auto">
+                        <a
+                          href="/tax-professional/login/"
+                          className="block font-semibold text-gray-300 group-hover:text-cyan-400 transition-colors duration-300"
+                        >
+                          Tax Professional
+                          <span className="absolute inset-0"></span>
+                        </a>
+                      </div>
+                    </div>
+                    
+                    <div className="group relative flex items-center gap-x-4 rounded-lg p-2 hover:bg-gradient-to-r hover:from-gray-800 hover:to-gray-700 transition-all duration-300">
+                      <div className="flex size-8 flex-none items-center justify-center rounded-lg bg-gray-800 group-hover:bg-gray-700 transition-colors duration-300 shadow-md">
+                        <Building className="size-4 text-gray-300 group-hover:text-cyan-400 transition-colors duration-300" />
+                      </div>
+                      <div className="flex-auto">
+                        <a
+                          href="/reseller/login/"
+                          className="block font-semibold t ext-gray-300 group-hover:text-cyan-400 transition-colors duration-300"
+                        >
+                          Reseller
+                          <span className="absolute inset-0"></span>
+                        </a>
+                      </div>
+                    </div>
+                    
+                    <div className="group relative flex items-center gap-x-4 rounded-lg p-2 hover:bg-gradient-to-r hover:from-gray-800 hover:to-gray-700 transition-all duration-300">
+                      <div className="flex size-8 flex-none items-center justify-center rounded-lg bg-gray-800 group-hover:bg-gray-700 transition-colors duration-300 shadow-md">
+                        <UserCheck className="size-4 text-gray-300 group-hover:text-cyan-400 transition-colors duration-300" />
+                      </div>
+                      <div className="flex-auto">
+                        <a
+                          href="/dsa/login/"
+                          className="block font-semibold text-gray-300 group-hover:text-cyan-400 transition-colors duration-300"
+                        >
+                          Direct Selling Agent
+                          <span className="absolute inset-0"></span>
+                        </a>
+                      </div>
+                    </div>
+                    
+                    <div className="group relative flex items-center gap-x-4 rounded-lg p-2 hover:bg-gradient-to-r hover:from-gray-800 hover:to-gray-700 transition-all duration-300">
+                      <div className="flex size-8 flex-none items-center justify-center rounded-lg bg-gray-800 group-hover:bg-gray-700 transition-colors duration-300 shadow-md">
+                        <Calculator className="size-4 text-gray-300 group-hover:text-cyan-400 transition-colors duration-300" />
+                      </div>
+                      <div className="flex-auto">
+                        <a
+                          href="/accounting/login/"
+                          className="block font-semibold text-gray-300 group-hover:text-cyan-400 transition-colors duration-300"
+                        >
+                          Accounting
+                          <span className="absolute inset-0"></span>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
           <motion.a
             href="/trial"
             variants={buttonHoverVariants}
@@ -543,7 +647,7 @@ export const Header = () => {
                       </AnimatePresence>
                     </div>
                     <a
-                      href="/reseller"
+                      href="tax-professional/login/"
                       className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 transition-colors duration-200"
                     >
                       Reseller
@@ -574,5 +678,5 @@ export const Header = () => {
         )}
       </AnimatePresence>
     </header>
-  );
+  );  
 };
