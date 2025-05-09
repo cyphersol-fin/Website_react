@@ -489,7 +489,7 @@ export const Header = () => {
             </AnimatePresence>
           </div>
           <motion.a
-            href="/trial"
+            href="/pricing/?plan=bsa"
             variants={buttonHoverVariants}
             whileHover="hover"
             whileTap="tap"
