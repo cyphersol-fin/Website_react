@@ -36,11 +36,12 @@ const faqsArray = [
       "No, your data remains confidential and is accessible only to authorized personnel involved in the analysis process. We maintain strict confidentiality protocols to ensure the privacy of your information.",
   },
 ];
+
 export function Hero() {
   return (
     <div className="relative bg-black min-h-screen overflow-hidden">
       <GlowEffect />
-
+      {/* hero section */}
       <div className="relative">
         <div className="container mx-auto px-4 py-12 md:py-12 lg:py-0">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center px-6 lg:px-16">
