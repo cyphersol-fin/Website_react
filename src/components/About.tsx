@@ -3,7 +3,6 @@ import { cn } from "./lib/utils";
 import { motion } from "framer-motion";
 import { Badge } from "./UI/Badge";
 import CTABanner from "./UI/CTABanner";
-import MouseMoveEffect from "./components/ui/mouse-move-effect";
 import CarouselSection from "./UI/Carousel";
 
 const fadeIn = {
@@ -77,7 +76,6 @@ export const About = () => {
   return (
     <>
       <div className="relative flex w-full flex-col items-center justify-center overflow-hidden ">
-        <MouseMoveEffect />
         <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4 py-12 max-auto max-w-6xl">
           <motion.div
             className="mb-8"
@@ -243,118 +241,6 @@ export const About = () => {
               </motion.p>
             </motion.div>
           </div>
-          {/* 
-          <div className="">
-            <motion.div
-              className=" max-auto max-w-6xl text-center mb-12"
-              {...fadeIn}
-            >
-              <h1 className="text-2xl sm:text-4xl md:text-6xl font-bold mb-6 md:mb-8 tracking-tight text-center">
-                <br />
-                <span
-                  className={cn(
-                    "bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-white/90 to-blue-400"
-                  )}
-                >
-                  About CypherSOL
-                </span>
-              </h1>
-              <p className="text-gray-300 leading-relaxed text-xl text-left">
-                CypherSOL Fintech India Private Ltd. has developed a
-                state-of-the-art Bank Statement Analyzer, that can extract
-                structured insights and valuable information from financial
-                statements. Instead of spending hours analyzing a large number
-                of data transactions from multiple banks or statements, you can
-                use CypherSOL to do so efficiently and in minimal time.
-              </p>
-            </motion.div>
-
-            <motion.div className="mb-8 text-left text-lg">
-              <motion.h1
-                className="text-xl mb-4 md:mb-6 tracking-tight text-left"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.7 }}
-              >
-                <span className="bg-clip-text text-transparent bg-gradient-to-b from-white to-white/80">
-                  CypherSOL Solutions can be used to filter data-driven insights
-                  by:
-                </span>
-              </motion.h1>
-              <motion.ol>
-                <motion.li className="mb-2">
-                  <span className="font-semibold text-cyan-300">
-                    {" "}
-                    Tax Professionals (chartered accountants, tax consultants){" "}
-                  </span>
-                  : For accounting, filing tax returns, reconciling bank
-                  transactions, identifying unexplained entries.
-                </motion.li>
-                <motion.li className="mb-2">
-                  <span className="font-semibold text-cyan-300">MSMEs</span> :
-                  To enhance financial management, automate bookkeeping, and
-                  gain real-time insights into cash flow and expenses.
-                </motion.li>
-                <motion.li className="mb-2">
-                  <span className="font-semibold text-cyan-300">
-                    Govt Agencies
-                  </span>{" "}
-                  : For financial compliance monitoring, fraud detection,
-                  taxation audits, Fund trial by analyzing banking transactions
-                  and identifying discrepancies in financial records.
-                </motion.li>
-                <motion.li className="mb-2">
-                  <span className="font-semibold text-cyan-300">
-                    Direct Selling Agents (DSAs)
-                  </span>{" "}
-                  : To evaluate clients' financial needs, analyze banking
-                  patterns, and identify the most suitable financiers based on
-                  income flow and repayment capacity.
-                </motion.li>
-                <motion.li className="mb-2">
-                  <span className="font-semibold text-cyan-300">
-                    Banks & NBFC’s
-                  </span>
-                  : To automate loan eligibility assessments, detect credit
-                  risks, assess cash flow patterns, and streamline underwriting
-                  processes for faster and more accurate lending decisions.
-                </motion.li>
-                <motion.li className="mb-2">
-                  <span className="font-semibold text-cyan-300 text-lg">
-                    Forensic Accounting
-                  </span>{" "}
-                  : For fraud investigation, financial crime detection, and
-                  regulatory compliance checks by analyzing inconsistencies in
-                  financial transactions and identifying suspicious activities.
-                </motion.li>
-              </motion.ol>
-            </motion.div>
-
-            <motion.div
-              className="max-w-5xl mx-auto mt-12 text-left"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.8, duration: 0.8 }}
-            >
-              <p className="text-gray-300 mb-6 text-xl">
-                CypherSOL can be used by a wide set of market players, unlike
-                others that are designed primarily for banks and NBFCs. It
-                offers business partners Safe, Analytical, Fast, and Efficient
-                analysis so they may better serve their clients and their
-                requirements.
-              </p>
-              <p className="text-gray-300 text-xl">
-                CypherSOL is a startup that was conceived by a team experts in
-                technology, banking risk management and a Chartered Accountant.
-                The board is being advised by a reputed BFSI analyst who spent
-                30 years covering the financial sector. The team has used its
-                practical experience to develop a sophisticated tool that can
-                simplify and save time for tax professionals, financiers, DSAs,
-                and businesses to filter information on transactions.
-              </p>
-            </motion.div>
-          </div> */}
         </div>
       </div>
 
@@ -459,7 +345,7 @@ export const About = () => {
         </motion.p>
 
         <motion.img
-          src="https://media.licdn.com/dms/image/v2/D5622AQEzE-rrMQL4Yw/feedshare-shrink_2048_1536/feedshare-shrink_2048_1536/0/1714391001222?e=1743033600&v=beta&t=ci-drTeCeL1zKU7g75DZiO7ofxPrQWkWirJ4TOcUIgA"
+          src="assets/images/teammm.jpeg"
           alt="testimonial"
           className="w-full h-auto -rotate-1 rounded-lg"
           initial={{ opacity: 0, scale: 0.9, rotate: 0 }}

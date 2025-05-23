@@ -7,27 +7,7 @@ import { Badge } from "./UI/Badge";
 import { FaEnvelope, FaMapMarkerAlt, FaPhoneAlt } from "react-icons/fa";
 import FAQSection from "./FAQSection";
 import CTABanner from "./UI/CTABanner";
-
-const faqsArray = [
-  {
-    question:
-      "How secure is the data storage and processing of sensitive financial information?",
-    answer:
-      "Our data storage and processing adhere to the highest security standards, employing encryption and robust protocols to safeguard sensitive financial information. Once the data is extracted it gets deleted from our system.",
-  },
-  {
-    question:
-      "Are there any privacy concerns associated with sharing my bank statements for analysis?",
-    answer:
-      "We prioritize your privacy and ensure that your bank statements are securely analyzed without compromising your personal data. We adhere to strict privacy policies to protect your information.",
-  },
-  {
-    question: "Can others see the data I am uploading?",
-    answer:
-      "No, your data remains confidential and is accessible only to authorized personnel involved in the analysis process. We maintain strict confidentiality protocols to ensure the privacy of your information.",
-  },
-];
-
+import { contactUsFaqsArray } from "./data/FAQs";
 // ContactForm component with animation
 const ContactForm = () => {
   return (
@@ -222,7 +202,7 @@ export const ContactPage = () => {
         </div>
       </div>
       <div className="container mx-auto px-4 animate-fadeIn">
-        <FAQSection items={faqsArray} />
+        <FAQSection items={contactUsFaqsArray} />
       </div>
       {/* Cta Banner */}
       <CTABanner

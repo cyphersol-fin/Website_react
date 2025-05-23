@@ -1,96 +1,167 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { Calculator, Building2, FileText, FileSpreadsheet, UserCheck, Handshake, BarChart3, PersonStanding, Database, FileDigit, Receipt, CreditCard, PieChart, FileCheck, ClipboardCheck, BadgePercent, User, Briefcase, Landmark, Server } from "lucide-react";
+import {
+  Handshake,
+  Database,
+  Receipt,
+  PieChart,
+  FileCheck,
+  ClipboardCheck,
+  BadgePercent,
+  User,
+  Briefcase,
+  Landmark,
+  Server,
+} from "lucide-react";
 
 const features = [
   {
     id: "tally-data-manager",
     name: "Tally Data Manager",
-    description: "Advanced tools for seamless Tally data management and integration.",
-    points: ["Data Import/Export", "Auto Reconciliation", "Batch Processing", "Custom Mapping"],
+    description:
+      "Advanced tools for seamless Tally data management and integration.",
+    points: [
+      "Data Import/Export",
+      "Auto Reconciliation",
+      "Batch Processing",
+      "Custom Mapping",
+    ],
     icon: Database,
-    color: "from-orange-400 to-red-500"
+    color: "from-orange-400 to-red-500",
   },
   {
     id: "tally-connector",
     name: "Tally Connector Pro",
-    description: "Connect and synchronize Tally with other business applications seamlessly.",
-    points: ["Real-time Sync", "Multi-platform Integration", "Automated Workflows", "Data Validation"],
+    description:
+      "Connect and synchronize Tally with other business applications seamlessly.",
+    points: [
+      "Real-time Sync",
+      "Multi-platform Integration",
+      "Automated Workflows",
+      "Data Validation",
+    ],
     icon: Server,
-    color: "from-red-400 to-orange-500"
+    color: "from-red-400 to-orange-500",
   },
   {
     id: "tally-reports",
     name: "Tally Reports Suite",
     description: "Comprehensive reporting and analytics tools for Tally data.",
-    points: ["Custom Reports", "Data Visualization", "Scheduled Exports", "Interactive Dashboards"],
+    points: [
+      "Custom Reports",
+      "Data Visualization",
+      "Scheduled Exports",
+      "Interactive Dashboards",
+    ],
     icon: PieChart,
-    color: "from-amber-400 to-yellow-500"
+    color: "from-amber-400 to-yellow-500",
   },
   {
     id: "tally-automation",
     name: "Tally Automation",
-    description: "Automate repetitive tasks and workflows in Tally environment.",
-    points: ["Task Scheduling", "Process Automation", "Error Handling", "Audit Logging"],
+    description:
+      "Automate repetitive tasks and workflows in Tally environment.",
+    points: [
+      "Task Scheduling",
+      "Process Automation",
+      "Error Handling",
+      "Audit Logging",
+    ],
     icon: ClipboardCheck,
-    color: "from-yellow-400 to-amber-500"
+    color: "from-yellow-400 to-amber-500",
   },
   {
     id: "tally-cloud",
     name: "Tally Cloud Backup",
     description: "Secure cloud backup and recovery solution for Tally data.",
-    points: ["Automated Backups", "Secure Encryption", "Quick Recovery", "Version History"],
+    points: [
+      "Automated Backups",
+      "Secure Encryption",
+      "Quick Recovery",
+      "Version History",
+    ],
     icon: Server,
-    color: "from-orange-400 to-red-500"
+    color: "from-orange-400 to-red-500",
   },
   {
     id: "bank-statement",
     name: "Bank Statement Analyzer",
     description: "Intelligent bank statement analysis and processing system.",
-    points: ["Transaction Analysis", "Pattern Recognition", "Cash Flow Tracking", "Account Monitoring"],
+    points: [
+      "Transaction Analysis",
+      "Pattern Recognition",
+      "Cash Flow Tracking",
+      "Account Monitoring",
+    ],
     icon: Landmark,
-    color: "from-emerald-400 to-teal-500"
+    color: "from-emerald-400 to-teal-500",
   },
   {
     id: "itr-filing",
     name: "ITR Filing System",
-    description: "Streamlined income tax return filing and management solution.",
-    points: ["Auto Calculation", "Compliance Check", "Document Verification", "Status Tracking"],
+    description:
+      "Streamlined income tax return filing and management solution.",
+    points: [
+      "Auto Calculation",
+      "Compliance Check",
+      "Document Verification",
+      "Status Tracking",
+    ],
     icon: FileCheck,
-    color: "from-blue-400 to-indigo-500"
+    color: "from-blue-400 to-indigo-500",
   },
   {
     id: "invoice-manager",
     name: "Invoice Manager Pro",
     description: "Digital invoice processing and management platform.",
-    points: ["Quick Generation", "Template Library", "Payment Tracking", "GST Compliance"],
+    points: [
+      "Quick Generation",
+      "Template Library",
+      "Payment Tracking",
+      "GST Compliance",
+    ],
     icon: Receipt,
-    color: "from-purple-400 to-pink-500"
+    color: "from-purple-400 to-pink-500",
   },
   {
     id: "ca-suite",
     name: "CA Practice Suite",
     description: "Comprehensive suite of tools for chartered accountants.",
-    points: ["Client Management", "Financial Reporting", "Tax Planning", "Audit Tools"],
+    points: [
+      "Client Management",
+      "Financial Reporting",
+      "Tax Planning",
+      "Audit Tools",
+    ],
     icon: Briefcase,
-    color: "from-yellow-400 to-orange-500"
+    color: "from-yellow-400 to-orange-500",
   },
   {
     id: "dsa-platform",
     name: "DSA Management Platform",
     description: "Efficient loan processing and management system for DSAs.",
-    points: ["Lead Management", "Loan Processing", "Commission Tracking", "Document Handling"],
+    points: [
+      "Lead Management",
+      "Loan Processing",
+      "Commission Tracking",
+      "Document Handling",
+    ],
     icon: Handshake,
-    color: "from-cyan-400 to-blue-500"
+    color: "from-cyan-400 to-blue-500",
   },
   {
     id: "gst-returns",
     name: "GST Returns Automation",
     description: "Automated GST return filing and reconciliation system.",
-    points: ["Return Filing", "Input Credit", "Reconciliation", "Compliance Monitor"],
+    points: [
+      "Return Filing",
+      "Input Credit",
+      "Reconciliation",
+      "Compliance Monitor",
+    ],
     icon: BadgePercent,
-    color: "from-green-400 to-emerald-500"
+    color: "from-green-400 to-emerald-500",
   },
   {
     id: "developer-profile",
@@ -105,11 +176,11 @@ const features = [
       "Cloud Deployment & Monitoring (AWS, GCP)",
       "Version Control & Code Reviews (Git)",
       "Unit Testing & Debugging",
-      "Agile Workflow & Team Collaboration"
+      "Agile Workflow & Team Collaboration",
     ],
     icon: User,
-    color: "from-blue-400 to-cyan-500"
-  }
+    color: "from-blue-400 to-cyan-500",
+  },
 ];
 
 const ProductsSection = () => {
@@ -120,8 +191,8 @@ const ProductsSection = () => {
   const [orbitRotation, setOrbitRotation] = useState(0); // State to track orbit rotation
   const [isPaused, setIsPaused] = useState(false);
   const [windowSize, setWindowSize] = useState({
-    width: typeof window !== 'undefined' ? window.innerWidth : 1200,
-    height: typeof window !== 'undefined' ? window.innerHeight : 800
+    width: typeof window !== "undefined" ? window.innerWidth : 1200,
+    height: typeof window !== "undefined" ? window.innerHeight : 800,
   });
 
   // Smooth rotation speed ramp-up
@@ -135,7 +206,10 @@ const ProductsSection = () => {
     function ramp(timestamp) {
       if (!start) start = timestamp;
       const elapsed = timestamp - start;
-      const speed = Math.min(MAX_ROTATION_SPEED, (MAX_ROTATION_SPEED * elapsed) / RAMP_DURATION);
+      const speed = Math.min(
+        MAX_ROTATION_SPEED,
+        (MAX_ROTATION_SPEED * elapsed) / RAMP_DURATION
+      );
       setRotationSpeed(speed);
       if (elapsed < RAMP_DURATION) {
         requestAnimationFrame(ramp);
@@ -149,7 +223,7 @@ const ProductsSection = () => {
     let animationFrameId;
     const animate = () => {
       if (!isPaused) {
-        setOrbitRotation(prev => (prev + rotationSpeed) % (2 * Math.PI));
+        setOrbitRotation((prev) => (prev + rotationSpeed) % (2 * Math.PI));
       }
       animationFrameId = requestAnimationFrame(animate);
     };
@@ -162,42 +236,43 @@ const ProductsSection = () => {
     const handleResize = () => {
       setWindowSize({
         width: window.innerWidth,
-        height: window.innerHeight
+        height: window.innerHeight,
       });
     };
-    
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   // Responsive configuration that preserves original UI
   const getResponsiveValues = () => {
     const width = windowSize.width;
-    
+
     // Calculate scale factor based on screen width
     // This maintains the original UI proportions while scaling everything down
     const calculateScale = () => {
-      if (width < 480) return 0.5;      // Extra small devices
-      if (width < 640) return 0.6;      // Small mobile
-      if (width < 768) return 0.7;      // Mobile
-      if (width < 1024) return 0.85;    // Tablets
-      return 1;                         // Desktop (original size)
+      if (width < 480) return 0.5; // Extra small devices
+      if (width < 640) return 0.6; // Small mobile
+      if (width < 768) return 0.7; // Mobile
+      if (width < 1024) return 0.85; // Tablets
+      return 1; // Desktop (original size)
     };
-    
+
     const scale = calculateScale();
-    
+
     // Apply scale to all original values
     return {
       featureSize: Math.round(100 * scale),
       innerOrbitRadius: Math.round(180 * scale),
       outerOrbitRadius: Math.round(320 * scale),
       centerSize: Math.round(220 * scale),
-      scale: scale
+      scale: scale,
     };
   };
-  
+
   // Get responsive values
-  const { featureSize, innerOrbitRadius, outerOrbitRadius, centerSize } = getResponsiveValues();
+  const { featureSize, innerOrbitRadius, outerOrbitRadius, centerSize } =
+    getResponsiveValues();
 
   // Distribute features between two orbits - keeping original distribution
   const innerOrbitFeatures = features.slice(0, 3); // First 3 features on inner orbit
@@ -206,7 +281,7 @@ const ProductsSection = () => {
   // Calculate position for a feature on the inner orbit
   const getInnerOrbitPosition = (index, totalFeatures) => {
     // Calculate fixed angle for this feature on the inner orbit
-    const angle = (index * (2 * Math.PI / totalFeatures)) + orbitRotation;
+    const angle = index * ((2 * Math.PI) / totalFeatures) + orbitRotation;
 
     // Calculate x and y coordinates on the orbit
     const x = innerOrbitRadius * Math.cos(angle);
@@ -214,14 +289,14 @@ const ProductsSection = () => {
 
     return {
       left: `calc(50% + ${x}px - ${featureSize / 2}px)`,
-      top: `calc(50% + ${y}px - ${featureSize / 2}px)`
+      top: `calc(50% + ${y}px - ${featureSize / 2}px)`,
     };
   };
 
   // Calculate position for a feature on the outer orbit
   const getOuterOrbitPosition = (index, totalFeatures) => {
     // Calculate fixed angle for this feature on the outer orbit
-    const angle = (index * (2 * Math.PI / totalFeatures)) + orbitRotation;
+    const angle = index * ((2 * Math.PI) / totalFeatures) + orbitRotation;
 
     // Calculate x and y coordinates on the orbit
     const x = outerOrbitRadius * Math.cos(angle);
@@ -229,7 +304,7 @@ const ProductsSection = () => {
 
     return {
       left: `calc(50% + ${x}px - ${featureSize / 2}px)`,
-      top: `calc(50% + ${y}px - ${featureSize / 2}px)`
+      top: `calc(50% + ${y}px - ${featureSize / 2}px)`,
     };
   };
 
@@ -260,8 +335,6 @@ const ProductsSection = () => {
     }
   };
 
-
-
   return (
     <div className="relative w-full overflow-hidden flex flex-col">
       {/* bg-gradient-to-br from-[#050A14] to-[#121A2A] */}
@@ -289,7 +362,9 @@ const ProductsSection = () => {
                 top: `${10 + i * 15}%`,
                 height: "1px",
                 width: "100%",
-                background: `linear-gradient(90deg, transparent, ${i % 2 === 0 ? "#22d3ee" : "#8b5cf6"}40, transparent)`,
+                background: `linear-gradient(90deg, transparent, ${
+                  i % 2 === 0 ? "#22d3ee" : "#8b5cf6"
+                }40, transparent)`,
               }}
             />
           ))}
@@ -306,7 +381,8 @@ const ProductsSection = () => {
             Our Solutions
           </h2>
           <p className="text-gray-400 max-w-2xl mx-auto px-4 text-sm sm:text-base md:text-lg text-center">
-            Explore our comprehensive suite of financial tools designed to streamline your business operations
+            Explore our comprehensive suite of financial tools designed to
+            streamline your business operations
           </p>
         </div>
       </div>
@@ -323,7 +399,7 @@ const ProductsSection = () => {
           style={{
             width: `${innerOrbitRadius * 2}px`,
             height: `${innerOrbitRadius * 2}px`,
-            borderRadius: '50%',
+            borderRadius: "50%",
             zIndex: 5,
           }}
           initial={{ opacity: 0 }}
@@ -337,7 +413,7 @@ const ProductsSection = () => {
           style={{
             width: `${outerOrbitRadius * 2}px`,
             height: `${outerOrbitRadius * 2}px`,
-            borderRadius: '50%',
+            borderRadius: "50%",
             zIndex: 5,
           }}
           initial={{ opacity: 0 }}
@@ -352,12 +428,13 @@ const ProductsSection = () => {
             style={{
               width: `${centerSize}px`,
               height: `${centerSize}px`,
-              boxShadow: '0 0 90px 15px rgba(34,211,238,0.45)',
+              boxShadow: "0 0 90px 15px rgba(34,211,238,0.45)",
             }}
             initial={{ scale: 0 }}
             animate={{
               scale: activeFeature || hoveredFeature ? 0.92 : 1,
-              filter: activeFeature || hoveredFeature ? 'blur(5px)' : 'blur(0px)',
+              filter:
+                activeFeature || hoveredFeature ? "blur(5px)" : "blur(0px)",
               opacity: activeFeature || hoveredFeature ? 0.8 : 1,
             }}
             transition={{
@@ -365,7 +442,11 @@ const ProductsSection = () => {
             }}
           >
             <div className="flex flex-col items-center justify-center w-full h-full">
-              <img src="/assets/images/Logo_new.png" alt="CypherSOL" className="w-full h-auto object-contain p-2" />
+              <img
+                src="/assets/images/Logo_new.png"
+                alt="CypherSOL"
+                className="w-full h-auto object-contain p-2"
+              />
             </div>
           </motion.div>
         </div>
@@ -373,7 +454,8 @@ const ProductsSection = () => {
         {/* Inner Orbit Features - Now with controlled animation */}
         {innerOrbitFeatures.map((feature, i) => {
           // Calculate angle for this feature based on its position in the orbit
-          const angle = (i * (2 * Math.PI / innerOrbitFeatures.length)) + orbitRotation;
+          const angle =
+            i * ((2 * Math.PI) / innerOrbitFeatures.length) + orbitRotation;
           // Calculate position directly from the angle
           const x = innerOrbitRadius * Math.cos(angle);
           const y = innerOrbitRadius * Math.sin(angle);
@@ -391,19 +473,27 @@ const ProductsSection = () => {
                 left: `calc(50% + ${x}px - ${featureSize / 2}px)`,
                 top: `calc(50% + ${y}px - ${featureSize / 2}px)`,
                 background: `linear-gradient(135deg, ${feature.color})`,
-                boxShadow: hoveredFeature === feature.id ? '0 0 30px rgba(255, 255, 255, 0.7)' : '0 0 20px rgba(34,211,238,0.2)',
+                boxShadow:
+                  hoveredFeature === feature.id
+                    ? "0 0 30px rgba(255, 255, 255, 0.7)"
+                    : "0 0 20px rgba(34,211,238,0.2)",
               }}
               animate={{
                 scale: hoveredFeature === feature.id ? 1.25 : 1,
-                filter: hoveredFeature && hoveredFeature !== feature.id ? 'blur(6px)' : 'blur(0px)',
-                opacity: hoveredFeature && hoveredFeature !== feature.id ? 0.4 : 1,
+                filter:
+                  hoveredFeature && hoveredFeature !== feature.id
+                    ? "blur(6px)"
+                    : "blur(0px)",
+                opacity:
+                  hoveredFeature && hoveredFeature !== feature.id ? 0.4 : 1,
                 zIndex: hoveredFeature === feature.id ? 50 : 30,
               }}
               transition={{ type: "spring", stiffness: 300, damping: 22 }}
             >
               {/* Floating info/title box on hover */}
               <AnimatePresence>
-                {(hoveredFeature === feature.id || hoveredInfoBox === feature.id) && (
+                {(hoveredFeature === feature.id ||
+                  hoveredInfoBox === feature.id) && (
                   <motion.div
                     initial={{ opacity: 0, y: -24 }}
                     animate={{ opacity: 1, y: -48 }}
@@ -413,14 +503,19 @@ const ProductsSection = () => {
                     style={{
                       zIndex: 100,
                       transform: `translate(-50%, -100%)`,
-                      maxWidth: "250px"
+                      maxWidth: "250px",
                     }}
                     onMouseEnter={() => setHoveredInfoBox(feature.id)}
                     onMouseLeave={() => setHoveredInfoBox(null)}
                   >
                     <div className="flex flex-col gap-2">
-                      <h3 className="text-sm font-bold text-cyan-400">{feature.name}</h3>
-                      <p className="text-xs text-gray-300 font-normal leading-tight">{feature.description || "Innovative solution designed to optimize your financial operations."}</p>
+                      <h3 className="text-sm font-bold text-cyan-400">
+                        {feature.name}
+                      </h3>
+                      <p className="text-xs text-gray-300 font-normal leading-tight">
+                        {feature.description ||
+                          "Innovative solution designed to optimize your financial operations."}
+                      </p>
                       <div className="flex justify-end mt-1">
                         <button
                           className="text-xs bg-cyan-600 hover:bg-cyan-500 text-white px-3 py-1 rounded-md transition-colors"
@@ -429,7 +524,7 @@ const ProductsSection = () => {
                             // Navigate to feature page or open modal with more details
 
                             // Set this to navigate to feature page
-                            navigate('/bank-statement-analyzer');
+                            navigate("/bank-statement-analyzer");
 
                             // Set this to open modal
                             // setActiveFeature(feature);
@@ -442,16 +537,21 @@ const ProductsSection = () => {
                   </motion.div>
                 )}
               </AnimatePresence>
-              <feature.icon className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 lg:w-8 lg:h-8 text-white/90 mb-0.5 sm:mb-1" style={{ transform: 'translateZ(0)' }} />
-              <span className="text-[8px] sm:text-[9px] md:text-[10px] lg:text-xs text-white/90 font-semibold leading-tight mt-0.5 sm:mt-1 whitespace-nowrap">{feature.name}</span>
+              <feature.icon
+                className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 lg:w-8 lg:h-8 text-white/90 mb-0.5 sm:mb-1"
+                style={{ transform: "translateZ(0)" }}
+              />
+              <span className="text-[8px] sm:text-[9px] md:text-[10px] lg:text-xs text-white/90 font-semibold leading-tight mt-0.5 sm:mt-1 whitespace-nowrap">
+                {feature.name}
+              </span>
 
               {/* Line connecting to center */}
               <div
                 className="absolute left-1/2 top-1/2 -z-10 bg-gradient-to-r from-cyan-500/40 to-transparent"
                 style={{
                   width: `${innerOrbitRadius}px`,
-                  height: '1px',
-                  transformOrigin: 'left center',
+                  height: "1px",
+                  transformOrigin: "left center",
                   transform: `rotate(${angle + Math.PI}rad)`,
                 }}
               />
@@ -462,7 +562,8 @@ const ProductsSection = () => {
         {/* Outer Orbit Features - Now with controlled animation */}
         {outerOrbitFeatures.map((feature, i) => {
           // Calculate angle for this feature based on its position in the orbit
-          const angle = (i * (2 * Math.PI / outerOrbitFeatures.length)) + orbitRotation;
+          const angle =
+            i * ((2 * Math.PI) / outerOrbitFeatures.length) + orbitRotation;
           // Calculate position directly from the angle
           const x = outerOrbitRadius * Math.cos(angle);
           const y = outerOrbitRadius * Math.sin(angle);
@@ -480,19 +581,27 @@ const ProductsSection = () => {
                 left: `calc(50% + ${x}px - ${featureSize / 2}px)`,
                 top: `calc(50% + ${y}px - ${featureSize / 2}px)`,
                 background: `linear-gradient(135deg, ${feature.color})`,
-                boxShadow: hoveredFeature === feature.id ? '0 0 30px rgba(255, 255, 255, 0.7)' : '0 0 20px rgba(34,211,238,0.2)',
+                boxShadow:
+                  hoveredFeature === feature.id
+                    ? "0 0 30px rgba(255, 255, 255, 0.7)"
+                    : "0 0 20px rgba(34,211,238,0.2)",
               }}
               animate={{
                 scale: hoveredFeature === feature.id ? 1.25 : 1,
-                filter: hoveredFeature && hoveredFeature !== feature.id ? 'blur(6px)' : 'blur(0px)',
-                opacity: hoveredFeature && hoveredFeature !== feature.id ? 0.4 : 1,
+                filter:
+                  hoveredFeature && hoveredFeature !== feature.id
+                    ? "blur(6px)"
+                    : "blur(0px)",
+                opacity:
+                  hoveredFeature && hoveredFeature !== feature.id ? 0.4 : 1,
                 zIndex: hoveredFeature === feature.id ? 50 : 30,
               }}
               transition={{ type: "spring", stiffness: 300, damping: 22 }}
             >
               {/* Floating info/title box on hover */}
               <AnimatePresence>
-                {(hoveredFeature === feature.id || hoveredInfoBox === feature.id) && (
+                {(hoveredFeature === feature.id ||
+                  hoveredInfoBox === feature.id) && (
                   <motion.div
                     initial={{ opacity: 0, y: -24 }}
                     animate={{ opacity: 1, y: -48 }}
@@ -502,14 +611,19 @@ const ProductsSection = () => {
                     style={{
                       zIndex: 100,
                       transform: `translate(-50%, -100%)`,
-                      maxWidth: "250px"
+                      maxWidth: "250px",
                     }}
                     onMouseEnter={() => setHoveredInfoBox(feature.id)}
                     onMouseLeave={() => setHoveredInfoBox(null)}
                   >
                     <div className="flex flex-col gap-2">
-                      <h3 className="text-sm font-bold text-cyan-400">{feature.name}</h3>
-                      <p className="text-xs text-gray-300 font-normal leading-tight">{feature.description || "Innovative solution designed to optimize your financial operations."}</p>
+                      <h3 className="text-sm font-bold text-cyan-400">
+                        {feature.name}
+                      </h3>
+                      <p className="text-xs text-gray-300 font-normal leading-tight">
+                        {feature.description ||
+                          "Innovative solution designed to optimize your financial operations."}
+                      </p>
                       <div className="flex justify-end mt-1">
                         <button
                           className="text-xs bg-cyan-600 hover:bg-cyan-500 text-white px-3 py-1 rounded-md transition-colors"
@@ -518,7 +632,7 @@ const ProductsSection = () => {
                             // Navigate to feature page or open modal with more details
 
                             // Set this to navigate to feature page
-                            navigate('/bank-statement-analyzer');
+                            navigate("/bank-statement-analyzer");
 
                             // Set this to open modal
                             // setActiveFeature(feature);
@@ -531,16 +645,21 @@ const ProductsSection = () => {
                   </motion.div>
                 )}
               </AnimatePresence>
-              <feature.icon className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 lg:w-8 lg:h-8 text-white/90 mb-0.5 sm:mb-1" style={{ transform: 'translateZ(0)' }} />
-              <span className="text-[8px] sm:text-[9px] md:text-[10px] lg:text-xs text-white/90 font-semibold leading-tight mt-0.5 sm:mt-1 whitespace-nowrap">{feature.name}</span>
+              <feature.icon
+                className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 lg:w-8 lg:h-8 text-white/90 mb-0.5 sm:mb-1"
+                style={{ transform: "translateZ(0)" }}
+              />
+              <span className="text-[8px] sm:text-[9px] md:text-[10px] lg:text-xs text-white/90 font-semibold leading-tight mt-0.5 sm:mt-1 whitespace-nowrap">
+                {feature.name}
+              </span>
 
               {/* Line connecting to center */}
               <div
                 className="absolute left-1/2 top-1/2 -z-10 bg-gradient-to-r from-cyan-500/40 to-transparent"
                 style={{
                   width: `${outerOrbitRadius}px`,
-                  height: '1px',
-                  transformOrigin: 'left center',
+                  height: "1px",
+                  transformOrigin: "left center",
                   transform: `rotate(${angle + Math.PI}rad)`,
                 }}
               />
@@ -561,11 +680,13 @@ const ProductsSection = () => {
           >
             <motion.div
               className="w-[95%] sm:w-[90%] max-w-[500px] p-4 sm:p-6 md:p-8 bg-gradient-to-br from-gray-900/90 to-gray-800/90 rounded-2xl shadow-2xl border border-cyan-500/30 mx-auto overflow-y-auto max-h-[90vh] md:max-h-[80vh]"
-              onClick={e => e.stopPropagation()}
+              onClick={(e) => e.stopPropagation()}
               layoutId={activeFeature.id}
             >
               <div className="flex items-center gap-4 mb-6">
-                <div className={`p-3 rounded-full bg-gradient-to-br ${activeFeature.color}`}>
+                <div
+                  className={`p-3 rounded-full bg-gradient-to-br ${activeFeature.color}`}
+                >
                   <activeFeature.icon className="w-7 h-7 md:w-8 md:h-8 text-white" />
                 </div>
                 <h3 className="text-xl md:text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-400">

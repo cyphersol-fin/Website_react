@@ -1,4 +1,9 @@
-import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useLocation,
+} from "react-router-dom";
 // import Home from "./pages/Home";
 import { Header } from "./components/layout/Header";
 import { Home } from "./pages/Home";
@@ -13,7 +18,7 @@ import { TeamPage } from "./pages/TeamPage";
 import { ResellerPage } from "./pages/ResellerPage";
 import { ComboPage } from "./pages/ComboPage";
 import { useEffect } from "react";
-import { ProductPage } from "./pages/ProductPage";
+// import { ProductPage } from "./pages/ProductPage";
 import { ExcelToTallyPage } from "./pages/ExcelToTallyPage";
 // Legal
 import { Terms } from "./components/legal/Terms";
@@ -25,6 +30,7 @@ import { BankAnalyzer } from "./components/BankAnalyzer";
 import { DsaPage } from "./pages/DsaPage";
 import { MsmePage } from "./pages/MsmePage";
 import { ForensicPage } from "./pages/ForensicPage";
+import MouseMoveEffect from "./components/components/ui/mouse-move-effect";
 
 // Scroll to top on route change
 function ScrollToTop() {
@@ -47,6 +53,7 @@ function App() {
         <div className="relative z-10">
           <NotificationBanner />
           <Header />
+          <MouseMoveEffect />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/price" element={<Price />} />
@@ -69,8 +76,8 @@ function App() {
             <Route path="/dmca" element={<Dmca />} />
             <Route path="/refund-policy" element={<RefundPolicy />} />
             <Route path="/disclaimer" element={<Disclaimer />} />
-            <Route path="/msme" element={< MsmePage />} />
-            <Route path="/forensic" element={< ForensicPage />} />
+            <Route path="/msme" element={<MsmePage />} />
+            <Route path="/forensic" element={<ForensicPage />} />
           </Routes>
           <Footer />
         </div>

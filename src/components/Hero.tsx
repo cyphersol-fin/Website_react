@@ -14,34 +14,15 @@ import { motion } from "framer-motion";
 
 import { TextAnimate } from "./components/ui/text-animate";
 import { challenges } from "./data/challenges";
-import ProductsSolar from "./ProductsSolar";
+import ProductsSection from "./ProductsSection/ProductsSections";
+import { homeFaqsArray } from "./data/FAQs";
 const base = import.meta.env.BASE_URL; // Will be '/static/' in production (as per Vite config)
-
-const faqsArray = [
-  {
-    question:
-      "How secure is the data storage and processing of sensitive financial information?",
-    answer:
-      "Our data storage and processing adhere to the highest security standards, employing encryption and robust protocols to safeguard sensitive financial information. Once the data is extracted it gets deleted from our system.",
-  },
-  {
-    question:
-      "Are there any privacy concerns associated with sharing my bank statements for analysis?",
-    answer:
-      "We prioritize your privacy and ensure that your bank statements are securely analyzed without compromising your personal data. We adhere to strict privacy policies to protect your information.",
-  },
-  {
-    question: "Can others see the data I am uploading?",
-    answer:
-      "No, your data remains confidential and is accessible only to authorized personnel involved in the analysis process. We maintain strict confidentiality protocols to ensure the privacy of your information.",
-  },
-];
 
 export function Hero() {
   return (
     <div className="relative bg-black min-h-screen overflow-hidden">
       <GlowEffect />
-      {/* hero section */}
+
       <div className="relative">
         <div className="container mx-auto px-4 py-12 md:py-12 lg:py-0">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center px-6 lg:px-16">
@@ -139,7 +120,9 @@ export function Hero() {
       </div>
 
       {/* 3d insert here */}
-      <ProductsSolar />
+      <div className="w-full overflow-hidden">
+        <ProductsSection />
+      </div>
 
       <section className="container mx-auto px-6 sm:px-10 md:px-16 lg:px-20 py-12">
         <motion.div
@@ -225,7 +208,7 @@ export function Hero() {
       </section>
 
       <div className="container mx-auto px-4 py-12 animate-fadeIn">
-        <FAQSection items={faqsArray} />
+        <FAQSection items={homeFaqsArray} />
       </div>
     </div>
   );
