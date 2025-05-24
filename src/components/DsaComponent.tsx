@@ -5,7 +5,6 @@ import CaseStudyCard from "./components/ui/case-study";
 import { Badge } from "./UI/Badge";
 import TestimonialCard from "./components/ui/testimonial-cards";
 import FAQSection from "./FAQSection";
-import { dsaArray } from "./data/FAQs/DsaFaqs";
 import { CardComponent } from "./UI/CardComponent";
 import {
   CheckCircle,
@@ -18,6 +17,7 @@ import {
   FileSpreadsheet,
   Shield,
 } from "lucide-react";
+import { dsaFaqsArray } from "./data/FAQs";
 
 const cardData = [
   {
@@ -352,7 +352,7 @@ export const DsaComponent = () => {
 
       {/* Testimonials Section */}
       <section>
-        <div className="container px-4 sm:px-6 lg:px-8 py-12 max-w-6xl mx-auto">
+        <div className="container px-4 sm:px-6 lg:px-8 py-12 max-w-7xl mx-auto">
           <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
             <Badge>Testimonials</Badge>
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
@@ -369,6 +369,7 @@ export const DsaComponent = () => {
               quote="CypherSOL’s Bank Statement Analyzer has been an invaluable tool for my work as a Corporate Loan Advisor (DSA). It streamlines the process of analyzing bank statements, categorizing transactions, and extracting critical insights in seconds, significantly enhancing efficiency.
               The advanced features such as trend analysis, date-wise average bank balance computation, and detailed loan eligibility assessment—both bank-wise and product-wise—have been instrumental in presenting precise and actionable data to lenders. This not only saves time but also improves the accuracy and quality of my client submissions.
               I highly recommend CypherSOL to DSAs looking to elevate their operations and deliver exceptional results"
+              note="Time-Saving, Accurate Insights"
               author="Neeraj Nigudker"
               role="Senior DSA, Mumbai"
               rating={5}
@@ -376,6 +377,7 @@ export const DsaComponent = () => {
             />
             <TestimonialCard
               quote="The lender matching feature alone has increased my conversion rate by 35%. I'm now able to place clients with the right lenders on the first attempt."
+              note="Increased Conversion Rate"
               author="Priya Sharma"
               role="Independent DSA, Delhi"
               rating={5}
@@ -383,6 +385,7 @@ export const DsaComponent = () => {
             />
             <TestimonialCard
               quote="As a new DSA, CypherSOL gave me the confidence to handle complex loan applications. The automated analysis makes me look like a seasoned professional to my clients."
+              note="Automated Analysis"
               author="Vikram Singh"
               role="DSA, Bangalore"
               rating={4}
@@ -394,7 +397,7 @@ export const DsaComponent = () => {
 
       {/* FAQs Section */}
       <section>
-        <FAQSection items={dsaArray} />
+        <FAQSection items={dsaFaqsArray} />
       </section>
     </>
   );

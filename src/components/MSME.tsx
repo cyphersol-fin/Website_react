@@ -18,26 +18,27 @@ import {
   AlertTriangle,
   BarChart3,
   Download,
-  ChevronRight,
   MapPin,
   Users,
-  ShoppingBag, 
-  CheckCircle,
-  TrendingUp,
-  BookOpen,
-  ClipboardCheck, Star, Quote, User, ChartBar, CreditCard, Briefcase, Building, Coins, Smartphone
+  ShoppingBag,
+  ClipboardCheck,
+  CreditCard,
+  Briefcase,
+  Building,
 } from "lucide-react";
 
 import { CardComponent } from "./UI/CardComponent";
 import FAQSection from "./FAQSection";
 import { EnhancedWorkflowSection } from "./EnhancedWorkflowSection";
-import { TestimonialsSection } from "./TestimonialSection"; 
+import { TestimonialsSection } from "./TestimonialSection";
+import { msmeFaqsArray } from "./data/FAQs";
 
 const advData = [
   {
     id: 1,
     title: "Instant Financial Summaries",
-    description: "Organized data ready immediately for efficient business decision-making.",
+    description:
+      "Organized data ready immediately for efficient business decision-making.",
     Icon: () => <Clock className="w-6 h-6" />,
   },
   {
@@ -50,61 +51,71 @@ const advData = [
   {
     id: 3,
     title: "100% Offline Security",
-    description: "Complete confidentiality, zero internet dependence for your sensitive financial data.",
+    description:
+      "Complete confidentiality, zero internet dependence for your sensitive financial data.",
     Icon: () => <ShieldCheckIcon className="w-6 h-6" />,
   },
   {
     id: 4,
     title: "Supports All Banks & Formats",
-    description: "Easily manage PDF, Excel, and CSV formats from any banking institution.",
+    description:
+      "Easily manage PDF, Excel, and CSV formats from any banking institution.",
     Icon: () => <FileText className="w-6 h-6" />,
   },
   {
     id: 5,
     title: "Unlimited Transaction Processing",
-    description: "Handle any volume of financial data without additional costs.",
+    description:
+      "Handle any volume of financial data without additional costs.",
     Icon: () => <Database className="w-6 h-6" />,
   },
   {
     id: 6,
     title: "Complex PDF Resolution",
-    description: "Precisely extract data from complicated bank statements automatically.",
+    description:
+      "Precisely extract data from complicated bank statements automatically.",
     Icon: () => <Filter className="w-6 h-6" />,
   },
   {
     id: 7,
     title: "7500+ Smart Data Points",
-    description: "Intelligent categorization instantly eliminates suspense entries.",
+    description:
+      "Intelligent categorization instantly eliminates suspense entries.",
     Icon: () => <Layers className="w-6 h-6" />,
   },
   {
     id: 8,
     title: "Smart Suspense Handling",
-    description: "Effortlessly update and auto-refresh suspense entries, streamlining your financial data.",
+    description:
+      "Effortlessly update and auto-refresh suspense entries, streamlining your financial data.",
     Icon: () => <CheckCircleIcon className="w-6 h-6" />,
   },
   {
     id: 9,
     title: "Loan Eligibility Insights",
-    description: "Instantly determine eligibility for business loans based on average bank balance.",
+    description:
+      "Instantly determine eligibility for business loans based on average bank balance.",
     Icon: () => <CreditCard className="w-6 h-6" />,
   },
   {
     id: 10,
     title: "Advanced Voucher Management",
-    description: "Seamlessly handle Sales, Purchase, Ledger, and Inventory entries.",
+    description:
+      "Seamlessly handle Sales, Purchase, Ledger, and Inventory entries.",
     Icon: () => <PiggyBankIcon className="w-6 h-6" />,
   },
   {
     id: 11,
     title: "Bulk Processing Excellence",
-    description: "Efficiently manage multiple accounts simultaneously for streamlined operations.",
+    description:
+      "Efficiently manage multiple accounts simultaneously for streamlined operations.",
     Icon: () => <Database className="w-6 h-6" />,
   },
   {
     id: 12,
     title: "Instant, Detailed Reports",
-    description: "Quickly export business reports in Excel, CSV, or PDF formats.",
+    description:
+      "Quickly export business reports in Excel, CSV, or PDF formats.",
     Icon: () => <FileOutput className="w-6 h-6" />,
   },
 ];
@@ -155,9 +166,12 @@ const caseStudies = [
     id: 1,
     location: "Mumbai",
     title: "Accelerated Loan Approval for Trading Firm",
-    challenge: "A trading business struggled with delays in loan approvals due to cumbersome manual analysis of financial statements.",
-    solution: "Using CypherSOL's instant loan eligibility insights based on average bank balances, the firm significantly reduced documentation time.",
-    result: "This led to quicker approvals and enhanced cash flow management for sustained business growth.",
+    challenge:
+      "A trading business struggled with delays in loan approvals due to cumbersome manual analysis of financial statements.",
+    solution:
+      "Using CypherSOL's instant loan eligibility insights based on average bank balances, the firm significantly reduced documentation time.",
+    result:
+      "This led to quicker approvals and enhanced cash flow management for sustained business growth.",
     icon: Briefcase,
     color: "from-blue-500 to-blue-600",
     benefit: "Faster Loan Processing",
@@ -166,9 +180,12 @@ const caseStudies = [
     id: 2,
     location: "Pune",
     title: "Improved Financial Clarity for Manufacturer",
-    challenge: "A manufacturing company found monthly financial reporting challenging and time-consuming, often resulting in inaccuracies and compliance risks.",
-    solution: "With CypherSOL's automated monthly financial summaries, they streamlined internal reporting processes.",
-    result: "The company achieved better financial clarity, enhancing decision-making and compliance across operations.",
+    challenge:
+      "A manufacturing company found monthly financial reporting challenging and time-consuming, often resulting in inaccuracies and compliance risks.",
+    solution:
+      "With CypherSOL's automated monthly financial summaries, they streamlined internal reporting processes.",
+    result:
+      "The company achieved better financial clarity, enhancing decision-making and compliance across operations.",
     icon: Building,
     color: "from-green-500 to-green-600",
     benefit: "Enhanced Reporting",
@@ -177,9 +194,12 @@ const caseStudies = [
     id: 3,
     location: "Bangalore",
     title: "Streamlined Accounting for Retail Chain",
-    challenge: "A retail chain faced constant errors and inefficiencies in manually uploading transactions to Tally.",
-    solution: "CypherSOL's one-click integration automated this process, significantly reducing errors and saving countless work hours.",
-    result: "The accounting team could focus on strategic financial tasks, improving overall operational efficiency.",
+    challenge:
+      "A retail chain faced constant errors and inefficiencies in manually uploading transactions to Tally.",
+    solution:
+      "CypherSOL's one-click integration automated this process, significantly reducing errors and saving countless work hours.",
+    result:
+      "The accounting team could focus on strategic financial tasks, improving overall operational efficiency.",
     icon: ShoppingBag,
     color: "from-purple-500 to-purple-600",
     benefit: "Error Reduction",
@@ -188,9 +208,12 @@ const caseStudies = [
     id: 4,
     location: "Delhi",
     title: "Effective Management of Multiple Accounts",
-    challenge: "A consulting firm managing numerous client accounts faced challenges with scattered financial data.",
-    solution: "CypherSOL allowed them to efficiently consolidate and categorize financial information from multiple accounts simultaneously.",
-    result: "This significantly improved financial oversight, reduced errors, and enhanced client satisfaction.",
+    challenge:
+      "A consulting firm managing numerous client accounts faced challenges with scattered financial data.",
+    solution:
+      "CypherSOL allowed them to efficiently consolidate and categorize financial information from multiple accounts simultaneously.",
+    result:
+      "This significantly improved financial oversight, reduced errors, and enhanced client satisfaction.",
     icon: Users,
     color: "from-yellow-500 to-yellow-600",
     benefit: "Simplified Management",
@@ -199,9 +222,12 @@ const caseStudies = [
     id: 5,
     location: "Hyderabad",
     title: "Enhanced Compliance for Healthcare Provider",
-    challenge: "A healthcare provider struggled with frequent discrepancies during audits due to inaccurate financial reporting.",
-    solution: "Using CypherSOL's meticulous categorization and automated transaction processing, they achieved consistent compliance.",
-    result: "The business drastically reduced audit-related complications and costs while improving regulatory adherence.",
+    challenge:
+      "A healthcare provider struggled with frequent discrepancies during audits due to inaccurate financial reporting.",
+    solution:
+      "Using CypherSOL's meticulous categorization and automated transaction processing, they achieved consistent compliance.",
+    result:
+      "The business drastically reduced audit-related complications and costs while improving regulatory adherence.",
     icon: ClipboardCheck,
     color: "from-red-500 to-red-600",
     benefit: "Audit Readiness",
@@ -218,7 +244,7 @@ const testimonials = [
     rating: 5,
     text: "CypherSOL reduced our financial processing time by 70%. What used to take our team days now takes just hours. The automatic categorization feature has been a game-changer for our business operations.",
     avatar: "/api/placeholder/45/45",
-    highlight: "70% time savings"
+    highlight: "70% time savings",
   },
   {
     id: 2,
@@ -228,7 +254,7 @@ const testimonials = [
     rating: 5,
     text: "The offline security feature gives our company complete peace of mind about sensitive financial data. One-click Tally integration means we can prepare financial statements faster than ever before. Worth every rupee!",
     avatar: "/api/placeholder/45/45",
-    highlight: "Enhanced data security"
+    highlight: "Enhanced data security",
   },
   {
     id: 3,
@@ -238,7 +264,7 @@ const testimonials = [
     rating: 5,
     text: "Our company handles statements from over 15 different banks. CypherSOL processes them all flawlessly. The loan eligibility insights have helped us secure financing faster, improving our cash flow management.",
     avatar: "/api/placeholder/45/45",
-    highlight: "Better financing decisions"
+    highlight: "Better financing decisions",
   },
   {
     id: 4,
@@ -248,7 +274,7 @@ const testimonials = [
     rating: 4,
     text: "CypherSOL has allowed our team to process 40% more transactions this year. The audit-ready reports make compliance work straightforward, and our management is impressed with the quick financial insights.",
     avatar: "/api/placeholder/45/45",
-    highlight: "40% productivity increase"
+    highlight: "40% productivity increase",
   },
   {
     id: 5,
@@ -258,7 +284,7 @@ const testimonials = [
     rating: 5,
     text: "Our team previously struggled with complex PDFs from regional banks. CypherSOL's precision in handling these documents has eliminated manual data entry errors completely. The ROI was evident within weeks.",
     avatar: "/api/placeholder/45/45",
-    highlight: "Zero manual errors"
+    highlight: "Zero manual errors",
   },
   {
     id: 6,
@@ -268,115 +294,13 @@ const testimonials = [
     rating: 5,
     text: "The bulk processing capability has transformed our operations. We can now handle month-end closing processes across multiple departments simultaneously, reducing our processing time by nearly 65%.",
     avatar: "/api/placeholder/45/45",
-    highlight: "65% faster reporting"
-  }
+    highlight: "65% faster reporting",
+  },
 ];
 
 // Star rating component
 
-
 // Individual testimonial card
-
-
-// FAQ data from the business document
-const faqsArray = [
-  {
-    question: "What exactly is CypherSOL's Bank Statement Analyzer?",
-    answer: "It's an AI-powered solution that automatically categorizes bank transactions, generates financial summaries, and prepares data for easy integration with accounting software like Tally.",
-  },
-  {
-    question: "How does CypherSOL help businesses determine loan eligibility?",
-    answer: "By analyzing the average bank balance from bank statements, CypherSOL instantly calculates eligibility for various loan types, including home loans, loans against property, and unsecured business loans.",
-  },
-  {
-    question: "Which bank statement formats can CypherSOL process?",
-    answer: "CypherSOL efficiently supports PDF, Excel, and CSV bank statement formats from all major banks.",
-  },
-  {
-    question: "How seamless is the integration of CypherSOL with Tally?",
-    answer: "Integration is straightforward and efficient, with transactions categorized and uploaded to Tally in just one click.",
-  },
-  {
-    question: "Does CypherSOL require internet connectivity?",
-    answer: "No, CypherSOL operates fully offline, ensuring complete security and confidentiality of business data.",
-  },
-  {
-    question: "Is there a limitation on the number of transactions or uploads?",
-    answer: "CypherSOL offers unlimited bank statement processing and Tally uploads without additional charges.",
-  },
-  {
-    question: "How effectively can CypherSOL manage complex PDF statements?",
-    answer: "CypherSOL accurately extracts and categorizes financial data even from complex or detailed PDF bank statements.",
-  },
-  {
-    question: "What do the \"7500+ smart data points\" refer to?",
-    answer: "These refer to CypherSOL's advanced AI algorithms that intelligently auto-categorize transactions, significantly reducing unclear or suspense entries.",
-  },
-  {
-    question: "How does CypherSOL simplify suspense transaction management?",
-    answer: "It automatically identifies, refreshes, and resolves ambiguous or unclear transactions, greatly reducing manual intervention.",
-  },
-  {
-    question: "Can CypherSOL efficiently handle bulk transactions?",
-    answer: "Yes, it is specifically designed to manage bulk financial data seamlessly from multiple accounts simultaneously.",
-  },
-  {
-    question: "What kinds of reports does CypherSOL provide?",
-    answer: "CypherSOL instantly generates detailed financial reports, available for export in Excel, CSV, and PDF formats, suitable for internal management, compliance, and audits.",
-  },
-  {
-    question: "How does CypherSOL manage visual feedback for transactions?",
-    answer: "Transactions are intuitively color-coded, green indicating success and red highlighting errors, making the identification and correction process easier.",
-  },
-  {
-    question: "How precise is CypherSOL in handling financial data?",
-    answer: "CypherSOL meticulously detects discrepancies, ensuring all financial data is precise and audit-ready.",
-  },
-  {
-    question: "Can CypherSOL help reduce the time spent on financial reconciliation?",
-    answer: "Absolutely, by significantly reducing manual reconciliation processes, CypherSOL saves businesses valuable time.",
-  },
-  {
-    question: "Is CypherSOL suitable for small and medium-sized businesses?",
-    answer: "Yes, CypherSOL is particularly beneficial for SMBs, helping them manage extensive financial data effortlessly and accurately.",
-  },
-  {
-    question: "How affordable is CypherSOL?",
-    answer: "CypherSOL offers a cost-effective solution that combines high-level automation with affordability, ideal for businesses of all sizes.",
-  },
-  {
-    question: "Does CypherSOL facilitate ledger grouping?",
-    answer: "Yes, transactions are automatically grouped into relevant ledgers, simplifying accounting tasks significantly.",
-  },
-  {
-    question: "Is CypherSOL user-friendly?",
-    answer: "CypherSOL is intuitively designed, requiring no specialized training, making it accessible for all users within a business.",
-  },
-  {
-    question: "Does CypherSOL reduce manual entry errors?",
-    answer: "Yes, automation greatly minimizes manual errors, enhancing overall data accuracy.",
-  },
-  {
-    question: "How does CypherSOL ensure compliance and audit readiness?",
-    answer: "By maintaining high accuracy and detailed financial categorization, CypherSOL significantly improves compliance and audit preparedness.",
-  },
-  {
-    question: "How frequently does CypherSOL receive updates?",
-    answer: "CypherSOL is regularly updated to support new bank formats, regulatory changes, and to enhance its categorization accuracy.",
-  },
-  {
-    question: "How secure is CypherSOL?",
-    answer: "CypherSOL operates fully offline, ensuring robust data security and privacy for all processed information.",
-  },
-  {
-    question: "Can freelancers and independent professionals benefit from CypherSOL?",
-    answer: "Certainly, its ease of use, affordability, and efficient management of financial data make it ideal for freelancers and independent consultants.",
-  },
-  {
-    question: "Does CypherSOL require additional software to function?",
-    answer: "No additional software is required. CypherSOL functions independently, providing a complete standalone solution.",
-  },
-];
 
 // Add missing Lucide icon components
 // const ShoppingBag = (props) => {
@@ -399,7 +323,6 @@ const faqsArray = [
 //     </svg>
 //   );
 // };
-
 
 export const MSME = () => {
   const fadeUpVariants = {
@@ -438,8 +361,9 @@ export const MSME = () => {
             </h1>
 
             <p className="text-base md:text-lg text-[#c3d0e5] text-center max-w-4xl mx-auto animate-fade-in opacity-0 [animation-delay:400ms]">
-              Automate Accounting, Simplify Tally Integration & Instantly Determine Loan Eligibility.
-              Managing complex bank statements and manual data entry is now effortless with CypherSOL.
+              Automate Accounting, Simplify Tally Integration & Instantly
+              Determine Loan Eligibility. Managing complex bank statements and
+              manual data entry is now effortless with CypherSOL.
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mx-auto px-4 justify-center mb-8 mt-12 items-stretch">
@@ -472,51 +396,64 @@ export const MSME = () => {
             Real-Life Business Case Studies
           </span>
         </h2>
-        
+
         <p className="text-base md:text-lg text-[#c3d0e5] text-center max-w-4xl mx-auto mb-12">
-          See how businesses across India are transforming their financial operations with CypherSOL
+          See how businesses across India are transforming their financial
+          operations with CypherSOL
         </p>
-        
+
         {/* Map of India graphic representation with case study locations */}
         <div className="relative w-full max-w-6xl mx-auto mb-16">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {caseStudies.map((study) => (
-              <div 
-                key={study.id} 
+              <div
+                key={study.id}
                 className="border border-gray-800 bg-black/40 backdrop-blur-sm rounded-xl p-6 hover:border-gray-700 transition-all duration-300 group hover:shadow-lg hover:shadow-cyan-900/20"
               >
                 {/* Header with location and icon */}
                 <div className="flex justify-between items-center mb-4">
                   <div className="flex items-center">
                     <MapPin className="w-4 h-4 text-cyan-400 mr-2" />
-                    <span className="text-cyan-300 font-medium">{study.location}</span>
+                    <span className="text-cyan-300 font-medium">
+                      {study.location}
+                    </span>
                   </div>
-                  <div className={`flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-r ${study.color} group-hover:scale-110 transition-transform duration-300`}>
+                  <div
+                    className={`flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-r ${study.color} group-hover:scale-110 transition-transform duration-300`}
+                  >
                     <study.icon className="w-5 h-5 text-white" />
                   </div>
                 </div>
-                
+
                 {/* Title */}
-                <h3 className="text-xl font-semibold text-white mb-4">{study.title}</h3>
-                
+                <h3 className="text-xl font-semibold text-white mb-4">
+                  {study.title}
+                </h3>
+
                 {/* Challenge */}
                 <div className="mb-4">
-                  <h4 className="text-gray-400 font-medium mb-1 text-sm">Challenge:</h4>
+                  <h4 className="text-gray-400 font-medium mb-1 text-sm">
+                    Challenge:
+                  </h4>
                   <p className="text-gray-300">{study.challenge}</p>
                 </div>
-                
+
                 {/* Solution */}
                 <div className="mb-4">
-                  <h4 className="text-gray-400 font-medium mb-1 text-sm">Solution:</h4>
+                  <h4 className="text-gray-400 font-medium mb-1 text-sm">
+                    Solution:
+                  </h4>
                   <p className="text-gray-300">{study.solution}</p>
                 </div>
-                
+
                 {/* Result */}
                 <div className="mb-6">
-                  <h4 className="text-gray-400 font-medium mb-1 text-sm">Result:</h4>
+                  <h4 className="text-gray-400 font-medium mb-1 text-sm">
+                    Result:
+                  </h4>
                   <p className="text-gray-300">{study.result}</p>
                 </div>
-                
+
                 {/* Key benefit tag */}
                 <div className="inline-flex items-center px-3 py-1 rounded-full bg-gradient-to-r from-gray-800 to-gray-700 text-white text-sm">
                   <span className="mr-2">•</span>
@@ -540,8 +477,8 @@ export const MSME = () => {
         initial="hidden"
         animate="visible"
       >
-        <FAQSection 
-          items={faqsArray} 
+        <FAQSection
+          items={msmeFaqsArray}
           title="Frequently Asked Questions"
           subtitle="Everything you need to know about CypherSOL Bank Statement Analyzer"
           highlightedText="Asked Questions"
