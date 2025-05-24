@@ -1,7 +1,10 @@
 import React from "react";
-import BeamsBackground from "./components/ui/beams-background";
 import { motion } from "framer-motion";
 import { cn } from "./lib/utils";
+import { Badge } from "./UI/Badge";
+import TestimonialCard from "./components/ui/testimonial-cards";
+import FAQSection from "./FAQSection";
+import { CardComponent } from "./UI/CardComponent";
 import {
   CheckCircleIcon,
   Clock,
@@ -14,23 +17,19 @@ import {
   Layers,
   Repeat,
   FileOutput,
-  AlertTriangle,
-  BarChart3,
-  Download,
   MapPin,
   CheckCircle,
   TrendingUp,
   BookOpen,
   ClipboardCheck,
+  ArrowRight,
 } from "lucide-react";
-import { CardComponent } from "./UI/CardComponent";
-import FAQSection from "./FAQSection"; // Import the FAQSection component
-import { EnhancedWorkflowSection } from "./EnhancedWorkflowSection";
 import { bankAnalyzerFaqsArray } from "./data/FAQs";
-import TestimonialCard from "./components/ui/testimonial-cards";
-import { Badge } from "./UI/Badge";
+import { Link } from "react-router-dom";
+import { EnhancedWorkflowSection } from "./EnhancedWorkflowSection";
+import { GlowEffect } from "./UI/GlowEffect";
 
-const advData = [
+const cardData = [
   {
     id: 1,
     title: "Instant ITR Filing Summaries",
@@ -106,46 +105,6 @@ const advData = [
     title: "Instant, Detailed Reports",
     description: "Quickly export reports in Excel, CSV, or PDF formats.",
     Icon: () => <FileOutput className="w-6 h-6" />,
-  },
-];
-
-// Workflow steps data
-const workflowSteps = [
-  {
-    id: 1,
-    title: "Upload PDF/Excel/CSV",
-    Icon: FileText,
-    color: "from-blue-500 to-blue-600",
-  },
-  {
-    id: 2,
-    title: "Automatic anomaly detection",
-    Icon: AlertTriangle,
-    color: "from-purple-500 to-purple-600",
-  },
-  {
-    id: 3,
-    title: "AI-powered categorization",
-    Icon: BarChart3,
-    color: "from-green-500 to-green-600",
-  },
-  {
-    id: 4,
-    title: "Suspense reduction",
-    Icon: Repeat,
-    color: "from-yellow-500 to-yellow-600",
-  },
-  {
-    id: 5,
-    title: "One-click Tally export",
-    Icon: Upload,
-    color: "from-red-500 to-red-600",
-  },
-  {
-    id: 6,
-    title: "Download instant ITR-ready report",
-    Icon: Download,
-    color: "from-cyan-500 to-cyan-600",
   },
 ];
 
@@ -237,52 +196,351 @@ export const BankAnalyzer = () => {
     }),
   };
   return (
-    <div className="">
-      <BeamsBackground />
+    <>
+      {/* Hero Section */}
+      <section className="relative flex min-h-screen items-center justify-center overflow-hidden pt-16">
+        {/* Animated Elements */}
+        <div className="absolute inset-0 overflow-hidden">
+          {/* Curved Lines */}
+          <svg
+            className="absolute h-full w-full"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <defs>
+              <linearGradient id="grad1" x1="1" y1="0" x2="0" y2="0">
+                <stop offset="0%" stopColor="#22d3ee" stopOpacity="0" />
+                <stop offset="50%" stopColor="#22d3ee" stopOpacity="0.5" />
+                <stop offset="100%" stopColor="#22d3ee" stopOpacity="0" />
+              </linearGradient>
+              <linearGradient id="grad2" x1="1" y1="0" x2="0" y2="0">
+                <stop offset="0%" stopColor="#8b5cf6" stopOpacity="0" />
+                <stop offset="50%" stopColor="#8b5cf6" stopOpacity="0.5" />
+                <stop offset="100%" stopColor="#8b5cf6" stopOpacity="0" />
+              </linearGradient>
+            </defs>
+            {/* Top Curves */}
+            <motion.path
+              initial={{ pathLength: 0, opacity: 0 }}
+              animate={{ pathLength: 1, opacity: 1 }}
+              transition={{
+                duration: 2,
+                ease: "easeInOut",
+                repeat: Number.POSITIVE_INFINITY,
+                repeatType: "loop",
+                repeatDelay: 1,
+              }}
+              d="M 100 100 Q 300 0 500 100 T 900 100"
+              fill="none"
+              stroke="url(#grad1)"
+              strokeWidth="1"
+            />
+            <motion.path
+              initial={{ pathLength: 0, opacity: 0 }}
+              animate={{ pathLength: 1, opacity: 1 }}
+              transition={{
+                duration: 2,
+                ease: "easeInOut",
+                repeat: Number.POSITIVE_INFINITY,
+                repeatType: "loop",
+                repeatDelay: 1,
+                delay: 0.5,
+              }}
+              d="M 0 200 Q 200 100 400 200 T 800 200"
+              fill="none"
+              stroke="url(#grad2)"
+              strokeWidth="1"
+            />
+            {/* Bottom Curves */}
+            <motion.path
+              initial={{ pathLength: 0, opacity: 0 }}
+              animate={{ pathLength: 1, opacity: 1 }}
+              transition={{
+                duration: 2,
+                ease: "easeInOut",
+                repeat: Number.POSITIVE_INFINITY,
+                repeatType: "loop",
+                repeatDelay: 1,
+                delay: 1,
+              }}
+              d="M 100 600 Q 300 500 500 600 T 900 600"
+              fill="none"
+              stroke="url(#grad1)"
+              strokeWidth="1"
+            />
+          </svg>
 
-      {/* Advantages section */}
-      <div>
+          {/* Straight Lines */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1 }}
+            className="absolute inset-0"
+          >
+            {[...Array(3)].map((_, i) => (
+              <motion.div
+                key={i}
+                initial={{ x: "100%", opacity: 0 }}
+                animate={{
+                  x: "-100%",
+                  opacity: [0, 0.7, 0.7, 0],
+                }}
+                transition={{
+                  duration: 2.5,
+                  delay: i * 0.2,
+                  repeat: Number.POSITIVE_INFINITY,
+                  repeatType: "loop",
+                  ease: "linear",
+                }}
+                className="absolute right-0"
+                style={{
+                  top: `${15 + i * 10}%`,
+                  height: "1px",
+                  width: "100%",
+                  background: `linear-gradient(90deg, transparent, ${
+                    i % 2 === 0 ? "#22d3ee" : "#8b5cf6"
+                  }60, transparent)`,
+                }}
+              />
+            ))}
+          </motion.div>
+        </div>
+
+        {/* Animated Background */}
+        <div className="absolute inset-0 z-[1]">
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 2 }}
+            className="absolute -left-1/4 top-1/4 h-96 w-96 rounded-full bg-cyan-500/30 blur-3xl"
+          />
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 2, delay: 0.5 }}
+            className="absolute -right-1/4 top-1/2 h-96 w-96 rounded-full bg-violet-500/30 blur-3xl"
+          />
+        </div>
+
+        {/* Content */}
         <motion.div
-          custom={9}
-          variants={fadeUpVariants}
-          initial="hidden"
-          animate="visible"
+          className="container relative z-[3] px-4 text-center max-w-7xl mx-auto py-20"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.6, staggerChildren: 0.2 }}
         >
-          <div className="container mx-auto px-4 py-4">
-            <h1 className="text-2xl sm:text-4xl md:text-6xl font-bold mb-6 md:mb-8 tracking-tight text-center">
-              <span
-                className={cn(
-                  "bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-white/90 to-blue-400"
-                )}
-              >
-                Key Features & Benefits
-              </span>
-            </h1>
+          <motion.div
+            className="mb-8 flex items-center justify-center"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            <motion.div whileHover={{ scale: 1.05 }}>
+              <Badge>Chartered Accountants & Tax Consultant's</Badge>
+            </motion.div>
+          </motion.div>
 
-            <p className="text-base md:text-lg text-[#c3d0e5] text-center max-w-4xl mx-auto animate-fade-in opacity-0 [animation-delay:400ms]">
-              Revolutionize Accounting, Tally Integration & ITR Filing with
-              AI-Powered Automation. Managing complex bank statements and manual
-              data entry is now effortless with CypherSOL.
-            </p>
+          <motion.h1
+            className="text-4xl md:text-6xl font-bold leading-tight mb-6"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8 }}
+          >
+            <motion.span
+              className={cn(
+                "bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-white/90 to-blue-400"
+              )}
+              animate={{ backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"] }}
+              transition={{ duration: 5, repeat: Infinity }}
+              style={{ backgroundSize: "200% 200%" }}
+            >
+              Revolutionize Accounting <br /> with AI-Powered Automation
+            </motion.span>
+          </motion.h1>
+          <motion.section
+            className="mb-20"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+          >
+            <div className="grid lg:grid-cols-2 gap-12 items-center text-center md:text-left px-4 sm:px-6 lg:px-8">
+              <div className="space-y-6">
+                <motion.h4
+                  className="text-3xl md:text-5xl font-sans leading-tight"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.6 }}
+                >
+                  Bank Statement Analyzer for{" "}
+                  <span className="text-cyan-400 font-sans">
+                    Chartered Accountants
+                  </span>
+                </motion.h4>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mx-auto px-4 justify-center mb-8 mt-12 items-stretch">
-              {advData.map((card) => (
-                <CardComponent
-                  key={card.id}
-                  title={card.title}
-                  description={card.description}
-                  Icon={card.Icon}
+                <motion.div
+                  className="h-px w-1/2 bg-gradient-to-r from-cyan-500/50 to-transparent my-6"
+                  initial={{ scaleX: 0 }}
+                  animate={{ scaleX: 1 }}
+                  transition={{ duration: 1, delay: 0.8 }}
+                  style={{ transformOrigin: "left" }}
                 />
-              ))}
+
+                <motion.p
+                  className="text-gray-400 text-lg md:text-xl leading-relaxed"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 1 }}
+                >
+                  CypherSOL's Bank Statement Analyzer simplifies bank statement
+                  processing using advanced AI. It automates transaction
+                  categorization and data entry, reducing errors, saving time,
+                  and boosting productivity—especially during tax season.
+                </motion.p>
+
+                <motion.div
+                  className="flex flex-col sm:flex-row gap-4"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 1.2 }}
+                >
+                  <Link to="/download">
+                    <motion.button
+                      className="group px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-semibold rounded-xl w-full"
+                      whileHover={{
+                        scale: 1.05,
+                        boxShadow: "0 10px 30px rgba(6, 182, 212, 0.3)",
+                      }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      Download
+                    </motion.button>
+                  </Link>
+
+                  <motion.button
+                    className="group px-8 py-4 bg-gray-900/50 backdrop-blur-xl text-white font-semibold rounded-xl border border-gray-800/50 hover:border-gray-700/50 transition-all duration-300 flex items-center justify-center"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    Book Demo
+                    <motion.div
+                      animate={{ x: [0, 5, 0] }}
+                      transition={{ duration: 1.5, repeat: Infinity }}
+                    >
+                      <ArrowRight className="w-4 h-4 ml-2" />
+                    </motion.div>
+                  </motion.button>
+                </motion.div>
+              </div>
+
+              {/* Image */}
+              <motion.div
+                className="relative"
+                initial={{ opacity: 0, x: 50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+              >
+                <motion.div
+                  // className="absolute -inset-4 bg-gradient-to-r from-cyan-500/10 to-blue-500/10 rounded-2xl blur-xl"
+                  animate={{ scale: [1, 1.05, 1], opacity: [0.5, 0.8, 0.5] }}
+                  transition={{ duration: 4, repeat: Infinity }}
+                />
+                <motion.img
+                  src="assets/images/Bank-Statement-Analyzer.png"
+                  alt="AI visualization showing neural network connections"
+                  className="w-full h-auto object-contain rounded-xl relative z-10 shadow-xl"
+                  whileHover={{ scale: 1.02 }}
+                />
+              </motion.div>
             </div>
-          </div>
+          </motion.section>
         </motion.div>
-      </div>
+      </section>
+
+      {/* 
+      Bank statment Features & Benefits */}
+      <section className="relative bg-black overflow-hidden">
+        <GlowEffect />{" "}
+        <div className="container mx-auto px-4 py-12 sm:px-6 lg:px-8 max-w-7xl">
+          <div className="text-center mb-8 space-y-4">
+            <Badge>Features & Benefits</Badge>
+          </div>
+
+          <h1 className="text-3xl md:text-5xl font-bold mb-4 md:mb-5 text-[#c3d0e5] text-center animate-slide-down">
+            <span className="bg-gradient-to-r from-cyan-400 via-white/90 to-blue-400 text-transparent bg-clip-text">
+              Key Features and Benefits for <br /> Chartered Accountants
+            </span>{" "}
+          </h1>
+
+          <p className="text-base md:text-lg text-[#c3d0e5] text-center max-w-4xl mx-auto">
+            Revolutionize Accounting, Tally Integration & ITR Filing with
+            AI-Powered Automation. Managing complex bank statements and manual
+            data entry is now effortless with CypherSOL.
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mx-auto px-4 items-center justify-center mb-8 mt-12">
+            {cardData.map((card) => (
+              <CardComponent
+                key={card.id}
+                title={card.title}
+                description={card.description}
+                Icon={card.Icon}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* Visual Graphic Analysis Section */}
       <EnhancedWorkflowSection />
 
-      {/* Case Studies Section */}
+      {/* How our software works */}
+      {/* <section>
+        <motion.div
+          className="max-w-6xl mx-auto text-center px-4 sm:px-6 lg:px-8 py-12"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+        >
+          <motion.h1
+            className="text-3xl md:text-5xl font-bold mb-3 tracking-tight"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+          >
+            <span
+              className={cn(
+                "bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-white/90 to-blue-400"
+              )}
+            >
+              How CypherSOL's Software Functions
+            </span>
+          </motion.h1>
+          <motion.p
+            className="text-lg md:text-xl text-gray-400"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, delay: 0.2 }}
+          >
+            A fully remote team on a mission to build <br /> the best
+            communication platform for developers.
+          </motion.p>
+          <motion.img
+            src="assets/images/CypherSOL’s-Workflow.png"
+            alt="software function"
+            className="w-full h-auto object-contain"
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            whileHover={{
+              scale: 1.02,
+              transition: { duration: 0.3 },
+            }}
+          />
+        </motion.div>
+      </section> */}
+
       <motion.div
         custom={11}
         variants={fadeUpVariants}
@@ -432,7 +690,6 @@ export const BankAnalyzer = () => {
         </div>
       </section>
 
-      {/* FAQ section */}
       <motion.div
         custom={12}
         variants={fadeUpVariants}
@@ -447,6 +704,6 @@ export const BankAnalyzer = () => {
           regularText="Frequently "
         />
       </motion.div>
-    </div>
+    </>
   );
 };

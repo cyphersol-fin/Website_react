@@ -53,7 +53,7 @@ function App() {
         <div className="relative z-10">
           <NotificationBanner />
           <Header />
-          <MouseMoveEffect />
+          {/* <MouseMoveEffect /> */}
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/price" element={<Price />} />
