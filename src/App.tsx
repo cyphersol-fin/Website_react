@@ -77,7 +77,7 @@ function App() {
             <Route path="/refund-policy" element={<RefundPolicy />} />
             <Route path="/disclaimer" element={<Disclaimer />} />
             <Route path="/msme" element={<MsmePage />} />
-            <Route path="/forensic" element={<ForensicPage />} />
+            <Route path="/fund-trail-analyzer" element={<ForensicPage />} />
           </Routes>
           <Footer />
         </div>

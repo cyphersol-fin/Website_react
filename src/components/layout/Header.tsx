@@ -1,5 +1,5 @@
-   import React, { useRef, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion"; // Added AnimatePresence for smooth exit 
+import React, { useRef, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion"; // Added AnimatePresence for smooth exit
 
 // animations
 import {
@@ -16,7 +16,7 @@ import {
   UserCircle,
   Building,
   UserCheck,
-  Calculator
+  Calculator,
 } from "lucide-react";
 const base = import.meta.env.BASE_URL; // Will be '/static/' in production (as per Vite config)
 export const Header = () => {
@@ -45,8 +45,7 @@ export const Header = () => {
         clearTimeout(resourcesTimeoutRef.current);
       setIsResourcesOpen(true);
     } else if (dropdownType === "signIn") {
-      if (signInTimeoutRef.current)
-        clearTimeout(signInTimeoutRef.current);
+      if (signInTimeoutRef.current) clearTimeout(signInTimeoutRef.current);
       setSignInMenuOpen(true);
     }
   };
@@ -163,7 +162,7 @@ export const Header = () => {
                           href="/bank-statement-analyzer"
                           className="block font-semibold text-gray-300 hover:text-cyan-400 transition-colors duration-200"
                         >
-                         Chartered Accountant
+                          Chartered Accountant
                           <span className="absolute inset-0"></span>
                         </a>
                         <p className="mt-1 text-gray-400">
@@ -197,7 +196,7 @@ export const Header = () => {
                           href="/msme"
                           className="block font-semibold text-gray-300 hover:text-cyan-400 transition-colors duration-200"
                         >
-                         MSME Accounting
+                          MSME Accounting
                           <span className="absolute inset-0"></span>
                         </a>
                         <p className="mt-1 text-gray-400">
@@ -211,10 +210,10 @@ export const Header = () => {
                       </div>
                       <div className="flex-auto">
                         <a
-                          href="/forensic"
+                          href="/fund-trail-analyzer"
                           className="block font-semibold text-gray-300 hover:text-cyan-400 transition-colors duration-200"
                         >
-                         FORENSIC
+                          Fund Trail Analyzer
                           <span className="absolute inset-0"></span>
                         </a>
                         <p className="mt-1 text-gray-400">
@@ -222,7 +221,7 @@ export const Header = () => {
                         </p>
                       </div>
                     </div>
-                    
+
                     <div className="group relative flex items-center gap-x-6 rounded-lg p-4 hover:bg-gray-800 transition-colors duration-200">
                       <div className="flex size-11 flex-none items-center justify-center rounded-lg bg-gray-800 group-hover:bg-gray-700 transition-colors duration-200">
                         <FileSpreadsheet className="size-5 text-gray-300 group-hover:text-cyan-400 transition-colors duration-200" />
@@ -257,8 +256,6 @@ export const Header = () => {
                         </p>
                       </div>
                     </div>
-                    
-                    
                   </div>
                 </motion.div>
               )}
@@ -387,7 +384,7 @@ export const Header = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            Price
+            Pricing
           </motion.a>
         </div>
         <div className="hidden md:flex md:flex-1 md:justify-end md:items-center md:space-x-4">
@@ -405,7 +402,7 @@ export const Header = () => {
               whileHover="hover"
               whileTap="tap"
             >
-              Sign In
+              Login
               <motion.span
                 animate={{ rotate: signInMenuOpen ? 180 : 0 }}
                 transition={{ duration: 0.3 }}
@@ -438,7 +435,7 @@ export const Header = () => {
                         </a>
                       </div>
                     </div>
-                    
+
                     <div className="group relative flex items-center gap-x-4 rounded-lg p-2 hover:bg-gradient-to-r hover:from-gray-800 hover:to-gray-700 transition-all duration-300">
                       <div className="flex size-8 flex-none items-center justify-center rounded-lg bg-gray-800 group-hover:bg-gray-700 transition-colors duration-300 shadow-md">
                         <Building className="size-4 text-gray-300 group-hover:text-cyan-400 transition-colors duration-300" />
@@ -453,7 +450,7 @@ export const Header = () => {
                         </a>
                       </div>
                     </div>
-                    
+
                     <div className="group relative flex items-center gap-x-4 rounded-lg p-2 hover:bg-gradient-to-r hover:from-gray-800 hover:to-gray-700 transition-all duration-300">
                       <div className="flex size-8 flex-none items-center justify-center rounded-lg bg-gray-800 group-hover:bg-gray-700 transition-colors duration-300 shadow-md">
                         <UserCheck className="size-4 text-gray-300 group-hover:text-cyan-400 transition-colors duration-300" />
@@ -468,7 +465,7 @@ export const Header = () => {
                         </a>
                       </div>
                     </div>
-                    
+
                     <div className="group relative flex items-center gap-x-4 rounded-lg p-2 hover:bg-gradient-to-r hover:from-gray-800 hover:to-gray-700 transition-all duration-300">
                       <div className="flex size-8 flex-none items-center justify-center rounded-lg bg-gray-800 group-hover:bg-gray-700 transition-colors duration-300 shadow-md">
                         <Calculator className="size-4 text-gray-300 group-hover:text-cyan-400 transition-colors duration-300" />
@@ -656,13 +653,13 @@ export const Header = () => {
                       href="/price"
                       className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 transition-colors duration-200"
                     >
-                      Price
+                      Pricing
                     </a>
                   </div>
                   <div className="py-6 flex flex-col space-y-4">
                     <a href="/login">
                       <button className="w-full px-4 py-2 rounded-lg bg-gray-900 text-white border border-gray-800 hover:bg-gray-800 transition-colors duration-200">
-                        Sign In
+                        Login
                       </button>
                     </a>
                     <a href="/trial">
@@ -678,5 +675,5 @@ export const Header = () => {
         )}
       </AnimatePresence>
     </header>
-  );  
+  );
 };

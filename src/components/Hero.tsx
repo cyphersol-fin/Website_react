@@ -7,14 +7,9 @@ import { Badge } from "./UI/Badge";
 import "react-before-after-slider-component/dist/build.css";
 import "./css/styles.css";
 import FAQSection from "./FAQSection";
-
 import { Link } from "react-router-dom";
-
 import { motion } from "framer-motion";
-
-import { TextAnimate } from "./components/ui/text-animate";
 import { challenges } from "./data/challenges";
-import ProductsSection from "./ProductsSection/ProductsSections";
 import { homeFaqsArray } from "./data/FAQs";
 const base = import.meta.env.BASE_URL; // Will be '/static/' in production (as per Vite config)
 
@@ -120,9 +115,7 @@ export function Hero() {
       </div>
 
       {/* 3d insert here */}
-      <div className="w-full overflow-hidden">
-        <ProductsSection />
-      </div>
+      <div className="w-full overflow-hidden">{/* <ProductsSection /> */}</div>
 
       <section className="container mx-auto px-6 sm:px-10 md:px-16 lg:px-20 py-12">
         <motion.div
@@ -131,11 +124,9 @@ export function Hero() {
           transition={{ duration: 0.6 }}
         >
           <div className="flex flex-col items-center justify-center mb-8 md:mb-16 animate-fade-in text-center">
-            <Badge>Product</Badge>
+            {/* <Badge>Product</Badge> */}
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mt-6 text-cyan-400">
-              <TextAnimate animation="blurInUp" by="character">
-                Problem faced by our Business Partners
-              </TextAnimate>
+              Problem faced by our Business Partners
             </h1>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -184,9 +175,9 @@ export function Hero() {
                   className="flex items-start gap-4"
                 >
                   <div
-                    className={`w-10 h-10 ${challenge.color} rounded flex items-center justify-center flex-shrink-0`}
+                    className={`w-10 h-10 ${challenge.color} rounded flex items-start justify-center flex-shrink-0`}
                   >
-                    <span className="text-white font-bold text-lg">
+                    <span className="text-white font-bold text-lg text-justify">
                       {challenge.number}
                     </span>
                   </div>

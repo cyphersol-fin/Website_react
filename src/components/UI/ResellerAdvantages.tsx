@@ -5,12 +5,12 @@ import { motion } from "framer-motion";
 import { Layers, Network, RefreshCw, TrendingUp } from "lucide-react";
 import { cn } from "../lib/utils";
 
-const FeatureBox = ({ title, description, para, icon, delay = 0 }) => (
+export const FeatureBox = ({ title, description, para, icon, delay = 0 }) => (
   <motion.div
     className="backdrop-blur-[50px] bg-gray-900/50 rounded-[32px] px-10 py-12 h-full"
-    style={{
-      boxShadow: "inset 2px 4px 16px #f8f8f80f",
-    }}
+    // style={{
+    //   boxShadow: "inset 2px 4px 16px #f8f8f80f",
+    // }}
     initial={{ opacity: 0, y: 50 }}
     animate={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.8, delay }}

@@ -3,7 +3,7 @@ export const challenges = [
     number: "1",
     title: "Time consuming and prone to error",
     description:
-      "Our clients often have to manually enter data from bank statements (PDF files or printed sheets) into spreadsheets or systems to analyze the information. Even if they have access to bank statements in an Excel file, the information has to be categorized and sorted under different headings for analysis. This is time consuming and prone to errors, potentially leading to inaccuracies in financial records.",
+      "Our clients often have to manually enter data from bank statements into spreadsheets or systems to analyze the information. Even if they have access to bank statements in an Excel file, the information has to be categorized and sorted under different headings for analysis. This is time consuming and prone to errors, potentially leading to inaccuracies in financial records.",
     color: "bg-[#346778]",
     borderColor: "border-[#346778]",
   },

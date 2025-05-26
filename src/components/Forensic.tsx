@@ -1,564 +1,372 @@
-import React from "react";
-import BeamsBackground from "./components/ui/beams-background";
+"use client";
+import { Layers, ScanSearch, Shield } from "lucide-react";
+import { forensicFaqsArray } from "./data/FAQs";
+import FAQSection from "./FAQSection";
 import { motion } from "framer-motion";
 import { cn } from "./lib/utils";
-import {
-  CheckCircleIcon,
-  Clock,
-  FileText,
-  PiggyBankIcon,
-  ShieldCheckIcon,
-  Upload,
-  Database,
-  Filter,
-  Layers,
-  Repeat,
-  FileOutput,
-  AlertTriangle,
-  BarChart3,
-  Download,
-  ChevronRight,
-  MapPin,
-  CheckCircle,
-  TrendingUp,
-  BookOpen,
-  ClipboardCheck,
-  Star,
-  Quote,
-  User,
-} from "lucide-react";
-import { CardComponent } from "./UI/CardComponent";
-import FAQSection from "./FAQSection"; // Import the FAQSection component
-import { EnhancedWorkflowSection } from "./EnhancedWorkflowSection";
-import { forensicFaqsArray } from "./data/FAQs";
-const advData = [
+import { FeatureBox } from "./UI/ResellerAdvantages";
+import { Badge } from "./UI/Badge";
+import CTABanner from "./UI/CTABanner";
+import { Marquee } from "./components/ui/marquee";
+
+const agencies = [
   {
-    id: 1,
-    title: "Instant ITR Filing Summaries",
-    description: "Organized data ready immediately for stress-free tax filing.",
-    Icon: () => <Clock className="w-6 h-6" />,
+    name: "CBI (Central Bureau of Investigation)",
   },
   {
-    id: 2,
-    title: "One-click Tally Integration",
-    description:
-      "Instantly migrate organized transactions into Tally, simplifying your daily accounting workflows.",
-    Icon: () => <Upload className="w-6 h-6" />,
+    name: "ATS (Anti-Terrorism Squad)",
   },
   {
-    id: 3,
-    title: "100% Offline Security",
-    description: "Complete confidentiality, zero internet dependence.",
-    Icon: () => <ShieldCheckIcon className="w-6 h-6" />,
+    name: "EOW (Economic Offences Wing)",
   },
   {
-    id: 4,
-    title: "Supports All Banks & Formats",
-    description: "Easily manage PDF, Excel, and CSV formats.",
-    Icon: () => <FileText className="w-6 h-6" />,
+    name: "NIA (National Investigation Agency)",
   },
   {
-    id: 5,
-    title: "Unlimited Bank Statement & Tally Uploads",
-    description: "Unrestricted processing power.",
-    Icon: () => <Database className="w-6 h-6" />,
+    name: "Cyber Crime & Financial Intelligence Units",
   },
   {
-    id: 6,
-    title: "Complex PDF Resolution",
-    description: "Precisely extract data from complicated PDFs manually.",
-    Icon: () => <Filter className="w-6 h-6" />,
+    name: "Enforcement Directorate (ED)",
   },
   {
-    id: 7,
-    title: "7500+ Smart Data Points",
-    description:
-      "Intelligent categorization instantly eliminates suspense entries.",
-    Icon: () => <Layers className="w-6 h-6" />,
+    name: "Income Tax & Vigilance Departments",
   },
   {
-    id: 8,
-    title: "Smart Suspense Handling",
-    description:
-      "Effortlessly send, update, and auto-refresh suspense entries, instantly streamlining your data.",
-    Icon: () => <CheckCircleIcon className="w-6 h-6" />,
-  },
-  {
-    id: 9,
-    title: "Merge Names & Reduce Suspense",
-    description: "Streamline your data clarity instantly.",
-    Icon: () => <Repeat className="w-6 h-6" />,
-  },
-  {
-    id: 10,
-    title: "Advanced Voucher Management",
-    description:
-      "Seamlessly handle Sales, Purchase, Ledger, and Inventory entries.",
-    Icon: () => <PiggyBankIcon className="w-6 h-6" />,
-  },
-  {
-    id: 11,
-    title: "Bulk Processing Excellence",
-    description: "Quickly handle multiple accounts simultaneously.",
-    Icon: () => <Database className="w-6 h-6" />,
-  },
-  {
-    id: 12,
-    title: "Instant, Detailed Reports",
-    description: "Quickly export reports in Excel, CSV, or PDF formats.",
-    Icon: () => <FileOutput className="w-6 h-6" />,
+    name: "State & Central Police Investigation Wings",
   },
 ];
 
-// Workflow steps data
-const workflowSteps = [
-  {
-    id: 1,
-    title: "Upload PDF/Excel/CSV",
-    Icon: FileText,
-    color: "from-blue-500 to-blue-600",
-  },
-  {
-    id: 2,
-    title: "Automatic anomaly detection",
-    Icon: AlertTriangle,
-    color: "from-purple-500 to-purple-600",
-  },
-  {
-    id: 3,
-    title: "AI-powered categorization",
-    Icon: BarChart3,
-    color: "from-green-500 to-green-600",
-  },
-  {
-    id: 4,
-    title: "Suspense reduction",
-    Icon: Repeat,
-    color: "from-yellow-500 to-yellow-600",
-  },
-  {
-    id: 5,
-    title: "One-click Tally export",
-    Icon: Upload,
-    color: "from-red-500 to-red-600",
-  },
-  {
-    id: 6,
-    title: "Download instant ITR-ready report",
-    Icon: Download,
-    color: "from-cyan-500 to-cyan-600",
-  },
-];
+const firstRow = agencies.slice(0, agencies.length / 2);
+const secondRow = agencies.slice(agencies.length / 2);
 
-// Case Studies data
-const caseStudies = [
-  {
-    id: 1,
-    location: "Delhi",
-    title: "Easing Tax Season Stress",
-    challenge:
-      "A Chartered Accountant struggled each tax season due to manually categorizing client transactions from bank statements.",
-    solution:
-      "CypherSOL automated this entire process, allowing them to quickly prepare ITR summaries.",
-    result:
-      "This realistically reduced the workload, enabling the accountant to focus more on advising clients rather than data entry.",
-    icon: Clock,
-    color: "from-blue-500 to-blue-600",
-    benefit: "Time Savings",
-  },
-  {
-    id: 2,
-    location: "Hyderabad",
-    title: "Simple Integration for Practice",
-    challenge:
-      "A Hyderabad-based CA frequently faced frustrating errors during data uploads into Tally from Excel sheets, causing delays and rework.",
-    solution:
-      "After adopting CypherSOL's simple, one-click integration, the firm noticed fewer mistakes and smoother workflows.",
-    result:
-      "The accountants appreciated how intuitive the tool was, making their daily tasks easier.",
-    icon: CheckCircle,
-    color: "from-green-500 to-green-600",
-    benefit: "Error Reduction",
-  },
-  {
-    id: 3,
-    location: "Pune",
-    title: "Solving Reconciliation Headaches",
-    challenge:
-      "A Pune Chartered Accountant often encountered confusing suspense entries during bank reconciliations, wasting valuable hours trying to resolve them.",
-    solution:
-      "CypherSOL's smart suspense handling provided clarity by automatically identifying and suggesting accurate categories.",
-    result:
-      "This made reconciliations faster and significantly less stressful for their team.",
-    icon: TrendingUp,
-    color: "from-purple-500 to-purple-600",
-    benefit: "Process Improvement",
-  },
-  {
-    id: 4,
-    location: "Ahmedabad",
-    title: "Clearer Voucher Management",
-    challenge:
-      "An Ahmedabad-based Chartered Accountant had difficulty keeping consistent records of various vouchers, creating compliance concerns.",
-    solution:
-      "Implementing CypherSOL's automated voucher management ensured that sales, purchases, and ledger entries were consistently accurate.",
-    result:
-      "This significantly reduced manual checking and improved their reporting accuracy.",
-    icon: ClipboardCheck,
-    color: "from-yellow-500 to-yellow-600",
-    benefit: "Compliance Enhancement",
-  },
-  {
-    id: 5,
-    location: "Bangalore",
-    title: "Consistent Categorization",
-    challenge:
-      "A CA firm in Bangalore dealt with inconsistent transaction categorization that complicated their accounting and reporting processes.",
-    solution:
-      "With CypherSOL, they automated the categorization of financial transactions.",
-    result:
-      "The firm immediately noticed clearer records, less confusion during audits, and more confidence in their financial reporting.",
-    icon: BookOpen,
-    color: "from-red-500 to-red-600",
-    benefit: "Audit Readiness",
-  },
-];
-
-// Testimonial data with realistic statements about bank statement analysis software
-const testimonials = [
-  {
-    id: 1,
-    name: "Rajesh Sharma",
-    position: "Senior CA, Delhi",
-    company: "Sharma & Associates",
-    rating: 5,
-    text: "CypherSOL reduced our tax filing preparation time by 70%. What used to take my team days now takes just hours. The automatic categorization feature has been a game-changer for our practice during busy season.",
-    avatar: "/api/placeholder/45/45",
-    highlight: "70% time savings",
-  },
-  {
-    id: 2,
-    name: "Priya Patel",
-    position: "Founder & CA",
-    company: "TaxPro Solutions, Mumbai",
-    rating: 5,
-    text: "The offline security feature gives my clients complete peace of mind about their financial data. One-click Tally integration means we can prepare financial statements faster than ever before. Worth every rupee!",
-    avatar: "/api/placeholder/45/45",
-    highlight: "Enhanced client security",
-  },
-  {
-    id: 3,
-    name: "Avinash Reddy",
-    position: "CA Partner",
-    company: "Reddy & Kumar Associates, Bangalore",
-    rating: 5,
-    text: "Our firm handles statements from over 15 different banks. CypherSOL processes them all flawlessly. The reduction in suspense entries alone has saved countless hours of reconciliation work.",
-    avatar: "/api/placeholder/45/45",
-    highlight: "Multi-bank compatibility",
-  },
-  {
-    id: 4,
-    name: "Deepa Krishnan",
-    position: "Independent CA",
-    company: "Chennai",
-    rating: 4,
-    text: "As a solo practitioner, CypherSOL has allowed me to take on 40% more clients this year. The audit-ready reports make compliance work straightforward, and clients are impressed with the quick turnaround times.",
-    avatar: "/api/placeholder/45/45",
-    highlight: "40% client capacity increase",
-  },
-  {
-    id: 5,
-    name: "Vikram Malhotra",
-    position: "Senior Manager",
-    company: "SME Advisory Services, Kolkata",
-    rating: 5,
-    text: "Our team previously struggled with complex PDFs from regional banks. CypherSOL's precision in handling these documents has eliminated manual data entry errors completely. The ROI was evident within weeks.",
-    avatar: "/api/placeholder/45/45",
-    highlight: "Zero manual errors",
-  },
-  {
-    id: 6,
-    name: "Sanjana Gupta",
-    position: "Tax Consultant",
-    company: "CloudTax Advisors, Jaipur",
-    rating: 5,
-    text: "The bulk processing capability has transformed our operations. We can now handle year-end closing for multiple clients simultaneously, reducing our processing time by nearly 65%. Absolutely indispensable tool.",
-    avatar: "/api/placeholder/45/45",
-    highlight: "65% faster year-end closing",
-  },
-];
-
-// Star rating component
-const StarRating = ({ rating }) => {
+const AgencyCard = ({ name }) => {
   return (
-    <div className="flex items-center">
-      {[...Array(5)].map((_, i) => (
-        <Star
-          key={i}
-          className={cn(
-            "w-4 h-4",
-            i < rating ? "text-yellow-400 fill-yellow-400" : "text-gray-600"
-          )}
-        />
-      ))}
-    </div>
-  );
-};
-
-// Individual testimonial card
-const TestimonialCard = ({ testimonial }) => {
-  return (
-    <div className="flex flex-col h-full bg-black/40 backdrop-blur-sm border border-gray-800 rounded-xl p-6 hover:border-gray-700 transition-all duration-300 relative group">
-      {/* Quote icon */}
-      <div className="absolute -top-4 -left-4 bg-gradient-to-r from-cyan-600 to-blue-600 rounded-full p-2 shadow-lg shadow-blue-900/30 group-hover:scale-110 transition-transform duration-300">
-        <Quote className="w-4 h-4 text-white" />
-      </div>
-
-      {/* Rating */}
-      <div className="mb-4">
-        <StarRating rating={testimonial.rating} />
-      </div>
-
-      {/* Testimonial text */}
-      <div className="mb-6 flex-grow">
-        <p className="text-gray-300 italic">{testimonial.text}</p>
-      </div>
-
-      {/* Highlight tag */}
-      <div className="mb-6">
-        <span className="inline-flex items-center px-3 py-1 rounded-full bg-gradient-to-r from-blue-900/50 to-cyan-900/50 text-cyan-300 text-xs font-medium">
-          {testimonial.highlight}
-        </span>
-      </div>
-
-      {/* User info */}
-      <div className="flex items-center mt-auto">
-        <div className="w-10 h-10 rounded-full overflow-hidden bg-gradient-to-r from-gray-700 to-gray-800 flex items-center justify-center">
-          <User className="w-5 h-5 text-gray-400" />
-        </div>
-        <div className="ml-3">
-          <h4 className="text-white font-medium">{testimonial.name}</h4>
-          <p className="text-gray-400 text-sm">
-            {testimonial.position}, {testimonial.company}
-          </p>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-const TestimonialsSection = () => {
-  const fadeUpVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: (i: number) => ({
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 1,
-        delay: 0.3 + i * 0.1,
-        ease: [0.25, 0.4, 0.25, 1],
-      },
-    }),
-  };
-
-  return (
-    <motion.div
-      custom={10}
-      variants={fadeUpVariants}
-      initial="hidden"
-      animate="visible"
-      className="container mx-auto px-4 py-16"
+    <figure
+      className={cn(
+        "relative h-full w-70 cursor-pointer overflow-hidden rounded-xl border p-4",
+        // light styles
+        "border-gray-950/[.1] bg-gray-950/[.01] hover:bg-gray-950/[.05]",
+        // dark styles
+        "dark:border-gray-50/[.1] dark:bg-gray-900 dark:hover:bg-gray-900/[.15]"
+      )}
     >
-      <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold mb-6 tracking-tight text-center">
-        <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-blue-400">
-          What Our Users Are Saying
-        </span>
-      </h2>
-
-      <p className="text-base md:text-lg text-[#c3d0e5] text-center max-w-4xl mx-auto mb-16">
-        Hear from Chartered Accountants and financial professionals who have
-        transformed their workflows with CypherSOL's bank statement analyzer
-      </p>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mx-auto">
-        {testimonials.map((testimonial, index) => (
-          <motion.div
-            key={testimonial.id}
-            custom={index * 0.2}
-            variants={fadeUpVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.1 }}
-          >
-            <TestimonialCard testimonial={testimonial} />
-          </motion.div>
-        ))}
+      <div className="flex flex-row items-center gap-2">
+        <Shield className="h-8 w-8 text-cyan-400" />
+        <div className="flex flex-col">
+          <figcaption className="text-sm font-medium dark:text-white">
+            {name}
+          </figcaption>
+        </div>
       </div>
-
-      <div className="text-center mt-12">
-        <motion.button
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          className="px-6 py-3 rounded-full bg-gradient-to-r from-cyan-600 to-blue-600 text-white font-medium flex items-center mx-auto hover:shadow-lg hover:shadow-blue-900/20 transition-all duration-300"
-        >
-          Read More Success Stories
-          <ChevronRight className="w-5 h-5 ml-2" />
-        </motion.button>
-      </div>
-    </motion.div>
+    </figure>
   );
 };
-
 export const Forensic = () => {
-  const fadeUpVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: (i: number) => ({
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 1,
-        delay: 0.5 + i * 0.2,
-        ease: [0.25, 0.4, 0.25, 1],
-      },
-    }),
-  };
   return (
-    <div className="">
-      <BeamsBackground />
+    <>
+      {/* Hero Section */}
+      <section className="relative flex min-h-screen items-center justify-center overflow-hidden pt-16">
+        {/* Animated Elements */}
+        <div className="absolute inset-0 overflow-hidden">
+          {/* Curved Lines */}
+          <svg
+            className="absolute h-full w-full"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <defs>
+              <linearGradient id="grad1" x1="1" y1="0" x2="0" y2="0">
+                <stop offset="0%" stopColor="#22d3ee" stopOpacity="0" />
+                <stop offset="50%" stopColor="#22d3ee" stopOpacity="0.5" />
+                <stop offset="100%" stopColor="#22d3ee" stopOpacity="0" />
+              </linearGradient>
+              <linearGradient id="grad2" x1="1" y1="0" x2="0" y2="0">
+                <stop offset="0%" stopColor="#8b5cf6" stopOpacity="0" />
+                <stop offset="50%" stopColor="#8b5cf6" stopOpacity="0.5" />
+                <stop offset="100%" stopColor="#8b5cf6" stopOpacity="0" />
+              </linearGradient>
+            </defs>
+            {/* Top Curves */}
+            <motion.path
+              initial={{ pathLength: 0, opacity: 0 }}
+              animate={{ pathLength: 1, opacity: 1 }}
+              transition={{
+                duration: 2,
+                ease: "easeInOut",
+                repeat: Number.POSITIVE_INFINITY,
+                repeatType: "loop",
+                repeatDelay: 1,
+              }}
+              d="M 100 100 Q 300 0 500 100 T 900 100"
+              fill="none"
+              stroke="url(#grad1)"
+              strokeWidth="1"
+            />
+            <motion.path
+              initial={{ pathLength: 0, opacity: 0 }}
+              animate={{ pathLength: 1, opacity: 1 }}
+              transition={{
+                duration: 2,
+                ease: "easeInOut",
+                repeat: Number.POSITIVE_INFINITY,
+                repeatType: "loop",
+                repeatDelay: 1,
+                delay: 0.5,
+              }}
+              d="M 0 200 Q 200 100 400 200 T 800 200"
+              fill="none"
+              stroke="url(#grad2)"
+              strokeWidth="1"
+            />
+            {/* Bottom Curves */}
+            <motion.path
+              initial={{ pathLength: 0, opacity: 0 }}
+              animate={{ pathLength: 1, opacity: 1 }}
+              transition={{
+                duration: 2,
+                ease: "easeInOut",
+                repeat: Number.POSITIVE_INFINITY,
+                repeatType: "loop",
+                repeatDelay: 1,
+                delay: 1,
+              }}
+              d="M 100 600 Q 300 500 500 600 T 900 600"
+              fill="none"
+              stroke="url(#grad1)"
+              strokeWidth="1"
+            />
+          </svg>
 
-      {/* Advantages section */}
-      <div>
-        <motion.div
-          custom={9}
-          variants={fadeUpVariants}
-          initial="hidden"
-          animate="visible"
-        >
-          <div className="container mx-auto px-4 py-4">
-            <h1 className="text-2xl sm:text-4xl md:text-6xl font-bold mb-6 md:mb-8 tracking-tight text-center">
-              <span
-                className={cn(
-                  "bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-white/90 to-blue-400"
-                )}
-              >
-                Key Features & Benefits
-              </span>
-            </h1>
+          {/* Straight Lines */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1 }}
+            className="absolute inset-0"
+          >
+            {[...Array(3)].map((_, i) => (
+              <motion.div
+                key={i}
+                initial={{ x: "100%", opacity: 0 }}
+                animate={{
+                  x: "-100%",
+                  opacity: [0, 0.7, 0.7, 0],
+                }}
+                transition={{
+                  duration: 2.5,
+                  delay: i * 0.2,
+                  repeat: Number.POSITIVE_INFINITY,
+                  repeatType: "loop",
+                  ease: "linear",
+                }}
+                className="absolute right-0"
+                style={{
+                  top: `${15 + i * 10}%`,
+                  height: "1px",
+                  width: "100%",
+                  background: `linear-gradient(90deg, transparent, ${
+                    i % 2 === 0 ? "#22d3ee" : "#8b5cf6"
+                  }60, transparent)`,
+                }}
+              />
+            ))}
+          </motion.div>
+        </div>
 
-            <p className="text-base md:text-lg text-[#c3d0e5] text-center max-w-4xl mx-auto animate-fade-in opacity-0 [animation-delay:400ms]">
-              Revolutionize Accounting, Tally Integration & ITR Filing with
-              AI-Powered Automation. Managing complex bank statements and manual
-              data entry is now effortless with CypherSOL.
-            </p>
+        {/* Animated Background */}
+        <div className="absolute inset-0 z-[1]">
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 2 }}
+            className="absolute -left-1/4 top-1/4 h-96 w-96 rounded-full bg-cyan-500/30 blur-3xl"
+          />
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 2, delay: 0.5 }}
+            className="absolute -right-1/4 top-1/2 h-96 w-96 rounded-full bg-violet-500/30 blur-3xl"
+          />
+        </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mx-auto px-4 justify-center mb-8 mt-12 items-stretch">
-              {advData.map((card) => (
-                <CardComponent
-                  key={card.id}
-                  title={card.title}
-                  description={card.description}
-                  Icon={card.Icon}
-                />
-              ))}
+        {/* Content */}
+        <div className="container relative z-[3] px-4 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1 }}
+            className="mx-auto max-w-3xl space-y-8"
+          >
+            <div className="flex items-center justify-center mb-10">
+              <Badge>Government Exclusive</Badge>
             </div>
-          </div>
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-white/90 to-blue-400 drop-shadow-lg">
+              Fund Trail Analyzer
+            </h1>
+            <h4 className="mt-4 max-w-3xl mx-auto text-lg sm:text-xl md:text-3xl text-gray-300 font-semibold tracking-wide">
+              *CypherSOL Fund Trail Analyzer is an advanced forensic{" "}
+              <span className="text-cyan-400">
+                intelligence tool, built exclusively
+              </span>{" "}
+              for government agencies to track, visualize, and{" "}
+              <span className="text-blue-400">analyze the flow of funds</span>.
+            </h4>
+
+            <p className="mt-4 max-w-3xl mx-auto text-sm sm:text-base md:text-lg text-gray-400 font-medium leading-relaxed">
+              Advanced forensic intelligence tool for tracking, visualizing, and
+              analyzing fund flows across bank accounts. Uncover financial
+              fraud, laundering, and criminal funding activities with
+              <span className="text-cyan-400"> 7500+ data point filters</span>.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Built Exclusively For Section - Auto Scrolling */}
+      <section className="py-12">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <motion.h2
+            className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 tracking-tight text-white"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+          >
+            <span
+              className={cn(
+                "bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-white/90 to-blue-400"
+              )}
+            >
+              Built Exclusively For
+            </span>
+          </motion.h2>
+          <motion.p
+            className="text-lg md:text-xl text-gray-400 mb-8"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, delay: 0.2 }}
+          >
+            Government agencies to track and analyze complex financial
+            transactions.
+          </motion.p>
+        </div>
+
+        <div className="relative flex w-full flex-col items-center justify-center overflow-hidden">
+          <Marquee pauseOnHover className="[--duration:20s]">
+            {firstRow.map((review) => (
+              <AgencyCard key={review.name} {...review} />
+            ))}
+          </Marquee>
+          <Marquee reverse pauseOnHover className="[--duration:20s]">
+            {secondRow.map((review) => (
+              <AgencyCard key={review.name} {...review} />
+            ))}
+          </Marquee>
+          <div className="pointer-events-none absolute inset-y-0 left-0 w-1/4 bg-gradient-to-r from-background"></div>
+          <div className="pointer-events-none absolute inset-y-0 right-0 w-1/4 bg-gradient-to-l from-background"></div>
+        </div>
+      </section>
+
+      {/* Core Capability */}
+      <section>
+        <motion.div
+          className="max-w-6xl mx-auto text-center px-4 sm:px-6 lg:px-8 py-12"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+        >
+          <motion.h1
+            className="text-4xl md:text-5xl font-bold mb-3 tracking-tight"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+          >
+            <span
+              className={cn(
+                "bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-white/90 to-blue-400"
+              )}
+            >
+              Core Capabilities
+            </span>
+          </motion.h1>
+          <motion.p
+            className="text-lg md:text-xl text-gray-400"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, delay: 0.2 }}
+          >
+            The Fund Trail Analyzer is a powerful tool designed to assist
+            government agencies in tracking
+            <br /> and analyzing complex financial transactions.
+          </motion.p>
+          <motion.img
+            src="assets/images/Core-Capabilities.png"
+            alt="software function"
+            className="w-full h-auto object-contain"
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            whileHover={{
+              scale: 1.02,
+              transition: { duration: 0.3 },
+            }}
+          />
         </motion.div>
+      </section>
+
+      {/* Key Use Cases Section */}
+      <div className="max-w-7xl mx-auto px-4 py-12 md:py-20">
+        <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-8 md:mb-20 tracking-tight text-center">
+          <span className="bg-clip-text text-transparent bg-gradient-to-b from-white to-white/80">
+            Fund Trail Analyzer
+          </span>
+          <br />
+          <span
+            className={cn(
+              "bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-white/90 to-blue-400"
+            )}
+          >
+            Key Use Cases
+          </span>
+        </h1>
+
+        <div className="grid md:grid-cols-2 gap-8">
+          <FeatureBox
+            title="Uncovering Multi-Layered Money Laundering Operations"
+            description="1) Government agencies often face challenges identifying layered transactions across accounts and banks."
+            para="2) Our tool deciphers and visualizes fund trails, helping to expose circular transactions, layering strategies, and complex fund flows often used to disguise the origin and ownership of money."
+            icon={<Layers className="w-14 h-14 text-cyan-400" />}
+            delay={0}
+          />
+
+          <FeatureBox
+            title="Tracking Financial Flows in Suspicious Investigations"
+            description="1) For agencies like ATS and NIA, tracing sources of funding and distribution of suspicious transactions is crucial. "
+            para="2) Fund Trail Analyzer filters transactions based on location, frequency, account types, and keywords associated with sensitive financial activities, bringing clarity to otherwise obscure trails."
+            icon={<ScanSearch className="w-12 h-12 text-cyan-400" />}
+            delay={0.2}
+          />
+        </div>
       </div>
 
-      {/* Visual Graphic Analysis Section */}
-      <EnhancedWorkflowSection />
+      {/* Cta Banner */}
+      <CTABanner
+        title="Secure Your "
+        highlightedText="Investigation Capabilities"
+        subtitle="Join elite government agencies using CypherSOL Fund Trail Analyzer for critical financial investigations. Offline deployment ensures maximum data security."
+        primaryButtonText="Contact Us"
+        imageSrc="https://framerusercontent.com/images/MecLliNBqre50VslV9Cc8fZOqkY.png?scale-down-to=512"
+        imageAlt="AI-powered financial analysis"
+      />
 
-      {/* Case Studies Section */}
-      <motion.div
-        custom={11}
-        variants={fadeUpVariants}
-        initial="hidden"
-        animate="visible"
-        className="container mx-auto px-4 py-16"
-      >
-        <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold mb-12 tracking-tight text-center">
-          <span className="bg-clip-text text-transparent bg-gradient-to-r from-violet-400 to-pink-400">
-            Real-Life Case Studies
-          </span>
-        </h2>
-
-        <p className="text-base md:text-lg text-[#c3d0e5] text-center max-w-4xl mx-auto mb-12">
-          See how Chartered Accountants across India are transforming their
-          practices with CypherSOL
-        </p>
-
-        {/* Map of India graphic representation with case study locations */}
-        <div className="relative w-full max-w-6xl mx-auto mb-16">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {caseStudies.map((study) => (
-              <div
-                key={study.id}
-                className="border border-gray-800 bg-black/40 backdrop-blur-sm rounded-xl p-6 hover:border-gray-700 transition-all duration-300 group hover:shadow-lg hover:shadow-cyan-900/20"
-              >
-                {/* Header with location and icon */}
-                <div className="flex justify-between items-center mb-4">
-                  <div className="flex items-center">
-                    <MapPin className="w-4 h-4 text-cyan-400 mr-2" />
-                    <span className="text-cyan-300 font-medium">
-                      {study.location}
-                    </span>
-                  </div>
-                  <div
-                    className={`flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-r ${study.color} group-hover:scale-110 transition-transform duration-300`}
-                  >
-                    <study.icon className="w-5 h-5 text-white" />
-                  </div>
-                </div>
-
-                {/* Title */}
-                <h3 className="text-xl font-semibold text-white mb-4">
-                  {study.title}
-                </h3>
-
-                {/* Challenge */}
-                <div className="mb-4">
-                  <h4 className="text-gray-400 font-medium mb-1 text-sm">
-                    Challenge:
-                  </h4>
-                  <p className="text-gray-300">{study.challenge}</p>
-                </div>
-
-                {/* Solution */}
-                <div className="mb-4">
-                  <h4 className="text-gray-400 font-medium mb-1 text-sm">
-                    Solution:
-                  </h4>
-                  <p className="text-gray-300">{study.solution}</p>
-                </div>
-
-                {/* Result */}
-                <div className="mb-6">
-                  <h4 className="text-gray-400 font-medium mb-1 text-sm">
-                    Result:
-                  </h4>
-                  <p className="text-gray-300">{study.result}</p>
-                </div>
-
-                {/* Key benefit tag */}
-                <div className="inline-flex items-center px-3 py-1 rounded-full bg-gradient-to-r from-gray-800 to-gray-700 text-white text-sm">
-                  <span className="mr-2">•</span>
-                  {study.benefit}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </motion.div>
-
-      {/* Testimonials Section */}
-      <motion.div>
-        <TestimonialsSection />
-      </motion.div>
-
-      {/* FAQ section */}
+      {/* FAQ Section */}
       <motion.div
         custom={12}
-        variants={fadeUpVariants}
+        // variants={fadeUpVariants}
         initial="hidden"
         animate="visible"
       >
@@ -570,6 +378,6 @@ export const Forensic = () => {
           regularText="Frequently "
         />
       </motion.div>
-    </div>
+    </>
   );
 };
