@@ -17,7 +17,7 @@ import ComparisonFeatures from "../ComparisionFeatures";
 import { motion, AnimatePresence } from "framer-motion";
 import { pricingFaqsArray } from "../data/FAQs";
 
-import { motion, AnimatePresence } from "framer-motion";
+// import { motion, AnimatePresence } from "framer-motion";
 
 export default function PricingContainer() {
   const [isVisible, setIsVisible] = useState(false);
@@ -155,10 +155,10 @@ export default function PricingContainer() {
       popular: false,
     },
   ];
-  
+
   // Get active plans based on selected tab
   const getActivePlans = () => {
-    switch(activeTab) {
+    switch (activeTab) {
       case "CA":
         return caPlans;
       case "DSA":
@@ -176,19 +176,32 @@ export default function PricingContainer() {
       <div className="absolute inset-0 opacity-20 z-0">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(0,200,255,0.1),transparent_40%)]" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_70%,rgba(0,100,255,0.1),transparent_40%)]" />
-        <svg className="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg">
+        <svg
+          className="absolute inset-0 w-full h-full"
+          xmlns="http://www.w3.org/2000/svg"
+        >
           <defs>
-            <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-              <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.05)" strokeWidth="0.5"/>
+            <pattern
+              id="grid"
+              width="40"
+              height="40"
+              patternUnits="userSpaceOnUse"
+            >
+              <path
+                d="M 40 0 L 0 0 0 40"
+                fill="none"
+                stroke="rgba(255,255,255,0.05)"
+                strokeWidth="0.5"
+              />
             </pattern>
           </defs>
           <rect width="100%" height="100%" fill="url(#grid)" />
         </svg>
       </div>
-      
+
       <div className="relative z-10 max-w-7xl mx-auto">
         <div className="text-center mb-10">
-          <motion.h1 
+          <motion.h1
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
@@ -202,7 +215,7 @@ export default function PricingContainer() {
               Pricing Plans
             </span>
           </motion.h1>
-          <motion.h3 
+          <motion.h3
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: 0.2 }}
@@ -212,7 +225,7 @@ export default function PricingContainer() {
               No Hidden Cost!!!
             </TextAnimate>
           </motion.h3>
-          <motion.p 
+          <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.4 }}
@@ -221,70 +234,72 @@ export default function PricingContainer() {
             Special pricing for a limited time—lock in your savings today!
           </motion.p>
         </div>
-      
-      {/* Online/Offline Tab Navigation */}
-      <div className="flex justify-center mb-8">
-        <div className="bg-gray-900/80 p-1.5 rounded-xl flex relative overflow-hidden shadow-lg shadow-blue-900/20">
-          <div 
-            className="absolute h-full transition-all duration-300 rounded-lg bg-gradient-to-r from-blue-600 to-cyan-500 z-0"
-            style={{
-              width: "50%",
-              left: pricingMode === "Online" ? "0%" : "50%",
-              transition: "left 0.3s ease"
-            }}
-          />
-          {["Online", "Offline"].map((mode) => (
-            <motion.button
-              key={mode}
-              onClick={() => setPricingMode(mode)}
-              className={`px-8 py-3 rounded-lg text-base font-medium transition-all duration-300 z-10 relative
-                ${pricingMode === mode 
-                  ? "text-white" 
-                  : "text-gray-300 hover:text-white"
+
+        {/* Online/Offline Tab Navigation */}
+        <div className="flex justify-center mb-8">
+          <div className="bg-gray-900/80 p-1.5 rounded-xl flex relative overflow-hidden shadow-lg shadow-blue-900/20">
+            <div
+              className="absolute h-full transition-all duration-300 rounded-lg bg-gradient-to-r from-blue-600 to-cyan-500 z-0"
+              style={{
+                width: "50%",
+                left: pricingMode === "Online" ? "0%" : "50%",
+                transition: "left 0.3s ease",
+              }}
+            />
+            {["Online", "Offline"].map((mode) => (
+              <motion.button
+                key={mode}
+                onClick={() => setPricingMode(mode)}
+                className={`px-8 py-3 rounded-lg text-base font-medium transition-all duration-300 z-10 relative
+                ${
+                  pricingMode === mode
+                    ? "text-white"
+                    : "text-gray-300 hover:text-white"
                 }`}
-              whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 0.97 }}
-            >
-              {mode}
-            </motion.button>
-          ))}
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.97 }}
+              >
+                {mode}
+              </motion.button>
+            ))}
+          </div>
         </div>
-      </div>
-      
-      {/* Service Type Tab Navigation */}
-      <div className="flex justify-center mb-12">
-        <div className="bg-gray-900/60 p-1 rounded-lg flex shadow-md">
-          {["CA", "DSA", "Accounting"].map((tab) => (
-            <motion.button
-              key={tab}
-              onClick={() => setActiveTab(tab)}
-              className={`px-6 py-3 rounded-md text-base font-medium transition-all duration-300 ${activeTab === tab 
-                ? "bg-gradient-to-r from-blue-500 to-cyan-400 text-white" 
-                : "text-gray-300 hover:text-white hover:bg-gray-800/50"
-              }`}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              {tab}
-            </motion.button>
-          ))}
+
+        {/* Service Type Tab Navigation */}
+        <div className="flex justify-center mb-12">
+          <div className="bg-gray-900/60 p-1 rounded-lg flex shadow-md">
+            {["CA", "DSA", "Accounting"].map((tab) => (
+              <motion.button
+                key={tab}
+                onClick={() => setActiveTab(tab)}
+                className={`px-6 py-3 rounded-md text-base font-medium transition-all duration-300 ${
+                  activeTab === tab
+                    ? "bg-gradient-to-r from-blue-500 to-cyan-400 text-white"
+                    : "text-gray-300 hover:text-white hover:bg-gray-800/50"
+                }`}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                {tab}
+              </motion.button>
+            ))}
+          </div>
         </div>
-      </div>
-      
-      {/* Tab Content */}
-      <AnimatePresence mode="wait">
-        <motion.div 
-          key={`${pricingMode}-${activeTab}`}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -20 }}
-          transition={{ duration: 0.3 }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full lg:w-[95%] mx-auto"
-        >
-          {getActivePlans().map((plan, index) => (
-            <Card
-              key={`${activeTab}-${plan.name}`}
-              className={`relative flex flex-col bg-gray-900/40 border-gray-800 transform transition-all duration-500 
+
+        {/* Tab Content */}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={`${pricingMode}-${activeTab}`}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.3 }}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full lg:w-[95%] mx-auto"
+          >
+            {getActivePlans().map((plan, index) => (
+              <Card
+                key={`${activeTab}-${plan.name}`}
+                className={`relative flex flex-col bg-gray-900/40 border-gray-800 transform transition-all duration-500 
                 ${
                   isVisible
                     ? "translate-y-0 opacity-100"
@@ -296,56 +311,60 @@ export default function PricingContainer() {
                     : "hover:border-blue-500/50"
                 }
               `}
-              style={{
-                transitionDelay: `${index * 150}ms`,
-              }}
-            >
-              <CardHeader>
-                {plan.popular && (
-                  <div className="absolute top-0 right-0 bg-gradient-to-r from-blue-500 to-cyan-400 text-white text-xs font-bold px-3 py-1 rounded-bl-lg rounded-tr-lg shadow-lg transform translate-x-0 -translate-y-0">
-                    POPULAR
-                  </div>
-                )}
-                <CardTitle className="text-xl text-center text-gray-200 mb-4">
-                  {plan.name}
-                </CardTitle>
-                <div className="text-center mt-4 space-y-2">
-                  <div className="relative inline-block">
-                    <h3 className="text-sm text-gray-400">
-                      Original Price:
-                      <span className="text-[#FFC107] text-2xl font-semibold relative inline-block">
-                        {" "}
-                        ₹{plan.originalPrice}
-                        <div
-                          className="absolute w-full h-0.5 bg-white"
-                          style={{
-                            top: "70%",
-                            left: "0",
-                            transform: "rotate(-12deg)",
-                            transformOrigin: "left center",
-                          }}
-                        ></div>
+                style={{
+                  transitionDelay: `${index * 150}ms`,
+                }}
+              >
+                <CardHeader>
+                  {plan.popular && (
+                    <div className="absolute top-0 right-0 bg-gradient-to-r from-blue-500 to-cyan-400 text-white text-xs font-bold px-3 py-1 rounded-bl-lg rounded-tr-lg shadow-lg transform translate-x-0 -translate-y-0">
+                      POPULAR
+                    </div>
+                  )}
+                  <CardTitle className="text-xl text-center text-gray-200 mb-4">
+                    {plan.name}
+                  </CardTitle>
+                  <div className="text-center mt-4 space-y-2">
+                    <div className="relative inline-block">
+                      <h3 className="text-sm text-gray-400">
+                        Original Price:
+                        <span className="text-[#FFC107] text-2xl font-semibold relative inline-block">
+                          {" "}
+                          ₹{plan.originalPrice}
+                          <div
+                            className="absolute w-full h-0.5 bg-white"
+                            style={{
+                              top: "70%",
+                              left: "0",
+                              transform: "rotate(-12deg)",
+                              transformOrigin: "left center",
+                            }}
+                          ></div>
+                        </span>
+                      </h3>
+                    </div>
+                    <motion.h2
+                      whileHover={{ scale: 1.05 }}
+                      transition={{
+                        type: "spring",
+                        stiffness: 400,
+                        damping: 10,
+                      }}
+                      className="text-3xl md:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent"
+                    >
+                      ₹{plan.price.toLocaleString()}
+                    </motion.h2>
+                    <h3 className="text-sm text-blue-100">
+                      {" "}
+                      +18% GST ({" "}
+                      <span>
+                        ₹{(plan.price * 0.18).toFixed(0).toLocaleString()}
                       </span>
+                      )
                     </h3>
                   </div>
-                  <motion.h2 
-                    whileHover={{ scale: 1.05 }}
-                    transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                    className="text-3xl md:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent"
-                  >
-                    ₹{plan.price.toLocaleString()}
-                  </motion.h2>
-                  <h3 className="text-sm text-blue-100">
-                    {" "}
-                    +18% GST ({" "}
-                    <span>
-                      ₹{(plan.price * 0.18).toFixed(0).toLocaleString()}
-                    </span>
-                    )
-                  </h3>
-                </div>
-                <hr className="border-gray-800" />
-              </CardHeader>
+                  <hr className="border-gray-800" />
+                </CardHeader>
 
                 <CardContent className="flex-1">
                   <ul className="space-y-4">
@@ -389,7 +408,7 @@ export default function PricingContainer() {
           <FAQSection items={pricingFaqsArray} />
         </div>
       </div>
-      </div>
     </div>
+    // </div>
   );
 }
