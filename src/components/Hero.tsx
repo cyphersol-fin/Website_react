@@ -15,7 +15,7 @@ const base = import.meta.env.BASE_URL; // Will be '/static/' in production (as p
 
 export function Hero() {
   return (
-    <div className="relative bg-black min-h-screen overflow-hidden">
+    <div className="relative bg-black overflow-hidden">
       <GlowEffect />
 
       <div className="relative">
@@ -42,7 +42,7 @@ export function Hero() {
               <Stats />
 
               <div className="flex flex-col sm:flex-row gap-4">
-                <Link to="/download">
+                <Link to="/pricing/?plan=bsa">
                   <button className="group px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-semibold rounded-xl hover:opacity-90 transition-all duration-300 w-full">
                     Download
                   </button>
@@ -73,7 +73,7 @@ export function Hero() {
                     mixBlendMode: "normal",
                     background: "none",
                     position: "absolute",
-                    top: "-80px", // Slightly adjusted to center dice better
+                    top: "-100px", // Slightly adjusted to center dice better
                     left: 0,
                     pointerEvents: "auto",
                   }}
@@ -103,8 +103,8 @@ export function Hero() {
                   />
                   <DiceComponent />
                 </Canvas>
-                <div className="absolute bottom-[8rem] w-full text-center">
-                  <p className="text-base sm:text-xl bg-gradient-to-r from-cyan-400 to-blue-500 text-transparent bg-clip-text font-medium italic px-4 py-2 mx-auto max-w-xs sm:max-w-sm">
+                <div className="absolute bottom-[6rem] md:bottom-[8rem] lg:bottom-[13.5rem] w-full text-center">
+                  <p className="text-base md:text-lg bg-gradient-to-r from-cyan-400 to-blue-500 text-transparent bg-clip-text font-semibold italic px-4 py-2 mx-auto max-w-xs sm:max-w-sm">
                     A roll of Certainty-where Winning is the only Possibility
                   </p>
                 </div>
@@ -125,9 +125,13 @@ export function Hero() {
         >
           <div className="flex flex-col items-center justify-center mb-8 md:mb-16 animate-fade-in text-center">
             {/* <Badge>Product</Badge> */}
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mt-6 text-cyan-400">
-              Problem faced by our Business Partners
-            </h1>
+            <div className="max-w-3xl mx-auto text-center">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mt-6 text-cyan-400">
+                <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-white/90 to-blue-400">
+                  Problem faced by our Business Partners
+                </span>
+              </h1>
+            </div>
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -145,7 +149,7 @@ export function Hero() {
             </motion.div>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-28">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}

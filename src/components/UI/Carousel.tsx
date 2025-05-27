@@ -91,7 +91,7 @@ export default function CarouselSection() {
           {slides.map((slide, index) => (
             <CarouselItem key={index}>
               <div className="bg-gradient-to-br from-[#050A14] to-[#121A2A]  p-4 sm:p-8 md:p-12 lg:p-16 min-h-[300px] sm:min-h-[400px] md:min-h-[500px] lg:min-h-[600px] flex flex-col items-center justify-center text-center text-white">
-                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-9xl font-bold mb-4 sm:mb-6 md:mb-8">
+                <h1 className="text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-4 sm:mb-6 md:mb-8">
                   <span
                     className={cn(
                       "bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-white/90 to-blue-400"

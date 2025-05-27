@@ -1,6 +1,5 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { cn } from "./lib/utils";
 import { Badge } from "./UI/Badge";
 import TestimonialCard from "./components/ui/testimonial-cards";
 import FAQSection from "./FAQSection";
@@ -22,12 +21,9 @@ import {
   TrendingUp,
   BookOpen,
   ClipboardCheck,
-  ArrowRight,
 } from "lucide-react";
 import { bankAnalyzerFaqsArray } from "./data/FAQs";
-import { Link } from "react-router-dom";
 import { EnhancedWorkflowSection } from "./EnhancedWorkflowSection";
-import { GlowEffect } from "./UI/GlowEffect";
 
 const cardData = [
   {
@@ -198,7 +194,7 @@ export const BankAnalyzer = () => {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative flex min-h-screen items-center justify-center overflow-hidden pt-16">
+      <section className="relative flex items-center justify-center overflow-hidden px-4 py-12 sm:py-20 lg:py-24">
         {/* Animated Elements */}
         <div className="absolute inset-0 overflow-hidden">
           {/* Curved Lines */}
@@ -304,7 +300,6 @@ export const BankAnalyzer = () => {
             ))}
           </motion.div>
         </div>
-
         {/* Animated Background */}
         <div className="absolute inset-0 z-[1]">
           <motion.div
@@ -320,161 +315,62 @@ export const BankAnalyzer = () => {
             className="absolute -right-1/4 top-1/2 h-96 w-96 rounded-full bg-violet-500/30 blur-3xl"
           />
         </div>
-
         {/* Content */}
-        <motion.div
-          className="container relative z-[3] px-4 text-center max-w-7xl mx-auto py-20"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, staggerChildren: 0.2 }}
-        >
+        <div className="container relative z-[3] px-4 text-center">
           <motion.div
-            className="mb-8 flex items-center justify-center"
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 1 }}
+            className="mx-auto space-y-8"
           >
-            <motion.div whileHover={{ scale: 1.05 }}>
-              <Badge>Chartered Accountants & Tax Consultant's</Badge>
-            </motion.div>
-          </motion.div>
-
-          <motion.h1
-            className="text-4xl md:text-6xl font-bold leading-tight mb-6"
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8 }}
-          >
-            <motion.span
-              className={cn(
-                "bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-white/90 to-blue-400"
-              )}
-              animate={{ backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"] }}
-              transition={{ duration: 5, repeat: Infinity }}
-              style={{ backgroundSize: "200% 200%" }}
-            >
-              Revolutionize Accounting <br /> with AI-Powered Automation
-            </motion.span>
-          </motion.h1>
-          <motion.section
-            className="mb-20"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-          >
-            <div className="grid lg:grid-cols-2 gap-12 items-center text-center md:text-left px-4 sm:px-6 lg:px-8">
-              <div className="space-y-6">
-                <motion.h4
-                  className="text-3xl md:text-5xl font-sans leading-tight"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.6 }}
-                >
-                  Bank Statement Analyzer for{" "}
-                  <span className="text-cyan-400 font-sans">
-                    Chartered Accountants
-                  </span>
-                </motion.h4>
-
-                <motion.div
-                  className="h-px w-1/2 bg-gradient-to-r from-cyan-500/50 to-transparent my-6"
-                  initial={{ scaleX: 0 }}
-                  animate={{ scaleX: 1 }}
-                  transition={{ duration: 1, delay: 0.8 }}
-                  style={{ transformOrigin: "left" }}
-                />
-
-                <motion.p
-                  className="text-gray-400 text-lg md:text-xl leading-relaxed"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 1 }}
-                >
-                  CypherSOL's Bank Statement Analyzer simplifies bank statement
-                  processing using advanced AI. It automates transaction
-                  categorization and data entry, reducing errors, saving time,
-                  and boosting productivity—especially during tax season.
-                </motion.p>
-
-                <motion.div
-                  className="flex flex-col sm:flex-row gap-4"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 1.2 }}
-                >
-                  <Link to="/download">
-                    <motion.button
-                      className="group px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-semibold rounded-xl w-full"
-                      whileHover={{
-                        scale: 1.05,
-                        boxShadow: "0 10px 30px rgba(6, 182, 212, 0.3)",
-                      }}
-                      whileTap={{ scale: 0.95 }}
-                    >
-                      Download
-                    </motion.button>
-                  </Link>
-
-                  <motion.button
-                    className="group px-8 py-4 bg-gray-900/50 backdrop-blur-xl text-white font-semibold rounded-xl border border-gray-800/50 hover:border-gray-700/50 transition-all duration-300 flex items-center justify-center"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                  >
-                    Book Demo
-                    <motion.div
-                      animate={{ x: [0, 5, 0] }}
-                      transition={{ duration: 1.5, repeat: Infinity }}
-                    >
-                      <ArrowRight className="w-4 h-4 ml-2" />
-                    </motion.div>
-                  </motion.button>
-                </motion.div>
-              </div>
-
-              {/* Image */}
-              <motion.div
-                className="relative"
-                initial={{ opacity: 0, x: 50 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.8, delay: 0.4 }}
-              >
-                <motion.div
-                  // className="absolute -inset-4 bg-gradient-to-r from-cyan-500/10 to-blue-500/10 rounded-2xl blur-xl"
-                  animate={{ scale: [1, 1.05, 1], opacity: [0.5, 0.8, 0.5] }}
-                  transition={{ duration: 4, repeat: Infinity }}
-                />
-                <motion.img
-                  src="assets/images/Bank-Statement-Analyzer.png"
-                  alt="AI visualization showing neural network connections"
-                  className="w-full h-auto object-contain rounded-xl relative z-10 shadow-xl"
-                  whileHover={{ scale: 1.02 }}
-                />
-              </motion.div>
+            <div className="flex items-center justify-center mb-10">
+              <Badge>Overview</Badge>
             </div>
-          </motion.section>
-        </motion.div>
+            <h1 className="text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-extrabold leading-tight tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-white/90 to-blue-400 drop-shadow-lg">
+              Bank Statement <br /> Analyzer
+            </h1>
+            <h4 className="mt-6 sm:mt-8 max-w-5xl mx-auto text-lg sm:text-xl md:text-3xl text-gray-300 font-semibold tracking-wide">
+              *Powering Automation for Chartered Accountants and Tax
+              Consultant's. Revolutionize Accounting, Tally Integration & ITR
+              Filing with{" "}
+              <span className="text-cyan-400">AI-Powered Automation</span>.
+            </h4>
+            <div className="space-y-4 sm:space-y-6 mt-8 sm:mt-10">
+              <p className="mt-4 max-w-4xl mx-auto text-justify text-sm sm:text-base lg:text-lg text-gray-400 font-medium leading-relaxed">
+                Managing complex bank statements and manual data entry can be a
+                daunting task, particularly during busy tax seasons. CypherSOL's
+                Bank Statement Analyzer leverages cutting-edge AI technology to
+                streamline transaction categorization and data management,
+                providing Chartered Accountants, financial advisors, precise,
+                and effortless accounting solutions.
+              </p>
+              <p className="mt-4 max-w-4xl mx-auto text-justify text-sm sm:text-base lg:text-lg text-gray-400 font-medium leading-relaxed">
+                With CypherSOL, tedious manual processes become automated,
+                reducing errors and significantly boosting productivity. Its
+                secure, offline functionality ensures complete data
+                confidentiality, empowering professionals to dedicate more time
+                to strategic client engagement and less on administrative tasks.
+              </p>
+            </div>
+          </motion.div>
+        </div>{" "}
       </section>
 
       {/* 
       Bank statment Features & Benefits */}
       <section className="relative bg-black overflow-hidden">
-        <GlowEffect />{" "}
+        {/* <GlowEffect />{" "} */}
         <div className="container mx-auto px-4 py-12 sm:px-6 lg:px-8 max-w-7xl">
           <div className="text-center mb-8 space-y-4">
             <Badge>Features & Benefits</Badge>
           </div>
 
-          <h1 className="text-3xl md:text-5xl font-bold mb-4 md:mb-5 text-[#c3d0e5] text-center animate-slide-down">
+          <h1 className="text-4xl md:text-5xl font-bold mb-4 md:mb-5 text-[#c3d0e5] text-center animate-slide-down">
             <span className="bg-gradient-to-r from-cyan-400 via-white/90 to-blue-400 text-transparent bg-clip-text">
               Key Features and Benefits for <br /> Chartered Accountants
             </span>{" "}
           </h1>
 
-          <p className="text-base md:text-lg text-[#c3d0e5] text-center max-w-4xl mx-auto">
-            Revolutionize Accounting, Tally Integration & ITR Filing with
-            AI-Powered Automation. Managing complex bank statements and manual
-            data entry is now effortless with CypherSOL.
-          </p>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 mx-auto px-4 items-center justify-center mb-8 mt-12">
             {cardData.map((card) => (
               <CardComponent
@@ -491,56 +387,6 @@ export const BankAnalyzer = () => {
       {/* Visual Graphic Analysis Section */}
       <EnhancedWorkflowSection />
 
-      {/* How our software works */}
-      {/* <section>
-        <motion.div
-          className="max-w-6xl mx-auto text-center px-4 sm:px-6 lg:px-8 py-12"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-        >
-          <motion.h1
-            className="text-3xl md:text-5xl font-bold mb-3 tracking-tight"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
-          >
-            <span
-              className={cn(
-                "bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-white/90 to-blue-400"
-              )}
-            >
-              How CypherSOL's Software Functions
-            </span>
-          </motion.h1>
-          <motion.p
-            className="text-lg md:text-xl text-gray-400"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, delay: 0.2 }}
-          >
-            A fully remote team on a mission to build <br /> the best
-            communication platform for developers.
-          </motion.p>
-          <motion.img
-            src="assets/images/CypherSOL’s-Workflow.png"
-            alt="software function"
-            className="w-full h-auto object-contain"
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            whileHover={{
-              scale: 1.02,
-              transition: { duration: 0.3 },
-            }}
-          />
-        </motion.div>
-      </section> */}
-
       <motion.div
         custom={11}
         variants={fadeUpVariants}
@@ -548,13 +394,13 @@ export const BankAnalyzer = () => {
         animate="visible"
         className="container mx-auto px-4 py-16"
       >
-        <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold mb-12 tracking-tight text-center">
-          <span className="bg-clip-text text-transparent bg-gradient-to-r from-violet-400 to-pink-400">
+        <h1 className="text-4xl md:text-5xl font-bold mb-4 md:mb-5 text-[#c3d0e5] text-center animate-slide-down">
+          <span className="bg-gradient-to-r from-cyan-400 via-white/90 to-blue-400 text-transparent bg-clip-text">
             Real-Life Case Studies
           </span>
-        </h2>
+        </h1>
 
-        <p className="text-base md:text-lg text-[#c3d0e5] text-center max-w-4xl mx-auto mb-12">
+        <p className="text-base md:text-lg text-[#c3d0e5] text-center max-w-2xl mx-auto mb-10">
           See how Chartered Accountants across India are transforming their
           practices with CypherSOL
         </p>
@@ -627,7 +473,7 @@ export const BankAnalyzer = () => {
         <div className="container px-4 sm:px-6 lg:px-8 py-12 max-w-7xl mx-auto">
           <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
             <Badge>Testimonials</Badge>
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
+            <h2 className="text-4xl md:text-5xl font-bold tracking-tight">
               What Our Users Say
             </h2>
             <p className="text-muted-foreground text-lg">

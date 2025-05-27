@@ -1,71 +1,133 @@
 "use client";
-import { Layers, ScanSearch, Shield } from "lucide-react";
-import { forensicFaqsArray } from "./data/FAQs";
+import {
+  Layers,
+  ScanSearch,
+  Building2,
+  Shield,
+  BadgeAlert,
+  GavelIcon,
+  Search,
+  NetworkIcon,
+  SearchIcon,
+  EyeIcon,
+  DatabaseIcon,
+  FilterIcon,
+  WifiOffIcon,
+  NetworkIcon as NetworkNodeIcon,
+  FileSpreadsheetIcon,
+} from "lucide-react";
+import { fundTrailFaqsArray } from "./data/FAQs";
 import FAQSection from "./FAQSection";
 import { motion } from "framer-motion";
 import { cn } from "./lib/utils";
 import { FeatureBox } from "./UI/ResellerAdvantages";
 import { Badge } from "./UI/Badge";
 import CTABanner from "./UI/CTABanner";
-import { Marquee } from "./components/ui/marquee";
+import { CardComponent } from "./UI/CardComponent";
 
 const agencies = [
   {
-    name: "CBI (Central Bureau of Investigation)",
+    icon: <Shield className="h-12 w-12" />,
+    name: "CBI",
+    fullName: "Central Bureau of Investigation",
   },
   {
-    name: "ATS (Anti-Terrorism Squad)",
+    icon: <BadgeAlert className="h-12 w-12" />,
+    name: "ATS",
+    fullName: "Anti-Terrorism Squad",
   },
   {
-    name: "EOW (Economic Offences Wing)",
+    icon: <Building2 className="h-12 w-12" />,
+    name: "EOW",
+    fullName: "Economic Offences Wing",
   },
   {
-    name: "NIA (National Investigation Agency)",
+    icon: <Shield className="h-12 w-12" />,
+    name: "NIA",
+    fullName: "National Investigation Agency",
   },
   {
-    name: "Cyber Crime & Financial Intelligence Units",
+    icon: <Search className="h-12 w-12" />,
+    name: "Cyber Crime",
+    fullName: "Cyber Crime & Financial Intelligence Units",
   },
   {
-    name: "Enforcement Directorate (ED)",
+    icon: <GavelIcon className="h-12 w-12" />,
+    name: "ED",
+    fullName: "Enforcement Directorate",
   },
   {
-    name: "Income Tax & Vigilance Departments",
+    icon: <Building2 className="h-12 w-12" />,
+    name: "IT & Vigilance",
+    fullName: "Income Tax & Vigilance Departments",
   },
   {
-    name: "State & Central Police Investigation Wings",
+    icon: <NetworkIcon className="h-12 w-12" />,
+    name: "Police",
+    fullName: "State & Central Police Investigation Wings",
   },
 ];
 
-const firstRow = agencies.slice(0, agencies.length / 2);
-const secondRow = agencies.slice(agencies.length / 2);
+const capabilities = [
+  {
+    id: 1,
+    Icon: () => <NetworkIcon className="h-6 w-6" />,
+    title: "AI-Powered Fund Flow Mapping",
+    description:
+      "Automatically visualize complex financial relationships and transactions.",
+  },
+  {
+    id: 2,
+    Icon: () => <SearchIcon className="h-6 w-6" />,
+    title: "Suspicious Transaction Pattern Recognition",
+    description: "Identify anomalous behaviors and potential fraud patterns.",
+  },
+  {
+    id: 3,
+    Icon: () => <EyeIcon className="h-6 w-6" />,
+    title: "Fund Flow Visualization",
+    description: "Graph-based and timeline views for comprehensive analysis.",
+  },
+  {
+    id: 4,
+    Icon: () => <DatabaseIcon className="h-6 w-6" />,
+    title: "Multi-Bank & Multi-Account Trail Detection",
+    description:
+      "Track funds across various financial institutions and accounts.",
+  },
+  {
+    id: 5,
+    Icon: () => <FilterIcon className="h-6 w-6" />,
+    title: "7500+ Keyword & Behavior-Based Data Points",
+    description: "Extensive pattern recognition for sophisticated detection.",
+  },
+  {
+    id: 6,
+    Icon: () => <WifiOffIcon className="h-6 w-6" />,
+    title: "Offline Deployment for Data Security",
+    description: "Process sensitive information without internet connectivity.",
+  },
+  {
+    id: 7,
+    Icon: () => <NetworkNodeIcon className="h-6 w-6" />,
+    title: "Link Analysis Between Entities & Accounts",
+    description:
+      "Reveal hidden connections and relationships in complex networks.",
+  },
+  {
+    id: 8,
+    Icon: () => <FileSpreadsheetIcon className="h-6 w-6" />,
+    title: "Instant Report Generation",
+    description:
+      "Create detailed Excel/CSV reports for investigation documentation.",
+  },
+];
 
-const AgencyCard = ({ name }) => {
-  return (
-    <figure
-      className={cn(
-        "relative h-full w-70 cursor-pointer overflow-hidden rounded-xl border p-4",
-        // light styles
-        "border-gray-950/[.1] bg-gray-950/[.01] hover:bg-gray-950/[.05]",
-        // dark styles
-        "dark:border-gray-50/[.1] dark:bg-gray-900 dark:hover:bg-gray-900/[.15]"
-      )}
-    >
-      <div className="flex flex-row items-center gap-2">
-        <Shield className="h-8 w-8 text-cyan-400" />
-        <div className="flex flex-col">
-          <figcaption className="text-sm font-medium dark:text-white">
-            {name}
-          </figcaption>
-        </div>
-      </div>
-    </figure>
-  );
-};
 export const Forensic = () => {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative flex min-h-screen items-center justify-center overflow-hidden pt-16">
+      <section className="relative flex items-center justify-center overflow-hidden px-4 py-12 sm:py-20 lg:py-24">
         {/* Animated Elements */}
         <div className="absolute inset-0 overflow-hidden">
           {/* Curved Lines */}
@@ -194,89 +256,105 @@ export const Forensic = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1 }}
-            className="mx-auto max-w-3xl space-y-8"
+            className="mx-auto space-y-8"
           >
             <div className="flex items-center justify-center mb-10">
-              <Badge>Government Exclusive</Badge>
+              <Badge>Overview</Badge>
             </div>
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-white/90 to-blue-400 drop-shadow-lg">
+            <h1 className="text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-extrabold leading-tight tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-white/90 to-blue-400 drop-shadow-lg">
               Fund Trail Analyzer
             </h1>
-            <h4 className="mt-4 max-w-3xl mx-auto text-lg sm:text-xl md:text-3xl text-gray-300 font-semibold tracking-wide">
-              *CypherSOL Fund Trail Analyzer is an advanced forensic{" "}
-              <span className="text-cyan-400">
-                intelligence tool, built exclusively
-              </span>{" "}
-              for government agencies to track, visualize, and{" "}
-              <span className="text-blue-400">analyze the flow of funds</span>.
+            <h4 className="mt-6 sm:mt-8 max-w-5xl mx-auto text-lg md:text-xl lg:text-2xl text-gray-300 font-semibold tracking-wide leading-relaxed">
+              *CypherSOL Fund Trail Analyzer is an advanced{" "}
+              <span className="text-cyan-400">forensic intelligence tool</span>{" "}
+              , built exclusively for government agencies to track, visualize,
+              and analyze the flow of funds across bank accounts and{" "}
+              <span className="text-cyan-400">uncover financial fraud</span> ,{" "}
+              <span className="text-cyan-400">laundering</span>, and{" "}
+              <span className="text-cyan-400">criminal funding activities</span>
+              .
             </h4>
-
-            <p className="mt-4 max-w-3xl mx-auto text-sm sm:text-base md:text-lg text-gray-400 font-medium leading-relaxed">
-              Advanced forensic intelligence tool for tracking, visualizing, and
-              analyzing fund flows across bank accounts. Uncover financial
-              fraud, laundering, and criminal funding activities with
-              <span className="text-cyan-400"> 7500+ data point filters</span>.
-            </p>
+            <div className="space-y-4 sm:space-y-6 mt-8 sm:mt-10">
+              <p className="mt-4 max-w-4xl mx-auto text-justify text-sm sm:text-base lg:text-lg text-gray-400 font-medium leading-relaxed">
+                Developed with national security and economic enforcement in
+                mind, this tool empowers agencies like the CBI, ATS, EOW, NIA,
+                and Cyber Crime Units to efficiently investigate suspicious
+                transactions across multiple accounts, banks, and timeframes.
+              </p>
+              <p className="mt-4 max-w-4xl mx-auto text-justify text-sm sm:text-base lg:text-lg text-gray-400 font-medium leading-relaxed">
+                The system is powered by{" "}
+                <span className="text-cyan-400">7500+ data point</span> filters
+                and works seamlessly on PDF, Excel, and CSV formats (as received
+                from banks). It automates the identification of suspicious
+                transaction patterns, links related accounts or beneficiaries,
+                and provides actionable intelligence in real-time—all without
+                needing internet during processing or analysis.
+              </p>
+            </div>
           </motion.div>
         </div>
       </section>
 
       {/* Built Exclusively For Section - Auto Scrolling */}
-      <section className="py-12">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.h2
-            className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 tracking-tight text-white"
+      <section id="agencies" className="py-10">
+        <div className="container mx-auto px-4 max-w-5xl">
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
+            transition={{ duration: 0.5 }}
+            className="text-center mb-12"
           >
-            <span
-              className={cn(
-                "bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-white/90 to-blue-400"
-              )}
-            >
-              Built Exclusively For
-            </span>
-          </motion.h2>
-          <motion.p
-            className="text-lg md:text-xl text-gray-400 mb-8"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7, delay: 0.2 }}
-          >
-            Government agencies to track and analyze complex financial
-            transactions.
-          </motion.p>
-        </div>
+            <h2 className="text-4xl md:text-5xl font-bold mb-4">
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-white/90 to-blue-400">
+                Built Exclusively For
+              </span>
+            </h2>
+            <p className="text-gray-400 max-w-2xl mx-auto">
+              CypherSOL Fund Trail Analyzer is an advanced forensic intelligence
+              tool, built exclusively for government agencies to track,
+              visualize, and analyze the flow of funds across bank accounts.
+            </p>
+          </motion.div>
 
-        <div className="relative flex w-full flex-col items-center justify-center overflow-hidden">
-          <Marquee pauseOnHover className="[--duration:20s]">
-            {firstRow.map((review) => (
-              <AgencyCard key={review.name} {...review} />
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8"
+          >
+            {agencies.map((agency, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: index * 0.05 }}
+                className="flex flex-col items-center p-4 rounded-lg bg-gray-900/50 hover:bg-gray-800/30 transition-colors border border-border/30"
+              >
+                <div className="p-3 rounded-full bg-cyan-400/5 text-cyan-400 mb-3">
+                  {agency.icon}
+                </div>
+                <h3 className="text-lg font-semibold mb-1">{agency.name}</h3>
+                <p className="text-xs text-center text-gray-300">
+                  {agency.fullName}
+                </p>
+              </motion.div>
             ))}
-          </Marquee>
-          <Marquee reverse pauseOnHover className="[--duration:20s]">
-            {secondRow.map((review) => (
-              <AgencyCard key={review.name} {...review} />
-            ))}
-          </Marquee>
-          <div className="pointer-events-none absolute inset-y-0 left-0 w-1/4 bg-gradient-to-r from-background"></div>
-          <div className="pointer-events-none absolute inset-y-0 right-0 w-1/4 bg-gradient-to-l from-background"></div>
+          </motion.div>
         </div>
       </section>
-
       {/* Core Capability */}
       <section>
         <motion.div
-          className="max-w-6xl mx-auto text-center px-4 sm:px-6 lg:px-8 py-12"
+          className="max-w-7xl mx-auto text-center px-4 sm:px-6 lg:px-8 py-12"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          <motion.h1
+          <motion.h2
             className="text-4xl md:text-5xl font-bold mb-3 tracking-tight"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -290,37 +368,40 @@ export const Forensic = () => {
             >
               Core Capabilities
             </span>
-          </motion.h1>
+          </motion.h2>
           <motion.p
-            className="text-lg md:text-xl text-gray-400"
+            className="text-gray-400 max-w-2xl mx-auto mb-10"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.7, delay: 0.2 }}
           >
             The Fund Trail Analyzer is a powerful tool designed to assist
-            government agencies in tracking
-            <br /> and analyzing complex financial transactions.
+            government agencies in tracking and analyzing complex financial
+            transactions.
           </motion.p>
-          <motion.img
-            src="assets/images/Core-Capabilities.png"
-            alt="software function"
-            className="w-full h-auto object-contain"
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
+          <motion.div
+            // variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
             viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            whileHover={{
-              scale: 1.02,
-              transition: { duration: 0.3 },
-            }}
-          />
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
+          >
+            {capabilities.map((capability) => (
+              <CardComponent
+                key={capability.id}
+                title={capability.title}
+                description={capability.description}
+                Icon={capability.Icon}
+              />
+            ))}
+          </motion.div>
         </motion.div>
       </section>
 
       {/* Key Use Cases Section */}
-      <div className="max-w-7xl mx-auto px-4 py-12 md:py-20">
-        <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-8 md:mb-20 tracking-tight text-center">
+      <div className="max-w-7xl mx-auto px-4 py-12">
+        <h2 className="text-4xl md:text-5xl font-bold mb-10 tracking-tight text-center">
           <span className="bg-clip-text text-transparent bg-gradient-to-b from-white to-white/80">
             Fund Trail Analyzer
           </span>
@@ -332,7 +413,7 @@ export const Forensic = () => {
           >
             Key Use Cases
           </span>
-        </h1>
+        </h2>
 
         <div className="grid md:grid-cols-2 gap-8">
           <FeatureBox
@@ -364,14 +445,9 @@ export const Forensic = () => {
       />
 
       {/* FAQ Section */}
-      <motion.div
-        custom={12}
-        // variants={fadeUpVariants}
-        initial="hidden"
-        animate="visible"
-      >
+      <motion.div custom={12} initial="hidden" animate="visible">
         <FAQSection
-          items={forensicFaqsArray}
+          items={fundTrailFaqsArray}
           title="Frequently Asked Questions"
           subtitle="Everything you need to know about CypherSOL Bank Statement Analyzer"
           highlightedText="Asked Questions"

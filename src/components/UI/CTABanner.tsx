@@ -28,7 +28,7 @@ const CTABanner: React.FC<CTABannerProps> = ({
             <div className="mb-8">
               <Badge>AI-Powered Financial Analysis</Badge>
             </div>
-            <h1 className="text-2xl sm:text-4xl md:text-6xl font-bold mb-4 tracking-tight">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 tracking-tight">
               <span className="bg-clip-text text-transparent bg-gradient-to-b from-white to-white/80">
                 {title}{" "}
               </span>

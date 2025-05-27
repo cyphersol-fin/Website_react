@@ -13,11 +13,8 @@ import { cn } from "../lib/utils";
 import { TextAnimate } from "../components/ui/text-animate";
 import FAQSection from "../FAQSection";
 import ComparisonFeatures from "../ComparisionFeatures";
-
 import { motion, AnimatePresence } from "framer-motion";
 import { pricingFaqsArray } from "../data/FAQs";
-
-// import { motion, AnimatePresence } from "framer-motion";
 
 export default function PricingContainer() {
   const [isVisible, setIsVisible] = useState(false);
@@ -205,7 +202,7 @@ export default function PricingContainer() {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 text-center"
+            className="text-5xl md:text-6xl lg:text-7xl font-bold mb-4 text-center"
           >
             <span
               className={cn(
@@ -409,6 +406,5 @@ export default function PricingContainer() {
         </div>
       </div>
     </div>
-    // </div>
   );
 }

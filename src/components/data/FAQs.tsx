@@ -1,24 +1,65 @@
 export const homeFaqsArray = [
   {
-    question:
-      "How secure is the data storage and processing of sensitive financial information?",
+    question: "What is CypherSOL?",
     answer:
-      "Our data storage and processing adhere to the highest security standards, employing encryption and robust protocols to safeguard sensitive financial information. Once the data is extracted it gets deleted from our system.",
+      "CypherSOL is a fintech platform that automates bank statement analysis and accounting processes using AI. We help tax professionals, businesses, DSAs, and government agencies extract, categorize, and analyze financial data in seconds.",
   },
   {
-    question:
-      "Are there any privacy concerns associated with sharing my bank statements for analysis?",
-    answer:
-      "We prioritize your privacy and ensure that your bank statements are securely analyzed without compromising your personal data. We adhere to strict privacy policies to protect your information.",
+    question: "Who can use CypherSOL?",
+    answer: `
+    <div>
+    Our products are designed for:
+    <ol>
+    <li>1) Chartered Accountants for ITR filing, accounting, and ledger grouping</li>
+    <li>2) Businesses for accounting and cash flow tracking</li>
+    <li>3) Loan DSAs for customer loan eligibility analysis and insights</li>
+    <li>4) Government agencies for fund trail and forensic analysis</li>
+    </ol>
+    </div>
+    `,
   },
   {
-    question: "Can others see the data I am uploading?",
+    question: "What formats do you support?",
     answer:
-      "No, your data remains confidential and is accessible only to authorized personnel involved in the analysis process. We maintain strict confidentiality protocols to ensure the privacy of your information.",
+      "CypherSOL supports PDF, Excel, and CSV bank statements — directly downloaded from banks. Scanned copies or mobile-captured images are not supported.",
+  },
+  {
+    question: "How secure is CypherSOL?",
+    answer:
+      "CypherSOL is built with privacy at its core. We do not store any customer data — including bank statements or their outputs — on our servers.Your financial data remains confidential, secure, and fully under your control.",
+  },
+  {
+    question: "Do you support Tally integration?",
+    answer:
+      "Yes. We provide One-Click Tally Upload, including Receipts, Payments, Contra, Sales, Purchase, and Ledger Vouchers. Tally integration is supported for both tax professionals and businesses to streamline their accounting and compliance processes.",
+  },
+  {
+    question: "Do you offer training and support?",
+    answer:
+      "Yes. Support is available Monday to Saturday, from 10:00 AM to 6:00 PM (excluding bank holidays). We provide live training sessions, personalized demos, and demo videos for most use cases to help you get started smoothly.",
+  },
+  {
+    question: "Can I try CypherSOL before buying?",
+    answer:
+      "We do not offer free trials. However, we strongly recommend booking a live demo to explore the product’s full potential.",
+  },
+  {
+    question: "What pricing plans do you offer?",
+    answer: `
+        <div>
+   We provide multiple plans tailored to your needs:
+    <ol>
+    <li>1) Limited-use subscription plans</li>
+    <li>2) Unlimited usage plans</li>
+    <li>3) Custom packages for firms and government agencies</li>
+    </ol>
+    Check our Pricing page or contact our team for details.
+    </div>
+    `,
   },
 ];
 
-export const forensicFaqsArray = [
+export const fundTrailFaqsArray = [
   {
     question: "What is CypherSOL’s Fund Trail Analyzer used for?",
     answer:
@@ -99,10 +140,11 @@ export const forensicFaqsArray = [
     question: "What configuration is needed to run the tool efficiently?",
     answer: `
  Recommended system specs include:
-- Intel i5 11th/12th Gen or higher
-- 16 GB RAM or more
-- SSD storage for faster performance
-
+ <ol>
+<li>- Intel i5 11th/12th Gen or higher</li>
+<li>- 16 GB RAM or more</li>
+<li>- SSD storage for faster performance</li>
+ </ol>
       `,
   },
   {
@@ -752,9 +794,15 @@ export const pricingFaqsArray = [
     question: "What products does CypherSOL offer?",
     answer: `
       CypherSOL offers innovative financial solutions, including:
+      <ol>
       1) Bank Statement Analyzer - A tool for organizing and analyzing bank statements, ideal for chartered accountants and loan processing agencies.
+      </ol>
+      <ol>
       2) Excel to Tally Data Import Utility - Enables efficient data migration from the Bank Statement Analyzer to Tally, streamlining bookkeeping and data organization.
+      </ol>
+      <ol>
       3) Combo of Bank Statement Analyzer & Excel to Tally Data Import Utility - This bundled package combines the power of both tools at a special price for enhanced efficiency.
+      </ol>
       `,
   },
   {

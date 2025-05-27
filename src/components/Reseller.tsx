@@ -89,7 +89,7 @@ export const Reseller = () => {
     <>
       <div className="container mx-auto mt-12 text-center">
         <Badge>Reseller</Badge>
-        <h1 className="text-balance text-5xl font-semibold leading-none tracking-tighter sm:text-6xl md:text-7xl lg:text-8xl text-white text-center mt-10 animate-slide-down">
+        <h1 className="text-balance text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-semibold leading-none tracking-tighter text-white text-center mt-10 animate-slide-down">
           Our Reseller{" "}
           <LineShadowText
             className="italic bg-gradient-to-r from-cyan-400 to-blue-500 text-transparent bg-clip-text"
@@ -113,8 +113,8 @@ export const Reseller = () => {
         <Projects />
       </main>
 
-      <div className="container mx-auto px-4 py-4">
-        <h1 className="text-3xl md:text-5xl font-bold mb-4 md:mb-5 text-[#c3d0e5] text-center animate-slide-down">
+      <div className="container mx-auto max-w-6xl px-4 py-4">
+        <h1 className="text-4xl md:text-5xl font-bold mb-4 md:mb-5 text-[#c3d0e5] text-center animate-slide-down">
           <span className="bg-gradient-to-r from-cyan-400 to-blue-500 text-transparent bg-clip-text">
             Benefits of the CypherSOL
           </span>{" "}
@@ -158,7 +158,7 @@ export const Reseller = () => {
             <Badge>AI-Powered Financial Analysis</Badge>
           </div>
 
-          <h3 className="text-[30px] md:text-[40px] lg:text-[50px] mb-8 text-white text-center leading-tight w-full lg:w-[68%] mx-auto flex-nowrap">
+          <h3 className="text-4xl md:text-5xl font-medium mb-8 text-white text-center leading-tight w-full max-w-4xl mx-auto flex-nowrap">
             Ready to Start?{" "}
             <span className="bg-gradient-to-r from-cyan-400 to-blue-500 text-transparent bg-clip-text">
               {" "}
@@ -166,7 +166,7 @@ export const Reseller = () => {
             </span>
           </h3>
 
-          <p className="text-[18px] text-gray-400 leading-relaxed w-full lg:w-[78%] mx-auto">
+          <p className="text-[18px] text-gray-400 leading-relaxed w-full max-w-4xl mx-auto">
             Joining the CypherSOL Reseller Program is easy. Just Contact Us to
             get started or schedule a demo with our team to learn more about our
             solutions. Empower your clients, grow your revenue, and be part of

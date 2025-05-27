@@ -251,7 +251,7 @@ export default function ExcelToTally() {
         </div>
 
         <div className="relative z-10 container mx-auto px-4 md:px-6">
-          <div className="max-w-3xl mx-auto text-center">
+          <div className=" mx-auto text-center">
             <motion.div
               custom={0}
               variants={fadeUpVariants}
@@ -268,7 +268,7 @@ export default function ExcelToTally() {
               initial="hidden"
               animate="visible"
             >
-              <h1 className="text-2xl sm:text-4xl md:text-6xl font-bold mb-6 md:mb-8 tracking-tight">
+              <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 md:mb-8 tracking-tight">
                 <span className="bg-clip-text text-transparent bg-gradient-to-b from-white to-white/80">
                   The Ultimate Solution for
                 </span>
@@ -307,7 +307,7 @@ export default function ExcelToTally() {
 
       {/* Who should use */}
       <div className=" bg-black overflow-hidden relative text-white px-4 py-8 md:py-12">
-        <h1 className="text-2xl sm:text-4xl md:text-6xl font-bold mb-8 md:mb-20 tracking-tight text-center">
+        <h1 className="text-4xl md:text-5xl font-bold mb-8 md:mb-20 tracking-tight text-center">
           <span className="bg-clip-text text-transparent bg-gradient-to-b from-white to-white/80">
             Who Should Use
           </span>
@@ -359,23 +359,6 @@ export default function ExcelToTally() {
         </div>
       </div>
 
-      {/* Cta Banner */}
-      <motion.div
-        custom={6}
-        variants={fadeUpVariants}
-        initial="hidden"
-        animate="visible"
-      >
-        <CTABanner
-          title="Why Choose"
-          highlightedText="Excel to Tally Data Import Utility?"
-          subtitle="Please feel free to contact us. We're super happy to talk to you. Feel free to ask anything."
-          primaryButtonText="Book a Demo"
-          imageSrc="https://framerusercontent.com/images/MecLliNBqre50VslV9Cc8fZOqkY.png?scale-down-to=512"
-          imageAlt="AI-powered financial analysis"
-        />
-      </motion.div>
-
       {/* Advantages section */}
       <div>
         <motion.div
@@ -384,8 +367,8 @@ export default function ExcelToTally() {
           initial="hidden"
           animate="visible"
         >
-          <div className="container mx-auto px-4 py-4">
-            <h1 className="text-2xl sm:text-4xl md:text-6xl font-bold mb-6 md:mb-8 tracking-tight text-center">
+          <div className="container mx-auto px-4  py-4">
+            <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-center">
               <span className="bg-clip-text text-transparent bg-gradient-to-b from-white to-white/80">
                 Advantages of
               </span>
@@ -417,6 +400,23 @@ export default function ExcelToTally() {
           </div>
         </motion.div>
       </div>
+
+      {/* Cta Banner */}
+      <motion.div
+        custom={6}
+        variants={fadeUpVariants}
+        initial="hidden"
+        animate="visible"
+      >
+        <CTABanner
+          title="Why Choose"
+          highlightedText="Excel to Tally Data Import Utility?"
+          subtitle="Please feel free to contact us. We're super happy to talk to you. Feel free to ask anything."
+          primaryButtonText="Book a Demo"
+          imageSrc="https://framerusercontent.com/images/MecLliNBqre50VslV9Cc8fZOqkY.png?scale-down-to=512"
+          imageAlt="AI-powered financial analysis"
+        />
+      </motion.div>
 
       {/* FAQ section */}
       <motion.div

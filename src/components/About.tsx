@@ -91,7 +91,7 @@ export const About = () => {
               {...fadeIn}
             >
               <motion.h1
-                className="text-2xl sm:text-4xl md:text-6xl font-bold mb-6 md:mb-8 tracking-tight text-center"
+                className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 md:mb-8 tracking-tight text-center"
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
@@ -252,7 +252,7 @@ export const About = () => {
         transition={{ duration: 0.8 }}
       >
         <motion.h1
-          className="text-3xl md:text-5xl lg:text-6xl font-bold mb-6 md:mb-8 tracking-tight"
+          className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 md:mb-8 tracking-tight"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -325,7 +325,7 @@ export const About = () => {
         transition={{ duration: 0.8 }}
       >
         <motion.h1
-          className="text-3xl md:text-5xl mb-3 tracking-tight"
+          className="text-4xl md:text-5xl font-semibold mb-3 tracking-tight"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -369,7 +369,7 @@ export const About = () => {
         transition={{ duration: 0.8 }}
       >
         <motion.h1
-          className="text-3xl md:text-5xl font-bold mb-3 tracking-tight"
+          className="text-4xl md:text-5xl font-bold mb-3 tracking-tight"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}

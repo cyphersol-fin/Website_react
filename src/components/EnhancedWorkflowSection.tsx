@@ -65,8 +65,8 @@ const workflowSteps = [
 export const EnhancedWorkflowSection = () => {
   return (
     <div className="container mx-auto px-4 py-16">
-      <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold mb-12 tracking-tight text-center">
-        <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-cyan-400">
+      <h2 className="text-4xl md:text-5xl font-bold mb-12 tracking-tight text-center">
+        <span className="bg-gradient-to-r from-cyan-400 via-white/90 to-blue-400 text-transparent bg-clip-text">
           Visual Graphic Analysis
         </span>
       </h2>

@@ -82,7 +82,7 @@ export const DsaComponent = () => {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative flex min-h-screen items-center justify-center overflow-hidden pt-16">
+      <section className="relative flex items-center justify-center overflow-hidden px-4 py-12 sm:py-20 lg:py-24">
         {/* Animated Elements */}
         <div className="absolute inset-0 overflow-hidden">
           {/* Curved Lines */}
@@ -211,27 +211,29 @@ export const DsaComponent = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1 }}
-            className="mx-auto max-w-3xl space-y-8"
+            className="mx-auto space-y-8"
           >
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-white/90 to-blue-400 drop-shadow-lg">
-              Smart Loan Eligibility <br className="hidden md:block" />{" "}
-              Automation for DSAs
+            <div className="flex items-center justify-center mb-10">
+              <Badge>Overview</Badge>
+            </div>
+            <h1 className="text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-extrabold leading-tight tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-white/90 to-blue-400 drop-shadow-lg">
+              Smart Loan Eligibility Automation for DSAs
             </h1>
 
-            <h4 className="mt-4 max-w-2xl mx-auto text-lg sm:text-xl md:text-3xl text-gray-300 font-semibold tracking-wide">
+            <h4 className="mt-6 sm:mt-8 max-w-2xl mx-auto text-lg sm:text-xl md:text-3xl text-gray-300 font-semibold tracking-wide">
               *Instantly Identify{" "}
               <span className="text-cyan-400">Loan Eligibility</span> and Match
               Clients to the{" "}
               <span className="text-blue-400">Right Lenders</span>
             </h4>
 
-            <p className="mt-4 max-w-3xl mx-auto text-sm sm:text-base md:text-lg text-gray-400 font-medium leading-relaxed">
+            <p className="mt-4 max-w-3xl mx-auto text-sm sm:text-base lg:text-lg text-gray-400 font-medium leading-relaxed">
               For Direct Selling Agents (DSAs), identifying the right lender
               accurately and quickly is crucial. CypherSOL’s SaaS-based Bank
               Statement Analyzer streamlines the loan eligibility assessment
               process, providing instant, precise insights based on monthly
               average bank balance, debtors and creditors, existing obligations,
-              and transaction history—ensuring you match your clients to the
+              and transaction history, ensuring you match your clients to the
               ideal lenders immediately.
             </p>
           </motion.div>
@@ -246,7 +248,7 @@ export const DsaComponent = () => {
             <Badge>Features & Benefits</Badge>
           </div>
 
-          <h1 className="text-3xl md:text-5xl font-bold mb-4 md:mb-5 text-[#c3d0e5] text-center animate-slide-down">
+          <h1 className="text-4xl md:text-5xl font-bold mb-4 md:mb-5 text-[#c3d0e5] text-center animate-slide-down">
             <span className="bg-gradient-to-r from-cyan-400 via-white/90 to-blue-400 text-transparent bg-clip-text">
               Key Features and Benefits for DSAs
             </span>{" "}
@@ -280,7 +282,7 @@ export const DsaComponent = () => {
           transition={{ duration: 0.8 }}
         >
           <motion.h1
-            className="text-3xl md:text-5xl font-bold mb-3 tracking-tight"
+            className="text-4xl md:text-5xl font-bold mb-3 tracking-tight"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -322,7 +324,7 @@ export const DsaComponent = () => {
 
       {/* Case Studies */}
       <section>
-        <h1 className="text-2xl sm:text-3xl md:text-5xl font-bold mb-5 tracking-tight text-center">
+        <h1 className="text-4xl md:text-5xl font-bold mb-5 tracking-tight text-center">
           <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-white/90 to-blue-400">
             Real-Life Case Studies
           </span>
@@ -355,7 +357,7 @@ export const DsaComponent = () => {
         <div className="container px-4 sm:px-6 lg:px-8 py-12 max-w-7xl mx-auto">
           <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
             <Badge>Testimonials</Badge>
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
+            <h2 className="text-4xl md:text-5xl font-bold tracking-tight">
               What Our Users Say
             </h2>
             <p className="text-muted-foreground text-lg">

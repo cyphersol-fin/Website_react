@@ -3,12 +3,10 @@ import { motion, AnimatePresence } from "framer-motion"; // Added AnimatePresenc
 
 // animations
 import {
-  Banknote,
   BookOpen,
   ChevronDown,
   FileSpreadsheet,
   Info,
-  Layers,
   Menu,
   Phone,
   Users,
@@ -17,6 +15,10 @@ import {
   Building,
   UserCheck,
   Calculator,
+  TrendingUp,
+  Building2,
+  Search,
+  Package,
 } from "lucide-react";
 const base = import.meta.env.BASE_URL; // Will be '/static/' in production (as per Vite config)
 export const Header = () => {
@@ -95,7 +97,7 @@ export const Header = () => {
   return (
     <header className="bg-white">
       <nav
-        className="mx-auto flex max-w-8xl items-center justify-between p-4 lg:px-8"
+        className="mx-auto flex max-w-8xl items-center justify-between p-4 sm:px-6 lg:px-8"
         aria-label="Global"
       >
         <div className="flex md:flex-1">
@@ -103,7 +105,7 @@ export const Header = () => {
             <img
               src={`${base}assets/images/Cyphers.png`}
               alt="CypherSOL"
-              className="w-40"
+              className="w-32 sm:w-36 md:w-40"
             />
             {/* <span className="text-2xl font-bold text-white">
               Cypher<span className="text-cyan-400">SOL</span>
@@ -155,41 +157,43 @@ export const Header = () => {
                   <div className="p-4">
                     <div className="group relative flex items-center gap-x-6 rounded-lg p-4 hover:bg-gray-800 transition-colors duration-200">
                       <div className="flex size-11 flex-none items-center justify-center rounded-lg bg-gray-800 group-hover:bg-gray-700 transition-colors duration-200">
-                        <Banknote className="size-5 text-gray-300 group-hover:text-cyan-400 transition-colors duration-200" />
+                        <Calculator className="size-5 text-gray-300 group-hover:text-cyan-400 transition-colors duration-200" />
                       </div>
                       <div className="flex-auto">
                         <a
                           href="/bank-statement-analyzer"
                           className="block font-semibold text-gray-300 hover:text-cyan-400 transition-colors duration-200"
                         >
-                          Chartered Accountant
+                          Cypher-Edge (for Tax Professionals)
                           <span className="absolute inset-0"></span>
                         </a>
                         <p className="mt-1 text-gray-400">
-                          Get a better understanding of your traffic
+                          Empowering tech professionals with smart financial
+                          automation
                         </p>
                       </div>
                     </div>
                     <div className="group relative flex items-center gap-x-6 rounded-lg p-4 hover:bg-gray-800 transition-colors duration-200">
                       <div className="flex size-11 flex-none items-center justify-center rounded-lg bg-gray-800 group-hover:bg-gray-700 transition-colors duration-200">
-                        <Layers className="size-5 text-gray-300 group-hover:text-cyan-400 transition-colors duration-200" />
+                        <TrendingUp className="size-5 text-gray-300 group-hover:text-cyan-400 transition-colors duration-200" />
                       </div>
                       <div className="flex-auto">
                         <a
                           href="/dsa"
                           className="block font-semibold text-gray-300 hover:text-cyan-400 transition-colors duration-200"
                         >
-                          DSA(Direct Selling Agent)
+                          Cypher-Zen (for DSAs)
                           <span className="absolute inset-0"></span>
                         </a>
                         <p className="mt-1 text-gray-400">
-                          Your customers' data will be safe and secure
+                          Loan intelligence made effortless for growth-driven
+                          DSAs
                         </p>
                       </div>
                     </div>
                     <div className="group relative flex items-center gap-x-6 rounded-lg p-4 hover:bg-gray-800 transition-colors duration-200">
                       <div className="flex size-11 flex-none items-center justify-center rounded-lg bg-gray-800 group-hover:bg-gray-700 transition-colors duration-200">
-                        <Layers className="size-5 text-gray-300 group-hover:text-cyan-400 transition-colors duration-200" />
+                        <Building2 className="size-5 text-gray-300 group-hover:text-cyan-400 transition-colors duration-200" />
                       </div>
                       <div className="flex-auto">
                         <a
@@ -206,18 +210,19 @@ export const Header = () => {
                     </div>
                     <div className="group relative flex items-center gap-x-6 rounded-lg p-4 hover:bg-gray-800 transition-colors duration-200">
                       <div className="flex size-11 flex-none items-center justify-center rounded-lg bg-gray-800 group-hover:bg-gray-700 transition-colors duration-200">
-                        <Layers className="size-5 text-gray-300 group-hover:text-cyan-400 transition-colors duration-200" />
+                        <Search className="size-5 text-gray-300 group-hover:text-cyan-400 transition-colors duration-200" />
                       </div>
                       <div className="flex-auto">
                         <a
                           href="/fund-trail-analyzer"
                           className="block font-semibold text-gray-300 hover:text-cyan-400 transition-colors duration-200"
                         >
-                          Fund Trail Analyzer
+                          Cypher-Trace (for fund trail analysis)
                           <span className="absolute inset-0"></span>
                         </a>
                         <p className="mt-1 text-gray-400">
-                          Your customers' data will be safe and secure
+                          Follow the money – precision-led fund trail
+                          investigations
                         </p>
                       </div>
                     </div>
@@ -241,7 +246,7 @@ export const Header = () => {
                     </div>
                     <div className="group relative flex items-center gap-x-6 rounded-lg p-4 hover:bg-gray-800 transition-colors duration-200">
                       <div className="flex size-11 flex-none items-center justify-center rounded-lg bg-gray-800 group-hover:bg-gray-700 transition-colors duration-200">
-                        <Layers className="size-5 text-gray-300 group-hover:text-cyan-400 transition-colors duration-200" />
+                        <Package className="size-5 text-gray-300 group-hover:text-cyan-400 transition-colors duration-200" />
                       </div>
                       <div className="flex-auto">
                         <a
@@ -504,26 +509,23 @@ export const Header = () => {
             initial="hidden"
             animate="visible"
             exit="exit"
-            className="md:hidden fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-black px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-800/10"
+            className="md:hidden fixed inset-0 z-50 overflow-y-auto bg-white"
             role="dialog"
             aria-modal="true"
           >
-            <div
-              className="fixed inset-0 z-10 bg-white backdrop-blur-sm"
-              onClick={() => setMobileMenuOpen(false)}
-            />
-            <div className="relative z-20">
+            {/* Remove the backdrop div entirely since we want full coverage */}
+            <div className="px-6 py-6">
               <div className="flex items-center justify-between">
                 <a href="/" className="-m-1.5 p-1.5">
                   <img
-                    src={`${base}assets/images/Cyphers.png}`}
-                    alt="CupherSOL"
-                    className="w-40 mb-5"
+                    src={`${base}assets/images/Cyphers.png`}
+                    alt="CypherSOL"
+                    className="w-32 sm:w-36 md:w-40 mb-5"
                   />
                 </a>
                 <button
                   type="button"
-                  className="-m-2.5 rounded-md p-2.5 text-gray-900  transition-colors duration-200"
+                  className="-m-2.5 rounded-md p-2.5 text-gray-900 hover:text-cyan-400 transition-colors duration-200"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   <span className="sr-only">Close menu</span>
@@ -536,7 +538,7 @@ export const Header = () => {
                     <div className="-mx-3">
                       <button
                         type="button"
-                        className="flex w-full items-center justify-between rounded-lg py-2 pr-3.5 pl-3 text-base/7 font-semibold text-gray-900 transition-colors duration-200"
+                        className="flex w-full items-center justify-between rounded-lg py-2 pr-3.5 pl-3 text-base/7 font-semibold text-gray-900 hover:text-cyan-400 transition-colors duration-200"
                         aria-controls="disclosure-1"
                         aria-expanded={mobileProductMenuOpen}
                         onClick={() =>
@@ -564,19 +566,37 @@ export const Header = () => {
                           >
                             <a
                               href="/bank-statement-analyzer"
-                              className="block rounded-lg py-2 pr-3 pl-6 text-sm/7 font-semibold text-gray-900 transition-colors duration-200"
+                              className="block rounded-lg py-2 pr-3 pl-6 text-sm/7 font-semibold text-gray-900 hover:text-cyan-400 transition-colors duration-200"
                             >
-                              Bank Statement Analyzer
+                              Cypher-Edge (for Tax Professionals)
+                            </a>
+                            <a
+                              href="/dsa"
+                              className="block rounded-lg py-2 pr-3 pl-6 text-sm/7 font-semibold text-gray-900 hover:text-cyan-400 transition-colors duration-200"
+                            >
+                              Cypher-Zen (for DSAs)
+                            </a>
+                            <a
+                              href="/msme"
+                              className="block rounded-lg py-2 pr-3 pl-6 text-sm/7 font-semibold text-gray-900 hover:text-cyan-400 transition-colors duration-200"
+                            >
+                              MSME Accounting
+                            </a>
+                            <a
+                              href="/fund-trail-analyzer"
+                              className="block rounded-lg py-2 pr-3 pl-6 text-sm/7 font-semibold text-gray-900 hover:text-cyan-400 transition-colors duration-200"
+                            >
+                              Cypher-Trace (for fund trail analysis)
                             </a>
                             <a
                               href="/excel-to-tally"
-                              className="block rounded-lg py-2 pr-3 pl-6 text-sm/7 font-semibold text-gray-900 transition-colors duration-200"
+                              className="block rounded-lg py-2 pr-3 pl-6 text-sm/7 font-semibold text-gray-900 hover:text-cyan-400 transition-colors duration-200"
                             >
                               Excel to Tally Data Import Utility
                             </a>
                             <a
                               href="/bank-statement-analyzer-excel-to-tally"
-                              className="block rounded-lg py-2 pr-3 pl-6 text-sm/7 font-semibold text-gray-900 transition-colors duration-200"
+                              className="block rounded-lg py-2 pr-3 pl-6 text-sm/7 font-semibold text-gray-900 hover:text-cyan-400 transition-colors duration-200"
                             >
                               BSA & Excel to Tally Data Import Utility Combo
                             </a>
@@ -587,7 +607,7 @@ export const Header = () => {
                     <div className="-mx-3">
                       <button
                         type="button"
-                        className="flex w-full items-center justify-between rounded-lg py-2 pr-3.5 pl-3 text-base/7 font-semibold text-gray-900 transition-colors duration-200"
+                        className="flex w-full items-center justify-between rounded-lg py-2 pr-3.5 pl-3 text-base/7 font-semibold text-gray-900 hover:text-cyan-400 transition-colors duration-200"
                         aria-controls="disclosure-2"
                         aria-expanded={mobileResourcesMenuOpen}
                         onClick={() =>
@@ -617,25 +637,25 @@ export const Header = () => {
                           >
                             <a
                               href="/about"
-                              className="block rounded-lg py-2 pr-3 pl-6 text-sm/7 font-semibold text-gray-900 transition-colors duration-200"
+                              className="block rounded-lg py-2 pr-3 pl-6 text-sm/7 font-semibold text-gray-900 hover:text-cyan-400 transition-colors duration-200"
                             >
                               About Us
                             </a>
                             <a
                               href="/team"
-                              className="block rounded-lg py-2 pr-3 pl-6 text-sm/7 font-semibold text-gray-900 transition-colors duration-200"
+                              className="block rounded-lg py-2 pr-3 pl-6 text-sm/7 font-semibold text-gray-900 hover:text-cyan-400 transition-colors duration-200"
                             >
                               Team
                             </a>
                             <a
                               href="/blog"
-                              className="block rounded-lg py-2 pr-3 pl-6 text-sm/7 font-semibold text-gray-900 transition-colors duration-200"
+                              className="block rounded-lg py-2 pr-3 pl-6 text-sm/7 font-semibold text-gray-900 hover:text-cyan-400 transition-colors duration-200"
                             >
                               Blog
                             </a>
                             <a
                               href="/contact"
-                              className="block rounded-lg py-2 pr-3 pl-6 text-sm/7 font-semibold text-gray-900 transition-colors duration-200"
+                              className="block rounded-lg py-2 pr-3 pl-6 text-sm/7 font-semibold text-gray-900 hover:text-cyan-400 transition-colors duration-200"
                             >
                               Contact Us
                             </a>
@@ -645,27 +665,35 @@ export const Header = () => {
                     </div>
                     <a
                       href="tax-professional/login/"
-                      className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 transition-colors duration-200"
+                      className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:text-cyan-400 transition-colors duration-200"
                     >
                       Reseller
                     </a>
                     <a
                       href="/price"
-                      className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 transition-colors duration-200"
+                      className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:text-cyan-400 transition-colors duration-200"
                     >
                       Pricing
                     </a>
                   </div>
-                  <div className="py-6 flex flex-col space-y-4">
+                  <div className="py-6 flex flex-col space-y-4 sm:flex-row sm:space-y-0 sm:space-x-4">
                     <a href="/login">
-                      <button className="w-full px-4 py-2 rounded-lg bg-gray-900 text-white border border-gray-800 hover:bg-gray-800 transition-colors duration-200">
+                      <motion.button
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
+                        className="w-full px-4 py-2 rounded-lg bg-gray-800 text-white border border-gray-700 hover:bg-gray-700 transition-all duration-200"
+                      >
                         Login
-                      </button>
+                      </motion.button>
                     </a>
                     <a href="/trial">
-                      <button className="w-full px-4 py-2 bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-semibold rounded-lg hover:opacity-90 transition-opacity duration-200">
+                      <motion.button
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
+                        className="w-full px-4 py-2 bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-semibold rounded-lg hover:opacity-90 transition-all duration-200"
+                      >
                         Register
-                      </button>
+                      </motion.button>
                     </a>
                   </div>
                 </div>

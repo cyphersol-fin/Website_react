@@ -30,7 +30,8 @@ import { BankAnalyzer } from "./components/BankAnalyzer";
 import { DsaPage } from "./pages/DsaPage";
 import { MsmePage } from "./pages/MsmePage";
 import { ForensicPage } from "./pages/ForensicPage";
-import MouseMoveEffect from "./components/components/ui/mouse-move-effect";
+import FloatingWhatsAppButton from "./components/FloatingWhatsAppButton";
+// import MouseMoveEffect from "./components/components/ui/mouse-move-effect";
 
 // Scroll to top on route change
 function ScrollToTop() {
@@ -52,6 +53,7 @@ function App() {
         <div className="absolute inset-0 bg-gradient-to-b from-black via-gray-900 to-black" />
         <div className="relative z-10">
           <NotificationBanner />
+          <FloatingWhatsAppButton />
           <Header />
           {/* <MouseMoveEffect /> */}
           <Routes>

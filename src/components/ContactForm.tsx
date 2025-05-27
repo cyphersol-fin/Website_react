@@ -194,16 +194,16 @@ export const ContactPage = () => {
             <div className="flex items-center justify-center mb-8">
               <Badge>Let's Connect</Badge>
             </div>
-            <h1 className="text-5xl font-bold mb-20 text-white text-center">
-              We would love to hear <br></br> from you
-            </h1>
+            <div className="max-w-3xl mx-auto text-center">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-20 text-white text-center">
+                We would love to hear from you
+              </h1>
+            </div>
             <ContactForm />
           </div>
         </div>
       </div>
-      <div className="container mx-auto px-4 animate-fadeIn">
-        <FAQSection items={contactUsFaqsArray} />
-      </div>
+
       {/* Cta Banner */}
       <CTABanner
         title="Wanna"
@@ -213,6 +213,10 @@ export const ContactPage = () => {
         imageSrc="https://framerusercontent.com/images/MecLliNBqre50VslV9Cc8fZOqkY.png?scale-down-to=512"
         imageAlt="AI-powered financial analysis"
       />
+
+      <div className="container mx-auto px-4 animate-fadeIn">
+        <FAQSection items={contactUsFaqsArray} />
+      </div>
     </>
   );
 };

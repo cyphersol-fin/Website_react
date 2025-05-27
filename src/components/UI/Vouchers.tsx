@@ -38,7 +38,7 @@ export function Vouchers() {
       <div ref={sectionRef} className="absolute h-full flex">
         {/* First Panel */}
         <div className="relative h-screen w-screen flex items-center justify-center flex-shrink-0 ">
-          <h1 className="text-5xl md:text-7xl font-bold text-center px-4">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-center px-4">
             <span className="bg-clip-text text-transparent bg-gradient-to-b from-white to-white/80">
               Seamlessly Convert
             </span>

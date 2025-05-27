@@ -163,7 +163,12 @@ export function Dice() {
 
   return (
     <>
-      <AnimatedGroup ref={groupRef} scale={2} position={[0, 0, 0]} {...springs}>
+      <AnimatedGroup
+        ref={groupRef}
+        scale={1.7}
+        position={[0, 0, 0]}
+        {...springs}
+      >
         <group>
           {faces.map((face, index) => (
             <DiceFace key={index} {...face} />
