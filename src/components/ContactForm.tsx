@@ -8,6 +8,7 @@ import { FaEnvelope, FaMapMarkerAlt, FaPhoneAlt } from "react-icons/fa";
 import FAQSection from "./FAQSection";
 import CTABanner from "./UI/CTABanner";
 import { contactUsFaqsArray } from "./data/FAQs";
+import { Helmet } from "react-helmet-async";
 // ContactForm component with animation
 const ContactForm = () => {
   return (
@@ -175,6 +176,20 @@ const AnimatedBackground = () => {
 export const ContactPage = () => {
   return (
     <>
+      <Helmet>
+        <title>
+          {" "}
+          Get in Touch for Accounting Automation Starting @ ₹45* | Cyphersol
+        </title>
+        <meta
+          name="description"
+          content="Contact Cyphersol to learn more about our IT solutions and accounting automation services. We assist chartered accountants and MSMEs in India to streamline workflows and enhance efficiency. Reach out to us today!"
+        />
+        <meta
+          name="keywords"
+          content="Cyphersol contact, IT solutions, accounting automation, chartered accountants, MSME solutions, accounting software, customer support, get in touch"
+        />
+      </Helmet>
       <div className="relative bg-black overflow-hidden">
         <GlowEffect />
 

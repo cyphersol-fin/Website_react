@@ -24,6 +24,7 @@ import {
 } from "lucide-react";
 import { bankAnalyzerFaqsArray } from "./data/FAQs";
 import { EnhancedWorkflowSection } from "./EnhancedWorkflowSection";
+import { Helmet } from "react-helmet-async";
 
 const cardData = [
   {
@@ -193,6 +194,19 @@ export const BankAnalyzer = () => {
   };
   return (
     <>
+      <Helmet>
+        <title>
+          Be Intelligently Lazy with Accounting & ITR Automation from ₹45*
+        </title>
+        <meta
+          name="description"
+          content="Cyphersol helps you 'Be Intelligently Lazy' by offering automation for accounting, bank statement analyzers, and IT solutions for chartered accountants and MSMEs in India. Accelerate your business growth with our innovative digital services."
+        />
+        <meta
+          name="keywords"
+          content="Cyphersol, be intelligently lazy, automation for accounting, bank statement analyser, automation for chartered accountants, MSME solutions, IT solutions India, software development, digital services"
+        />
+      </Helmet>
       {/* Hero Section */}
       <section className="relative flex items-center justify-center overflow-hidden px-4 py-12 sm:py-20 lg:py-24">
         {/* Animated Elements */}

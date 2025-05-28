@@ -10,6 +10,7 @@ import FAQSection from "./FAQSection";
 import ResellerAdvantages from "./UI/ResellerAdvantages";
 import ResellerSection from "./UI/ResellerSection";
 import { resellerFaqsArray } from "./data/FAQs";
+import { Helmet } from "react-helmet-async";
 const base = import.meta.env.BASE_URL; // Will be '/static/' in production (as per Vite config)
 const cardData = [
   {
@@ -87,6 +88,20 @@ export const Reseller = () => {
   const shadowColor = theme.resolvedTheme === "white" ? "black" : "white";
   return (
     <>
+      <Helmet>
+        <title>
+          Become a Cyphersol Reseller | Distribute Innovative Accounting
+          Automation Products
+        </title>
+        <meta
+          name="description"
+          content="Join Cyphersol as a reseller and distribute innovative accounting automation products. Expand your business by offering solutions like the Bank Statement Analyzer and Excel to Tally Data Import Utility to chartered accountants and MSMEs across India."
+        />
+        <meta
+          name="keywords"
+          content="Cyphersol reseller, accounting automation, Bank Statement Analyzer, Excel to Tally Data Import Utility, accounting software reselling, chartered accountants, MSME solutions, business opportunity, IT solutions India"
+        />
+      </Helmet>
       <div className="container mx-auto mt-12 text-center">
         <Badge>Reseller</Badge>
         <h1 className="text-balance text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-semibold leading-none tracking-tighter text-white text-center mt-10 animate-slide-down">

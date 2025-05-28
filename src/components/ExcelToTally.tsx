@@ -18,6 +18,7 @@ import FAQSection from "./FAQSection";
 import { ExcelToTallyBeam } from "./UI/AnimatedBeam";
 import { Vouchers } from "./UI/Vouchers";
 import { excelToTallyFaqsArray } from "./data/FAQs";
+import { Helmet } from "react-helmet-async";
 
 const advData = [
   {
@@ -203,6 +204,19 @@ export default function ExcelToTally() {
 
   return (
     <>
+      <Helmet>
+        <title>
+          Excel to Tally Data Import Utility | Fast Imports @ ₹49*/Month
+        </title>
+        <meta
+          name="description"
+          content="Cyphersol's Excel to Tally Data Import Utility helps you 'Be Intelligently Lazy' by automating data uploads to Tally ERP. Streamline accounting processes for chartered accountants and MSMEs in India with our innovative solution."
+        />
+        <meta
+          name="keywords"
+          content="Cyphersol, Excel to Tally Data Import Utility, be intelligently lazy, automation for accounting, Tally ERP integration, chartered accountants, MSME solutions, accounting software, data automation"
+        />
+      </Helmet>
       {/* hero section */}
       <div className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-[#030303]">
         <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/[0.05] via-transparent to-blue-500/[0.05] blur-3xl" />

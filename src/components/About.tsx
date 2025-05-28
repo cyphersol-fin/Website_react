@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Badge } from "./UI/Badge";
 import CTABanner from "./UI/CTABanner";
 import CarouselSection from "./UI/Carousel";
+import { Helmet } from "react-helmet-async";
 
 const fadeIn = {
   initial: { opacity: 0, y: 30 },
@@ -75,6 +76,20 @@ function Stat({ value, label }: StatProps) {
 export const About = () => {
   return (
     <>
+      <Helmet>
+        <title>
+          Be Intelligently Lazy with Automation for Accounting & IT Solutions |
+          Cyphersol
+        </title>
+        <meta
+          name="description"
+          content="Cyphersol helps you 'Be Intelligently Lazy' by offering automation for accounting, bank statement analyzers, and IT solutions for chartered accountants and MSMEs in India. Accelerate your business growth with our innovative digital services."
+        />
+        <meta
+          name="keywords"
+          content="Cyphersol, be intelligently lazy, automation for accounting, bank statement analyser, automation for chartered accountants, MSME solutions, IT solutions India, software development, digital services"
+        />
+      </Helmet>
       <div className="relative flex w-full flex-col items-center justify-center overflow-hidden ">
         <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4 py-12 max-auto max-w-6xl">
           <motion.div
