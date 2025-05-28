@@ -69,7 +69,7 @@ const features = [
     icon: (
       <img
         src={`${base}assets/images/CA.webp`}
-        alt="Chartered Accountant"
+        alt="Excel to Tally utility"
         className="w-20"
       />
     ),
@@ -85,7 +85,7 @@ const features = [
     icon: (
       <img
         src={`${base}assets/images/large-enterprise.webp`}
-        alt="Large Enterprises"
+        alt="Import Excel data into Tally"
         className="w-20"
       />
     ),
@@ -96,7 +96,11 @@ const features = [
   },
   {
     icon: (
-      <img src={`${base}assets/images/SMEs.webp`} alt="SMEs" className="w-20" />
+      <img
+        src={`${base}assets/images/SMEs.webp`}
+        alt="Tally import utility"
+        className="w-20"
+      />
     ),
     title: "Small and Medium Businesses (SMEs)",
     description:
@@ -107,7 +111,7 @@ const features = [
     icon: (
       <img
         src={`${base}assets/images/tax-consultants.webp`}
-        alt="Tax Consultants"
+        alt="Excel to Tally integration"
         className="w-20"
       />
     ),

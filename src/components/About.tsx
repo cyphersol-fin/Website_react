@@ -306,6 +306,55 @@ export const About = () => {
         </motion.div>
       </motion.div>
 
+      {/* How our software works */}
+      <motion.div
+        className="max-w-5xl mx-auto text-center px-4 sm:px-6 lg:px-8 py-12"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+      >
+        <motion.h1
+          className="text-4xl md:text-5xl font-bold mb-3 tracking-tight"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+        >
+          <span
+            className={cn(
+              "bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-white/90 to-blue-400"
+            )}
+          >
+            How CypherSOL's Software Functions
+          </span>
+        </motion.h1>
+        <motion.p
+          className="text-lg md:text-xl text-gray-400 mb-10"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7, delay: 0.2 }}
+        >
+          A fully remote team on a mission to build <br /> the best
+          communication platform for developers.
+        </motion.p>
+        <motion.img
+          src="assets/images/software-function-1.png"
+          alt="AI accounting automation software"
+          className="w-full h-auto"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.3 }}
+          whileHover={{
+            scale: 1.02,
+            // boxShadow: "0 0 20px rgba(59, 130, 246, 0.4)",
+            transition: { duration: 0.3 },
+          }}
+        />
+      </motion.div>
+
       {/* Carousel Vision/Mission*/}
       <motion.div
         className="w-full mx-auto text-center"
@@ -346,7 +395,7 @@ export const About = () => {
 
         <motion.img
           src="assets/images/teammm.jpeg"
-          alt="testimonial"
+          alt="Cloud-based accounting automation"
           className="w-full h-auto -rotate-1 rounded-lg"
           initial={{ opacity: 0, scale: 0.9, rotate: 0 }}
           whileInView={{ opacity: 1, scale: 1, rotate: -1 }}
@@ -355,55 +404,6 @@ export const About = () => {
           whileHover={{
             scale: 1.02,
             rotate: 0,
-            transition: { duration: 0.3 },
-          }}
-        />
-      </motion.div>
-
-      {/* How our software works */}
-      <motion.div
-        className="max-w-5xl mx-auto text-center px-4 sm:px-6 lg:px-8 py-12"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8 }}
-      >
-        <motion.h1
-          className="text-4xl md:text-5xl font-bold mb-3 tracking-tight"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
-        >
-          <span
-            className={cn(
-              "bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-white/90 to-blue-400"
-            )}
-          >
-            How CypherSOL's Software Functions
-          </span>
-        </motion.h1>
-        <motion.p
-          className="text-lg md:text-xl text-gray-400 mb-10"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7, delay: 0.2 }}
-        >
-          A fully remote team on a mission to build <br /> the best
-          communication platform for developers.
-        </motion.p>
-        <motion.img
-          src="assets/images/software-function-1.png"
-          alt="software function"
-          className="w-full h-auto"
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.3 }}
-          whileHover={{
-            scale: 1.02,
-            // boxShadow: "0 0 20px rgba(59, 130, 246, 0.4)",
             transition: { duration: 0.3 },
           }}
         />
@@ -429,7 +429,7 @@ export const About = () => {
           subtitle="Please feel free to contact us. We're super happy to talk to you. Feel free to ask anything."
           primaryButtonText="Book a Demo"
           imageSrc="https://framerusercontent.com/images/MecLliNBqre50VslV9Cc8fZOqkY.png?scale-down-to=512"
-          imageAlt="AI-powered financial analysis"
+          imageAlt="Automation for tax preparation and filing"
         />
       </motion.div>
     </>

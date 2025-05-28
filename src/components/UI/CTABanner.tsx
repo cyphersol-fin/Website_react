@@ -43,7 +43,10 @@ const CTABanner: React.FC<CTABannerProps> = ({
             </h1>
             <p className="text-xl md:text-1xl text-gray-300 mb-8">{subtitle}</p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <button className="px-8 py-3 rounded-lg bg-gradient-to-r from-cyan-400 to-blue-500 text-white font-semibold text-lg transition-transform hover:scale-105">
+              <button
+                onClick={() => (window.location.href = "/contact")}
+                className="px-8 py-3 rounded-lg bg-gradient-to-r from-cyan-400 to-blue-500 text-white font-semibold text-lg transition-transform hover:scale-105"
+              >
                 {primaryButtonText}
               </button>
             </div>

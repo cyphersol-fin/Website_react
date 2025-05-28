@@ -211,7 +211,7 @@ export const ContactPage = () => {
         subtitle="Please feel free to contact us. We’re super happy to talk to you. Feel free to ask anything.."
         primaryButtonText="Contact Us"
         imageSrc="https://framerusercontent.com/images/MecLliNBqre50VslV9Cc8fZOqkY.png?scale-down-to=512"
-        imageAlt="AI-powered financial analysis"
+        imageAlt="Automated Excel to Tally import"
       />
 
       <div className="container mx-auto px-4 animate-fadeIn">

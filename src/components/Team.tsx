@@ -105,7 +105,7 @@ export const Team = () => {
                     <div className="relative w-40 h-40 rounded-2xl overflow-hidden flex-shrink-0">
                       <img
                         src={member.image || "/placeholder.svg"}
-                        alt={member.name}
+                        alt={member.alt}
                         className="object-cover"
                       />
                     </div>

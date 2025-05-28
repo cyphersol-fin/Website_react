@@ -50,7 +50,7 @@ export const ResellerForm = () => {
                 <div className="flex items-center space-x-4 mt-6">
                   <img
                     src={`${base}assets/images/team-1.png`}
-                    alt="CEO"
+                    alt="Tally from Excel"
                     className="w-12 h-12 rounded-full object-cover"
                   />
                   <div>

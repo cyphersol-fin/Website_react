@@ -308,7 +308,7 @@ export const DsaComponent = () => {
           </motion.p>
           <motion.img
             src="assets/images/dsa1.png"
-            alt="software function"
+            alt="Financial automation tools"
             className="w-full h-auto object-contain"
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}

@@ -99,7 +99,7 @@ const DownloadPage = () => {
             >
               <motion.img
                 src="/assets/images/apple-logo-inverted.svg"
-                alt="apple"
+                alt="mac"
                 className="w-16 h-16 md:w-24 md:h-24 mb-4"
               />
               <motion.button

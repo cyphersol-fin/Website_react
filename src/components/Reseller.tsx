@@ -104,7 +104,7 @@ export const Reseller = () => {
           fallback={
             <img
               src={`${base}assets/images/placeholder.png`}
-              alt="Loading..."
+              alt="Upload Excel to Tally"
             />
           }
         >

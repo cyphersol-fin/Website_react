@@ -11,6 +11,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { challenges } from "./data/challenges";
 import { homeFaqsArray } from "./data/FAQs";
+import CTABanner from "./UI/CTABanner";
 const base = import.meta.env.BASE_URL; // Will be '/static/' in production (as per Vite config)
 
 export function Hero() {
@@ -158,7 +159,7 @@ export function Hero() {
             >
               <img
                 src={`${base}assets/images/infographic-1.png`}
-                alt="infographic"
+                alt="Bank Statement Analyzer"
                 className="w-full max-w-xl md:max-w-full"
               />
             </motion.div>
@@ -201,6 +202,16 @@ export function Hero() {
           </div>
         </motion.div>
       </section>
+
+      {/* Cta Banner */}
+      <CTABanner
+        title="Wanna"
+        highlightedText="Talk To Us?"
+        subtitle="Please feel free to contact us. We’re super happy to talk to you. Feel free to ask anything."
+        primaryButtonText="Contact Us"
+        imageSrc="https://framerusercontent.com/images/MecLliNBqre50VslV9Cc8fZOqkY.png?scale-down-to=512"
+        imageAlt="Bookkeeping automation"
+      />
 
       <div className="container mx-auto px-4 py-12 animate-fadeIn">
         <FAQSection items={homeFaqsArray} />
