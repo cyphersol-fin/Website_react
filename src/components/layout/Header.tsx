@@ -164,7 +164,7 @@ export const Header = () => {
                           href="/bank-statement-analyzer"
                           className="block font-semibold text-gray-300 hover:text-cyan-400 transition-colors duration-200"
                         >
-                          Cypher-Edge (for Tax Professionals)
+                          CypherEdge (for Tax Professionals)
                           <span className="absolute inset-0"></span>
                         </a>
                         <p className="mt-1 text-gray-400">
@@ -182,7 +182,7 @@ export const Header = () => {
                           href="/dsa"
                           className="block font-semibold text-gray-300 hover:text-cyan-400 transition-colors duration-200"
                         >
-                          Cypher-Zen (for DSAs)
+                          CypherZen (for DSAs)
                           <span className="absolute inset-0"></span>
                         </a>
                         <p className="mt-1 text-gray-400">
@@ -200,7 +200,7 @@ export const Header = () => {
                           href="/msme"
                           className="block font-semibold text-gray-300 hover:text-cyan-400 transition-colors duration-200"
                         >
-                          MSME Accounting
+                          CypherVista (for Businesses/ MSME)
                           <span className="absolute inset-0"></span>
                         </a>
                         <p className="mt-1 text-gray-400">
@@ -217,7 +217,7 @@ export const Header = () => {
                           href="/fund-trail-analyzer"
                           className="block font-semibold text-gray-300 hover:text-cyan-400 transition-colors duration-200"
                         >
-                          Cypher-Trace (for fund trail analysis)
+                          CypherTrace (for Fund Trail Analysis)
                           <span className="absolute inset-0"></span>
                         </a>
                         <p className="mt-1 text-gray-400">
@@ -568,25 +568,25 @@ export const Header = () => {
                               href="/bank-statement-analyzer"
                               className="block rounded-lg py-2 pr-3 pl-6 text-sm/7 font-semibold text-gray-900 hover:text-cyan-400 transition-colors duration-200"
                             >
-                              Cypher-Edge (for Tax Professionals)
+                              CypherEdge (for Tax Professionals)
                             </a>
                             <a
                               href="/dsa"
                               className="block rounded-lg py-2 pr-3 pl-6 text-sm/7 font-semibold text-gray-900 hover:text-cyan-400 transition-colors duration-200"
                             >
-                              Cypher-Zen (for DSAs)
+                              CypherZen (for DSAs)
                             </a>
                             <a
                               href="/msme"
                               className="block rounded-lg py-2 pr-3 pl-6 text-sm/7 font-semibold text-gray-900 hover:text-cyan-400 transition-colors duration-200"
                             >
-                              MSME Accounting
+                              CypherVista (for Businesses/ MSME)
                             </a>
                             <a
                               href="/fund-trail-analyzer"
                               className="block rounded-lg py-2 pr-3 pl-6 text-sm/7 font-semibold text-gray-900 hover:text-cyan-400 transition-colors duration-200"
                             >
-                              Cypher-Trace (for fund trail analysis)
+                              CypherTrace (for Fund Trail Analysis)
                             </a>
                             <a
                               href="/excel-to-tally"

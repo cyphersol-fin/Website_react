@@ -43,9 +43,9 @@ function ScrollToTop() {
 }
 
 function App() {
-  useEffect(() => {
-    document.documentElement.classList.add("dark");
-  }, []);
+  // useEffect(() => {
+  //   document.documentElement.classList.add("dark");
+  // }, []);
   return (
     <Router>
       <ScrollToTop />
