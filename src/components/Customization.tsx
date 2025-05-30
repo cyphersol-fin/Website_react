@@ -5,6 +5,7 @@ import { customizationFaqsArray } from "./data/FAQs";
 import { motion } from "framer-motion";
 import { Badge } from "./UI/Badge";
 import { cn } from "./lib/utils";
+const base = import.meta.env.BASE_URL;
 
 export const Customization = () => {
   return (
@@ -208,7 +209,7 @@ export const Customization = () => {
             To adapt to your unique use case.
           </motion.p>
           <motion.img
-            src="assets/images/customization.png"
+            src={`${base}assets/images/customization.png`}
             alt="Financial automation tools"
             className="w-full md:w-3/4 lg:w-8/12 h-auto object-contain mx-auto"
           />
