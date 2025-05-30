@@ -5,7 +5,7 @@ import { cn } from "./lib/utils";
 import { GlowEffect } from "./UI/GlowEffect";
 import { TeamModal } from "./Modal";
 import { Badge } from "./UI/Badge";
-import { ArrowRight, Linkedin, Twitter } from "lucide-react";
+import { ArrowRight, Linkedin } from "lucide-react";
 import { Helmet } from "react-helmet-async";
 const base = import.meta.env.BASE_URL; // Will be '/static/' in production (as per Vite config)
 export interface TeamMember {
@@ -126,41 +126,29 @@ export const Team = () => {
                         />
                       </div>
                     </motion.div>
-                    <div className="flex justify-start lg:justify-center gap-4">
-                      {member.social.linkedin && (
-                        <motion.a
-                          href={member.social.linkedin}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          whileHover={{ scale: 1.2, y: -2 }}
-                          whileTap={{ scale: 0.9 }}
-                          className="text-gray-400 hover:text-cyan-400 transition-colors"
-                        >
-                          <Linkedin className="w-4 h-4" />
-                        </motion.a>
-                      )}
-                      {member.social.twitter && (
-                        <motion.a
-                          href={member.social.twitter}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          whileHover={{ scale: 1.2, y: -2 }}
-                          whileTap={{ scale: 0.9 }}
-                          className="text-gray-400 hover:text-cyan-400 transition-colors"
-                        >
-                          <Twitter className="w-4 h-4" />
-                        </motion.a>
-                      )}
-                    </div>
                   </div>
                   <div className="space-y-3">
                     <motion.h2
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       transition={{ delay: 0.2 * (index + 1) }}
-                      className="text-2xl font-bold"
+                      className="text-2xl font-bold text-left flex items-center justify-between"
                     >
                       {member.name}
+                      <span className="ml-4">
+                        {member.social.linkedin && (
+                          <motion.a
+                            href={member.social.linkedin}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            whileHover={{ scale: 1.2, y: -2 }}
+                            whileTap={{ scale: 0.9 }}
+                            className="w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 hover:bg-cyan-400 text-white hover:text-black transition duration-300"
+                          >
+                            <Linkedin className="w-4 h-4" />
+                          </motion.a>
+                        )}
+                      </span>
                     </motion.h2>
                     <motion.p
                       initial={{ opacity: 0 }}

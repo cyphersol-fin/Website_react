@@ -39,7 +39,6 @@ export const teamMembers = [
 
     social: {
       linkedin: "https://www.linkedin.com/in/imran-sable-33b191160/",
-      twitter: "https://twitter.com",
     },
   },
   {
@@ -82,7 +81,6 @@ export const teamMembers = [
     `,
     social: {
       linkedin: "https://www.linkedin.com/in/shamlata-poojary-0b9a45108/",
-      twitter: "https://twitter.com",
     },
   },
   {
@@ -113,7 +111,6 @@ export const teamMembers = [
     `,
     social: {
       linkedin: "https://www.linkedin.com/in/samidha-devkar-550790296/",
-      twitter: "https://twitter.com",
     },
   },
   {
@@ -143,7 +140,6 @@ export const teamMembers = [
     `,
     social: {
       linkedin: "https://www.linkedin.com/in/deepak-singhania-849317118/",
-      twitter: "https://twitter.com",
     },
   },
   {
@@ -177,7 +173,6 @@ export const teamMembers = [
     `,
     social: {
       linkedin: "https://www.linkedin.com/in/tabassum-inamdar-6829b036/",
-      twitter: "https://twitter.com",
     },
   },
 ];

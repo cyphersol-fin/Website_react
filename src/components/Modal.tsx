@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { X, Linkedin, Twitter } from "lucide-react";
+import { X, Linkedin } from "lucide-react";
 import { TeamMember } from "./TeamMemberCard";
 import "./css/styles.css";
 const base = import.meta.env.BASE_URL; // Will be '/static/' in production (as per Vite config)
@@ -55,41 +55,31 @@ export const TeamModal = ({ member, onClose }: Props) => {
               {/* Large Card - Sora */}
               <div className="lg:row-span-2 overflow-hidden transition-transform duration-300 hover:-translate-y-1 animate-fade-in">
                 <div className="flex items-center justify-between text-white/80"></div>
-                <div className="aspect-square w-full mb-8">
+                <div className="w-full mb-8 aspect-auto lg:aspect-square">
                   <img
                     src={member.image}
                     alt={member.name}
                     className="max-w-full max-h-full object-contain rounded-2xl"
                   />
                 </div>
-                <div className="flex items-center space-x-5 text-white/90 mt-auto">
-                  {member.social.linkedin && (
-                    <a
-                      href={member.social.linkedin}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-gray-300 hover:text-cyan-400 transition-colors duration-300"
-                    >
-                      <Linkedin className="w-5 h-5 stroke-[1.5]" />
-                    </a>
-                  )}
-                  {member.social.twitter && (
-                    <a
-                      href={member.social.twitter}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-gray-300 hover:text-cyan-400 transition-colors duration-300"
-                    >
-                      <Twitter className="w-5 h-5 stroke-[1.5]" />
-                    </a>
-                  )}
-                </div>
               </div>
 
               <div className="overflow-hidden transition-transform duration-300 hover:-translate-y-1 animate-fade-in">
                 <div className="mt-auto">
-                  <h2 className="text-[1.75rem] font-extralight tracking-wide mb-2 text-white">
+                  <h2 className="text-[1.75rem] font-extralight tracking-wide mb-2 text-left flex items-center justify-left">
                     {member.name}
+                    <span className="ml-4">
+                      {member.social.linkedin && (
+                        <a
+                          href={member.social.linkedin}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 hover:bg-cyan-400 text-white hover:text-black transition duration-300"
+                        >
+                          <Linkedin className="w-5 h-5 stroke-[1.5]" />
+                        </a>
+                      )}
+                    </span>
                   </h2>
                   <p className="text-lg text-cyan-400 font-extralight tracking-wide mb-8">
                     {member.title}

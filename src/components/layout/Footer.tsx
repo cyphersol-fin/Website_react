@@ -1,8 +1,6 @@
 import { OrbitControls } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import {
-  FaTwitter,
-  FaFacebookF,
   FaInstagram,
   FaLinkedinIn,
   FaMapMarkerAlt,
@@ -133,25 +131,13 @@ export const Footer = () => {
             </h3>
             <div className="flex space-x-4">
               <a
-                href="#"
-                className="w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 hover:bg-cyan-400 text-white hover:text-black transition duration-300"
-              >
-                <FaTwitter />
-              </a>
-              <a
-                href="#"
-                className="w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 hover:bg-cyan-400 text-white hover:text-black transition duration-300"
-              >
-                <FaFacebookF />
-              </a>
-              <a
-                href="#"
+                href="https://www.instagram.com/cyphersolfintech2025?igsh=MWRmYTI4ZWEya2U4bA=="
                 className="w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 hover:bg-cyan-400 text-white hover:text-black transition duration-300"
               >
                 <FaInstagram />
               </a>
               <a
-                href="#"
+                href="https://www.linkedin.com/company/cyphersol-fintech-india-pvt-ltd/posts/?feedView=all"
                 className="w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 hover:bg-cyan-400 text-white hover:text-black transition duration-300"
               >
                 <FaLinkedinIn />
