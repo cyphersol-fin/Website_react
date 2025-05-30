@@ -33,9 +33,13 @@ export default function PricingContainer() {
       originalPrice: "7,000",
       price: 4000,
       features: [
-        "Unlimited",
-        "Payment, Receipt, Contra, Purchase, Sales (5 Vouchers)",
-        "Easy installation & setup",
+        "300 statements",
+        "Additional PC: ₹1,500 per unit",
+        {
+          text: "Tally Import Utility",
+          tooltip: "Payment, Receipt, Contra, Purchase, Sales (5 vouchers)",
+        },
+        "Easy installation and setup",
         "Email support",
       ],
       popular: false,
@@ -45,9 +49,13 @@ export default function PricingContainer() {
       originalPrice: "12,000",
       price: 6000,
       features: [
-        "Unlimited",
-        "Payment, Receipt, Contra, Purchase, Sales (5 Vouchers)",
-        "Easy installation & setup",
+        "500 statements",
+        "Additional PC: ₹1,500 per unit",
+        {
+          text: "Tally Import Utility",
+          tooltip: "Payment, Receipt, Contra, Purchase, Sales (5 vouchers)",
+        },
+        "Easy installation and setup",
         "Email support",
       ],
       popular: false,
@@ -57,9 +65,13 @@ export default function PricingContainer() {
       originalPrice: "20,000",
       price: 12000,
       features: [
-        "Unlimited",
-        "Payment, Receipt, Contra, Purchase, Sales (5 Vouchers)",
-        "Easy installation & setup",
+        "Unlimited statements",
+        "Additional PC: ₹1,500 per unit",
+        {
+          text: "Tally Import Utility",
+          tooltip: "Payment, Receipt, Contra, Purchase, Sales (5 vouchers)",
+        },
+        "Easy installation and setup",
         "Email support",
       ],
       popular: true,
@@ -339,9 +351,8 @@ export default function PricingContainer() {
                     <div className="text-center mt-4 space-y-2">
                       <div className="relative inline-block">
                         <h3 className="text-sm text-gray-400">
-                          Original Price:
+                          Original Price:{" "}
                           <span className="text-[#FFC107] text-2xl font-semibold relative inline-block">
-                            {" "}
                             ₹{plan.originalPrice}
                             <div
                               className="absolute w-full h-0.5 bg-white"
@@ -366,6 +377,7 @@ export default function PricingContainer() {
                       >
                         ₹{plan.price.toLocaleString()}
                       </motion.h2>
+                      <p className="text-sm text-gray-400">Per license</p>
                       <h3 className="text-sm text-blue-100">
                         {" "}
                         +18% GST ({" "}
@@ -389,7 +401,22 @@ export default function PricingContainer() {
                           transition={{ delay: i * 0.1 + 0.2 }}
                         >
                           <Check className="h-5 w-5 text-blue-400 shrink-0 mt-0.5" />
-                          <span className="text-gray-300">{feature}</span>
+                          {typeof feature === "string" ? (
+                            <span className="text-gray-300">{feature}</span>
+                          ) : (
+                            <span className="text-gray-300 relative group">
+                              {feature.text}
+                              <span
+                                className="ml-2 cursor-pointer text-blue-400 group-hover:underline"
+                                tabIndex={0}
+                              >
+                                ⓘ
+                                <span className="absolute left-6 top-0 z-10 hidden group-hover:block bg-gray-800 text-white text-xs rounded px-2 py-1 shadow-lg w-48">
+                                  {feature.tooltip}
+                                </span>
+                              </span>
+                            </span>
+                          )}
                         </motion.li>
                       ))}
                     </ul>
