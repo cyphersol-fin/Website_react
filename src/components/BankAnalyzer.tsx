@@ -16,7 +16,6 @@ import {
   Layers,
   Repeat,
   FileOutput,
-  MapPin,
   CheckCircle,
   TrendingUp,
   BookOpen,
@@ -25,6 +24,7 @@ import {
 import { bankAnalyzerFaqsArray } from "./data/FAQs";
 import { EnhancedWorkflowSection } from "./EnhancedWorkflowSection";
 import { Helmet } from "react-helmet-async";
+import CaseStudySection from "./components/ui/case-study";
 
 const cardData = [
   {
@@ -106,7 +106,7 @@ const cardData = [
 ];
 
 // Case Studies data
-const caseStudies = [
+const caseStudiesData = [
   {
     id: 1,
     location: "Delhi",
@@ -179,19 +179,20 @@ const caseStudies = [
   },
 ];
 
+export const fadeUpVariants = {
+  hidden: { opacity: 0, y: 30 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 1,
+      delay: 0.5 + i * 0.2,
+      ease: [0.25, 0.4, 0.25, 1],
+    },
+  }),
+};
+
 export const BankAnalyzer = () => {
-  const fadeUpVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: (i: number) => ({
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 1,
-        delay: 0.5 + i * 0.2,
-        ease: [0.25, 0.4, 0.25, 1],
-      },
-    }),
-  };
   return (
     <>
       <Helmet>
@@ -401,86 +402,12 @@ export const BankAnalyzer = () => {
       {/* Visual Graphic Analysis Section */}
       <EnhancedWorkflowSection />
 
-      <motion.div
-        custom={11}
-        variants={fadeUpVariants}
-        initial="hidden"
-        animate="visible"
-        className="container mx-auto px-4 py-16"
-      >
-        <h1 className="text-4xl md:text-5xl font-bold mb-4 md:mb-5 text-[#c3d0e5] text-center animate-slide-down">
-          <span className="bg-gradient-to-r from-cyan-400 via-white/90 to-blue-400 text-transparent bg-clip-text">
-            Real-Life Case Studies
-          </span>
-        </h1>
-
-        <p className="text-base md:text-lg text-[#c3d0e5] text-center max-w-2xl mx-auto mb-10">
-          See how Chartered Accountants across India are transforming their
-          practices with CypherSOL
-        </p>
-
-        {/* Map of India graphic representation with case study locations */}
-        <div className="relative w-full max-w-6xl mx-auto mb-16">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {caseStudies.map((study) => (
-              <div
-                key={study.id}
-                className="border border-gray-800 bg-black/40 backdrop-blur-sm rounded-xl p-6 hover:border-gray-700 transition-all duration-300 group hover:shadow-lg hover:shadow-cyan-900/20"
-              >
-                {/* Header with location and icon */}
-                <div className="flex justify-between items-center mb-4">
-                  <div className="flex items-center">
-                    <MapPin className="w-4 h-4 text-cyan-400 mr-2" />
-                    <span className="text-cyan-300 font-medium">
-                      {study.location}
-                    </span>
-                  </div>
-                  <div
-                    className={`flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-r ${study.color} group-hover:scale-110 transition-transform duration-300`}
-                  >
-                    <study.icon className="w-5 h-5 text-white" />
-                  </div>
-                </div>
-
-                {/* Title */}
-                <h3 className="text-xl font-semibold text-white mb-4">
-                  {study.title}
-                </h3>
-
-                {/* Challenge */}
-                <div className="mb-4">
-                  <h4 className="text-gray-400 font-medium mb-1 text-sm">
-                    Challenge:
-                  </h4>
-                  <p className="text-gray-300">{study.challenge}</p>
-                </div>
-
-                {/* Solution */}
-                <div className="mb-4">
-                  <h4 className="text-gray-400 font-medium mb-1 text-sm">
-                    Solution:
-                  </h4>
-                  <p className="text-gray-300">{study.solution}</p>
-                </div>
-
-                {/* Result */}
-                <div className="mb-6">
-                  <h4 className="text-gray-400 font-medium mb-1 text-sm">
-                    Result:
-                  </h4>
-                  <p className="text-gray-300">{study.result}</p>
-                </div>
-
-                {/* Key benefit tag */}
-                <div className="inline-flex items-center px-3 py-1 rounded-full bg-gradient-to-r from-gray-800 to-gray-700 text-white text-sm">
-                  <span className="mr-2">•</span>
-                  {study.benefit}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </motion.div>
+      <CaseStudySection
+        title="Real-Life Case Studies"
+        subtitle="See how Chartered Accountants across India are transforming their practices with CypherSOL."
+        data={caseStudiesData}
+        fadeUpVariants={fadeUpVariants}
+      />
 
       {/* Testimonials Section */}
       <section>

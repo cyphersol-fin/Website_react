@@ -1,42 +1,102 @@
-"use client";
-
+import React from "react";
 import { motion } from "framer-motion";
-import { useInView } from "react-intersection-observer";
-import { ArrowUpRight, MapPin } from "lucide-react";
+import { MapPin } from "lucide-react";
+import { Badge } from "../../UI/Badge";
 
-const CaseStudyCard = ({ title, description, location }) => {
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  });
+type CaseStudySectionProps = {
+  title?: string;
+  subtitle?: string;
+  data: Array<{
+    id: string | number;
+    location: string;
+    color: string;
+    icon: React.ElementType;
+    title: string;
+    challenge: string;
+    solution: string;
+    result: string;
+    benefit: string;
+  }>;
+  fadeUpVariants: Record<string, any>;
+};
 
+const CaseStudySection: React.FC<CaseStudySectionProps> = ({
+  title = "",
+  subtitle = "",
+  data,
+  fadeUpVariants,
+}) => {
   return (
     <motion.div
-      ref={ref}
-      initial={{ opacity: 0, y: 20 }}
-      animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-      transition={{ duration: 0.5 }}
-      className="group bg-gray-900/50 backdrop-blur-xl hover:border-gray-700/50 border border-border/50 rounded-lg overflow-hidden shadow-md transition-all duration-300 hover:shadow-lg"
+      custom={11}
+      variants={fadeUpVariants}
+      initial="hidden"
+      animate="visible"
+      className="container mx-auto px-4 py-16"
     >
-      <div className="p-6 space-y-4">
-        {/* Header with location and icon */}
-        <div className="flex justify-between items-center mb-4">
-          <div className="flex items-center">
-            <MapPin className="w-4 h-4 text-cyan-400 mr-2" />
-            <span className="text-cyan-300 font-medium">{location}</span>
-          </div>
-        </div>
-        <h3 className="text-xl font-bold">{title}</h3>
-        <p className="text-muted-foreground">{description}</p>
-      </div>
+      <h1 className="text-4xl md:text-5xl font-bold mb-4 md:mb-5 text-[#c3d0e5] text-center animate-slide-down">
+        <span className="bg-gradient-to-r from-cyan-400 via-white/90 to-blue-400 text-transparent bg-clip-text">
+          {title}
+        </span>
+      </h1>
 
-      <div className="border-t border-border/50 p-4 flex justify-end">
-        <div className="gap-1 text-xs flex items-center text-muted-foreground group-hover:text-cyan-400 transition-all duration-300">
-          Read Full Case Study <ArrowUpRight className="h-3 w-3" />
+      <p className="text-base md:text-lg text-[#c3d0e5] text-center max-w-2xl mx-auto mb-10">
+        {subtitle}
+      </p>
+
+      <div className="relative w-full max-w-6xl mx-auto mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {data.map((study) => (
+            <div
+              key={study.id}
+              className="border border-gray-800 bg-black/40 backdrop-blur-sm rounded-xl p-6 hover:border-gray-700 transition-all duration-300 group hover:shadow-lg hover:shadow-cyan-900/20"
+            >
+              <div className="flex justify-between items-center mb-4">
+                <div className="flex items-center">
+                  <MapPin className="w-4 h-4 text-cyan-400 mr-2" />
+                  <span className="text-cyan-300 font-medium">
+                    {study.location}
+                  </span>
+                </div>
+                <div
+                  className={`flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-r ${study.color} group-hover:scale-110 transition-transform duration-300`}
+                >
+                  <study.icon className="w-5 h-5 text-white" />
+                </div>
+              </div>
+
+              <h3 className="text-xl font-semibold text-white mb-4">
+                {study.title}
+              </h3>
+
+              <div className="mb-4">
+                <h4 className="text-gray-400 font-medium mb-1 text-sm">
+                  Challenge:
+                </h4>
+                <p className="text-gray-300">{study.challenge}</p>
+              </div>
+
+              <div className="mb-4">
+                <h4 className="text-gray-400 font-medium mb-1 text-sm">
+                  Solution:
+                </h4>
+                <p className="text-gray-300">{study.solution}</p>
+              </div>
+
+              <div className="mb-6">
+                <h4 className="text-gray-400 font-medium mb-1 text-sm">
+                  Result:
+                </h4>
+                <p className="text-gray-300">{study.result}</p>
+              </div>
+
+              <Badge> {study.benefit}</Badge>
+            </div>
+          ))}
         </div>
       </div>
     </motion.div>
   );
 };
 
-export default CaseStudyCard;
+export default CaseStudySection;

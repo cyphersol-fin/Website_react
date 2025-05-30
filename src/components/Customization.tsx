@@ -1,97 +1,16 @@
 import React from "react";
+import CTABanner from "./UI/CTABanner";
+import FAQSection from "./FAQSection";
+import { customizationFaqsArray } from "./data/FAQs";
 import { motion } from "framer-motion";
 import { Badge } from "./UI/Badge";
-import FAQSection from "./FAQSection";
-import { msmeFaqsArray } from "./data/FAQs";
-import CTABanner from "./UI/CTABanner";
-import CaseStudySection from "./components/ui/case-study";
-import { fadeUpVariants } from "./BankAnalyzer";
-import {
-  BarChart2,
-  FolderKanban,
-  ShieldAlert,
-  TimerReset,
-  UploadCloud,
-} from "lucide-react";
+import { cn } from "./lib/utils";
 
-const caseStudiesData = [
-  {
-    id: 1,
-    title: "Accelerated Loan Approval for Mumbai Trading Firm",
-    location: "Mumbai",
-    challenge:
-      "Delays in loan approvals due to cumbersome manual analysis of financial statements.",
-    solution:
-      "Used CypherSOL’s instant loan eligibility insights based on average bank balances.",
-    result:
-      "Significantly reduced documentation time, resulting in quicker approvals and enhanced cash flow management.",
-    benefit: "Faster Loan Approvals",
-    icon: TimerReset,
-    color: "from-purple-500 to-indigo-500",
-  },
-  {
-    id: 2,
-    title: "Improved Financial Clarity for Pune-based Manufacturer",
-    location: "Pune",
-    challenge:
-      "Monthly financial reporting was challenging and time-consuming, often resulting in inaccuracies and compliance risks.",
-    solution:
-      "Used CypherSOL’s automated monthly financial summaries to streamline internal reporting.",
-    result:
-      "Improved accuracy and achieved better financial clarity, enhancing decision-making and compliance.",
-    benefit: "Accurate Monthly Reports",
-    icon: BarChart2,
-    color: "from-pink-500 to-red-500",
-  },
-  {
-    id: 3,
-    title: "Streamlined Accounting for Bangalore Retail Chain",
-    location: "Bangalore",
-    challenge:
-      "Frequent errors and inefficiencies from manually uploading transactions to Tally.",
-    solution:
-      "Used CypherSOL’s one-click integration to automate the transaction upload process.",
-    result:
-      "Significantly reduced errors, saved countless work hours, and allowed the accounting team to focus on strategic financial tasks.",
-    benefit: "Efficient Accounting Integration",
-    icon: UploadCloud,
-    color: "from-teal-500 to-cyan-500",
-  },
-  {
-    id: 4,
-    title:
-      "Effective Management of Multiple Accounts for Delhi Consulting Firm",
-    location: "Delhi",
-    challenge:
-      "Challenges with scattered financial data while managing numerous client accounts.",
-    solution:
-      "Used CypherSOL to efficiently consolidate and categorize financial information from multiple accounts.",
-    result:
-      "Improved financial oversight, reduced errors, and enhanced client satisfaction.",
-    benefit: "Smarter Account Management",
-    icon: FolderKanban,
-    color: "from-amber-500 to-yellow-500",
-  },
-  {
-    id: 5,
-    title: "Enhanced Compliance for Hyderabad Healthcare Provider",
-    location: "Hyderabad",
-    challenge:
-      "Frequent discrepancies during audits due to inaccurate financial reporting.",
-    solution:
-      "Used CypherSOL’s automated transaction processing and meticulous categorization.",
-    result:
-      "Achieved consistent compliance and drastically reduced audit-related complications and costs.",
-    benefit: "Audit-Ready Reporting",
-    icon: ShieldAlert,
-    color: "from-rose-500 to-fuchsia-500",
-  },
-];
-export const MSME = () => {
+export const Customization = () => {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative flex items-center justify-center overflow-hidden px-4 py-12 sm:py-20 lg:py-24">
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden px-4 py-12 sm:py-20 lg:py-24">
         {/* Animated Elements */}
         <div className="absolute inset-0 overflow-hidden">
           {/* Curved Lines */}
@@ -220,56 +139,81 @@ export const MSME = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1 }}
-            className="mx-auto max-w-8xl space-y-8"
+            className="mx-auto space-y-8"
           >
             <div className="flex items-center justify-center mb-10">
-              <Badge>Overview</Badge>
+              <Badge>Customization Overview</Badge>
             </div>
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold leading-tight tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-white/90 to-blue-400 drop-shadow-lg">
-              Powering Smart Automation <br />
-              for Businesses
+            <h1 className="text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-extrabold leading-tight tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-white/90 to-blue-400 drop-shadow-lg">
+              One Platform. Multiple Possibilities
             </h1>
 
-            <h4 className="mt-6 sm:mt-8 max-w-4xl mx-auto text-xl md:text-2xl lg:text-3xl text-gray-300 font-semibold tracking-wide">
-              *Automate Accounting,{" "}
-              <span className="text-cyan-400">Simplify Tally Integration</span>{" "}
-              &{" "}
+            <h4 className="mt-6 sm:mt-8 max-w-4xl mx-auto text-lg sm:text-xl md:text-3xl text-gray-300 font-semibold tracking-wide">
+              If your requirement involves{" "}
+              <span className="text-cyan-400">bank statement data,</span> we’re
+              ready to
               <span className="text-blue-400">
-                Instantly Determine Loan Eligibility
+                {" "}
+                explore, build, and customize{" "}
               </span>
+              it with you.
             </h4>
 
-            <p className="mt-4 mx-auto max-w-4xl text-justify text-sm sm:text-base lg:text-lg text-gray-400 font-medium leading-relaxed">
-              Managing financial transactions, accounting entries, and loan
-              documentation manually can be tedious, error-prone, and costly for
-              businesses. CypherSOL’s AI-powered Bank Statement Analyzer
-              automates these tasks, providing accurate transaction
-              categorization, instant financial summaries, seamless Tally
-              integration, and immediate insights into loan eligibility for home
-              loans, loans against property, and unsecured business loans based
-              on average bank balance.
+            <p className="mt-4 max-w-3xl mx-auto text-sm sm:text-base lg:text-lg text-gray-400 font-medium leading-relaxed">
+              At CypherSOL®, we understand that no two financial workflows are
+              the same. That’s why we offer customization options around our
+              core platforms — the Bank Statement Analyzer and Fund Trail
+              Analyzer — to adapt to your unique use case.
             </p>
-            <p className="mt-4 mx-auto max-w-4xl text-justify text-sm sm:text-base lg:text-lg text-gray-400 font-medium leading-relaxed">
-              CypherSOL reduces manual processes, boosts productivity, and
-              ensures secure, offline data confidentiality, empowering
-              businesses to focus more on growth and less on administrative
-              tasks.
+            <p className="mt-4 max-w-3xl mx-auto text-sm sm:text-base lg:text-lg text-gray-400 font-medium leading-relaxed">
+              Whether you’re automating ITR filing, assessing loan eligibility,
+              tracking suspicious financial flows, or needing data in a specific
+              structure, we help tailor the solution around how you work — not
+              the other way around.
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* Case Studies */}
       <section>
-        <CaseStudySection
-          title="Real-Life Case Studies"
-          subtitle="See how Businesses across India are transforming their practices with
-          CypherSOL."
-          data={caseStudiesData}
-          fadeUpVariants={fadeUpVariants}
-        />
+        <motion.div
+          className="max-w-6xl mx-auto text-center px-4"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+        >
+          <motion.h1
+            className="text-4xl md:text-5xl font-bold mb-3 tracking-tight"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+          >
+            <span
+              className={cn(
+                "bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-white/90 to-blue-400"
+              )}
+            >
+              Customization Highlights
+            </span>
+          </motion.h1>
+          <motion.p
+            className="text-lg md:text-xl text-gray-400"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7, delay: 0.2 }}
+          >
+            To adapt to your unique use case.
+          </motion.p>
+          <motion.img
+            src="assets/images/customization.png"
+            alt="Financial automation tools"
+            className="w-full md:w-3/4 lg:w-8/12 h-auto object-contain mx-auto"
+          />
+        </motion.div>
       </section>
-
       {/* Cta Banner */}
       <CTABanner
         title="Wanna"
@@ -282,7 +226,7 @@ export const MSME = () => {
 
       {/* FAQs */}
       <section>
-        <FAQSection items={msmeFaqsArray} />
+        <FAQSection items={customizationFaqsArray} />
       </section>
     </>
   );

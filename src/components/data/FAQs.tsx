@@ -2,7 +2,7 @@ export const homeFaqsArray = [
   {
     question: "What is CypherSOL?",
     answer:
-      "CypherSOL is a fintech platform that automates bank statement analysis and accounting processes using AI. We help tax professionals, businesses, DSAs, and government agencies extract, categorize, and analyze financial data in seconds.",
+      "CypherSOL is a fintech platform that automates Bank Statement Analysis and Accounting Processes using AI. We help Tax Professionals, Businesses, DSAs, and Government Agencies Extract, Categorize, and Analyze Financial Data in seconds.",
   },
   {
     question: "Who can use CypherSOL?",
@@ -37,11 +37,6 @@ export const homeFaqsArray = [
     question: "Do you offer training and support?",
     answer:
       "Yes. Support is available Monday to Saturday, from 10:00 AM to 6:00 PM (excluding bank holidays). We provide live training sessions, personalized demos, and demo videos for most use cases to help you get started smoothly.",
-  },
-  {
-    question: "Can I try CypherSOL before buying?",
-    answer:
-      "We do not offer free trials. However, we strongly recommend booking a live demo to explore the product’s full potential.",
   },
   {
     question: "What pricing plans do you offer?",
@@ -859,7 +854,7 @@ export const msmeFaqsArray = [
   {
     question: "Which bank statement formats can CypherSOL process?",
     answer:
-      "CypherSOL efficiently supports PDF, Excel, and CSV bank statement formats from all major banks.",
+      "CypherSOL efficiently supports PDF, Excel, and CSV bank statement formats.",
   },
   {
     question: "How seamless is the integration of CypherSOL with Tally?",
@@ -967,5 +962,43 @@ export const msmeFaqsArray = [
     question: "Does CypherSOL require additional software to function?",
     answer:
       "No additional software is required. CypherSOL functions independently, providing a complete standalone solution.",
+  },
+];
+
+export const customizationFaqsArray = [
+  {
+    question: "Who can request customization?",
+    answer:
+      "Anyone interested in customizing our Bank Statement Analyzer or Fund Trail Analyzer can reach out. Whether your use case is standard or completely unique, we’re open to building or adapting the solution — as long as it revolves around bank statement data.",
+  },
+  {
+    question: "What kind of customizations are supported?",
+    answer:
+      "We support a wide range of customizations in and around bank statement analysis — including categorization logic, keyword mapping, summary formats, report outputs, scoring rules, fund trail structures, and data exports. If it involves interpreting or analyzing bank statement data, we can likely help.",
+  },
+  {
+    question: "Is there a cost involved?",
+    answer:
+      "Basic changes may be covered under select subscription plans. However, advanced or specific use-case-based customizations may attract a one-time fee or a customized quote, depending on the scope.",
+  },
+  {
+    question: "How long does a customization take?",
+    answer:
+      "Timelines depend entirely on the complexity and scope of your requirement. All customizations are delivered under a subscription model and require annual renewal for continued access. For one-time customizations, a separate quotation and delivery timeline will be provided.",
+  },
+  {
+    question: "Will the customization be reusable in the future?",
+    answer:
+      "Yes. Customizations remain available and reusable as long as your subscription is active. You can also request upgrades or refinements later as needed.",
+  },
+  {
+    question: "Is there a minimum usage or commitment for customization?",
+    answer:
+      "No minimum commitment is required. However, customization is most effective when applied to recurring or scaled use cases where it adds consistent value.",
+  },
+  {
+    question: "Can you customize for completely different use cases?",
+    answer:
+      "Yes. As long as the requirement is based on bank statement data, we are open to customizing the solution for new or specialized use cases.",
   },
 ];

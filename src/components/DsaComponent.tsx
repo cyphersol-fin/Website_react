@@ -1,7 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { cn } from "./lib/utils";
-import CaseStudyCard from "./components/ui/case-study";
 import { Badge } from "./UI/Badge";
 import TestimonialCard from "./components/ui/testimonial-cards";
 import FAQSection from "./FAQSection";
@@ -16,8 +15,13 @@ import {
   Calendar,
   FileSpreadsheet,
   Shield,
+  BadgeCheck,
+  FileText,
+  UserCheck,
 } from "lucide-react";
 import { dsaFaqsArray } from "./data/FAQs";
+import CaseStudySection from "./components/ui/case-study";
+import { fadeUpVariants } from "./BankAnalyzer";
 
 const cardData = [
   {
@@ -75,6 +79,51 @@ const cardData = [
     title: "SaaS-based, Secure, Online Platform",
     description: "Accessible anytime, anywhere, ensuring data security.",
     Icon: () => <Shield size={24} />,
+  },
+];
+
+// Case Studies data
+const caseStudiesData = [
+  {
+    id: 1,
+    location: "Mumbai",
+    title: "Quick Client-Lender Matching in Mumbai",
+    challenge:
+      "Difficulty in efficiently matching clients to suitable lenders.",
+    solution:
+      "Used CypherSOL from day one to automate and streamline the matchmaking process.",
+    result: "Significantly increased approval and client satisfaction.",
+    icon: UserCheck,
+    color: "from-cyan-400 to-cyan-500",
+    benefit: "Improved Operational Flow",
+  },
+  {
+    id: 2,
+    title: "Enhanced Eligibility Accuracy in Delhi",
+    location: "Delhi",
+    challenge:
+      "Difficulty in accurately determining clients' loan eligibility based on their monthly average balance.",
+    solution:
+      "Used CypherSOL to assess eligibility with precision using clients’ monthly average balance.",
+    result:
+      "Dramatically reduced loan rejection rates and improved client trust.",
+    benefit: "Better Approval Rates",
+    icon: BadgeCheck,
+    color: "from-purple-400 to-purple-500",
+  },
+  {
+    id: 3,
+    title: "Efficient Daily EOD Management in Pune",
+    location: "Pune",
+    challenge:
+      "Manual and inconsistent daily EOD summaries leading to operational inefficiencies and documentation errors.",
+    solution:
+      "Implemented CypherSOL's date-wise EOD summary automation to streamline daily operations.",
+    result:
+      "Boosted productivity and ensured accuracy in client documentation.",
+    benefit: "Improved Operational Flow",
+    icon: FileText,
+    color: "from-cyan-400 to-cyan-500",
   },
 ];
 
@@ -324,32 +373,13 @@ export const DsaComponent = () => {
 
       {/* Case Studies */}
       <section>
-        <h1 className="text-4xl md:text-5xl font-bold mb-5 tracking-tight text-center">
-          <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-white/90 to-blue-400">
-            Real-Life Case Studies
-          </span>
-        </h1>
-        <p className="text-base md:text-lg text-[#c3d0e5] text-center max-w-4xl mx-auto mb-12">
-          See how Direct Selling Agents(DSAs) across India are transforming
-          their practices with CypherSOL.
-        </p>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 px-4 py-12 sm:px-6 lg:px-8 max-w-6xl mx-auto">
-          <CaseStudyCard
-            location={"Mumbai"}
-            title="Quick Client-Lender Matching"
-            description="A Mumbai DSA efficiently matched clients to suitable lenders from day one using CypherSOL, significantly increasing approvals and satisfaction."
-          />
-          <CaseStudyCard
-            location={"Delhi"}
-            title="Enhanced Eligibility Accuracy"
-            description="A Delhi-based DSA accurately determined clients' loan eligibility based on monthly average balance and reduced rejection rates dramatically."
-          />
-          <CaseStudyCard
-            location={"Pune"}
-            title="Efficient Daily EOD Management"
-            description="Daily date-wise EOD summaries significantly simplified operations, improved overall productivity, and ensured accuracy in client documentation."
-          />
-        </div>
+        <CaseStudySection
+          title="Real-Life Case Studies"
+          subtitle="See how Direct Selling Agents(DSAs) across India are transforming
+          their practices with CypherSOL."
+          data={caseStudiesData}
+          fadeUpVariants={fadeUpVariants}
+        />
       </section>
 
       {/* Testimonials Section */}

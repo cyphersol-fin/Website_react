@@ -4,7 +4,6 @@ import {
   Route,
   useLocation,
 } from "react-router-dom";
-// import Home from "./pages/Home";
 import { Header } from "./components/layout/Header";
 import { Home } from "./pages/Home";
 import { Price } from "./pages/Price";
@@ -16,9 +15,7 @@ import { BlogPage } from "./pages/BlogPage";
 import { AboutPage } from "./pages/AboutPage";
 import { TeamPage } from "./pages/TeamPage";
 import { ResellerPage } from "./pages/ResellerPage";
-import { ComboPage } from "./pages/ComboPage";
 import { useEffect } from "react";
-// import { ProductPage } from "./pages/ProductPage";
 import { ExcelToTallyPage } from "./pages/ExcelToTallyPage";
 // Legal
 import { Terms } from "./components/legal/Terms";
@@ -31,6 +28,7 @@ import { DsaPage } from "./pages/DsaPage";
 import { MsmePage } from "./pages/MsmePage";
 import { ForensicPage } from "./pages/ForensicPage";
 import FloatingWhatsAppButton from "./components/FloatingWhatsAppButton";
+import { Customization } from "./components/Customization";
 // import MouseMoveEffect from "./components/components/ui/mouse-move-effect";
 
 // Scroll to top on route change
@@ -43,9 +41,9 @@ function ScrollToTop() {
 }
 
 function App() {
-  // useEffect(() => {
-  //   document.documentElement.classList.add("dark");
-  // }, []);
+  useEffect(() => {
+    document.documentElement.classList.add("dark");
+  }, []);
   return (
     <Router>
       <ScrollToTop />
@@ -65,10 +63,6 @@ function App() {
             <Route path="/about" element={<AboutPage />} />
             <Route path="/team" element={<TeamPage />} />
             <Route path="/reseller" element={<ResellerPage />} />
-            <Route
-              path="/bank-statement-analyzer-excel-to-tally"
-              element={<ComboPage />}
-            />
             <Route path="/bank-statement-analyzer" element={<BankAnalyzer />} />
             <Route path="/excel-to-tally" element={<ExcelToTallyPage />} />
             <Route path="/dsa" element={<DsaPage />} />
@@ -80,6 +74,7 @@ function App() {
             <Route path="/disclaimer" element={<Disclaimer />} />
             <Route path="/msme" element={<MsmePage />} />
             <Route path="/fund-trail-analyzer" element={<ForensicPage />} />
+            <Route path="/customization" element={<Customization />} />
           </Routes>
           <Footer />
         </div>

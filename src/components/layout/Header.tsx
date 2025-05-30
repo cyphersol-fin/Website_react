@@ -18,7 +18,7 @@ import {
   TrendingUp,
   Building2,
   Search,
-  Package,
+  Sparkles,
 } from "lucide-react";
 const base = import.meta.env.BASE_URL; // Will be '/static/' in production (as per Vite config)
 export const Header = () => {
@@ -107,9 +107,6 @@ export const Header = () => {
               alt="CypherSOL"
               className="w-32 sm:w-36 md:w-40"
             />
-            {/* <span className="text-2xl font-bold text-white">
-              Cypher<span className="text-cyan-400">SOL</span>
-            </span> */}
           </a>
         </div>
         <div className="flex md:hidden">
@@ -168,7 +165,7 @@ export const Header = () => {
                           <span className="absolute inset-0"></span>
                         </a>
                         <p className="mt-1 text-gray-400">
-                          Empowering tech professionals with smart financial
+                          Empowering Tax Professionals with smart financial
                           automation
                         </p>
                       </div>
@@ -204,7 +201,7 @@ export const Header = () => {
                           <span className="absolute inset-0"></span>
                         </a>
                         <p className="mt-1 text-gray-400">
-                          Your customers' data will be safe and secure
+                          Clear financial insights for forword-looking business
                         </p>
                       </div>
                     </div>
@@ -217,7 +214,7 @@ export const Header = () => {
                           href="/fund-trail-analyzer"
                           className="block font-semibold text-gray-300 hover:text-cyan-400 transition-colors duration-200"
                         >
-                          CypherTrace (for Fund Trail Analysis)
+                          CypherTrace (for Government Agency)
                           <span className="absolute inset-0"></span>
                         </a>
                         <p className="mt-1 text-gray-400">
@@ -246,14 +243,14 @@ export const Header = () => {
                     </div>
                     <div className="group relative flex items-center gap-x-6 rounded-lg p-4 hover:bg-gray-800 transition-colors duration-200">
                       <div className="flex size-11 flex-none items-center justify-center rounded-lg bg-gray-800 group-hover:bg-gray-700 transition-colors duration-200">
-                        <Package className="size-5 text-gray-300 group-hover:text-cyan-400 transition-colors duration-200" />
+                        <Sparkles className="size-5 text-gray-300 group-hover:text-cyan-400 transition-colors duration-200" />
                       </div>
                       <div className="flex-auto">
                         <a
-                          href="/bank-statement-analyzer-excel-to-tally"
+                          href="/customization"
                           className="block font-semibold text-gray-300 hover:text-cyan-400 transition-colors duration-200"
                         >
-                          BSA & Excel to Tally Data Import Utility Combo
+                          Customization
                           <span className="absolute inset-0"></span>
                         </a>
                         <p className="mt-1 text-gray-400">
@@ -586,7 +583,7 @@ export const Header = () => {
                               href="/fund-trail-analyzer"
                               className="block rounded-lg py-2 pr-3 pl-6 text-sm/7 font-semibold text-gray-900 hover:text-cyan-400 transition-colors duration-200"
                             >
-                              CypherTrace (for Fund Trail Analysis)
+                              CypherTrace (for Government Agency)
                             </a>
                             <a
                               href="/excel-to-tally"
@@ -595,10 +592,10 @@ export const Header = () => {
                               Excel to Tally Data Import Utility
                             </a>
                             <a
-                              href="/bank-statement-analyzer-excel-to-tally"
+                              href="/customization"
                               className="block rounded-lg py-2 pr-3 pl-6 text-sm/7 font-semibold text-gray-900 hover:text-cyan-400 transition-colors duration-200"
                             >
-                              BSA & Excel to Tally Data Import Utility Combo
+                              Customization
                             </a>
                           </motion.div>
                         )}
