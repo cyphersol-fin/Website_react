@@ -28,14 +28,17 @@ export const Header = () => {
   const [mobileProductMenuOpen, setMobileProductMenuOpen] = useState(false);
   const [mobileResourcesMenuOpen, setMobileResourcesMenuOpen] = useState(false);
   const [signInMenuOpen, setSignInMenuOpen] = useState(false);
+  const [pricingMenuOpen, setPricingMenuOpen] = useState(false);
 
   // Refs for tracking hover state
   const productTimeoutRef = useRef(null);
   const resourcesTimeoutRef = useRef(null);
   const signInTimeoutRef = useRef(null);
+  const pricingTimeoutRef = useRef(null);
   const productRef = useRef(null);
   const resourcesRef = useRef(null);
   const signInRef = useRef(null);
+  const pricingRef = useRef(null);
 
   // Enhanced handlers for dropdown behavior with slight delay for better UX
   const handleMouseEnter = (dropdownType) => {
@@ -49,6 +52,9 @@ export const Header = () => {
     } else if (dropdownType === "signIn") {
       if (signInTimeoutRef.current) clearTimeout(signInTimeoutRef.current);
       setSignInMenuOpen(true);
+    } else if (dropdownType === "price") {
+      if (pricingTimeoutRef.current) clearTimeout(pricingTimeoutRef.current);
+      setPricingMenuOpen(true);
     }
   };
 
@@ -69,6 +75,12 @@ export const Header = () => {
       signInTimeoutRef.current = setTimeout(() => {
         if (!signInRef.current?.matches(":hover")) {
           setSignInMenuOpen(false);
+        }
+      }, 300);
+    } else if (dropdownType === "price") {
+      pricingTimeoutRef.current = setTimeout(() => {
+        if (!pricingRef.current?.matches(":hover")) {
+          setPricingMenuOpen(false);
         }
       }, 300);
     }
@@ -381,13 +393,64 @@ export const Header = () => {
           </motion.a>
 
           <motion.a
-            href="/price"
+            href="/tax-professional-plan"
             className="font-bold text-gray-900 transition-colors duration-300"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
             Pricing
           </motion.a>
+          {/* <div
+            className="relative"
+            ref={pricingRef}
+            onMouseEnter={() => handleMouseEnter("price")}
+            onMouseLeave={() => handleMouseLeave("price")}
+          >
+            <motion.button
+              type="button"
+              className="flex items-center gap-x-1 font-bold text-gray-900 transition-colors duration-300"
+              aria-expanded={pricingMenuOpen}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              Pricing
+              <motion.span
+                animate={{ rotate: pricingMenuOpen ? 180 : 0 }}
+                transition={{ duration: 0.3 }}
+              >
+                <ChevronDown className="ml-1 h-4 w-4" />
+              </motion.span>
+            </motion.button>
+
+            <AnimatePresence>
+              {pricingMenuOpen && (
+                <motion.div
+                  variants={dropdownVariants}
+                  initial="hidden"
+                  animate="visible"
+                  exit="exit"
+                  className="absolute top-full -left-8 z-20 mt-2 w-64 overflow-hidden rounded-xl bg-gray-900/50 backdrop-blur-xl ring-1 shadow-lg ring-gray-800/50"
+                >
+                  <div className="p-2">
+                    <div className="group relative flex items-center gap-x-4 rounded-lg p-2 hover:bg-gradient-to-r hover:from-gray-800 hover:to-gray-700 transition-all duration-300">
+                      <div className="flex-auto">
+                        <a
+                          href="/tax-professional-plan"
+                          className="block font-semibold text-gray-300 hover:text-cyan-400 transition-colors duration-200"
+                        >
+                          CypherEdge
+                          <span className="absolute inset-0"></span>
+                        </a>
+                        <p className="mt-1 text-gray-400">
+                          (for Tax Professionals)
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div> */}
         </div>
         <div className="hidden md:flex md:flex-1 md:justify-end md:items-center md:space-x-4">
           <div
