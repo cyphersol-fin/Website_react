@@ -74,7 +74,7 @@ export const TaxProfessionalPricing = () => {
                   value="offline"
                   className="data-[state=active]:bg-gray-900/50 data-[state=active]:text-cyan-400 w-full lg:w-auto"
                 >
-                  Offline Versions
+                  Offline - Bank Statement Analyzer
                 </TabsTrigger>
                 <TabsTrigger
                   value="online-bsa"
