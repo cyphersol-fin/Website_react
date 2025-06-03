@@ -19,8 +19,8 @@ const caPlans = [
       "300 statements",
       "Additional PC: ₹1,500 per unit",
       {
-        text: "Tally Import Utility",
-        tooltip: "Payment, Receipt, Contra, Purchase, Sales (5 vouchers)",
+        text: "Tally Import Utility with 5 vouchers",
+        tooltip: "List of Vouchers: Payment, Receipt, Contra, Purchase, Sales",
       },
       "Easy installation and setup",
       "Email support",
@@ -35,8 +35,8 @@ const caPlans = [
       "500 statements",
       "Additional PC: ₹1,500 per unit",
       {
-        text: "Tally Import Utility",
-        tooltip: "Payment, Receipt, Contra, Purchase, Sales (5 vouchers)",
+        text: "Tally Import Utility with 5 vouchers",
+        tooltip: "List of Vouchers: Payment, Receipt, Contra, Purchase, Sales",
       },
       "Easy installation and setup",
       "Email support",
@@ -51,8 +51,8 @@ const caPlans = [
       "Unlimited statements",
       "Additional PC: ₹1,500 per unit",
       {
-        text: "Tally Import Utility",
-        tooltip: "Payment, Receipt, Contra, Purchase, Sales (5 vouchers)",
+        text: "Tally Import Utility with 5 vouchers",
+        tooltip: "List of Vouchers: Payment, Receipt, Contra, Purchase, Sales",
       },
       "Easy installation and setup",
       "Email support",

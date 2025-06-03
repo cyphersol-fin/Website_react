@@ -17,7 +17,7 @@ import {
 const combo = [
   {
     type: "Server",
-    price: "Rs.6000 + GST",
+    price: "6000",
     features: [
       "100 statements for 1 year",
       "All 5 types of main voucher for 1 year",
@@ -27,7 +27,7 @@ const combo = [
   },
   {
     type: "Server",
-    price: "Rs.12550 + GST",
+    price: "12550",
     features: [
       "251 statements for 1 year",
       "All 5 types of main voucher for 2 years",
@@ -37,7 +37,7 @@ const combo = [
   },
   {
     type: "Server",
-    price: "Rs.22545 + GST",
+    price: "22545",
     features: [
       "501 statements for 1 year",
       "All 5 types of main voucher for 3 years",
@@ -70,7 +70,7 @@ export const ComboPlan = () => {
           }}
         >
           <CardHeader>
-            <CardTitle className="text-xl text-center text-cyan-400 mb-4">
+            <CardTitle className="text-xl text-center mb-4">
               {plan.type}
             </CardTitle>
             {/* Toggle Button */}
@@ -106,10 +106,15 @@ export const ComboPlan = () => {
                   stiffness: 400,
                   damping: 10,
                 }}
-                className="text-3xl font-bold"
+                className="text-3xl md:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent"
               >
                 ₹{plan.price.toLocaleString()}
               </motion.h2>
+              <h3 className="text-sm text-blue-100">
+                {" "}
+                +18% GST ({" "}
+                <span>₹{(plan.price * 0.18).toFixed(0).toLocaleString()}</span>)
+              </h3>
             </div>
             <hr className="border-gray-800" />
           </CardHeader>
@@ -128,8 +133,8 @@ export const ComboPlan = () => {
                       : "3 years";
                   displayFeature =
                     selectedBadges[index] === "Prime"
-                      ? `All 5 types of main voucher for ${year}`
-                      : `All 5 Vouchers for ${year}`;
+                      ? `Tally Import Utility with 5 vouchers for ${year}`
+                      : `Tally Import Utility with 5 vouchers for ${year}`;
                 }
                 return (
                   <motion.li

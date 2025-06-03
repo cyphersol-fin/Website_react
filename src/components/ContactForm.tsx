@@ -15,7 +15,7 @@ const ContactForm = () => {
     <>
       <div className="max-w-6xl mx-auto px-4">
         <div
-          className="bg-gray-900/50 backdrop-blur-xl rounded-3xl md:p-12 p-8"
+          className="bg-gray-900/50 backdrop-blur-xl rounded-3xl p-4 md:p-8 lg:p-12 shadow-lg"
           style={{
             // padding: "80px 64px",
             position: "relative",

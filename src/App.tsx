@@ -30,6 +30,7 @@ import { ForensicPage } from "./pages/ForensicPage";
 import FloatingWhatsAppButton from "./components/FloatingWhatsAppButton";
 import { Customization } from "./components/Customization";
 import { TaxProfessionalPricing } from "./components/Pricing/TaxProfessionalPricing";
+import Checkout from "./components/Checkout";
 // import MouseMoveEffect from "./components/components/ui/mouse-move-effect";
 
 // Scroll to top on route change
@@ -76,6 +77,7 @@ function App() {
             <Route path="/msme" element={<MsmePage />} />
             <Route path="/fund-trail-analyzer" element={<ForensicPage />} />
             <Route path="/customization" element={<Customization />} />
+            <Route path="/checkout" element={<Checkout />} />
             <Route
               path="/tax-professional-plan"
               element={<TaxProfessionalPricing />}
