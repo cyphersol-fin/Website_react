@@ -42,12 +42,10 @@ function ScrollToTop() {
   return null;
 }
 
-function App() {
-  useEffect(() => {
-    document.documentElement.classList.add("dark");
-  }, []);
+function AppLayout() {
+  const location = useLocation();
   return (
-    <Router>
+    <>
       <ScrollToTop />
       <div className="min-h-screen bg-black">
         <div className="absolute inset-0 bg-gradient-to-b from-black via-gray-900 to-black" />
@@ -83,9 +81,20 @@ function App() {
               element={<TaxProfessionalPricing />}
             />
           </Routes>
-          <Footer />
+          {location.pathname !== "/checkout" && <Footer />}
         </div>
       </div>
+    </>
+  );
+}
+
+function App() {
+  useEffect(() => {
+    document.documentElement.classList.add("dark");
+  }, []);
+  return (
+    <Router>
+      <AppLayout />
     </Router>
   );
 }
