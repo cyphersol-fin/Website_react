@@ -9,6 +9,7 @@ const ResellerSection = () => {
         "With CypherSOL, you gain access to innovative solutions like the Bank Statement Analyzer and Tally Upload Utility that simplify financial reporting, streamline workflows, and enhance loan eligibility analysis for clients. As a reseller, you can bring these powerful tools to your network, offering unique value while building a profitable business.",
       ],
       image: "assets/images/transform-fintech-solution.jpeg",
+      alt: "Excel2Tally integration",
     },
     {
       title: "Who Should Join the CypherSOL Reseller Program?",
@@ -17,6 +18,7 @@ const ResellerSection = () => {
         "If you have a network of clients in finance, accounting, or loan processing, or MSME’s CypherSOL’s products can complement your offerings, enabling you to deliver real value while generating revenue.",
       ],
       image: "assets/images/network.webp",
+      alt: "Excel sheet to Tally import",
     },
   ];
 
@@ -25,8 +27,12 @@ const ResellerSection = () => {
       <div className="container-padding">
         <div className="text-center mb-16">
           <Badge>Reseller Features</Badge>
-          <h2 className="heading-lg mt-6">Supercharge Your Workflows</h2>
-          <p className="text-neutral-600 mt-4 max-w-2xl mx-auto">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-semibold mt-6">
+            <span className="bg-gradient-to-r from-cyan-400 via-white/90 to-blue-400 text-transparent bg-clip-text">
+              Supercharge Your Workflows
+            </span>
+          </h2>
+          <p className="text-gray-400 mt-4 max-w-2xl mx-auto">
             Unlock your team's true potential with our state-of-the-art SaaS
             platform.
           </p>
@@ -40,7 +46,7 @@ const ResellerSection = () => {
             }`}
           >
             <div className="flex-1">
-              <h3 className="text-3xl md:text-4xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-white/90 to-blue-400">
+              <h3 className="text-3xl md:text-4xl lg:text-5xl font-medium leading-tight mb-4 bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-white/90 to-blue-400">
                 {feature.title}
               </h3>
 
@@ -55,7 +61,7 @@ const ResellerSection = () => {
             <div className="flex-1">
               <img
                 src={feature.image}
-                alt={feature.title}
+                alt={feature.alt}
                 className="w-full h-auto rounded-lg"
               />
             </div>

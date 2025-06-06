@@ -4,6 +4,7 @@ export const teamMembers = [
     name: "Imran Sable",
     title: "Founder & Chief Executive Officer",
     image: "assets/images/team-1.png",
+    alt: "CypherSOL",
     bio: `
   <p><b>Imran Sable</b>, the founder and chief executive officer of CypherSOL Fintech Private Ltd. has
         over 22 years of hands-on experience in sales and marketing within the financial sector,
@@ -38,7 +39,6 @@ export const teamMembers = [
 
     social: {
       linkedin: "https://www.linkedin.com/in/imran-sable-33b191160/",
-      twitter: "https://twitter.com",
     },
   },
   {
@@ -46,6 +46,7 @@ export const teamMembers = [
     name: "Shamlata Poojary",
     title: "Co-Founder & Chief Technology Officer",
     image: "assets/images/team-2.png",
+    alt: "CypherSOL",
     bio: `
     <p><b>Shamlata Poojary</b>, an MBA in finance, serves as the Managing Director and a key founding
           member of CypherSOL Fintech Private Ltd. She is a competent professional with nearly 25+ years of
@@ -80,7 +81,6 @@ export const teamMembers = [
     `,
     social: {
       linkedin: "https://www.linkedin.com/in/shamlata-poojary-0b9a45108/",
-      twitter: "https://twitter.com",
     },
   },
   {
@@ -88,6 +88,7 @@ export const teamMembers = [
     name: "Samidha Devkar",
     title: "Co-Founder & Chief Operating Officer",
     image: "assets/images/team-3.png",
+    alt: "CypherSOL",
     bio: `
     <p><b>Samidha Devkar</b>, the Chief Operating Officer and a key founder of CypherSOL Fintech Private
           Ltd. has over 17 years of experience in sales and operations, with a strong focus on lending and
@@ -110,7 +111,6 @@ export const teamMembers = [
     `,
     social: {
       linkedin: "https://www.linkedin.com/in/samidha-devkar-550790296/",
-      twitter: "https://twitter.com",
     },
   },
   {
@@ -118,6 +118,7 @@ export const teamMembers = [
     name: "Deepak Singhania",
     title: "Chief Financial Officer",
     image: "assets/images/team-4.png",
+    alt: "CypherSOL",
     bio: `
     <p>
       <b>Deepak Singhania</b>, a co-founder and Chief Financial Officer of CypherSOL Fintech Private Ltd.
@@ -139,7 +140,6 @@ export const teamMembers = [
     `,
     social: {
       linkedin: "https://www.linkedin.com/in/deepak-singhania-849317118/",
-      twitter: "https://twitter.com",
     },
   },
   {
@@ -147,6 +147,7 @@ export const teamMembers = [
     name: "Tabassum Inamdar",
     title: "Mentor & Board Advisor",
     image: "assets/images/mentor.png",
+    alt: "CypherSOL",
     bio: `
     <p>
        <b>Tabassum Inamdar</b> is a shareholder and board advisor at CypherSOL Fintech Private Ltd.
@@ -172,7 +173,6 @@ export const teamMembers = [
     `,
     social: {
       linkedin: "https://www.linkedin.com/in/tabassum-inamdar-6829b036/",
-      twitter: "https://twitter.com",
     },
   },
 ];

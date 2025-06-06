@@ -1,11 +1,9 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { cn } from "./lib/utils";
-import CaseStudyCard from "./components/ui/case-study";
 import { Badge } from "./UI/Badge";
 import TestimonialCard from "./components/ui/testimonial-cards";
 import FAQSection from "./FAQSection";
-import { dsaArray } from "./data/FAQs/DsaFaqs";
 import { CardComponent } from "./UI/CardComponent";
 import {
   CheckCircle,
@@ -17,7 +15,13 @@ import {
   Calendar,
   FileSpreadsheet,
   Shield,
+  BadgeCheck,
+  FileText,
+  UserCheck,
 } from "lucide-react";
+import { dsaFaqsArray } from "./data/FAQs";
+import CaseStudySection from "./components/ui/case-study";
+import { fadeUpVariants } from "./BankAnalyzer";
 
 const cardData = [
   {
@@ -78,11 +82,56 @@ const cardData = [
   },
 ];
 
+// Case Studies data
+const caseStudiesData = [
+  {
+    id: 1,
+    location: "Mumbai",
+    title: "Quick Client-Lender Matching in Mumbai",
+    challenge:
+      "Difficulty in efficiently matching clients to suitable lenders.",
+    solution:
+      "Used CypherSOL from day one to automate and streamline the matchmaking process.",
+    result: "Significantly increased approval and client satisfaction.",
+    icon: UserCheck,
+    color: "from-cyan-400 to-cyan-500",
+    benefit: "Improved Operational Flow",
+  },
+  {
+    id: 2,
+    title: "Enhanced Eligibility Accuracy in Delhi",
+    location: "Delhi",
+    challenge:
+      "Difficulty in accurately determining clients' loan eligibility based on their monthly average balance.",
+    solution:
+      "Used CypherSOL to assess eligibility with precision using clients’ monthly average balance.",
+    result:
+      "Dramatically reduced loan rejection rates and improved client trust.",
+    benefit: "Better Approval Rates",
+    icon: BadgeCheck,
+    color: "from-purple-400 to-purple-500",
+  },
+  {
+    id: 3,
+    title: "Efficient Daily EOD Management in Pune",
+    location: "Pune",
+    challenge:
+      "Manual and inconsistent daily EOD summaries leading to operational inefficiencies and documentation errors.",
+    solution:
+      "Implemented CypherSOL's date-wise EOD summary automation to streamline daily operations.",
+    result:
+      "Boosted productivity and ensured accuracy in client documentation.",
+    benefit: "Improved Operational Flow",
+    icon: FileText,
+    color: "from-cyan-400 to-cyan-500",
+  },
+];
+
 export const DsaComponent = () => {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative flex min-h-screen items-center justify-center overflow-hidden pt-16">
+      <section className="relative flex items-center justify-center overflow-hidden px-4 py-12 sm:py-20 lg:py-24">
         {/* Animated Elements */}
         <div className="absolute inset-0 overflow-hidden">
           {/* Curved Lines */}
@@ -211,27 +260,29 @@ export const DsaComponent = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1 }}
-            className="mx-auto max-w-3xl space-y-8"
+            className="mx-auto space-y-8"
           >
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-white/90 to-blue-400 drop-shadow-lg">
-              Smart Loan Eligibility <br className="hidden md:block" />{" "}
-              Automation for DSAs
+            <div className="flex items-center justify-center mb-10">
+              <Badge>Overview</Badge>
+            </div>
+            <h1 className="text-4xl md:text-6xl lg:text-7xl xl:text-8xl font-extrabold leading-tight tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-white/90 to-blue-400 drop-shadow-lg">
+              Smart Loan Eligibility Automation for DSAs
             </h1>
 
-            <h4 className="mt-4 max-w-2xl mx-auto text-lg sm:text-xl md:text-3xl text-gray-300 font-semibold tracking-wide">
+            <h4 className="mt-6 sm:mt-8 max-w-2xl mx-auto text-lg sm:text-xl md:text-3xl text-gray-300 font-semibold tracking-wide">
               *Instantly Identify{" "}
               <span className="text-cyan-400">Loan Eligibility</span> and Match
               Clients to the{" "}
               <span className="text-blue-400">Right Lenders</span>
             </h4>
 
-            <p className="mt-4 max-w-3xl mx-auto text-sm sm:text-base md:text-lg text-gray-400 font-medium leading-relaxed">
+            <p className="mt-4 max-w-3xl mx-auto text-sm sm:text-base lg:text-lg text-gray-400 font-medium leading-relaxed">
               For Direct Selling Agents (DSAs), identifying the right lender
               accurately and quickly is crucial. CypherSOL’s SaaS-based Bank
               Statement Analyzer streamlines the loan eligibility assessment
               process, providing instant, precise insights based on monthly
               average bank balance, debtors and creditors, existing obligations,
-              and transaction history—ensuring you match your clients to the
+              and transaction history, ensuring you match your clients to the
               ideal lenders immediately.
             </p>
           </motion.div>
@@ -246,7 +297,7 @@ export const DsaComponent = () => {
             <Badge>Features & Benefits</Badge>
           </div>
 
-          <h1 className="text-3xl md:text-5xl font-bold mb-4 md:mb-5 text-[#c3d0e5] text-center animate-slide-down">
+          <h1 className="text-4xl md:text-5xl font-bold mb-4 md:mb-5 text-[#c3d0e5] text-center animate-slide-down">
             <span className="bg-gradient-to-r from-cyan-400 via-white/90 to-blue-400 text-transparent bg-clip-text">
               Key Features and Benefits for DSAs
             </span>{" "}
@@ -280,7 +331,7 @@ export const DsaComponent = () => {
           transition={{ duration: 0.8 }}
         >
           <motion.h1
-            className="text-3xl md:text-5xl font-bold mb-3 tracking-tight"
+            className="text-4xl md:text-5xl font-bold mb-3 tracking-tight"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -306,7 +357,7 @@ export const DsaComponent = () => {
           </motion.p>
           <motion.img
             src="assets/images/dsa1.png"
-            alt="software function"
+            alt="Financial automation tools"
             className="w-full h-auto object-contain"
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -322,40 +373,21 @@ export const DsaComponent = () => {
 
       {/* Case Studies */}
       <section>
-        <h1 className="text-2xl sm:text-3xl md:text-5xl font-bold mb-5 tracking-tight text-center">
-          <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-white/90 to-blue-400">
-            Real-Life Case Studies
-          </span>
-        </h1>
-        <p className="text-base md:text-lg text-[#c3d0e5] text-center max-w-4xl mx-auto mb-12">
-          See how Direct Selling Agents(DSAs) across India are transforming
-          their practices with CypherSOL.
-        </p>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 px-4 py-12 sm:px-6 lg:px-8 max-w-6xl mx-auto">
-          <CaseStudyCard
-            location={"Mumbai"}
-            title="Quick Client-Lender Matching"
-            description="A Mumbai DSA efficiently matched clients to suitable lenders from day one using CypherSOL, significantly increasing approvals and satisfaction."
-          />
-          <CaseStudyCard
-            location={"Delhi"}
-            title="Enhanced Eligibility Accuracy"
-            description="A Delhi-based DSA accurately determined clients' loan eligibility based on monthly average balance and reduced rejection rates dramatically."
-          />
-          <CaseStudyCard
-            location={"Pune"}
-            title="Efficient Daily EOD Management"
-            description="Daily date-wise EOD summaries significantly simplified operations, improved overall productivity, and ensured accuracy in client documentation."
-          />
-        </div>
+        <CaseStudySection
+          title="Real-Life Case Studies"
+          subtitle="See how Direct Selling Agents(DSAs) across India are transforming
+          their practices with CypherSOL."
+          data={caseStudiesData}
+          fadeUpVariants={fadeUpVariants}
+        />
       </section>
 
       {/* Testimonials Section */}
       <section>
-        <div className="container px-4 sm:px-6 lg:px-8 py-12 max-w-6xl mx-auto">
+        <div className="container px-4 sm:px-6 lg:px-8 py-12 max-w-7xl mx-auto">
           <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
             <Badge>Testimonials</Badge>
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
+            <h2 className="text-4xl md:text-5xl font-bold tracking-tight">
               What Our Users Say
             </h2>
             <p className="text-muted-foreground text-lg">
@@ -369,6 +401,7 @@ export const DsaComponent = () => {
               quote="CypherSOL’s Bank Statement Analyzer has been an invaluable tool for my work as a Corporate Loan Advisor (DSA). It streamlines the process of analyzing bank statements, categorizing transactions, and extracting critical insights in seconds, significantly enhancing efficiency.
               The advanced features such as trend analysis, date-wise average bank balance computation, and detailed loan eligibility assessment—both bank-wise and product-wise—have been instrumental in presenting precise and actionable data to lenders. This not only saves time but also improves the accuracy and quality of my client submissions.
               I highly recommend CypherSOL to DSAs looking to elevate their operations and deliver exceptional results"
+              note="Time-Saving, Accurate Insights"
               author="Neeraj Nigudker"
               role="Senior DSA, Mumbai"
               rating={5}
@@ -376,6 +409,7 @@ export const DsaComponent = () => {
             />
             <TestimonialCard
               quote="The lender matching feature alone has increased my conversion rate by 35%. I'm now able to place clients with the right lenders on the first attempt."
+              note="Increased Conversion Rate"
               author="Priya Sharma"
               role="Independent DSA, Delhi"
               rating={5}
@@ -383,6 +417,7 @@ export const DsaComponent = () => {
             />
             <TestimonialCard
               quote="As a new DSA, CypherSOL gave me the confidence to handle complex loan applications. The automated analysis makes me look like a seasoned professional to my clients."
+              note="Automated Analysis"
               author="Vikram Singh"
               role="DSA, Bangalore"
               rating={4}
@@ -394,7 +429,7 @@ export const DsaComponent = () => {
 
       {/* FAQs Section */}
       <section>
-        <FAQSection items={dsaArray} />
+        <FAQSection items={dsaFaqsArray} />
       </section>
     </>
   );

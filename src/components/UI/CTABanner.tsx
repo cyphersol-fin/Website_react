@@ -28,7 +28,7 @@ const CTABanner: React.FC<CTABannerProps> = ({
             <div className="mb-8">
               <Badge>AI-Powered Financial Analysis</Badge>
             </div>
-            <h1 className="text-2xl sm:text-4xl md:text-6xl font-bold mb-4 tracking-tight">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 tracking-tight">
               <span className="bg-clip-text text-transparent bg-gradient-to-b from-white to-white/80">
                 {title}{" "}
               </span>
@@ -41,9 +41,12 @@ const CTABanner: React.FC<CTABannerProps> = ({
                 {highlightedText}
               </span>
             </h1>
-            <p className="text-xl md:text-2xl text-gray-300 mb-8">{subtitle}</p>
+            <p className="text-xl md:text-1xl text-gray-300 mb-8">{subtitle}</p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <button className="px-8 py-3 rounded-lg bg-gradient-to-r from-cyan-400 to-blue-500 text-white font-semibold text-lg transition-transform hover:scale-105">
+              <button
+                onClick={() => (window.location.href = "/contact")}
+                className="px-8 py-3 rounded-lg bg-gradient-to-r from-cyan-400 to-blue-500 text-white font-semibold text-lg transition-transform hover:scale-105"
+              >
                 {primaryButtonText}
               </button>
             </div>

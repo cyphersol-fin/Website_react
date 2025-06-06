@@ -1,5 +1,9 @@
-import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
-// import Home from "./pages/Home";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useLocation,
+} from "react-router-dom";
 import { Header } from "./components/layout/Header";
 import { Home } from "./pages/Home";
 import { Price } from "./pages/Price";
@@ -11,9 +15,7 @@ import { BlogPage } from "./pages/BlogPage";
 import { AboutPage } from "./pages/AboutPage";
 import { TeamPage } from "./pages/TeamPage";
 import { ResellerPage } from "./pages/ResellerPage";
-import { ComboPage } from "./pages/ComboPage";
 import { useEffect } from "react";
-import { ProductPage } from "./pages/ProductPage";
 import { ExcelToTallyPage } from "./pages/ExcelToTallyPage";
 // Legal
 import { Terms } from "./components/legal/Terms";
@@ -25,6 +27,11 @@ import { BankAnalyzer } from "./components/BankAnalyzer";
 import { DsaPage } from "./pages/DsaPage";
 import { MsmePage } from "./pages/MsmePage";
 import { ForensicPage } from "./pages/ForensicPage";
+import FloatingWhatsAppButton from "./components/FloatingWhatsAppButton";
+import { Customization } from "./components/Customization";
+import { TaxProfessionalPricing } from "./components/Pricing/TaxProfessionalPricing";
+import Checkout from "./components/Checkout";
+// import MouseMoveEffect from "./components/components/ui/mouse-move-effect";
 
 // Scroll to top on route change
 function ScrollToTop() {
@@ -35,18 +42,18 @@ function ScrollToTop() {
   return null;
 }
 
-function App() {
-  useEffect(() => {
-    document.documentElement.classList.add("dark");
-  }, []);
+function AppLayout() {
+  const location = useLocation();
   return (
-    <Router>
+    <>
       <ScrollToTop />
       <div className="min-h-screen bg-black">
         <div className="absolute inset-0 bg-gradient-to-b from-black via-gray-900 to-black" />
         <div className="relative z-10">
           <NotificationBanner />
+          <FloatingWhatsAppButton />
           <Header />
+          {/* <MouseMoveEffect /> */}
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/price" element={<Price />} />
@@ -56,10 +63,6 @@ function App() {
             <Route path="/about" element={<AboutPage />} />
             <Route path="/team" element={<TeamPage />} />
             <Route path="/reseller" element={<ResellerPage />} />
-            <Route
-              path="/bank-statement-analyzer-excel-to-tally"
-              element={<ComboPage />}
-            />
             <Route path="/bank-statement-analyzer" element={<BankAnalyzer />} />
             <Route path="/excel-to-tally" element={<ExcelToTallyPage />} />
             <Route path="/dsa" element={<DsaPage />} />
@@ -69,12 +72,29 @@ function App() {
             <Route path="/dmca" element={<Dmca />} />
             <Route path="/refund-policy" element={<RefundPolicy />} />
             <Route path="/disclaimer" element={<Disclaimer />} />
-            <Route path="/msme" element={< MsmePage />} />
-            <Route path="/forensic" element={< ForensicPage />} />
+            <Route path="/msme" element={<MsmePage />} />
+            <Route path="/fund-trail-analyzer" element={<ForensicPage />} />
+            <Route path="/customization" element={<Customization />} />
+            <Route path="/checkout" element={<Checkout />} />
+            <Route
+              path="/tax-professional-plan"
+              element={<TaxProfessionalPricing />}
+            />
           </Routes>
-          <Footer />
+          {location.pathname !== "/checkout" && <Footer />}
         </div>
       </div>
+    </>
+  );
+}
+
+function App() {
+  useEffect(() => {
+    document.documentElement.classList.add("dark");
+  }, []);
+  return (
+    <Router>
+      <AppLayout />
     </Router>
   );
 }

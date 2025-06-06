@@ -60,9 +60,12 @@ const FAQItemComponent: React.FC<FAQItemProps> = ({
         }`}
       >
         <div className="overflow-hidden">
-          <p className="p-6 pt-0 text-[#888] text-md leading-relaxed">
-            {answer}
-          </p>
+          <p
+            className="p-6 pt-0 text-[#888] text-md leading-relaxed"
+            dangerouslySetInnerHTML={{
+              __html: answer,
+            }}
+          ></p>
         </div>
       </div>
     </div>

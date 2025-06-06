@@ -1,14 +1,12 @@
-   import React, { useRef, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion"; // Added AnimatePresence for smooth exit 
+import React, { useRef, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion"; // Added AnimatePresence for smooth exit
 
 // animations
 import {
-  Banknote,
   BookOpen,
   ChevronDown,
   FileSpreadsheet,
   Info,
-  Layers,
   Menu,
   Phone,
   Users,
@@ -16,7 +14,11 @@ import {
   UserCircle,
   Building,
   UserCheck,
-  Calculator
+  Calculator,
+  TrendingUp,
+  Building2,
+  Search,
+  Sparkles,
 } from "lucide-react";
 const base = import.meta.env.BASE_URL; // Will be '/static/' in production (as per Vite config)
 export const Header = () => {
@@ -26,14 +28,17 @@ export const Header = () => {
   const [mobileProductMenuOpen, setMobileProductMenuOpen] = useState(false);
   const [mobileResourcesMenuOpen, setMobileResourcesMenuOpen] = useState(false);
   const [signInMenuOpen, setSignInMenuOpen] = useState(false);
+  const [pricingMenuOpen, setPricingMenuOpen] = useState(false);
 
   // Refs for tracking hover state
   const productTimeoutRef = useRef(null);
   const resourcesTimeoutRef = useRef(null);
   const signInTimeoutRef = useRef(null);
+  const pricingTimeoutRef = useRef(null);
   const productRef = useRef(null);
   const resourcesRef = useRef(null);
   const signInRef = useRef(null);
+  const pricingRef = useRef(null);
 
   // Enhanced handlers for dropdown behavior with slight delay for better UX
   const handleMouseEnter = (dropdownType) => {
@@ -45,9 +50,11 @@ export const Header = () => {
         clearTimeout(resourcesTimeoutRef.current);
       setIsResourcesOpen(true);
     } else if (dropdownType === "signIn") {
-      if (signInTimeoutRef.current)
-        clearTimeout(signInTimeoutRef.current);
+      if (signInTimeoutRef.current) clearTimeout(signInTimeoutRef.current);
       setSignInMenuOpen(true);
+    } else if (dropdownType === "price") {
+      if (pricingTimeoutRef.current) clearTimeout(pricingTimeoutRef.current);
+      setPricingMenuOpen(true);
     }
   };
 
@@ -68,6 +75,12 @@ export const Header = () => {
       signInTimeoutRef.current = setTimeout(() => {
         if (!signInRef.current?.matches(":hover")) {
           setSignInMenuOpen(false);
+        }
+      }, 300);
+    } else if (dropdownType === "price") {
+      pricingTimeoutRef.current = setTimeout(() => {
+        if (!pricingRef.current?.matches(":hover")) {
+          setPricingMenuOpen(false);
         }
       }, 300);
     }
@@ -96,7 +109,7 @@ export const Header = () => {
   return (
     <header className="bg-white">
       <nav
-        className="mx-auto flex max-w-8xl items-center justify-between p-4 lg:px-8"
+        className="mx-auto flex max-w-8xl items-center justify-between p-4 sm:px-6 lg:px-8"
         aria-label="Global"
       >
         <div className="flex md:flex-1">
@@ -104,11 +117,8 @@ export const Header = () => {
             <img
               src={`${base}assets/images/Cyphers.png`}
               alt="CypherSOL"
-              className="w-40"
+              className="w-32 sm:w-36 md:w-40"
             />
-            {/* <span className="text-2xl font-bold text-white">
-              Cypher<span className="text-cyan-400">SOL</span>
-            </span> */}
           </a>
         </div>
         <div className="flex md:hidden">
@@ -156,73 +166,76 @@ export const Header = () => {
                   <div className="p-4">
                     <div className="group relative flex items-center gap-x-6 rounded-lg p-4 hover:bg-gray-800 transition-colors duration-200">
                       <div className="flex size-11 flex-none items-center justify-center rounded-lg bg-gray-800 group-hover:bg-gray-700 transition-colors duration-200">
-                        <Banknote className="size-5 text-gray-300 group-hover:text-cyan-400 transition-colors duration-200" />
+                        <Calculator className="size-5 text-gray-300 group-hover:text-cyan-400 transition-colors duration-200" />
                       </div>
                       <div className="flex-auto">
                         <a
                           href="/bank-statement-analyzer"
                           className="block font-semibold text-gray-300 hover:text-cyan-400 transition-colors duration-200"
                         >
-                         Chartered Accountant
+                          CypherEdge (for Tax Professionals)
                           <span className="absolute inset-0"></span>
                         </a>
                         <p className="mt-1 text-gray-400">
-                          Get a better understanding of your traffic
+                          Empowering Tax Professionals with smart financial
+                          automation
                         </p>
                       </div>
                     </div>
                     <div className="group relative flex items-center gap-x-6 rounded-lg p-4 hover:bg-gray-800 transition-colors duration-200">
                       <div className="flex size-11 flex-none items-center justify-center rounded-lg bg-gray-800 group-hover:bg-gray-700 transition-colors duration-200">
-                        <Layers className="size-5 text-gray-300 group-hover:text-cyan-400 transition-colors duration-200" />
+                        <TrendingUp className="size-5 text-gray-300 group-hover:text-cyan-400 transition-colors duration-200" />
                       </div>
                       <div className="flex-auto">
                         <a
                           href="/dsa"
                           className="block font-semibold text-gray-300 hover:text-cyan-400 transition-colors duration-200"
                         >
-                          DSA(Direct Selling Agent)
+                          CypherZen (for DSAs)
                           <span className="absolute inset-0"></span>
                         </a>
                         <p className="mt-1 text-gray-400">
-                          Your customers' data will be safe and secure
+                          Loan intelligence made effortless for growth-driven
+                          DSAs
                         </p>
                       </div>
                     </div>
                     <div className="group relative flex items-center gap-x-6 rounded-lg p-4 hover:bg-gray-800 transition-colors duration-200">
                       <div className="flex size-11 flex-none items-center justify-center rounded-lg bg-gray-800 group-hover:bg-gray-700 transition-colors duration-200">
-                        <Layers className="size-5 text-gray-300 group-hover:text-cyan-400 transition-colors duration-200" />
+                        <Building2 className="size-5 text-gray-300 group-hover:text-cyan-400 transition-colors duration-200" />
                       </div>
                       <div className="flex-auto">
                         <a
                           href="/msme"
                           className="block font-semibold text-gray-300 hover:text-cyan-400 transition-colors duration-200"
                         >
-                         MSME Accounting
+                          CypherVista (for Businesses/ MSME)
                           <span className="absolute inset-0"></span>
                         </a>
                         <p className="mt-1 text-gray-400">
-                          Your customers' data will be safe and secure
+                          Clear financial insights for forword-looking business
                         </p>
                       </div>
                     </div>
                     <div className="group relative flex items-center gap-x-6 rounded-lg p-4 hover:bg-gray-800 transition-colors duration-200">
                       <div className="flex size-11 flex-none items-center justify-center rounded-lg bg-gray-800 group-hover:bg-gray-700 transition-colors duration-200">
-                        <Layers className="size-5 text-gray-300 group-hover:text-cyan-400 transition-colors duration-200" />
+                        <Search className="size-5 text-gray-300 group-hover:text-cyan-400 transition-colors duration-200" />
                       </div>
                       <div className="flex-auto">
                         <a
-                          href="/forensic"
+                          href="/fund-trail-analyzer"
                           className="block font-semibold text-gray-300 hover:text-cyan-400 transition-colors duration-200"
                         >
-                         FORENSIC
+                          CypherTrace (for Government Agency)
                           <span className="absolute inset-0"></span>
                         </a>
                         <p className="mt-1 text-gray-400">
-                          Your customers' data will be safe and secure
+                          Follow the money – precision-led fund trail
+                          investigations
                         </p>
                       </div>
                     </div>
-                    
+
                     <div className="group relative flex items-center gap-x-6 rounded-lg p-4 hover:bg-gray-800 transition-colors duration-200">
                       <div className="flex size-11 flex-none items-center justify-center rounded-lg bg-gray-800 group-hover:bg-gray-700 transition-colors duration-200">
                         <FileSpreadsheet className="size-5 text-gray-300 group-hover:text-cyan-400 transition-colors duration-200" />
@@ -242,14 +255,14 @@ export const Header = () => {
                     </div>
                     <div className="group relative flex items-center gap-x-6 rounded-lg p-4 hover:bg-gray-800 transition-colors duration-200">
                       <div className="flex size-11 flex-none items-center justify-center rounded-lg bg-gray-800 group-hover:bg-gray-700 transition-colors duration-200">
-                        <Layers className="size-5 text-gray-300 group-hover:text-cyan-400 transition-colors duration-200" />
+                        <Sparkles className="size-5 text-gray-300 group-hover:text-cyan-400 transition-colors duration-200" />
                       </div>
                       <div className="flex-auto">
                         <a
-                          href="/bank-statement-analyzer-excel-to-tally"
+                          href="/customization"
                           className="block font-semibold text-gray-300 hover:text-cyan-400 transition-colors duration-200"
                         >
-                          BSA & Excel to Tally Data Import Utility Combo
+                          Customization
                           <span className="absolute inset-0"></span>
                         </a>
                         <p className="mt-1 text-gray-400">
@@ -257,8 +270,6 @@ export const Header = () => {
                         </p>
                       </div>
                     </div>
-                    
-                    
                   </div>
                 </motion.div>
               )}
@@ -382,13 +393,64 @@ export const Header = () => {
           </motion.a>
 
           <motion.a
-            href="/price"
+            href="/tax-professional-plan"
             className="font-bold text-gray-900 transition-colors duration-300"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            Price
+            Pricing
           </motion.a>
+          {/* <div
+            className="relative"
+            ref={pricingRef}
+            onMouseEnter={() => handleMouseEnter("price")}
+            onMouseLeave={() => handleMouseLeave("price")}
+          >
+            <motion.button
+              type="button"
+              className="flex items-center gap-x-1 font-bold text-gray-900 transition-colors duration-300"
+              aria-expanded={pricingMenuOpen}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              Pricing
+              <motion.span
+                animate={{ rotate: pricingMenuOpen ? 180 : 0 }}
+                transition={{ duration: 0.3 }}
+              >
+                <ChevronDown className="ml-1 h-4 w-4" />
+              </motion.span>
+            </motion.button>
+
+            <AnimatePresence>
+              {pricingMenuOpen && (
+                <motion.div
+                  variants={dropdownVariants}
+                  initial="hidden"
+                  animate="visible"
+                  exit="exit"
+                  className="absolute top-full -left-8 z-20 mt-2 w-64 overflow-hidden rounded-xl bg-gray-900/50 backdrop-blur-xl ring-1 shadow-lg ring-gray-800/50"
+                >
+                  <div className="p-2">
+                    <div className="group relative flex items-center gap-x-4 rounded-lg p-2 hover:bg-gradient-to-r hover:from-gray-800 hover:to-gray-700 transition-all duration-300">
+                      <div className="flex-auto">
+                        <a
+                          href="/tax-professional-plan"
+                          className="block font-semibold text-gray-300 hover:text-cyan-400 transition-colors duration-200"
+                        >
+                          CypherEdge
+                          <span className="absolute inset-0"></span>
+                        </a>
+                        <p className="mt-1 text-gray-400">
+                          (for Tax Professionals)
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div> */}
         </div>
         <div className="hidden md:flex md:flex-1 md:justify-end md:items-center md:space-x-4">
           <div
@@ -405,7 +467,7 @@ export const Header = () => {
               whileHover="hover"
               whileTap="tap"
             >
-              Sign In
+              Login
               <motion.span
                 animate={{ rotate: signInMenuOpen ? 180 : 0 }}
                 transition={{ duration: 0.3 }}
@@ -438,7 +500,7 @@ export const Header = () => {
                         </a>
                       </div>
                     </div>
-                    
+
                     <div className="group relative flex items-center gap-x-4 rounded-lg p-2 hover:bg-gradient-to-r hover:from-gray-800 hover:to-gray-700 transition-all duration-300">
                       <div className="flex size-8 flex-none items-center justify-center rounded-lg bg-gray-800 group-hover:bg-gray-700 transition-colors duration-300 shadow-md">
                         <Building className="size-4 text-gray-300 group-hover:text-cyan-400 transition-colors duration-300" />
@@ -453,7 +515,7 @@ export const Header = () => {
                         </a>
                       </div>
                     </div>
-                    
+
                     <div className="group relative flex items-center gap-x-4 rounded-lg p-2 hover:bg-gradient-to-r hover:from-gray-800 hover:to-gray-700 transition-all duration-300">
                       <div className="flex size-8 flex-none items-center justify-center rounded-lg bg-gray-800 group-hover:bg-gray-700 transition-colors duration-300 shadow-md">
                         <UserCheck className="size-4 text-gray-300 group-hover:text-cyan-400 transition-colors duration-300" />
@@ -468,7 +530,7 @@ export const Header = () => {
                         </a>
                       </div>
                     </div>
-                    
+
                     <div className="group relative flex items-center gap-x-4 rounded-lg p-2 hover:bg-gradient-to-r hover:from-gray-800 hover:to-gray-700 transition-all duration-300">
                       <div className="flex size-8 flex-none items-center justify-center rounded-lg bg-gray-800 group-hover:bg-gray-700 transition-colors duration-300 shadow-md">
                         <Calculator className="size-4 text-gray-300 group-hover:text-cyan-400 transition-colors duration-300" />
@@ -507,26 +569,23 @@ export const Header = () => {
             initial="hidden"
             animate="visible"
             exit="exit"
-            className="md:hidden fixed inset-y-0 right-0 z-50 w-full overflow-y-auto bg-black px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-800/10"
+            className="md:hidden fixed inset-0 z-50 overflow-y-auto bg-white"
             role="dialog"
             aria-modal="true"
           >
-            <div
-              className="fixed inset-0 z-10 bg-white backdrop-blur-sm"
-              onClick={() => setMobileMenuOpen(false)}
-            />
-            <div className="relative z-20">
+            {/* Remove the backdrop div entirely since we want full coverage */}
+            <div className="px-6 py-6">
               <div className="flex items-center justify-between">
                 <a href="/" className="-m-1.5 p-1.5">
                   <img
-                    src={`${base}assets/images/Cyphers.png}`}
-                    alt="CupherSOL"
-                    className="w-40 mb-5"
+                    src={`${base}assets/images/Cyphers.png`}
+                    alt="CypherSOL"
+                    className="w-32 sm:w-36 md:w-40 mb-5"
                   />
                 </a>
                 <button
                   type="button"
-                  className="-m-2.5 rounded-md p-2.5 text-gray-900  transition-colors duration-200"
+                  className="-m-2.5 rounded-md p-2.5 text-gray-900 hover:text-cyan-400 transition-colors duration-200"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   <span className="sr-only">Close menu</span>
@@ -539,7 +598,7 @@ export const Header = () => {
                     <div className="-mx-3">
                       <button
                         type="button"
-                        className="flex w-full items-center justify-between rounded-lg py-2 pr-3.5 pl-3 text-base/7 font-semibold text-gray-900 transition-colors duration-200"
+                        className="flex w-full items-center justify-between rounded-lg py-2 pr-3.5 pl-3 text-base/7 font-semibold text-gray-900 hover:text-cyan-400 transition-colors duration-200"
                         aria-controls="disclosure-1"
                         aria-expanded={mobileProductMenuOpen}
                         onClick={() =>
@@ -567,21 +626,39 @@ export const Header = () => {
                           >
                             <a
                               href="/bank-statement-analyzer"
-                              className="block rounded-lg py-2 pr-3 pl-6 text-sm/7 font-semibold text-gray-900 transition-colors duration-200"
+                              className="block rounded-lg py-2 pr-3 pl-6 text-sm/7 font-semibold text-gray-900 hover:text-cyan-400 transition-colors duration-200"
                             >
-                              Bank Statement Analyzer
+                              CypherEdge (for Tax Professionals)
+                            </a>
+                            <a
+                              href="/dsa"
+                              className="block rounded-lg py-2 pr-3 pl-6 text-sm/7 font-semibold text-gray-900 hover:text-cyan-400 transition-colors duration-200"
+                            >
+                              CypherZen (for DSAs)
+                            </a>
+                            <a
+                              href="/msme"
+                              className="block rounded-lg py-2 pr-3 pl-6 text-sm/7 font-semibold text-gray-900 hover:text-cyan-400 transition-colors duration-200"
+                            >
+                              CypherVista (for Businesses/ MSME)
+                            </a>
+                            <a
+                              href="/fund-trail-analyzer"
+                              className="block rounded-lg py-2 pr-3 pl-6 text-sm/7 font-semibold text-gray-900 hover:text-cyan-400 transition-colors duration-200"
+                            >
+                              CypherTrace (for Government Agency)
                             </a>
                             <a
                               href="/excel-to-tally"
-                              className="block rounded-lg py-2 pr-3 pl-6 text-sm/7 font-semibold text-gray-900 transition-colors duration-200"
+                              className="block rounded-lg py-2 pr-3 pl-6 text-sm/7 font-semibold text-gray-900 hover:text-cyan-400 transition-colors duration-200"
                             >
                               Excel to Tally Data Import Utility
                             </a>
                             <a
-                              href="/bank-statement-analyzer-excel-to-tally"
-                              className="block rounded-lg py-2 pr-3 pl-6 text-sm/7 font-semibold text-gray-900 transition-colors duration-200"
+                              href="/customization"
+                              className="block rounded-lg py-2 pr-3 pl-6 text-sm/7 font-semibold text-gray-900 hover:text-cyan-400 transition-colors duration-200"
                             >
-                              BSA & Excel to Tally Data Import Utility Combo
+                              Customization
                             </a>
                           </motion.div>
                         )}
@@ -590,7 +667,7 @@ export const Header = () => {
                     <div className="-mx-3">
                       <button
                         type="button"
-                        className="flex w-full items-center justify-between rounded-lg py-2 pr-3.5 pl-3 text-base/7 font-semibold text-gray-900 transition-colors duration-200"
+                        className="flex w-full items-center justify-between rounded-lg py-2 pr-3.5 pl-3 text-base/7 font-semibold text-gray-900 hover:text-cyan-400 transition-colors duration-200"
                         aria-controls="disclosure-2"
                         aria-expanded={mobileResourcesMenuOpen}
                         onClick={() =>
@@ -620,25 +697,25 @@ export const Header = () => {
                           >
                             <a
                               href="/about"
-                              className="block rounded-lg py-2 pr-3 pl-6 text-sm/7 font-semibold text-gray-900 transition-colors duration-200"
+                              className="block rounded-lg py-2 pr-3 pl-6 text-sm/7 font-semibold text-gray-900 hover:text-cyan-400 transition-colors duration-200"
                             >
                               About Us
                             </a>
                             <a
                               href="/team"
-                              className="block rounded-lg py-2 pr-3 pl-6 text-sm/7 font-semibold text-gray-900 transition-colors duration-200"
+                              className="block rounded-lg py-2 pr-3 pl-6 text-sm/7 font-semibold text-gray-900 hover:text-cyan-400 transition-colors duration-200"
                             >
                               Team
                             </a>
                             <a
                               href="/blog"
-                              className="block rounded-lg py-2 pr-3 pl-6 text-sm/7 font-semibold text-gray-900 transition-colors duration-200"
+                              className="block rounded-lg py-2 pr-3 pl-6 text-sm/7 font-semibold text-gray-900 hover:text-cyan-400 transition-colors duration-200"
                             >
                               Blog
                             </a>
                             <a
                               href="/contact"
-                              className="block rounded-lg py-2 pr-3 pl-6 text-sm/7 font-semibold text-gray-900 transition-colors duration-200"
+                              className="block rounded-lg py-2 pr-3 pl-6 text-sm/7 font-semibold text-gray-900 hover:text-cyan-400 transition-colors duration-200"
                             >
                               Contact Us
                             </a>
@@ -648,27 +725,35 @@ export const Header = () => {
                     </div>
                     <a
                       href="tax-professional/login/"
-                      className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 transition-colors duration-200"
+                      className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:text-cyan-400 transition-colors duration-200"
                     >
                       Reseller
                     </a>
                     <a
                       href="/price"
-                      className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 transition-colors duration-200"
+                      className="-mx-3 block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:text-cyan-400 transition-colors duration-200"
                     >
-                      Price
+                      Pricing
                     </a>
                   </div>
-                  <div className="py-6 flex flex-col space-y-4">
+                  <div className="py-6 flex flex-col space-y-4 sm:flex-row sm:space-y-0 sm:space-x-4">
                     <a href="/login">
-                      <button className="w-full px-4 py-2 rounded-lg bg-gray-900 text-white border border-gray-800 hover:bg-gray-800 transition-colors duration-200">
-                        Sign In
-                      </button>
+                      <motion.button
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
+                        className="w-full px-4 py-2 rounded-lg bg-gray-800 text-white border border-gray-700 hover:bg-gray-700 transition-all duration-200"
+                      >
+                        Login
+                      </motion.button>
                     </a>
                     <a href="/trial">
-                      <button className="w-full px-4 py-2 bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-semibold rounded-lg hover:opacity-90 transition-opacity duration-200">
+                      <motion.button
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
+                        className="w-full px-4 py-2 bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-semibold rounded-lg hover:opacity-90 transition-all duration-200"
+                      >
                         Register
-                      </button>
+                      </motion.button>
                     </a>
                   </div>
                 </div>
@@ -678,5 +763,5 @@ export const Header = () => {
         )}
       </AnimatePresence>
     </header>
-  );  
+  );
 };

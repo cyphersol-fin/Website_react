@@ -17,6 +17,8 @@ import CTABanner from "./UI/CTABanner";
 import FAQSection from "./FAQSection";
 import { ExcelToTallyBeam } from "./UI/AnimatedBeam";
 import { Vouchers } from "./UI/Vouchers";
+import { excelToTallyFaqsArray } from "./data/FAQs";
+import { Helmet } from "react-helmet-async";
 
 const advData = [
   {
@@ -68,7 +70,7 @@ const features = [
     icon: (
       <img
         src={`${base}assets/images/CA.webp`}
-        alt="Chartered Accountant"
+        alt="Excel to Tally utility"
         className="w-20"
       />
     ),
@@ -84,7 +86,7 @@ const features = [
     icon: (
       <img
         src={`${base}assets/images/large-enterprise.webp`}
-        alt="Large Enterprises"
+        alt="Import Excel data into Tally"
         className="w-20"
       />
     ),
@@ -94,7 +96,13 @@ const features = [
     color: "bg-blue-600",
   },
   {
-    icon: <img src={`${base}assets/images/SMEs.webp`} alt="SMEs" className="w-20" />,
+    icon: (
+      <img
+        src={`${base}assets/images/SMEs.webp`}
+        alt="Tally import utility"
+        className="w-20"
+      />
+    ),
     title: "Small and Medium Businesses (SMEs)",
     description:
       "Manage large transaction volumes effortlessly. No need for dedicated accounting teams. Ensure accurate uploads without extra staffing.",
@@ -104,7 +112,7 @@ const features = [
     icon: (
       <img
         src={`${base}assets/images/tax-consultants.webp`}
-        alt="Tax Consultants"
+        alt="Excel to Tally integration"
         className="w-20"
       />
     ),
@@ -114,86 +122,6 @@ const features = [
     color: "bg-blue-700",
   },
 ];
-
-const faqsArray = [
-  {
-    question: "What is Excel to Tally Data Import Utility?",
-    answer:
-      "Excel to Tally Data Import Utility is a software tool that automates the process of uploading financial data such as transactions, receipts, payments, and bank statements into Tally, eliminating the need for manual data entry.",
-  },
-  {
-    question: "How does Excel to Tally Data Import Utility work?",
-    answer:
-      "It extracts data from Excel or PDF bank statements, categorizes it automatically, and uploads the information directly into Tally ERP 9 or Tally Prime, saving time and reducing errors.",
-  },
-  {
-    question: "Which versions of Tally does the utility support?",
-    answer:
-      "The Excel to Tally Data Import Utility is compatible with both **Tally ERP 9** and **Tally Prime**.",
-  },
-  {
-    question: "What types of files does the Tally Upload Utility support?",
-    answer:
-      "The utility supports both **PDF** and **Excel** formats for bank statements, invoices, and other transaction data.",
-  },
-  {
-    question: "Does the tool categorize the transactions automatically?",
-    answer:
-      "Yes, Excel to Tally Data Import Utility automatically categorizes transactions into sales, purchases, payments, and receipts.",
-  },
-  {
-    question: "What is the pricing of the Tally Upload Utility?",
-    answer:
-      "The utility is available for an affordable annual subscription of **₹2,999**, which includes support for 20 bank statements per year.",
-  },
-  {  
-    question: "Is Excel to Tally Data Import Utility secure?",
-    answer:
-      "Yes, the utility follows industry-standard security measures to protect sensitive financial data during upload and processing.",
-  },
-  {
-    question: "How much time does the utility save?",
-    answer:
-      "The tool can save hours of manual data entry work by automating the upload process, especially for businesses handling a large volume of transactions.",
-  },
-  {
-    question: "Is the Excel to Tally Data Import Utility easy to use?",
-    answer:
-      "Yes, the tool is user-friendly with a simple interface, requiring minimal technical knowledge to operate.",
-  },
-  {
-    question: "Does the tool require an internet connection?",
-    answer:
-      "Yes, an internet connection is required to download updates and for certain data uploads, but the core functionality works offline after initial setup.",
-  },
-  {
-    question: "Can I upload sales and purchase transactions using the tool?",
-    answer:
-      "Yes, you can upload data related to sales, purchases, payments, and receipts directly into Tally.",
-  },
-  {
-    question:
-      "Is there any limit to the number of users for the Excel to Tally Data Import Utility?",
-    answer:
-      "The utility can be installed on one computer or laptop, and it is intended for a single user. For multi-user setups, please contact support.",
-  },
-  {
-    question: "Can I use it for multiple clients?",
-    answer:
-      "Yes, accountants and tax consultants can use the utility to manage financial data for multiple clients.",
-  },
-  {
-    question: "Is the utility updated regularly?",
-    answer:
-      "Yes, CypherSOL provides regular updates to ensure compatibility with the latest versions of Tally and to add new features based on user feedback.",
-  },
-  {
-    question: "How do I install the Tally Upload Utility?",
-    answer:
-      "After purchasing the subscription, you will receive installation instructions. It's a simple process, and CypherSOL provides customer support if needed.",
-  },
-];
-
 function ElegantShape({
   className,
   delay = 0,
@@ -276,6 +204,19 @@ export default function ExcelToTally() {
 
   return (
     <>
+      <Helmet>
+        <title>
+          Excel to Tally Data Import Utility | Fast Imports @ ₹49*/Month
+        </title>
+        <meta
+          name="description"
+          content="Cyphersol's Excel to Tally Data Import Utility helps you 'Be Intelligently Lazy' by automating data uploads to Tally ERP. Streamline accounting processes for chartered accountants and MSMEs in India with our innovative solution."
+        />
+        <meta
+          name="keywords"
+          content="Cyphersol, Excel to Tally Data Import Utility, be intelligently lazy, automation for accounting, Tally ERP integration, chartered accountants, MSME solutions, accounting software, data automation"
+        />
+      </Helmet>
       {/* hero section */}
       <div className="relative min-h-screen w-full flex items-center justify-center overflow-hidden bg-[#030303]">
         <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/[0.05] via-transparent to-blue-500/[0.05] blur-3xl" />
@@ -328,7 +269,7 @@ export default function ExcelToTally() {
         </div>
 
         <div className="relative z-10 container mx-auto px-4 md:px-6">
-          <div className="max-w-3xl mx-auto text-center">
+          <div className=" mx-auto text-center">
             <motion.div
               custom={0}
               variants={fadeUpVariants}
@@ -345,7 +286,7 @@ export default function ExcelToTally() {
               initial="hidden"
               animate="visible"
             >
-              <h1 className="text-2xl sm:text-4xl md:text-6xl font-bold mb-6 md:mb-8 tracking-tight">
+              <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 md:mb-8 tracking-tight">
                 <span className="bg-clip-text text-transparent bg-gradient-to-b from-white to-white/80">
                   The Ultimate Solution for
                 </span>
@@ -384,7 +325,7 @@ export default function ExcelToTally() {
 
       {/* Who should use */}
       <div className=" bg-black overflow-hidden relative text-white px-4 py-8 md:py-12">
-        <h1 className="text-2xl sm:text-4xl md:text-6xl font-bold mb-8 md:mb-20 tracking-tight text-center">
+        <h1 className="text-4xl md:text-5xl font-bold mb-8 md:mb-20 tracking-tight text-center">
           <span className="bg-clip-text text-transparent bg-gradient-to-b from-white to-white/80">
             Who Should Use
           </span>
@@ -436,23 +377,6 @@ export default function ExcelToTally() {
         </div>
       </div>
 
-      {/* Cta Banner */}
-      <motion.div
-        custom={6}
-        variants={fadeUpVariants}
-        initial="hidden"
-        animate="visible"
-      >
-        <CTABanner
-          title="Why Choose"
-          highlightedText="Excel to Tally Data Import Utility?"
-          subtitle="Please feel free to contact us. We're super happy to talk to you. Feel free to ask anything."
-          primaryButtonText="Book a Demo"
-          imageSrc="https://framerusercontent.com/images/MecLliNBqre50VslV9Cc8fZOqkY.png?scale-down-to=512"
-          imageAlt="AI-powered financial analysis"
-        />
-      </motion.div>
-
       {/* Advantages section */}
       <div>
         <motion.div
@@ -461,8 +385,8 @@ export default function ExcelToTally() {
           initial="hidden"
           animate="visible"
         >
-          <div className="container mx-auto px-4 py-4">
-            <h1 className="text-2xl sm:text-4xl md:text-6xl font-bold mb-6 md:mb-8 tracking-tight text-center">
+          <div className="container mx-auto px-4  py-4">
+            <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-center">
               <span className="bg-clip-text text-transparent bg-gradient-to-b from-white to-white/80">
                 Advantages of
               </span>
@@ -495,6 +419,23 @@ export default function ExcelToTally() {
         </motion.div>
       </div>
 
+      {/* Cta Banner */}
+      <motion.div
+        custom={6}
+        variants={fadeUpVariants}
+        initial="hidden"
+        animate="visible"
+      >
+        <CTABanner
+          title="Why Choose"
+          highlightedText="Excel to Tally Data Import Utility?"
+          subtitle="Please feel free to contact us. We're super happy to talk to you. Feel free to ask anything."
+          primaryButtonText="Book a Demo"
+          imageSrc="https://framerusercontent.com/images/MecLliNBqre50VslV9Cc8fZOqkY.png?scale-down-to=512"
+          imageAlt="AI-powered financial analysis"
+        />
+      </motion.div>
+
       {/* FAQ section */}
       <motion.div
         custom={12}
@@ -502,7 +443,7 @@ export default function ExcelToTally() {
         initial="hidden"
         animate="visible"
       >
-        <FAQSection items={faqsArray} />
+        <FAQSection items={excelToTallyFaqsArray} />
       </motion.div>
     </>
   );

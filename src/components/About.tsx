@@ -3,8 +3,8 @@ import { cn } from "./lib/utils";
 import { motion } from "framer-motion";
 import { Badge } from "./UI/Badge";
 import CTABanner from "./UI/CTABanner";
-import MouseMoveEffect from "./components/ui/mouse-move-effect";
 import CarouselSection from "./UI/Carousel";
+import { Helmet } from "react-helmet-async";
 
 const fadeIn = {
   initial: { opacity: 0, y: 30 },
@@ -76,8 +76,21 @@ function Stat({ value, label }: StatProps) {
 export const About = () => {
   return (
     <>
+      <Helmet>
+        <title>
+          Be Intelligently Lazy with Automation for Accounting & IT Solutions |
+          Cyphersol
+        </title>
+        <meta
+          name="description"
+          content="Cyphersol helps you 'Be Intelligently Lazy' by offering automation for accounting, bank statement analyzers, and IT solutions for chartered accountants and MSMEs in India. Accelerate your business growth with our innovative digital services."
+        />
+        <meta
+          name="keywords"
+          content="Cyphersol, be intelligently lazy, automation for accounting, bank statement analyser, automation for chartered accountants, MSME solutions, IT solutions India, software development, digital services"
+        />
+      </Helmet>
       <div className="relative flex w-full flex-col items-center justify-center overflow-hidden ">
-        <MouseMoveEffect />
         <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4 py-12 max-auto max-w-6xl">
           <motion.div
             className="mb-8"
@@ -93,7 +106,7 @@ export const About = () => {
               {...fadeIn}
             >
               <motion.h1
-                className="text-2xl sm:text-4xl md:text-6xl font-bold mb-6 md:mb-8 tracking-tight text-center"
+                className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 md:mb-8 tracking-tight text-center"
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
@@ -243,118 +256,6 @@ export const About = () => {
               </motion.p>
             </motion.div>
           </div>
-          {/* 
-          <div className="">
-            <motion.div
-              className=" max-auto max-w-6xl text-center mb-12"
-              {...fadeIn}
-            >
-              <h1 className="text-2xl sm:text-4xl md:text-6xl font-bold mb-6 md:mb-8 tracking-tight text-center">
-                <br />
-                <span
-                  className={cn(
-                    "bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-white/90 to-blue-400"
-                  )}
-                >
-                  About CypherSOL
-                </span>
-              </h1>
-              <p className="text-gray-300 leading-relaxed text-xl text-left">
-                CypherSOL Fintech India Private Ltd. has developed a
-                state-of-the-art Bank Statement Analyzer, that can extract
-                structured insights and valuable information from financial
-                statements. Instead of spending hours analyzing a large number
-                of data transactions from multiple banks or statements, you can
-                use CypherSOL to do so efficiently and in minimal time.
-              </p>
-            </motion.div>
-
-            <motion.div className="mb-8 text-left text-lg">
-              <motion.h1
-                className="text-xl mb-4 md:mb-6 tracking-tight text-left"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.7 }}
-              >
-                <span className="bg-clip-text text-transparent bg-gradient-to-b from-white to-white/80">
-                  CypherSOL Solutions can be used to filter data-driven insights
-                  by:
-                </span>
-              </motion.h1>
-              <motion.ol>
-                <motion.li className="mb-2">
-                  <span className="font-semibold text-cyan-300">
-                    {" "}
-                    Tax Professionals (chartered accountants, tax consultants){" "}
-                  </span>
-                  : For accounting, filing tax returns, reconciling bank
-                  transactions, identifying unexplained entries.
-                </motion.li>
-                <motion.li className="mb-2">
-                  <span className="font-semibold text-cyan-300">MSMEs</span> :
-                  To enhance financial management, automate bookkeeping, and
-                  gain real-time insights into cash flow and expenses.
-                </motion.li>
-                <motion.li className="mb-2">
-                  <span className="font-semibold text-cyan-300">
-                    Govt Agencies
-                  </span>{" "}
-                  : For financial compliance monitoring, fraud detection,
-                  taxation audits, Fund trial by analyzing banking transactions
-                  and identifying discrepancies in financial records.
-                </motion.li>
-                <motion.li className="mb-2">
-                  <span className="font-semibold text-cyan-300">
-                    Direct Selling Agents (DSAs)
-                  </span>{" "}
-                  : To evaluate clients' financial needs, analyze banking
-                  patterns, and identify the most suitable financiers based on
-                  income flow and repayment capacity.
-                </motion.li>
-                <motion.li className="mb-2">
-                  <span className="font-semibold text-cyan-300">
-                    Banks & NBFC’s
-                  </span>
-                  : To automate loan eligibility assessments, detect credit
-                  risks, assess cash flow patterns, and streamline underwriting
-                  processes for faster and more accurate lending decisions.
-                </motion.li>
-                <motion.li className="mb-2">
-                  <span className="font-semibold text-cyan-300 text-lg">
-                    Forensic Accounting
-                  </span>{" "}
-                  : For fraud investigation, financial crime detection, and
-                  regulatory compliance checks by analyzing inconsistencies in
-                  financial transactions and identifying suspicious activities.
-                </motion.li>
-              </motion.ol>
-            </motion.div>
-
-            <motion.div
-              className="max-w-5xl mx-auto mt-12 text-left"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.8, duration: 0.8 }}
-            >
-              <p className="text-gray-300 mb-6 text-xl">
-                CypherSOL can be used by a wide set of market players, unlike
-                others that are designed primarily for banks and NBFCs. It
-                offers business partners Safe, Analytical, Fast, and Efficient
-                analysis so they may better serve their clients and their
-                requirements.
-              </p>
-              <p className="text-gray-300 text-xl">
-                CypherSOL is a startup that was conceived by a team experts in
-                technology, banking risk management and a Chartered Accountant.
-                The board is being advised by a reputed BFSI analyst who spent
-                30 years covering the financial sector. The team has used its
-                practical experience to develop a sophisticated tool that can
-                simplify and save time for tax professionals, financiers, DSAs,
-                and businesses to filter information on transactions.
-              </p>
-            </motion.div>
-          </div> */}
         </div>
       </div>
 
@@ -366,7 +267,7 @@ export const About = () => {
         transition={{ duration: 0.8 }}
       >
         <motion.h1
-          className="text-3xl md:text-5xl lg:text-6xl font-bold mb-6 md:mb-8 tracking-tight"
+          className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 md:mb-8 tracking-tight"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -420,60 +321,6 @@ export const About = () => {
         </motion.div>
       </motion.div>
 
-      {/* Carousel Vision/Mission*/}
-      <motion.div
-        className="w-full mx-auto text-center"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8 }}
-      >
-        <CarouselSection />
-      </motion.div>
-
-      <motion.div
-        className="max-w-5xl mx-auto text-center px-4 sm:px-6 lg:px-8 py-12"
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8 }}
-      >
-        <motion.h1
-          className="text-3xl md:text-5xl mb-3 tracking-tight"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7 }}
-        >
-          The team behind it
-        </motion.h1>
-        <motion.p
-          className="text-lg md:text-xl text-gray-400 mb-10"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.7, delay: 0.2 }}
-        >
-          A fully remote team on a mission to build <br /> the best
-          communication platform for developers.
-        </motion.p>
-
-        <motion.img
-          src="https://media.licdn.com/dms/image/v2/D5622AQEzE-rrMQL4Yw/feedshare-shrink_2048_1536/feedshare-shrink_2048_1536/0/1714391001222?e=1743033600&v=beta&t=ci-drTeCeL1zKU7g75DZiO7ofxPrQWkWirJ4TOcUIgA"
-          alt="testimonial"
-          className="w-full h-auto -rotate-1 rounded-lg"
-          initial={{ opacity: 0, scale: 0.9, rotate: 0 }}
-          whileInView={{ opacity: 1, scale: 1, rotate: -1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.3 }}
-          whileHover={{
-            scale: 1.02,
-            rotate: 0,
-            transition: { duration: 0.3 },
-          }}
-        />
-      </motion.div>
-
       {/* How our software works */}
       <motion.div
         className="max-w-5xl mx-auto text-center px-4 sm:px-6 lg:px-8 py-12"
@@ -483,7 +330,7 @@ export const About = () => {
         transition={{ duration: 0.8 }}
       >
         <motion.h1
-          className="text-3xl md:text-5xl font-bold mb-3 tracking-tight"
+          className="text-4xl md:text-5xl font-bold mb-3 tracking-tight"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -509,7 +356,7 @@ export const About = () => {
         </motion.p>
         <motion.img
           src="assets/images/software-function-1.png"
-          alt="software function"
+          alt="AI accounting automation software"
           className="w-full h-auto"
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -518,6 +365,60 @@ export const About = () => {
           whileHover={{
             scale: 1.02,
             // boxShadow: "0 0 20px rgba(59, 130, 246, 0.4)",
+            transition: { duration: 0.3 },
+          }}
+        />
+      </motion.div>
+
+      {/* Carousel Vision/Mission*/}
+      <motion.div
+        className="w-full mx-auto text-center"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+      >
+        <CarouselSection />
+      </motion.div>
+
+      <motion.div
+        className="max-w-5xl mx-auto text-center px-4 sm:px-6 lg:px-8 py-12"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8 }}
+      >
+        <motion.h1
+          className="text-4xl md:text-5xl font-semibold mb-3 tracking-tight"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+        >
+          The team behind it
+        </motion.h1>
+        <motion.p
+          className="text-lg md:text-xl text-gray-400 mb-10"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7, delay: 0.2 }}
+        >
+          A fully remote team on a mission to build <br /> the best
+          communication platform for developers.
+        </motion.p>
+
+        <motion.img
+          src="assets/images/teammm.jpeg"
+          alt="Cloud-based accounting automation"
+          className="w-full h-auto -rotate-1 rounded-lg"
+          initial={{ opacity: 0, scale: 0.9, rotate: 0 }}
+          whileInView={{ opacity: 1, scale: 1, rotate: -1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.3 }}
+          whileHover={{
+            scale: 1.02,
+            rotate: 0,
             transition: { duration: 0.3 },
           }}
         />
@@ -543,7 +444,7 @@ export const About = () => {
           subtitle="Please feel free to contact us. We're super happy to talk to you. Feel free to ask anything."
           primaryButtonText="Book a Demo"
           imageSrc="https://framerusercontent.com/images/MecLliNBqre50VslV9Cc8fZOqkY.png?scale-down-to=512"
-          imageAlt="AI-powered financial analysis"
+          imageAlt="Automation for tax preparation and filing"
         />
       </motion.div>
     </>

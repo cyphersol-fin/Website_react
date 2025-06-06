@@ -1,8 +1,6 @@
 import { OrbitControls } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import {
-  FaTwitter,
-  FaFacebookF,
   FaInstagram,
   FaLinkedinIn,
   FaMapMarkerAlt,
@@ -47,7 +45,10 @@ export const Footer = () => {
               Feel free to reach out if you want to collaborate with us or
               simply have a chat.
             </p>
-            <button className="group px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-semibold rounded-xl hover:opacity-90 transition-all duration-300">
+            <button
+              className="group px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-semibold rounded-xl hover:opacity-90 transition-all duration-300"
+              onClick={() => (window.location.href = "/pricing/?plan=bsa")}
+            >
               Become a Client →
             </button>
           </div>
@@ -57,7 +58,7 @@ export const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 py-16 px-4 md:px-6 lg:px-8">
           <div>
             <h3 className="text-cyan-400 text-lg font-semibold  mb-4">
-              CypherSOL Fintech
+              CypherSOL Fintech India Pvt. Ltd.
             </h3>
             <ul className="space-y-2">
               <li className="hover:text-cyan-400 transition duration-300">
@@ -115,7 +116,7 @@ export const Footer = () => {
               </li>
               <li className="flex items-center space-x-3">
                 <FaPhoneAlt className="text-cyan-400 w-5 h-5" />
-                <span>+91 81697 64722 / +91 98335 53348</span>
+                <span>+91 81697 64722 / +91 81081 08800</span>
               </li>
               <li className="flex items-center space-x-3">
                 <FaEnvelope className="text-cyan-400 w-5 h-5" />
@@ -130,25 +131,13 @@ export const Footer = () => {
             </h3>
             <div className="flex space-x-4">
               <a
-                href="#"
-                className="w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 hover:bg-cyan-400 text-white hover:text-black transition duration-300"
-              >
-                <FaTwitter />
-              </a>
-              <a
-                href="#"
-                className="w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 hover:bg-cyan-400 text-white hover:text-black transition duration-300"
-              >
-                <FaFacebookF />
-              </a>
-              <a
-                href="#"
+                href="https://www.instagram.com/cyphersolfintech2025?igsh=MWRmYTI4ZWEya2U4bA=="
                 className="w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 hover:bg-cyan-400 text-white hover:text-black transition duration-300"
               >
                 <FaInstagram />
               </a>
               <a
-                href="#"
+                href="https://www.linkedin.com/company/cyphersol-fintech-india-pvt-ltd/posts/?feedView=all"
                 className="w-10 h-10 flex items-center justify-center rounded-full bg-gray-800 hover:bg-cyan-400 text-white hover:text-black transition duration-300"
               >
                 <FaLinkedinIn />

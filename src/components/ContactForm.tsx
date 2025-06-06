@@ -7,34 +7,15 @@ import { Badge } from "./UI/Badge";
 import { FaEnvelope, FaMapMarkerAlt, FaPhoneAlt } from "react-icons/fa";
 import FAQSection from "./FAQSection";
 import CTABanner from "./UI/CTABanner";
-
-const faqsArray = [
-  {
-    question:
-      "How secure is the data storage and processing of sensitive financial information?",
-    answer:
-      "Our data storage and processing adhere to the highest security standards, employing encryption and robust protocols to safeguard sensitive financial information. Once the data is extracted it gets deleted from our system.",
-  },
-  {
-    question:
-      "Are there any privacy concerns associated with sharing my bank statements for analysis?",
-    answer:
-      "We prioritize your privacy and ensure that your bank statements are securely analyzed without compromising your personal data. We adhere to strict privacy policies to protect your information.",
-  },
-  {
-    question: "Can others see the data I am uploading?",
-    answer:
-      "No, your data remains confidential and is accessible only to authorized personnel involved in the analysis process. We maintain strict confidentiality protocols to ensure the privacy of your information.",
-  },
-];
-
+import { contactUsFaqsArray } from "./data/FAQs";
+import { Helmet } from "react-helmet-async";
 // ContactForm component with animation
 const ContactForm = () => {
   return (
     <>
       <div className="max-w-6xl mx-auto px-4">
         <div
-          className="bg-gray-900/50 backdrop-blur-xl rounded-3xl md:p-12 p-8"
+          className="bg-gray-900/50 backdrop-blur-xl rounded-3xl p-4 md:p-8 lg:p-12 shadow-lg"
           style={{
             // padding: "80px 64px",
             position: "relative",
@@ -195,6 +176,20 @@ const AnimatedBackground = () => {
 export const ContactPage = () => {
   return (
     <>
+      <Helmet>
+        <title>
+          {" "}
+          Get in Touch for Accounting Automation Starting @ ₹45* | Cyphersol
+        </title>
+        <meta
+          name="description"
+          content="Contact Cyphersol to learn more about our IT solutions and accounting automation services. We assist chartered accountants and MSMEs in India to streamline workflows and enhance efficiency. Reach out to us today!"
+        />
+        <meta
+          name="keywords"
+          content="Cyphersol contact, IT solutions, accounting automation, chartered accountants, MSME solutions, accounting software, customer support, get in touch"
+        />
+      </Helmet>
       <div className="relative bg-black overflow-hidden">
         <GlowEffect />
 
@@ -214,16 +209,16 @@ export const ContactPage = () => {
             <div className="flex items-center justify-center mb-8">
               <Badge>Let's Connect</Badge>
             </div>
-            <h1 className="text-5xl font-bold mb-20 text-white text-center">
-              We would love to hear <br></br> from you
-            </h1>
+            <div className="max-w-3xl mx-auto text-center">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-20 text-white text-center">
+                We would love to hear from you
+              </h1>
+            </div>
             <ContactForm />
           </div>
         </div>
       </div>
-      <div className="container mx-auto px-4 animate-fadeIn">
-        <FAQSection items={faqsArray} />
-      </div>
+
       {/* Cta Banner */}
       <CTABanner
         title="Wanna"
@@ -231,8 +226,12 @@ export const ContactPage = () => {
         subtitle="Please feel free to contact us. We’re super happy to talk to you. Feel free to ask anything.."
         primaryButtonText="Contact Us"
         imageSrc="https://framerusercontent.com/images/MecLliNBqre50VslV9Cc8fZOqkY.png?scale-down-to=512"
-        imageAlt="AI-powered financial analysis"
+        imageAlt="Automated Excel to Tally import"
       />
+
+      <div className="container mx-auto px-4 animate-fadeIn">
+        <FAQSection items={contactUsFaqsArray} />
+      </div>
     </>
   );
 };

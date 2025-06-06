@@ -38,7 +38,7 @@ export function Vouchers() {
       <div ref={sectionRef} className="absolute h-full flex">
         {/* First Panel */}
         <div className="relative h-screen w-screen flex items-center justify-center flex-shrink-0 ">
-          <h1 className="text-5xl md:text-7xl font-bold text-center px-4">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-center px-4">
             <span className="bg-clip-text text-transparent bg-gradient-to-b from-white to-white/80">
               Seamlessly Convert
             </span>
@@ -69,7 +69,7 @@ export function Vouchers() {
             <div className="aspect-[4/3] w-full max-w-2xl mx-auto">
               <img
                 src={`${base}assets/images/Ledger-Master.jpeg`}
-                alt="Ledger interface screenshot"
+                alt="excel to Tally"
                 className="w-full h-full object-contain "
               />
             </div>
@@ -94,7 +94,7 @@ export function Vouchers() {
             <div className="aspect-[4/3] w-full max-w-2xl mx-auto">
               <img
                 src={`${base}assets/images/payment-voucher.jpeg`}
-                alt="Ledger interface screenshot"
+                alt="excel2tally"
                 className="w-full h-full object-contain "
               />
             </div>
@@ -120,7 +120,7 @@ export function Vouchers() {
             <div className="aspect-[4/3] w-full max-w-2xl mx-auto">
               <img
                 src={`${base}assets/images/receipt-voucher.jpeg`}
-                alt="Ledger interface screenshot"
+                alt="excel to Tally import"
                 className="w-full h-full object-contain "
               />
             </div>
@@ -144,7 +144,7 @@ export function Vouchers() {
             <div className="aspect-[4/3] w-full max-w-2xl mx-auto">
               <img
                 src={`${base}assets/images/purchase-voucher.jpeg`}
-                alt="Ledger interface screenshot"
+                alt="excel to Tally import"
                 className="w-full h-full object-contain "
               />
             </div>
@@ -168,7 +168,7 @@ export function Vouchers() {
             <div className="aspect-[4/3] w-full max-w-2xl mx-auto">
               <img
                 src={`${base}assets/images/sales-voucher.webp`}
-                alt="Ledger interface screenshot"
+                alt="excel to Tally import"
                 className="w-full h-full object-contain "
               />
             </div>

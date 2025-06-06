@@ -5,9 +5,10 @@ import "./css/styles.css";
 import { Canvas } from "@react-three/fiber";
 import { Environment, PerspectiveCamera } from "@react-three/drei";
 import { useSpring, animated } from "@react-spring/three";
+import { Mesh } from "three";
 
 const AnimatedBackground = () => {
-  const meshRef = useRef();
+  const meshRef = useRef<Mesh>(null);
   const springs = useSpring({
     from: { scale: [0.8, 0.8, 0.8], rotation: [0, 0, 0] },
     to: { scale: [1, 1, 1], rotation: [0.1, 0.1, 0] },
